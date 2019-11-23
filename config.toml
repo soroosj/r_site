@@ -1,8 +1,8 @@
-baseURL = "/"
+baseURL = "soroosj.netlify.com/"
 languageCode = "en-us"
 title = "Joel Soroos"
 description = "An R data hobbyist"
-theme = "min_night"
+theme = "min_night" 
 disqusShortname = ""
 googleAnalytics = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
@@ -12,8 +12,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
 
 [params]
     author = "Joel Soroos"
-    description = "An R data hobbyist."
-    logo = "favicon/android-chrome-192x192.png"
+    description = "An R data hobbyist" 
+    logo = "franchise.png"
     twitterAuthor = "@soroosj"
     githubUsername = "soroosj"
     accent = "#386890" # dark colors do best
@@ -49,7 +49,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
 # The list of available icons can be found at http://fontawesome.io/icons/
 
 [[menu.icon]]
-    url = "soroosj@yahoo.com"
+    url = "mailto:soroosj@yahoo.com"
     name = "far fa-envelope"
     weight = 1
 
@@ -64,6 +64,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
     weight = 3
 
 [[menu.icon]]
-    url = "linkedin.com/in/joelsoroos/"
+    url = "https://www.linkedin.com/in/joelsoroos"
     name = "fab fa-linkedin"
     weight = 4

@@ -13,7 +13,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
 [params]
     author = "Joel Soroos"
     description = "An R data hobbyist" 
-    logo = "franchise.png"
+    logo = "ufo.png"
     twitterAuthor = "@soroosj"
     githubUsername = "soroosj"
     accent = "#386890" # dark colors do best

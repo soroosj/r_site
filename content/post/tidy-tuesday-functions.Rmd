@@ -5,6 +5,7 @@ date: '2019-11-23'
 slug: tidy-tuesday-functions
 categories: []
 tags: []
+featuredImage: "img/ufo.jpg"
 ---
 
 

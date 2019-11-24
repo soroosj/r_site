@@ -13,22 +13,29 @@ title: Favorite links
 twitter_img: img/large_card.png
 ---
 
-### R 
+### R Programming
+##### Fundamentals
 
--   [R for Data Science](https://r4ds.had.co.nz/) —
+-   ["R for Data Science"](https://r4ds.had.co.nz/) —
     seminal Tidyverse primer by Hadley Wickham & Garrett Grolemund
--   [Learning R Step by Step] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
+-   ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
 -   [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -   [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
 -   [Data Cleaning with R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
--   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
 
-### Tidyverse
+##### Tidyverse
 
--   [Tidy Tuesday] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -   [Top 50 ggplot
     visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
+
+
+##### Online Community
+-   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
+-   [Tidy Tuesday] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
+-   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
+
+
 
 ### Data Visualization
 
@@ -65,21 +72,24 @@ twitter_img: img/large_card.png
     Colors](https://blog.datawrapper.de/colorguide/) and [What to
     Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 
+
 ### Misc. Blogs
 
--   [Dominic Roye](https://dominicroye.github.io/en/) — mapping with
-    `{ggplot2}`
--   [David Smale](https://davidsmale.netlify.com/) — `{shiny}`,
-    `{ggplot2}` and more
--   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire
+
+-   [Cedric Scherer] (https://cedricscherer.netlify.com) - computational ecology and data visualization
+-   [NateDayta](https://www.natedayta.com/) - R applications
+-   [David Smale](https://davidsmale.netlify.com/) `{shiny}`, `{ggplot2}` and more
+-   [Bruno Rodrigues](https://www.brodrigues.co/) — data science in R
+    and Python
 -   [Andy Kirk](https://www.visualisingdata.com/blog/) — all about
     DataViz!
 -   [David Robinson](http://varianceexplained.org/) — data science using
     the {tidyverse}
--   ["Nightingale"](https://medium.com/nightingale) — blog by the Data
-    Visualization Society on Medium
+-   [Nightingale](https://medium.com/nightingale) — blog by the Data
+    Visualization Society
 -   [Charlotte Robinson](https://robinsones.github.io/)
--   [Bruno Rodrigues](https://www.brodrigues.co/) — data science in R
-    and Python
 -   [James Cheshire](https://spatial.ly/) — beautiful mapping
 -   [Hugo Toscano](https://toscano84.github.io/) — data science in R
+-   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire
+-   [Dominic Roye](https://dominicroye.github.io/en/) — mapping with
+    `{ggplot2}`

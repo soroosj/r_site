@@ -52,8 +52,6 @@ twitter_img: img/large_card.png
 -   [From Data to Viz](https://www.data-to-viz.com/)
 -   [Data Viz Project](https://datavizproject.com/)
 -   [Visualization Universe](http://visualizationuniverse.com/charts/)
--   ["Visualizing Data"](http://www.visualisingdata.com/) — homepage by
-    Andy Kirk
 -   [Material.io](https://material.io/design/communication/data-visualization.html)
 -   [Chart of Chart
     Suggestions](https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf)
@@ -85,11 +83,9 @@ twitter_img: img/large_card.png
     DataViz!
 -   [David Robinson](http://varianceexplained.org/) — data science using
     the {tidyverse}
--   [Nightingale](https://medium.com/nightingale) — blog by the Data
+-   [Nightingale](https://medium.com/nightingale) — Data
     Visualization Society
 -   [Charlotte Robinson](https://robinsones.github.io/)
 -   [James Cheshire](https://spatial.ly/) — beautiful mapping
 -   [Hugo Toscano](https://toscano84.github.io/) — data science in R
 -   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire
--   [Dominic Roye](https://dominicroye.github.io/en/) — mapping with
-    `{ggplot2}`

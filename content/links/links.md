@@ -1,5 +1,5 @@
 ---
-date: "2014-09-28"
+date: "2019-11-15"
 description: Summary of the post
 draft: false
 tags:
@@ -7,7 +7,7 @@ tags:
 - golang
 - hugo
 - themes
-title: Creating a New Theme
+title: Favorite links
 twitter_img: img/large_card.png
 ---
 

@@ -1,4 +1,4 @@
-baseURL = "soroosj.netlify.com"
+baseURL = "https://soroosj.netlify.com/"
 languageCode = "en-us"
 title = "Joel Soroos"
 description = "An R data hobbyist"

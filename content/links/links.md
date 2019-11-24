@@ -38,14 +38,13 @@ twitter_img: img/large_card.png
 
 
 ### Data Visualization
+##### Fundamentals
 
--   ["Fundamentals of Data
-    Visualization"](https://serialmentor.com/dataviz/) — free online
+-   ["Fundamentals of Data Visualization"] (https://serialmentor.com/dataviz/) — free online
     book by Claus Wilke.  Source code [here.](https://github.com/clauswilke/dataviz)
 -   ["Data Visualization"](http://socviz.co/) — free online book by
     Kieran Healy  
--   [Graphics Principles
-    Cheatsheet](https://graphicsprinciples.github.io/)
+
 
 ##### Charts
 
@@ -55,6 +54,7 @@ twitter_img: img/large_card.png
 -   [Material.io](https://material.io/design/communication/data-visualization.html)
 -   [Chart of Chart
     Suggestions](https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf)
+-   [Graphics Principles Cheatsheet](https://graphicsprinciples.github.io/)
 
 ##### Maps
 
@@ -88,4 +88,3 @@ twitter_img: img/large_card.png
 -   [Charlotte Robinson](https://robinsones.github.io/)
 -   [James Cheshire](https://spatial.ly/) — beautiful mapping
 -   [Hugo Toscano](https://toscano84.github.io/) — data science in R
--   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire

@@ -1,4 +1,17 @@
-### Rstats
+---
+date: "2014-09-28"
+description: Summary of the post
+draft: false
+tags:
+- go
+- golang
+- hugo
+- themes
+title: Creating a New Theme
+twitter_img: img/large_card.png
+---
+
+### R 
 
 -   ["Cookbook for R"](http://www.cookbook-r.com/) — free online book by
     Winston Chang
@@ -7,9 +20,6 @@
 -   ["Efficient R
     Programming"](https://bookdown.org/csgillespie/efficientR/) — free
     online book by Colin Gillespie & Robin Lovelace
--   ["YaRrr! The Pirate's Guide to
-    R"](https://bookdown.org/ndphillips/YaRrr/) — free online book by
-    Nathaniel Phillips
 -   [R Graph Gallery](https://www.r-graph-gallery.com/)
 -   [Five Simple Tipps to Improve Your R
     Code](https://drsimonj.svbtle.com/five-simple-tricks-to-improve-your-r-code)
@@ -19,10 +29,8 @@
 -   ["R for Data Science"](https://r4ds.had.co.nz/) — free online book
     by Hadley Wickham & Garrett Grolemund
 
-###### {ggplot2}
+###### Ggplot2 Package
 
--   [Source code of the book "Fundamentals of Data
-    Visualization"](https://github.com/clauswilke/dataviz)
 -   [Top 50 ggplot
     visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -   [Gallery of ggplot2
@@ -30,14 +38,11 @@
 -   [Extending
     ggplot2](https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html)
 
-###### Spatial Data
 
--   ["Geocomputation with
-    R"](https://geocompr.robinlovelace.net/index.html) — free online
-    book by Robin Lovelace, Jakub Nowosad & Jannes Muenchow
+### Data Visualization
 
-### DataViz
-
+-   [Source code of the book "Fundamentals of Data
+    Visualization"](https://github.com/clauswilke/dataviz)
 -   ["Data Visualization"](http://socviz.co/) — free online book by
     Kieran Healy  
 -   ["Fundamentals of Data
@@ -56,6 +61,25 @@
 -   [Graphics Principles
     Cheatsheet](https://graphicsprinciples.github.io/)
 
+
+
+###### Charts
+
+-   [From Data to Viz](https://www.data-to-viz.com/)
+-   [Data Viz Project](https://datavizproject.com/)
+-   [Visualization Universe](http://visualizationuniverse.com/charts/)
+-   [Material.io](https://material.io/design/communication/data-visualization.html)
+-   [Chart of Chart
+    Suggestions](https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf)
+
+###### Maps
+
+-   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire
+-   [Bivariate Chloropleth
+    Maps](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/)
+-   [Value-by-Alpha
+    Maps](http://andywoodruff.com/blog/value-by-alpha-maps/)
+    
 ###### Colors
 
 -   [Viz
@@ -68,37 +92,12 @@
     colors & palettes
 -   [ColorThief](https://lokeshdhakar.com/projects/color-thief/) — grab
     color palettes from any image
--   [Data Color
-    Picker](https://learnui.design/tools/data-color-picker.html) —
-    Generator of equidistant sequential, monochromatic and diverging
-    palettes
 -   DataWrapper's [Friendly Guide to
     Colors](https://blog.datawrapper.de/colorguide/) and [What to
     Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 
-###### Chart Types
-
--   [From Data to Viz](https://www.data-to-viz.com/)
--   [Data Viz Project](https://datavizproject.com/)
--   [Visualization Universe](http://visualizationuniverse.com/charts/)
--   [Material.io](https://material.io/design/communication/data-visualization.html)
--   [Data Visualization
-    101](https://blog.hubspot.com/marketing/types-of-graphs-for-data-visualization)
--   [Chart of Chart
-    Suggestions](https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf)
-
-###### Mapping
-
--   [Spatial.ly Blog](http://spatial.ly/) by James Cheshire
--   [Bivariate Chloropleth
-    Maps](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/)
--   [Value-by-Alpha
-    Maps](http://andywoodruff.com/blog/value-by-alpha-maps/)
-
 ### Interesting Personal Blogs<br>(Random Topics, Random Order 🤷)
 
--   [Chisato](https://chichacha.netlify.com/) — colors & art with
-    `{ggplot2}`
 -   [Dominic Roye](https://dominicroye.github.io/en/) — mapping with
     `{ggplot2}`
 -   [David Smale](https://davidsmale.netlify.com/) — `{shiny}`,
@@ -112,13 +111,6 @@
 -   [Bruno Rodrigues](https://www.brodrigues.co/) — data science in R
     and Python
 -   [James Cheshire](https://spatial.ly/) — beautiful mapping
--   [Ilya Kashnitsky](https://ikashnitsky.github.io/) — maps &
-    demography in R
 -   [Hugo Toscano](https://toscano84.github.io/) — data science in R
--   [Geoff Boeing](https://geoffboeing.com) — Python & GIS
 -   [Our World in Data](https://ourworldindata.org/blog) — "data on the
     world’s largest problems"
--   [Dynamic Ecology](https://dynamicecology.wordpress.com/) —
-    population, community & evolutionary ecology
--   [Florian Hartig](https://theoreticalecology.wordpress.com/) —
-    ecology, evolution & statistics

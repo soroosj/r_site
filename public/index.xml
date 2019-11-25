@@ -38,5 +38,15 @@
       <description>R Programming Fundamentals  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse primer by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera Data Cleaning with R — online Johns Hopkins class via Coursera  Tidyverse  Top 50 ggplot visualizations Ggplot2 extensions  Online Community  R for Data Science (R4DS) Online Learning Community  Tidy Tuesday - data sets to practice Tidyverse concepts Tidy Tuesday Rocks - R Shiny compilation of Tidy Tuesday submissions  Data Visualization Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/visualizations/visualizations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/visualizations/visualizations/</guid>
+      <description>A collection of data visualizations I’ve produced for scientific publications and fun using the {ggplot2}(https://ggplot2.tidyverse.org/) package in the programming language R. All visualizations are the result of the code without any post-processing. Click on an image to enlarge it. 
+Contributions to #TidyTuesday #TidyTuesday is a weekly data project aimed at the R ecosystem and the {tidyverse} package bundle to wrangle, explore and visualize the data set that is provided by the R4DS Online Learning Community.</description>
+    </item>
+    
   </channel>
 </rss>

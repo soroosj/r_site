@@ -62,6 +62,11 @@
   </url>
   
   <url>
+    <loc>/visualizations/visualizations/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
   </url>
   
@@ -79,6 +84,10 @@
   
   <url>
     <loc>/project/</loc>
+  </url>
+  
+  <url>
+    <loc>/visualizations/</loc>
   </url>
   
 </urlset>

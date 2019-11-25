@@ -30,8 +30,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
     weight = 1
 
 [[menu.main]]
-    url = "/project/"
-    name = "Projects"
+    url = "/visualizations/visualizations/index.html"
+    name = "Visualizations"
     weight = 2
 
 [[menu.main]]

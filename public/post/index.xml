@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Joel Soroos</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Joel Soroos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tidy Tuesday Functions</title>
+      <link>/2019/11/23/tidy-tuesday-functions/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/23/tidy-tuesday-functions/</guid>
+      <description>Week Data Set Lesson Function Package    2019-10-29 Squirrels API keys to environment variables Sys.getenv base  2019-10-29 Squirrels Source Google map layer get_googlempap ggmap  2019-10-29 Squirrels Chart clones by variable facet_wrap ggplot2  2019-10-29 Squirrels Convert string to title case str_to_title stringr  2019-10-15 Vehicle MPH Regression estimates tidy broom  2019-10-15 Vehicle MPH Import image read_impage magick  2019-10-15 Vehicle MPH Image to grob rasterGrob grid  2019-10-15 Vehicle MPH Add image to chart annotation_custom ggplot2  2019-09-03 Moore’s Law Calculate loess regression loess stats  2019-09-03 Moore’s Law Regression fit make tidy augment broom  2019-09-03 Moore’s Law Data frame from scratch tibble tibble  2019-09-03 Moore’s Law Title over full plot plot.</description>
+    </item>
+    
+  </channel>
+</rss>

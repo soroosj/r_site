@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tidy Tuesday Functions</title>
+        <link rel="canonical" href="/2019/11/23/tidy-tuesday-functions/">
+        <style>
+
+    html body {
+        font-family: 'Mina', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    :root {
+        --accent: #386890;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mina">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/lakeside-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+
+
+<script>
+$(document).ready(function(){
+    
+  var input = $('#night-mode-toggle');
+  var container = $('#bigbody');
+  var stat = $('#button-status');
+  
+  container.toggleClass(localStorage.toggled);
+  stat.bootstrapToggle(localStorage.button).change();
+  
+  input.on('click', function() {
+      if (localStorage.toggled != "-nightmode" ) {
+          container.toggleClass("-nightmode", true );
+          localStorage.toggled = "-nightmode";
+          localStorage.button = "on";
+       } else {
+          container.toggleClass("-nightmode", false );
+          localStorage.toggled = "";
+          localStorage.button = "off"
+       }
+  })
+});
+</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        <link href="" rel="alternate" type="application/rss+xml" title="Joel Soroos" />
+        <link href="" rel="feed" type="application/rss+xml" title="Joel Soroos" />
+        
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    
+    <meta property="og:title" content="Tidy Tuesday Functions">
+    <meta property="og:type" content="article">
+      
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:image" content="/ufo.png" >
+      
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:site" content="">
+    
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body id = "bigbody">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Tidy Tuesday Functions</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/links/links/index.html">Links</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:soroosj@yahoo.com"><i class="far fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/soroosj"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/soroosj/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joelsoroos"><i class="fab fa-linkedin"></i></a></li>
+                            
+                            <li id="night-mode-toggle">
+    <input type="checkbox" id = "button-status"
+        data-toggle="toggle"
+        data-width = "10"
+        data-height = "1"
+        data-on="<i class='far fa-moon fa-lg'></i>"
+        data-off= "<i class='far fa-sun fa-lg'></i>"
+        data-style="ios"
+        data-onstyle = "default">
+</li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2019/11/23/tidy-tuesday-functions/">Tidy Tuesday Functions</a></h4>
+    <h5>November 23, 2019 - 2 minutes</h5>
+    <h5></h5>
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+
+<table>
+<thead>
+<tr class="header">
+<th align="center">Week</th>
+<th align="center">Data Set</th>
+<th align="left">Lesson</th>
+<th align="left">Function</th>
+<th align="left">Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>2019-10-29</code></td>
+<td align="center">Squirrels</td>
+<td align="left">API keys to environment variables</td>
+<td align="left">Sys.getenv</td>
+<td align="left">base</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-10-29</code></td>
+<td align="center">Squirrels</td>
+<td align="left">Source Google map layer</td>
+<td align="left">get_googlempap</td>
+<td align="left">ggmap</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-10-29</code></td>
+<td align="center">Squirrels</td>
+<td align="left">Chart clones by variable</td>
+<td align="left">facet_wrap</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-10-29</code></td>
+<td align="center">Squirrels</td>
+<td align="left">Convert string to title case</td>
+<td align="left">str_to_title</td>
+<td align="left">stringr</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-10-15</code></td>
+<td align="center">Vehicle MPH</td>
+<td align="left">Regression estimates</td>
+<td align="left">tidy</td>
+<td align="left">broom</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-10-15</code></td>
+<td align="center">Vehicle MPH</td>
+<td align="left">Import image</td>
+<td align="left">read_impage</td>
+<td align="left">magick</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-10-15</code></td>
+<td align="center">Vehicle MPH</td>
+<td align="left">Image to grob</td>
+<td align="left">rasterGrob</td>
+<td align="left">grid</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-10-15</code></td>
+<td align="center">Vehicle MPH</td>
+<td align="left">Add image to chart</td>
+<td align="left">annotation_custom</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-09-03</code></td>
+<td align="center">Moore’s Law</td>
+<td align="left">Calculate loess regression</td>
+<td align="left">loess</td>
+<td align="left">stats</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-09-03</code></td>
+<td align="center">Moore’s Law</td>
+<td align="left">Regression fit make tidy</td>
+<td align="left">augment</td>
+<td align="left">broom</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-09-03</code></td>
+<td align="center">Moore’s Law</td>
+<td align="left">Data frame from scratch</td>
+<td align="left">tibble</td>
+<td align="left">tibble</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-09-03</code></td>
+<td align="center">Moore’s Law</td>
+<td align="left">Title over full plot</td>
+<td align="left">plot.title.position</td>
+<td align="left">ggplot</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-09-03</code></td>
+<td align="center">Moore’s Law</td>
+<td align="left">Calculate log</td>
+<td align="left">log10</td>
+<td align="left">base</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-08-20</code></td>
+<td align="center">Nuclear bombs</td>
+<td align="left">Animate plots</td>
+<td align="left">animate</td>
+<td align="left">gganimate</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-08-20</code></td>
+<td align="center">Nuclear bombs</td>
+<td align="left">Tile plot</td>
+<td align="left">geom_tile</td>
+<td align="left">ggplot</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-08-20</code></td>
+<td align="center">Nuclear bombs</td>
+<td align="left">Extend plot area</td>
+<td align="left">ylim, xlim</td>
+<td align="left">ggplot</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-08-13</code></td>
+<td align="center">Roman emperors</td>
+<td align="left">Segment visualizations</td>
+<td align="left">geom_segment</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-08-13</code></td>
+<td align="center">Roman emperors</td>
+<td align="left">Text adjacent to points</td>
+<td align="left">geom_text</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-08-13</code></td>
+<td align="center">Roman emperors</td>
+<td align="left">Update date components</td>
+<td align="left">update</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-08-13</code></td>
+<td align="center">Roman emperors</td>
+<td align="left">Combine data into string</td>
+<td align="left">glue</td>
+<td align="left">glue</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-08-06</code></td>
+<td align="center">Bob Ross</td>
+<td align="left">Word cloud in letter shapes</td>
+<td align="left">letterCloud</td>
+<td align="left">wordcloud2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-08-06</code></td>
+<td align="center">Bob Ross</td>
+<td align="left">Sentences to records by word</td>
+<td align="left">unnest_tokens</td>
+<td align="left">tidytext</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-07-09</code></td>
+<td align="center">World Cup</td>
+<td align="left">Sum variable by group in one line</td>
+<td align="left">tally</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-07-09</code></td>
+<td align="center">World Cup</td>
+<td align="left">Instance of a record in a group</td>
+<td align="left">row_number</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-07-09</code></td>
+<td align="center">World Cup</td>
+<td align="left">Data frame to vector</td>
+<td align="left">pull</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-07-02</code></td>
+<td align="center">Franchises</td>
+<td align="left">Waffle chart</td>
+<td align="left">geom_waffle</td>
+<td align="left">waffle</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-07-02</code></td>
+<td align="center">Franchises</td>
+<td align="left">2-row axis labels</td>
+<td align="left">paste</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-07-02</code></td>
+<td align="center">Franchises</td>
+<td align="left">Custom fonts</td>
+<td align="left">element.text (family)</td>
+<td align="left">extrafont</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-06-25</code></td>
+<td align="center">UFOs</td>
+<td align="left">Annotate text</td>
+<td align="left">annotate</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-06-25</code></td>
+<td align="center">UFOs</td>
+<td align="left">Annotate arrow</td>
+<td align="left">geom_curve</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-06-25</code></td>
+<td align="center">UFOs</td>
+<td align="left">Customize legend position</td>
+<td align="left">legend.position</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-05-28</code></td>
+<td align="center">Wine reviews</td>
+<td align="left">Violin charts</td>
+<td align="left">geom_violin</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-05-28</code></td>
+<td align="center">Wine reviews</td>
+<td align="left">Black background</td>
+<td align="left">dark_mode</td>
+<td align="left">ggdark</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-05-21</code></td>
+<td align="center">Plastic waste</td>
+<td align="left">LOESS regression line</td>
+<td align="left">geom_smooth</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-05-21</code></td>
+<td align="center">Plastic waste</td>
+<td align="left">Logarithimic scales</td>
+<td align="left">log10_trans</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-05-07</code></td>
+<td align="center">Class size</td>
+<td align="left">Countries to continents</td>
+<td align="left">countrycode</td>
+<td align="left">countrycode</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-05-07</code></td>
+<td align="center">Class size</td>
+<td align="left">Custom sort categorical field</td>
+<td align="left">fct_relevel</td>
+<td align="left">forcats</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-04-30</code></td>
+<td align="center">Birds</td>
+<td align="left">Ridgeline charts</td>
+<td align="left">geom_density_ridges</td>
+<td align="left">ggridges</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-04-30</code></td>
+<td align="center">Birds</td>
+<td align="left">Categorical variable frequencies</td>
+<td align="left">tabyl</td>
+<td align="left">janitor</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Anime</td>
+<td align="left">Aestheticly-pleasing tables</td>
+<td align="left">kable</td>
+<td align="left">KableExtra</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Anime</td>
+<td align="left">Summary statistics on all fields</td>
+<td align="left">summarize_all</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Anime</td>
+<td align="left">Function on mutliple fields</td>
+<td align="left">mutate_if</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Tennis</td>
+<td align="left">Text labels in charts</td>
+<td align="left">geom_label_repel</td>
+<td align="left">ggrepel</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Tennis</td>
+<td align="left">Categorical variables to numeric</td>
+<td align="left">case_when</td>
+<td align="left">dplyr</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-04-23</code></td>
+<td align="center">Tennis</td>
+<td align="left">Reverse y-axis points</td>
+<td align="left">trans = “reverse”</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-03-26</code></td>
+<td align="center">Pets</td>
+<td align="left">Image as axis label</td>
+<td align="left">geom_textured_col</td>
+<td align="left">ggtextures</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-03-26</code></td>
+<td align="center">Pets</td>
+<td align="left">Import images</td>
+<td align="left">image_read</td>
+<td align="left">magick</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-02-12</code></td>
+<td align="center">Govt</td>
+<td align="left">Multiple charts at once</td>
+<td align="left">flexdashboard</td>
+<td align="left">flexdashboard</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>2019-02-12</code></td>
+<td align="center">Govt</td>
+<td align="left">Border in chart sections</td>
+<td align="left">geom_rect</td>
+<td align="left">ggplot2</td>
+</tr>
+<tr class="even">
+<td align="center"><code>2019-02-12</code></td>
+<td align="center">Govt</td>
+<td align="left">Apply function to specific columns</td>
+<td align="left">mutate_at</td>
+<td align="left">dplyr</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+</main>
+
+        <footer id = "bigfooter">
+            <div style = "padding:15px;">
+                <p>Powered by <a href="https://gohugo.io">Hugo</a>. Themed by <a href="https://github.com/nathancday/min_night">min_night</a>.
+                </p>
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+                title="Creative Commons Attribution 4.0 International license">
+                <i class="fab fa-creative-commons" aria-hidden="true"></i> Attribution 4.0 International license
+                </a>
+            </div>
+        </footer>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+          gtag('config', '');
+        </script>
+       
+    </body>
+
+</html>
+

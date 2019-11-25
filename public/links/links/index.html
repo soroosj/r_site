@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Favorite links</title>
+        <link rel="canonical" href="/links/links/">
+        <style>
+
+    html body {
+        font-family: 'Mina', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    :root {
+        --accent: #386890;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mina">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/lakeside-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+
+
+<script>
+$(document).ready(function(){
+    
+  var input = $('#night-mode-toggle');
+  var container = $('#bigbody');
+  var stat = $('#button-status');
+  
+  container.toggleClass(localStorage.toggled);
+  stat.bootstrapToggle(localStorage.button).change();
+  
+  input.on('click', function() {
+      if (localStorage.toggled != "-nightmode" ) {
+          container.toggleClass("-nightmode", true );
+          localStorage.toggled = "-nightmode";
+          localStorage.button = "on";
+       } else {
+          container.toggleClass("-nightmode", false );
+          localStorage.toggled = "";
+          localStorage.button = "off"
+       }
+  })
+});
+</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        <link href="" rel="alternate" type="application/rss+xml" title="Joel Soroos" />
+        <link href="" rel="feed" type="application/rss+xml" title="Joel Soroos" />
+        
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    
+    <meta property="og:title" content="Favorite links">
+    <meta property="og:type" content="article">
+      
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="/img/large_card.png" >
+      
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:site" content="">
+    
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body id = "bigbody">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Favorite links</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/links/links/index.html">Links</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:soroosj@yahoo.com"><i class="far fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/soroosj"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/soroosj/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joelsoroos"><i class="fab fa-linkedin"></i></a></li>
+                            
+                            <li id="night-mode-toggle">
+    <input type="checkbox" id = "button-status"
+        data-toggle="toggle"
+        data-width = "10"
+        data-height = "1"
+        data-on="<i class='far fa-moon fa-lg'></i>"
+        data-off= "<i class='far fa-sun fa-lg'></i>"
+        data-style="ios"
+        data-onstyle = "default">
+</li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/links/links/">Favorite links</a></h4>
+    <h5>November 15, 2019 - 2 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/charts">
+        <kbd class="item-tag"> charts </kbd>
+    </a>
+    
+    <a href="/tags/maps">
+        <kbd class="item-tag"> maps </kbd>
+    </a>
+    
+    <a href="/tags/dataviz">
+        <kbd class="item-tag"> dataviz </kbd>
+    </a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h3 id="r-programming">R Programming</h3>
+
+<h5 id="fundamentals">Fundamentals</h5>
+
+<ul>
+<li><a href="https://r4ds.had.co.nz/">&ldquo;R for Data Science&rdquo;</a> —
+seminal Tidyverse primer by Hadley Wickham &amp; Garrett Grolemund</li>
+<li><a href="https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105">&ldquo;Learning R Step by Step&rdquo;</a> - hard copy book by Richard Cotton</li>
+<li><a href="https://www.coursera.org/specializations/statistics">Statistics with R</a> — online Duke courses via Coursera</li>
+<li><a href="https://www.coursera.org/learn/r-programming">R Programming</a> — online Johns Hopkins class via Coursera</li>
+<li><a href="https://www.coursera.org/learn/data-cleaning">Data Cleaning with R</a> — online Johns Hopkins class via Coursera</li>
+</ul>
+
+<h5 id="tidyverse">Tidyverse</h5>
+
+<ul>
+<li><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">Top 50 ggplot
+visualizations</a></li>
+<li><a href="http://www.ggplot2-exts.org/gallery/">Ggplot2 extensions</a></li>
+</ul>
+
+<h5 id="online-community">Online Community</h5>
+
+<ul>
+<li><a href="https://www.rfordatasci.com">R for Data Science (R4DS) Online Learning Community </a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">Tidy Tuesday</a> - data sets to practice Tidyverse concepts</li>
+<li><a href="https://www.nsgrantham.com/tidytuesdayrocks">Tidy Tuesday Rocks</a> - R Shiny compilation of Tidy Tuesday submissions</li>
+</ul>
+
+<h3 id="data-visualization">Data Visualization</h3>
+
+<h5 id="fundamentals-1">Fundamentals</h5>
+
+<ul>
+<li><a href="https://serialmentor.com/dataviz/">&ldquo;Fundamentals of Data Visualization&rdquo;</a> — free online
+book by Claus Wilke.  Source code <a href="https://github.com/clauswilke/dataviz">here.</a></li>
+<li><a href="http://socviz.co/">&ldquo;Data Visualization&rdquo;</a> — free online book by
+Kieran Healy<br /></li>
+</ul>
+
+<h5 id="charts">Charts</h5>
+
+<ul>
+<li><a href="https://www.data-to-viz.com/">From Data to Viz</a></li>
+<li><a href="https://datavizproject.com/">Data Viz Project</a></li>
+<li><a href="http://visualizationuniverse.com/charts/">Visualization Universe</a></li>
+<li><a href="https://material.io/design/communication/data-visualization.html">Material.io</a></li>
+<li><a href="https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf">Chart of Chart
+Suggestions</a></li>
+<li><a href="https://graphicsprinciples.github.io/">Graphics Principles Cheatsheet</a></li>
+</ul>
+
+<h5 id="maps">Maps</h5>
+
+<ul>
+<li><a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Bivariate Chloropleth
+Maps</a>
+<br /></li>
+</ul>
+
+<h5 id="colors">Colors</h5>
+
+<ul>
+<li><a href="https://mycolor.space/">Color Space</a> — color palette generator</li>
+<li><a href="https://gka.github.io/palettes/#/9%7Cs%7C00429d,96ffea,ffffe0%7Cffffe0,ff005e,93003a%7C1%7C1">Chroma.js</a>
+— color palette helper</li>
+<li>DataWrapper&rsquo;s <a href="https://blog.datawrapper.de/colorguide/">Friendly Guide to
+Colors</a> and <a href="https://blog.datawrapper.de/colors/">What to
+Consider when Choosing Colors</a></li>
+</ul>
+
+<h3 id="misc-blogs">Misc. Blogs</h3>
+
+<ul>
+<li><a href="https://cedricscherer.netlify.com">Cedric Scherer</a> - computational ecology and data visualization</li>
+<li><a href="https://www.natedayta.com/">NateDayta</a> - R applications</li>
+<li><a href="https://davidsmale.netlify.com/">David Smale</a> <code>{shiny}</code>, <code>{ggplot2}</code> and more</li>
+<li><a href="https://www.brodrigues.co/">Bruno Rodrigues</a> — data science in R
+and Python</li>
+<li><a href="https://www.visualisingdata.com/blog/">Andy Kirk</a> — all about
+DataViz!</li>
+<li><a href="http://varianceexplained.org/">David Robinson</a> — data science using
+the {tidyverse}</li>
+<li><a href="https://medium.com/nightingale">Nightingale</a> — Data
+Visualization Society</li>
+<li><a href="https://robinsones.github.io/">Charlotte Robinson</a></li>
+<li><a href="https://spatial.ly/">James Cheshire</a> — beautiful mapping</li>
+<li><a href="https://toscano84.github.io/">Hugo Toscano</a> — data science in R</li>
+</ul>
+</div>
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+</main>
+
+        <footer id = "bigfooter">
+            <div style = "padding:15px;">
+                <p>Powered by <a href="https://gohugo.io">Hugo</a>. Themed by <a href="https://github.com/nathancday/min_night">min_night</a>.
+                </p>
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+                title="Creative Commons Attribution 4.0 International license">
+                <i class="fab fa-creative-commons" aria-hidden="true"></i> Attribution 4.0 International license
+                </a>
+            </div>
+        </footer>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+          gtag('config', '');
+        </script>
+       
+    </body>
+
+</html>
+

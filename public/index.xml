@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Joel Soroos</title>
+    <link>/</link>
+    <description>Recent content on Joel Soroos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Project 1</title>
+      <link>/project/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday Functions</title>
+      <link>/2019/11/23/tidy-tuesday-functions/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/23/tidy-tuesday-functions/</guid>
+      <description>Week Data Set Lesson Function Package    2019-10-29 Squirrels API keys to environment variables Sys.getenv base  2019-10-29 Squirrels Source Google map layer get_googlempap ggmap  2019-10-29 Squirrels Chart clones by variable facet_wrap ggplot2  2019-10-29 Squirrels Convert string to title case str_to_title stringr  2019-10-15 Vehicle MPH Regression estimates tidy broom  2019-10-15 Vehicle MPH Import image read_impage magick  2019-10-15 Vehicle MPH Image to grob rasterGrob grid  2019-10-15 Vehicle MPH Add image to chart annotation_custom ggplot2  2019-09-03 Moore’s Law Calculate loess regression loess stats  2019-09-03 Moore’s Law Regression fit make tidy augment broom  2019-09-03 Moore’s Law Data frame from scratch tibble tibble  2019-09-03 Moore’s Law Title over full plot plot.</description>
+    </item>
+    
+    <item>
+      <title>Favorite links</title>
+      <link>/links/links/</link>
+      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/links/links/</guid>
+      <description>R Programming Fundamentals  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse primer by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera Data Cleaning with R — online Johns Hopkins class via Coursera  Tidyverse  Top 50 ggplot visualizations Ggplot2 extensions  Online Community  R for Data Science (R4DS) Online Learning Community  Tidy Tuesday - data sets to practice Tidyverse concepts Tidy Tuesday Rocks - R Shiny compilation of Tidy Tuesday submissions  Data Visualization Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
+    </item>
+    
+  </channel>
+</rss>

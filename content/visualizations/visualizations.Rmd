@@ -21,6 +21,8 @@ The examples source data from the weekly [R4DS #TidyTuesday](https://github.com/
 
 <img src="/img/franchise.png" style="height: 50%; width: 50%; object-fit: contain">
 
+<img src="/img/franchise.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/franchise.png', 'blank');"/>
+
 <img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/moore.png" style="height: 50%; width: 50%; object-fit: contain">

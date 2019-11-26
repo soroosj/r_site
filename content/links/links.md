@@ -25,8 +25,7 @@ twitter_img: img/large_card.png
 
 ##### Tidyverse
 
--   [Top 50 ggplot
-    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
 -   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
 
 
@@ -44,47 +43,43 @@ twitter_img: img/large_card.png
     book by Claus Wilke.  Source code [here.](https://github.com/clauswilke/dataviz)
 -   ["Data Visualization"](http://socviz.co/) — free online book by
     Kieran Healy  
+-   [Graphics Principles Cheatsheet](https://graphicsprinciples.github.io/)
 
 
 ##### Charts
 
--   [From Data to Viz](https://www.data-to-viz.com/)
--   [Data Viz Project](https://datavizproject.com/)
--   [Visualization Universe](http://visualizationuniverse.com/charts/)
--   [Material.io](https://material.io/design/communication/data-visualization.html)
--   [Chart of Chart
-    Suggestions](https://extremepresentation.typepad.com/files/choosing-a-good-chart-09.pdf)
--   [Graphics Principles Cheatsheet](https://graphicsprinciples.github.io/)
+-   [Selecting Chart Types](https://www.data-to-viz.com/)
+-   [Top 50 ggplot
+    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+
 
 ##### Maps
 
--   [Bivariate Chloropleth
-    Maps](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/)
+-   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) - introduction to geom_polygon and ggmap methodologies
+-   [Maps Created With ggmap](https://www.littlemissdata.com/blog/maps) - more detailed ggmap techniques
+-   [Google Maps API Developers Guide](https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations)
+
     
 ##### Colors
 
--   [Color Space](https://mycolor.space/) — color palette generator
--   [Chroma.js](https://gka.github.io/palettes/#/9%7Cs%7C00429d,96ffea,ffffe0%7Cffffe0,ff005e,93003a%7C1%7C1)
-    — color palette helper
--   DataWrapper's [Friendly Guide to
-    Colors](https://blog.datawrapper.de/colorguide/) and [What to
-    Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
+-   [R Color Key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
+-   [Colorbrewer Schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [Ad Hoc Color Patterns](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) - color advice for cartography
+-   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 
 
 ### Misc. Blogs
 
-
--   [Cedric Scherer] (https://cedricscherer.netlify.com) - computational ecology and data visualization
--   [NateDayta](https://www.natedayta.com/) - R applications
--   [David Smale](https://davidsmale.netlify.com/) `{shiny}`, `{ggplot2}` and more
--   [Bruno Rodrigues](https://www.brodrigues.co/) — data science in R
-    and Python
--   [Andy Kirk](https://www.visualisingdata.com/blog/) — all about
-    DataViz!
--   [David Robinson](http://varianceexplained.org/) — data science using
-    the {tidyverse}
--   [Nightingale](https://medium.com/nightingale) — Data
+-   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
+-   [David Smale](https://davidsmale.netlify.com/)
+-   [Spatial.ly](https://spatial.ly/) — James Cheshire
+-   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
+-   [Hugo Toscano](https://toscano84.github.io/)
+-   [Variance Esplained](http://varianceexplained.org/) — David Robinson
+-   [Nightingale](https://medium.com/nightingale) — Journal for the Data
     Visualization Society
--   [Charlotte Robinson](https://robinsones.github.io/)
--   [James Cheshire](https://spatial.ly/) — beautiful mapping
--   [Hugo Toscano](https://toscano84.github.io/) — data science in R
+-   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
+-   [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
+-   [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
+-   [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues
+-   [NateDayta](https://www.natedayta.com/) - Nathan Day

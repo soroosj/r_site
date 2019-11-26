@@ -44,9 +44,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/visualizations/visualizations/</guid>
-      <description> A collection of data visualizations I’ve produced for fun using the {ggplot2}(https://ggplot2.tidyverse.org/) package in the programming language R. All visualizations are the result of the code without any post-processing. 
-Contributions to #TidyTuesday {#tidytuesday} v #TidyTuesday is a weekly data project aimed at the R ecosystem and the {tidyverse} package bundle to wrangle, explore and visualize the data set that is provided by the R4DS Online Learning Community.
-Tidy Tuesday Week 2009-12  </description>
+      <description> A collection of data visualizations I have built for fun using the ggplot2 package in the [R] (https://www.r-project.org/about.html)programming language. All visualizations are the result of the code without any post-processing. 
+TidyTuesday #TidyTuesday is a weekly data project aimed at the R ecosystem and tidyverse package bundle to source, wrangle, explore and visualize the data set provided by the R4DS Online Learning Community.
+ </description>
     </item>
     
   </channel>

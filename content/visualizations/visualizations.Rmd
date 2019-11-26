@@ -1,12 +1,12 @@
-A collection of data visualizations I've produced for fun using the `{ggplot2}`(https://ggplot2.tidyverse.org/) package in the programming language [R](https://www.r-project.org/about.html). All visualizations are the result of the code without any post-processing.
+A collection of data visualizations I have built for fun using the [ggplot2](https://ggplot2.tidyverse.org/) package in the [R] (https://www.r-project.org/about.html)programming language. All visualizations are the result of the code without any post-processing.
 <br/>
 
 
-## Contributions to #TidyTuesday {#tidytuesday} v
+##TidyTuesday {#tidytuesday}
 
-[#TidyTuesday](https://github.com/rfordatascience/tidytuesday) is a weekly data project aimed at the R ecosystem and the `{tidyverse}` package bundle to wrangle, explore and visualize the data set that is provided by the [R4DS Online Learning Community](https://www.rfordatasci.com/).
+[#TidyTuesday](https://github.com/rfordatascience/tidytuesday) is a weekly data project aimed at the R ecosystem and tidyverse package bundle to source, wrangle, explore and visualize the data set provided by the [R4DS Online Learning Community](https://www.rfordatasci.com/).
 
-Tidy Tuesday Week 2009-12
+
 <img src="/img/franchise.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/squirrels.png" style="height: 50%; width: 50%; object-fit: contain">
@@ -14,6 +14,8 @@ Tidy Tuesday Week 2009-12
 <img src="/img/emperors.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain">
+
+<img src="/img/cars.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/world cup.png" style="height: 50%; width: 50%; object-fit: contain">
 

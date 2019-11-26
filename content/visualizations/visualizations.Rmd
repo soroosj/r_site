@@ -1,30 +1,42 @@
-A collection of data visualizations I have built for fun using the [ggplot2](https://ggplot2.tidyverse.org/) package in the [R] (https://www.r-project.org/about.html)programming language. All visualizations are the result of the code without any post-processing.
+---
+date: "2019-11-15"
+description: 
+draft: false
+tags:
+- r
+- tidyverse
+- charts
+- maps
+- dataviz
+
+title: Visualizations
+twitter_img: img/large_card.png
+---
+
+A collection of data visualizations I have built for fun using the [R](https://www.r-project.org/about.html) programming language. All visualizations are produced via code without post-processing.
 <br/>
 
-
-##TidyTuesday {#tidytuesday}
-
-[#TidyTuesday](https://github.com/rfordatascience/tidytuesday) is a weekly data project aimed at the R ecosystem and tidyverse package bundle to source, wrangle, explore and visualize the data set provided by the [R4DS Online Learning Community](https://www.rfordatasci.com/).
+The examples source data from the weekly [R4DS #TidyTuesday](https://github.com/rfordatascience/tidytuesday) project, which provides a community for R and tidyverse enthusisasts to practice and share ideas in wrangling, exploring and visualizing data.
 
 
 <img src="/img/franchise.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/squirrels.png" style="height: 50%; width: 50%; object-fit: contain">
 
+<img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain">
+
 <img src="/img/emperors.png" style="height: 50%; width: 50%; object-fit: contain">
 
-<img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain">
+<img src="/img/wine.png" style="height: 50%; width: 50%; object-fit: contain">
+
+<img src="/img/explosions.gif" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/cars.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/world cup.png" style="height: 50%; width: 50%; object-fit: contain">
 
-<img src="/img/anime.png" style="height: 50%; width: 50%; object-fit: contain">
-
 <img src="/img/commute.png" style="height: 50%; width: 50%; object-fit: contain">
-
-<img src="/img/moore.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/parks.png" style="height: 50%; width: 50%; object-fit: contain">
 
-
+<img src="/img/students.png" style="height: 50%; width: 50%; object-fit: contain">

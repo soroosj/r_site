@@ -62,8 +62,13 @@
   </url>
   
   <url>
+    <loc>/visualizations/</loc>
+    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/visualizations/visualizations/</loc>
-    <priority>0</priority>
+    <lastmod>2019-11-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -84,10 +89,6 @@
   
   <url>
     <loc>/project/</loc>
-  </url>
-  
-  <url>
-    <loc>/visualizations/</loc>
   </url>
   
 </urlset>

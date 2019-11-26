@@ -18,7 +18,7 @@
       <guid>/visualizations/visualizations/</guid>
       <description> A collection of data visualizations I’ve produced for fun using the {ggplot2}(https://ggplot2.tidyverse.org/) package in the programming language R. All visualizations are the result of the code without any post-processing. 
 Contributions to #TidyTuesday {#tidytuesday} v #TidyTuesday is a weekly data project aimed at the R ecosystem and the {tidyverse} package bundle to wrangle, explore and visualize the data set that is provided by the R4DS Online Learning Community.
- </description>
+Tidy Tuesday Week 2009-12  </description>
     </item>
     
   </channel>

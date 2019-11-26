@@ -5,8 +5,8 @@ date: '2019-11-23'
 slug: tidy-tuesday-functions
 categories: []
 tags: []
+thumbnail: "ufo.png"
 ---
-
 
 | Week | Data Set | Lesson | Function | Package 
 | :---: | :---: | :--- | :--- | :--- |

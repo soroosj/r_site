@@ -64,7 +64,7 @@ twitter_img: img/large_card.png
 ##### Colors
 
 -   [R Color Key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
--   [Colorbrewer Schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [Ad Hoc Color Patterns](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) - color advice for cartography
+-   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 
 
@@ -75,7 +75,7 @@ twitter_img: img/large_card.png
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
 -   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [Hugo Toscano](https://toscano84.github.io/)
--   [Variance Esplained](http://varianceexplained.org/) — David Robinson
+-   [Variance Explained](http://varianceexplained.org/) — David Robinson
 -   [Nightingale](https://medium.com/nightingale) — Journal for the Data
     Visualization Society
 -   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson

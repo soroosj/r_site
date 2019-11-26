@@ -2,7 +2,7 @@ A collection of data visualizations I've produced for scientific publications an
 <br/>
 
 
-## Contributions to #TidyTuesday {#tidytuesday}
+## Contributions to #TidyTuesday {#tidytuesday} v
 
 [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) is a weekly data project aimed at the R ecosystem and the `{tidyverse}` package bundle to wrangle, explore and visualize the data set that is provided by the [R4DS Online Learning Community](https://www.rfordatasci.com/).
 

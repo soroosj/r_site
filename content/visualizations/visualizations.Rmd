@@ -21,21 +21,23 @@ The examples source data from the weekly [R4DS #TidyTuesday](https://github.com/
 
 <img src="/img/franchise.png" style="height: 50%; width: 50%; object-fit: contain">
 
-<img src="/img/squirrels.png" style="height: 50%; width: 50%; object-fit: contain">
-
 <img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain">
 
-<img src="/img/emperors.png" style="height: 50%; width: 50%; object-fit: contain">
-
-<img src="/img/wine.png" style="height: 50%; width: 50%; object-fit: contain">
-
-<img src="/img/explosions.gif" style="height: 50%; width: 50%; object-fit: contain">
+<img src="/img/moore.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/cars.png" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/world cup.png" style="height: 50%; width: 50%; object-fit: contain">
 
+<img src="/img/squirrels.png" style="height: 50%; width: 50%; object-fit: contain">
+
+<img src="/img/emperors.png" style="height: 50%; width: 50%; object-fit: contain">
+
+<img src="/img/wine.png" style="height: 50%; width: 50%; object-fit: contain">
+
 <img src="/img/commute.png" style="height: 50%; width: 50%; object-fit: contain">
+
+<img src="/img/explosions.gif" style="height: 50%; width: 50%; object-fit: contain">
 
 <img src="/img/parks.png" style="height: 50%; width: 50%; object-fit: contain">
 

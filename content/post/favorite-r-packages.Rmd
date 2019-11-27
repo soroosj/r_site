@@ -10,21 +10,21 @@ tags:
 ---
 
 
-#Sourcing data
--    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
+#Sourcing
 -    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
+-    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
 -    [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
 -    [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - A set of useful tools for working with http connections
 
 
 #Wrangling
 -    [dplyr](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html) - transform and summarize data frames
--    [purrr](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229) - functional programming to automate functions
--    [tidyr](https://tidyr.tidyverse.org/) - change the layout of data sets
--    [magrittr](https://magrittr.tidyverse.org/) - set of operators to make code more readable such as the pipe
--    [stringr](https://stringr.tidyverse.org/) - manipulate regular expressions and character strings.
+-    [stringr](https://stringr.tidyverse.org/) - manipulate regular expressions and character strings
 -    [lubridate](https://lubridate.tidyverse.org/) - simplify working with dates and times
 -    [glue](https://github.com/tidyverse/glue) - concatentate strings and/or data
+-    [tidyr](https://tidyr.tidyverse.org/) - change the layout of data sets
+-    [magrittr](https://magrittr.tidyverse.org/) - set of operators to make code more readable such as the pipe
+-    [purrr](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229) - functional programming to automate iterations
 -    [janitor](https://garthtarr.github.io/meatR/janitor.html) - simple functions for cleaning dirty data
 -    [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
@@ -40,8 +40,8 @@ tags:
 #Visualizing
 -    [ggplot2](https://ggplot2.tidyverse.org/) - R's famous package for beautiful graphics usibg the grammar of graphics
 -    [ggmap](https://www.rdocumentation.org/packages/ggmap/versions/3.0.0) - access Google API to download Google maps and geolocations
--    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
 -    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
--    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
+-    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
 -    [cowplot](https://wilkelab.org/cowplot/index.html) - functions to align plots into complex compound figures and simplify annotating plots
+-    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
 -    [flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/index.html) - publish related visualizations as a dashboard

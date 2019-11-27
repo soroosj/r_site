@@ -34,6 +34,9 @@ twitter_img: img/large_card.png
 -   [Tidy Tuesday] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
 
+##### Packages
+-   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
+
 
 
 ### Data Visualization

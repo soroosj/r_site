@@ -21,22 +21,24 @@ twitter_img: img/large_card.png
 -   ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
 -   [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -   [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
--   [Data Cleaning with R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
+-   [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
+
 
 ##### Tidyverse
 
 
+-   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
+-   [Top 50 ggplot
+    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
+-   [Creating Street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
+-   [Run R Code in Browser](https://rdrr.io/snippets/)
 
 
 ##### Online Community
 -   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
 -   [Tidy Tuesday] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
-
-##### Packages
--   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
-
 
 
 ### Data Visualization
@@ -52,8 +54,7 @@ twitter_img: img/large_card.png
 ##### Charts
 
 -   [Selecting Chart Types](https://www.data-to-viz.com/)
--   [Top 50 ggplot
-    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
 
 
 
@@ -62,6 +63,7 @@ twitter_img: img/large_card.png
 -   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) - introduction to geom_polygon and ggmap methodologies
 -   [Maps Created With ggmap](https://www.littlemissdata.com/blog/maps) - more detailed ggmap techniques
 -   [Google Maps API Developers Guide](https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations)
+-   
 
     
 ##### Colors
@@ -74,6 +76,7 @@ twitter_img: img/large_card.png
 ### Misc. Blogs
 
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
+-   [Christian Burkhart](https://christianburkhart.de)
 -   [David Smale](https://davidsmale.netlify.com/)
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
 -   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis

@@ -71,8 +71,8 @@ twitter_img: img/large_card.png
 
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
 -   [Variance Explained](http://varianceexplained.org/) — David Robinson
--   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [David Smale](https://davidsmale.netlify.com/)
+-   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
 -   [Hugo Toscano](https://toscano84.github.io/)
 -   [Nightingale](https://medium.com/nightingale) — Journal for the Data Visualization Society

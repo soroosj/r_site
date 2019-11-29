@@ -1,7 +1,7 @@
 baseURL = "https://soroosj.netlify.com/"
 languageCode = "en-us"
 title = "Joel Soroos"
-description = "An R data hobbyist"
+description = "An R data hobbyist and Tidyverse enthusiast"
 theme = "min_night" 
 disqusShortname = ""
 googleAnalytics = ""
@@ -12,7 +12,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "public/"]
 
 [params]
     author = "Joel Soroos"
-    description = "An R data hobbyist" 
+    description = "An R data hobbyist / Tidyverse enthusiast" 
     logo = "ufo.png"
     twitterAuthor = "@soroosj"
     githubUsername = "soroosj"

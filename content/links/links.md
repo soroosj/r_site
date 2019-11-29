@@ -13,8 +13,7 @@ title: Favorite links
 twitter_img: img/large_card.png
 ---
 
-### R Programming
-##### Fundamentals
+### R Fundamentals
 
 -   ["R for Data Science"](https://r4ds.had.co.nz/) —
     seminal Tidyverse primer by Hadley Wickham & Garrett Grolemund
@@ -22,23 +21,6 @@ twitter_img: img/large_card.png
 -   [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -   [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
 -   [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
-
-
-##### Tidyverse
-
-
--   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
--   [Top 50 ggplot
-    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
--   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
--   [Creating Street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
--   [Run R Code in Browser](https://rdrr.io/snippets/)
-
-
-##### Online Community
--   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
--   [Tidy Tuesday] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
--   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
 
 
 ### Data Visualization
@@ -54,8 +36,9 @@ twitter_img: img/large_card.png
 ##### Charts
 
 -   [Selecting Chart Types](https://www.data-to-viz.com/)
-
-
+-   [Top 50 ggplot
+    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+-   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
 
 
 ##### Maps
@@ -63,7 +46,7 @@ twitter_img: img/large_card.png
 -   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) - introduction to geom_polygon and ggmap methodologies
 -   [Maps Created With ggmap](https://www.littlemissdata.com/blog/maps) - more detailed ggmap techniques
 -   [Google Maps API Developers Guide](https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations)
--   
+-   [Creating Street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
 
     
 ##### Colors
@@ -73,19 +56,30 @@ twitter_img: img/large_card.png
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 
 
-### Misc. Blogs
+### Misc Tools
+
+-   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
+-   [Run R Code in Browser](https://rdrr.io/snippets/)
+
+
+### Online Community
+-   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
+-   [Tidy Tuesday Data] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
+-   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
+
+
+###  Blogs
 
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
--   [Christian Burkhart](https://christianburkhart.de)
+-   [Variance Explained](http://varianceexplained.org/) — David Robinson
+-   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [David Smale](https://davidsmale.netlify.com/)
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
--   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [Hugo Toscano](https://toscano84.github.io/)
--   [Variance Explained](http://varianceexplained.org/) — David Robinson
--   [Nightingale](https://medium.com/nightingale) — Journal for the Data
-    Visualization Society
+-   [Nightingale](https://medium.com/nightingale) — Journal for the Data Visualization Society
 -   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
 -   [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -   [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
+-   [Christian Burkhart](https://christianburkhart.de)
 -   [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues
 -   [NateDayta](https://www.natedayta.com/) - Nathan Day

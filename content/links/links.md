@@ -13,7 +13,7 @@ title: Favorite links
 twitter_img: img/large_card.png
 ---
 
-### R Fundamentals
+### Learning R
 
 -   ["R for Data Science"](https://r4ds.had.co.nz/) —
     seminal Tidyverse primer by Hadley Wickham & Garrett Grolemund
@@ -44,7 +44,6 @@ twitter_img: img/large_card.png
 ##### Maps
 
 -   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) - introduction to geom_polygon and ggmap methodologies
--   [Maps Created With ggmap](https://www.littlemissdata.com/blog/maps) - more detailed ggmap techniques
 -   [Google Maps API Developers Guide](https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations)
 -   [Creating Street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
 
@@ -68,7 +67,7 @@ twitter_img: img/large_card.png
 -   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
 
 
-###  Blogs
+###  Data Science Blogs
 
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
 -   [Variance Explained](http://varianceexplained.org/) — David Robinson

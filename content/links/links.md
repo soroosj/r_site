@@ -54,7 +54,7 @@ twitter_img: img/large_card.png
 -   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 -   [Google Fonts](https://fonts.google.com/)
--   [Adding Custom Fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
+-   [Adding Custom Fonts to R](https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2)
 
 
 ### Misc Tools

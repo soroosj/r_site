@@ -48,11 +48,13 @@ twitter_img: img/large_card.png
 -   [Creating Street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
 
     
-##### Colors
+##### Aesthetics
 
 -   [R Color Key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
 -   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
+-   [Google Fonts](https://fonts.google.com/)
+-   [Adding Custom Fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
 
 
 ### Misc Tools

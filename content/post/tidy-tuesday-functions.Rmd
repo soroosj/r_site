@@ -10,6 +10,12 @@ thumbnail: "ufo.png"
 
 | Week | Data Set | Lesson | Function | Package 
 | :---: | :---: | :--- | :--- | :--- |
+|`2019-12-03`| Tickets | Convert chart to polar coordinates | coord_polar | ggplot2 |
+|`2019-12-03`| Tickets | Create area chart | geom_area | ggplot2 |
+|`2019-12-03`| Tickets | Character to date/time format | ymd_hms | lubridate |
+|`2019-12-03`| Tickets | Group times | floor_date | lubridate |
+|`2019-11-04`| Commute | Add geocode to existing dataframe | mutate_geocode | ggmap |
+|`2019-11-04`| Commute | check for specific string | str_detect | stringr |
 |`2019-10-29`| Squirrels | API keys to environment variables | Sys.getenv | base |
 |`2019-10-29`| Squirrels | Source Google map layer | get_googlempap | ggmap |
 |`2019-10-29`| Squirrels | Chart clones by variable | facet_wrap | ggplot2 |

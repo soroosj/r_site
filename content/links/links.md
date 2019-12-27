@@ -35,7 +35,7 @@ twitter_img: img/large_card.png
 
 ##### Charts
 
--   [Selecting Chart Types](https://www.data-to-viz.com/)
+-   [From Data to Viz](https://www.data-to-viz.com/) - selecting chart types
 -   [Top 50 ggplot
     visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -   [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)

@@ -10,6 +10,8 @@ thumbnail: "ufo.png"
 
 | Week | Data Set | Lesson | Function | Package 
 | :---: | :---: | :--- | :--- | :--- |
+|`2019-12-17`| Dogs | Output data frame to a view | View | utils |
+|`2019-12-17`| Dogs | load Tidy Tuesday datasets | tt_load | tidytuesdayR |
 |`2019-12-03`| Tickets | Convert chart to polar coordinates | coord_polar | ggplot2 |
 |`2019-12-03`| Tickets | Create area chart | geom_area | ggplot2 |
 |`2019-12-03`| Tickets | Character to date/time format | ymd_hms | lubridate |

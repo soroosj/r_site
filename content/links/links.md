@@ -51,8 +51,8 @@ twitter_img: img/large_card.png
 ##### Aesthetics
 
 -   [R Color Key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
--   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [Viridus Color Scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+-   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 -   [Google Fonts](https://fonts.google.com/)
 -   [Adding Custom Fonts to R](https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2)

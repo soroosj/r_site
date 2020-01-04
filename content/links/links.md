@@ -67,7 +67,7 @@ twitter_img: img/large_card.png
 ### Online Community
 -   [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
 -   [Tidy Tuesday Data] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
--   [Tidy Tuesday Rocks] (https://www.nsgrantham.com/tidytuesdayrocks) - R Shiny compilation of Tidy Tuesday submissions
+-   [Tidy Tuesday Rocks] (https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - R Shiny compilation of Tidy Tuesday submissions
 
 
 ###  Data Science Blogs

@@ -67,6 +67,10 @@ thumbnail: "ufo.png"
 |`2019-04-23`| Tennis | Reverse y-axis points | trans = "reverse" | ggplot2 |
 |`2019-03-26`| Pets | Image as axis label | geom_textured_col | ggtextures |
 |`2019-03-26`| Pets | Import images | image_read | magick |
+|`2019-02-26`| Trains | Edges on charts | geom_edge_link | ggraph |
+|`2019-02-26`| Trains | Node points on charts | geom_node_point | ggraph |
+|`2019-02-26`| Trains | Network diagram data to tidy format | tbl_graph | ggraph |
+|`2019-02-26`| Trains | Add unique ID to dataframe |rowid_to_column | tibble |
 |`2019-02-12`| Govt | Multiple charts at once | flexdashboard | flexdashboard |
 |`2019-02-12`| Govt | Border in chart sections | geom_rect | ggplot2 |
 |`2019-02-12`| Govt | Apply function to specific columns | mutate_at | dplyr |

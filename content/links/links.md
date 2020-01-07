@@ -33,6 +33,10 @@ twitter_img: img/large_card.png
 -   [Graphics Principles Cheatsheet](https://graphicsprinciples.github.io/)
 
 
+##### Wrangling
+-  [Data Wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
+
+
 ##### Charts
 
 -   [From Data to Viz](https://www.data-to-viz.com/) - selecting chart types
@@ -55,7 +59,7 @@ twitter_img: img/large_card.png
 -   Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
 -   [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 -   [Google Fonts](https://fonts.google.com/)
--   [Adding Custom Fonts to R](https://stackoverflow.com/questions/34522732/changing-fonts-in-ggplot2)
+-   [Adding Custom Fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
 
 
 ### Misc Tools
@@ -75,13 +79,14 @@ twitter_img: img/large_card.png
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
 -   [Variance Explained](http://varianceexplained.org/) — David Robinson
 -   [David Smale](https://davidsmale.netlify.com/)
+-   [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
 -   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
+-   [Christian Burkhart](https://christianburkhart.de)
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
 -   [Hugo Toscano](https://toscano84.github.io/)
 -   [Nightingale](https://medium.com/nightingale) — Journal for the Data Visualization Society
 -   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
 -   [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -   [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
--   [Christian Burkhart](https://christianburkhart.de)
 -   [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues
 -   [NateDayta](https://www.natedayta.com/) - Nathan Day

@@ -35,6 +35,12 @@ twitter_img: img/large_card.png
 
 ##### Wrangling
 -  [Data Wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
+-  [Strings] (https://r4ds.had.co.nz/strings.html)
+
+
+##### Modelling
+-  [Distance Matrixes] (https://www.displayr.com/what-is-a-distance-matrix/)
+-  [Clustering] (https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
 
 
 ##### Charts

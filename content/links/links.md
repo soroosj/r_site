@@ -20,10 +20,10 @@ twitter_img: img/large_card.png
 -   ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
 -   [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -   [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
--   [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 
 
 ### Wrangling
+-  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data Wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
 -  [Strings] (https://r4ds.had.co.nz/strings.html)
 

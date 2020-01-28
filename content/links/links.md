@@ -81,14 +81,14 @@ twitter_img: img/large_card.png
 
 ###  Data Science Blogs
 
--   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
--   [Pop Culture + Data Science](https://www.kaylinpavlik.com/) — Kaylin Pavlik
--   [Variance Explained](http://varianceexplained.org/) — David Robinson
--   [David Smale](https://davidsmale.netlify.com/)
--   [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
--   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [Christian Burkhart](https://christianburkhart.de)
--   [Spatial.ly](https://spatial.ly/) — James Cheshire
+-   [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
+-   [Variance Explained](http://varianceexplained.org/) — David Robinson
+-   [Pop Culture + Data Science](https://www.kaylinpavlik.com/) — Kaylin Pavlik
+-   [Calum Webb](http://calumwebb.uk/)
+-   [David Smale](https://davidsmale.netlify.com/)
+-   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
+-   [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -   [Hugo Toscano](https://toscano84.github.io/)
 -   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
 -   [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer

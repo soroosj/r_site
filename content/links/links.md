@@ -83,6 +83,7 @@ twitter_img: img/large_card.png
 ###  Data Science Blogs
 
 -   [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
+-   [Pop Culture + Data Science](https://www.kaylinpavlik.com/) — Kaylin Pavlik
 -   [Variance Explained](http://varianceexplained.org/) — David Robinson
 -   [David Smale](https://davidsmale.netlify.com/)
 -   [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
@@ -90,7 +91,6 @@ twitter_img: img/large_card.png
 -   [Christian Burkhart](https://christianburkhart.de)
 -   [Spatial.ly](https://spatial.ly/) — James Cheshire
 -   [Hugo Toscano](https://toscano84.github.io/)
--   [Nightingale](https://medium.com/nightingale) — Journal for the Data Visualization Society
 -   [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
 -   [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -   [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon

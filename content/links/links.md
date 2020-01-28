@@ -70,7 +70,6 @@ twitter_img: img/large_card.png
 
 ### Misc Tools
 
--   [Great R Packages](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
 -   [Run R Code in Browser](https://rdrr.io/snippets/)
 
 

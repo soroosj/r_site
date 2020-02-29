@@ -72,6 +72,7 @@ twitter_img: img/large_card.png
 ### Misc Tools
 
 -   [Run R Code in Browser](https://rdrr.io/snippets/)
+-   [Setting Environmental Variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 
 
 ### Online Community

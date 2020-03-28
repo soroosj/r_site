@@ -35,12 +35,12 @@ twitter_img: img/large_card.png
 -  [Simplify Lists to Data Frames] (https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
 
 
-### Modeling
+### Modelling
 -  [Distance Matrixes] (https://www.displayr.com/what-is-a-distance-matrix/)
 -  [Clustering] (https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
 
 
-### Data Visualization
+### Visualization
 ##### Fundamentals
 
 -  ["Fundamentals of Data Visualization"] (https://serialmentor.com/dataviz/) — free online
@@ -76,8 +76,8 @@ twitter_img: img/large_card.png
 -  [Adding Custom Fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
 
 
-### Misc Tools
-
+### Programming
+-   [Converting Strings to Symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 -  [Run R Code in Browser](https://rdrr.io/snippets/)
 
 

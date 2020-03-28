@@ -56,6 +56,7 @@ twitter_img: img/large_card.png
 -  [Top 50 ggplot
     visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -  [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
+-  [Automating charts using ggplot2 and purrr](https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/)
 
 
 ##### Maps
@@ -97,7 +98,7 @@ twitter_img: img/large_card.png
 -  [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
 -  [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -  [Hugo Toscano](https://toscano84.github.io/)
--  [Hooked on Data](https://robinsones.github.io/) - Charlotte Robinson
+-  [Very Statisticious](https://aosmith.rbind.io/) - Ariel Muldoon
 -  [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -  [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
 -  [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues

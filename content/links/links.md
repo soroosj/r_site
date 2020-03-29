@@ -97,6 +97,7 @@ twitter_img: img/large_card.png
 -  [David Smale](https://davidsmale.netlify.com/)
 -  [Visualizing Data](https://www.visualisingdata.com/blog/) — Andy Kirk
 -  [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
+-  [Data Imaginist](https://www.data-imaginist.com/) - Thomas Lin Pederson
 -  [Hugo Toscano](https://toscano84.github.io/)
 -  [Very Statisticious](https://aosmith.rbind.io/) - Ariel Muldoon
 -  [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer

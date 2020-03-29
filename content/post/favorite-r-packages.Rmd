@@ -44,7 +44,7 @@ tags:
 -    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
 -    [ggraph](https://github.com/thomasp85/ggraph) - ggplot2 extensions for network diagrams and trees
 -    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
--    [cowplot](https://wilkelab.org/cowplot/index.html) - functions to align plots into complex compound figures and simplify annotating plots
+-    [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
 -    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
 -    [flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/index.html) - publish related visualizations as a dashboard
 -    [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) - beautiful, visible and color blind friendly color palette

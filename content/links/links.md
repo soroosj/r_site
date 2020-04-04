@@ -31,7 +31,7 @@ twitter_img: img/large_card.png
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data Wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
 -  [Pivot Wide & Pivot Long] (https://www.brodrigues.co/blog/2019-03-20-pivot/) - new dplyr reshaping tools
--  [Strings] (https://r4ds.had.co.nz/strings.html) 
+-  [Regular Expressions] (https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
 -  [Simplify Lists to Data Frames] (https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
 
 

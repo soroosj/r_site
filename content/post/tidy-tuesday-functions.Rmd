@@ -74,3 +74,11 @@ thumbnail: "ufo.png"
 |`2019-02-12`| Govt | Multiple charts at once | flexdashboard | flexdashboard |
 |`2019-02-12`| Govt | Border in chart sections | geom_rect | ggplot2 |
 |`2019-02-12`| Govt | Apply function to specific columns | mutate_at | dplyr |
+|`2020-01-21`| Spotify | Generate sequence of numbers | seq | base |
+|`2020-01-21`| Spotify | Extract specific records by position | slice | dplyr |
+|`2020-01-21`| Spotify | Rounding up to nearest integer | ceiling | base |
+|`2020-01-21`| Spotify | Repeat functions using vector input | map | purrr |
+|`2020-01-21`| Spotify | Simplify lists to single values | reduce | purrr |
+|`2020-01-21`| Spotify | Flattens list-columns of data frames | unnest | tidyr |
+|`2020-01-21`| Spotify | Create rug chart | geom_rug | ggplot2 |
+|`2020-01-21`| Spotify | Combine multiple charts | plot_annotation | patchwork |

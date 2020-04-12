@@ -25,6 +25,7 @@ twitter_img: img/large_card.png
 ### Sourcing 
 -  [Setting Environmental Variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 -  [Spotify API](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like)
+-  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
 
 
 ### Wrangling

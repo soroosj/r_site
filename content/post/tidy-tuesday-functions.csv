@@ -1,0 +1,75 @@
+﻿Week,Data Set,Lesson,Function,Package 
+12/17/19,Adoptable Dogs,Alluvial flow diagrams,geom_alluvium,ggalluvial
+12/17/19,Adoptable Dogs,Incorporate Viridis color scale,scale_fill_viridis,viridis
+12/17/19,Adoptable Dogs,Output data frame to a view,View,utils
+12/17/19,Adoptable Dogs,load Tidy Tuesday datasets,tt_load,tidytuesdayR
+12/3/19,Tickets,Convert chart to polar coordinates,coord_polar,ggplot2
+12/3/19,Tickets,Create area chart,geom_area,ggplot2
+12/3/19,Tickets,Character to date/time format,ymd_hms,lubridate
+12/3/19,Tickets,Group times,floor_date,lubridate
+11/4/19,Commute,Add geocode to existing dataframe,mutate_geocode,ggmap
+11/4/19,Commute,check for specific string,str_detect,stringr
+10/29/19,Squirrels,API keys to environment variables,Sys.getenv,base
+10/29/19,Squirrels,Source Google map layer,get_googlempap,ggmap
+10/29/19,Squirrels,Chart clones by variable,facet_wrap,ggplot2
+10/29/19,Squirrels,Convert string to title case,str_to_title,stringr
+10/15/19,Vehicle MPH,Regression estimates,tidy,broom
+10/15/19,Vehicle MPH,Import image,read_impage,magick
+10/15/19,Vehicle MPH,Image to grob,rasterGrob,grid
+10/15/19,Vehicle MPH,Add image to chart,annotation_custom,ggplot2
+9/3/19,Moore's Law,Calculate loess regression,loess,stats
+9/3/19,Moore's Law,Regression fit make tidy,augment,broom
+9/3/19,Moore's Law,Data frame from scratch,tibble,tibble
+9/3/19,Moore's Law,Title over full plot,plot.title.position,ggplot
+9/3/19,Moore's Law,Calculate log,log10,base
+8/20/19,Nuclear bombs,Animate plots,animate,gganimate
+8/20/19,Nuclear bombs,Tile plot,geom_tile,ggplot2
+8/20/19,Nuclear bombs,Extend plot area,ylim,ggplot2
+8/13/19,Roman emperors,Segment visualizations,geom_segment,ggplot2
+8/13/19,Roman emperors,Text adjacent to points,geom_text,ggplot2
+8/13/19,Roman emperors,Update date components,update,dplyr
+8/13/19,Roman emperors,Combine data into string,glue,glue
+8/6/19,Bob Ross,Word cloud in letter shapes,letterCloud,wordcloud2
+8/6/19,Bob Ross,Sentences to records by word,unnest_tokens,tidytext
+7/9/19,World Cup,Sum variable by group in one line,tally,dplyr
+7/9/19,World Cup,Instance of a record in a group,row_number,dplyr
+7/9/19,World Cup,Data frame to vector,pull,dplyr
+7/2/19,Franchises,Waffle chart,geom_waffle,waffle
+7/2/19,Franchises,2-row axis labels,paste,dplyr
+7/2/19,Franchises,Custom fonts,element.text (family),extrafont
+6/25/19,UFOs,Annotate text,annotate,ggplot2
+6/25/19,UFOs,Annotate arrow,geom_curve,ggplot2
+6/25/19,UFOs,Customize legend position,legend.position,ggplot2
+5/28/19,Wine reviews,Violin charts,geom_violin,ggplot2
+5/28/19,Wine reviews,Black background,dark_mode,ggdark
+5/21/19,Plastic waste,LOESS regression line,geom_smooth,ggplot2
+5/21/19,Plastic waste,Logarithimic scales,log10_trans,ggplot2
+5/7/19,Class size,Countries to continents,countrycode,countrycode
+5/7/19,Class size,Custom sort categorical field,fct_relevel,forcats
+4/30/19,Birds,Ridgeline charts,geom_density_ridges,ggridges
+4/30/19,Birds,Categorical variable frequencies,tabyl,janitor
+4/23/19,Anime,Aestheticly-pleasing tables,kable,KableExtra
+4/23/19,Anime,Summary stats all fields,summarize_all,dplyr
+4/23/19,Anime,Function on mutliple fields,mutate_if,dplyr
+4/23/19,Tennis,Text labels in charts,geom_label_repel,ggrepel
+4/23/19,Tennis,Categorical variables to numeric,case_when,dplyr
+4/23/19,Tennis,Reverse y-axis points,"trans = ""reverse""",ggplot2
+3/26/19,Pets,Image as axis label,geom_textured_col,ggtextures
+3/26/19,Pets,Import images,image_read,magick
+2/26/19,Trains,Edges on charts,geom_edge_link,ggraph
+2/26/19,Trains,Node points on charts,geom_node_point,ggraph
+2/26/19,Trains,Network data to tidy format,tbl_graph,ggraph
+2/26/19,Trains,Add unique ID to dataframe |rowid_to_column,tibble |,
+2/12/19,Govt,Multiple charts at once,flexdashboard,flexdashboard
+2/12/19,Govt,Border in chart sections,geom_rect,ggplot2
+2/12/19,Govt,Function to specific columns,mutate_at,dplyr
+1/21/20,Spotify,Generate sequence of numbers,seq,base
+1/21/20,Spotify,Extract records by position,slice,dplyr
+1/21/20,Spotify,Round up to nearest integer,ceiling,base
+1/21/20,Spotify,Repeat functions off vectors,map,purrr
+1/21/20,Spotify,Simplify lists to single values,reduce,purrr
+1/21/20,Spotify,Flatten list-columns,unnest,tidyr
+1/21/20,Spotify,Create rug chart,geom_rug,ggplot2
+1/21/20,Spotify,Combine charts,plot_annotation,patchwork
+4/7/20,Tour,Manage multiple filepaths,here,here
+4/7/20,Tour,Remove spaces start/end,str_trim,stringr

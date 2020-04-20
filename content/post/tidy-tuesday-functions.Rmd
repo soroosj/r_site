@@ -60,25 +60,27 @@ thumbnail: "ufo.png"
 |`2019-04-30`| Birds | Ridgeline charts | geom_density_ridges | ggridges |
 |`2019-04-30`| Birds | Categorical variable frequencies | tabyl | janitor |
 |`2019-04-23`| Anime | Aestheticly-pleasing tables | kable | KableExtra |
-|`2019-04-23`| Anime | Summary statistics on all fields | summarize_all | dplyr |
+|`2019-04-23`| Anime | Summary stats all fields | summarize_all | dplyr |
 |`2019-04-23`| Anime | Function on mutliple fields | mutate_if | dplyr |
 |`2019-04-23`| Tennis | Text labels in charts | geom_label_repel | ggrepel |
-|`2019-04-23`| Tennis | Categorical variables to numeric | case_when | dplyr |
+|`2019-04-23`| Tennis | Categorical variables to numeric | case_when | dplyr | 
 |`2019-04-23`| Tennis | Reverse y-axis points | trans = "reverse" | ggplot2 |
 |`2019-03-26`| Pets | Image as axis label | geom_textured_col | ggtextures |
 |`2019-03-26`| Pets | Import images | image_read | magick |
 |`2019-02-26`| Trains | Edges on charts | geom_edge_link | ggraph |
 |`2019-02-26`| Trains | Node points on charts | geom_node_point | ggraph |
-|`2019-02-26`| Trains | Network diagram data to tidy format | tbl_graph | ggraph |
+|`2019-02-26`| Trains | Network data to tidy format | tbl_graph | ggraph |
 |`2019-02-26`| Trains | Add unique ID to dataframe |rowid_to_column | tibble |
 |`2019-02-12`| Govt | Multiple charts at once | flexdashboard | flexdashboard |
 |`2019-02-12`| Govt | Border in chart sections | geom_rect | ggplot2 |
-|`2019-02-12`| Govt | Apply function to specific columns | mutate_at | dplyr |
+|`2019-02-12`| Govt | Function to specific columns | mutate_at | dplyr |
 |`2020-01-21`| Spotify | Generate sequence of numbers | seq | base |
-|`2020-01-21`| Spotify | Extract specific records by position | slice | dplyr |
-|`2020-01-21`| Spotify | Rounding up to nearest integer | ceiling | base |
-|`2020-01-21`| Spotify | Repeat functions using vector input | map | purrr |
+|`2020-01-21`| Spotify | Extract records by position | slice | dplyr |
+|`2020-01-21`| Spotify | Round up to nearest integer | ceiling | base |
+|`2020-01-21`| Spotify | Repeat functions off vectors | map | purrr |
 |`2020-01-21`| Spotify | Simplify lists to single values | reduce | purrr |
-|`2020-01-21`| Spotify | Flattens list-columns of data frames | unnest | tidyr |
+|`2020-01-21`| Spotify | Flatten list-columns | unnest | tidyr |
 |`2020-01-21`| Spotify | Create rug chart | geom_rug | ggplot2 |
-|`2020-01-21`| Spotify | Combine multiple charts | plot_annotation | patchwork |
+|`2020-01-21`| Spotify | Combine charts | plot_annotation | patchwork |
+|`2020-04-07`| Tour | Manage multiple filepaths | here | here |
+|`2020-04-07`| Tour | Remove spaces start/end | str_trim | stringr |

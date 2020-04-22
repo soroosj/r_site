@@ -1,7 +1,7 @@
 ---
 title: Favorite R Packages
 author: Joel Soroos
-date: '2019-11-26'
+date: '2020-04-20'
 slug: favorite-r-packages
 categories: []
 tags:
@@ -11,10 +11,15 @@ tags:
 
 
 #Sourcing
--    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
--    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
--    [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
 -    [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - A set of useful tools for working with http connections
+-    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
+-    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
+-    [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
+
+
+#Exploring
+-    [skimr](https://www.rdocumentation.org/packages/skimr/versions/2.1) - displays summary statistics the user can skim quickly to understand their data
+-    [dataexplorer](https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0) - automated scanning and visualizing of each data set field
 
 
 #Wrangling
@@ -22,28 +27,29 @@ tags:
 -    [stringr](https://stringr.tidyverse.org/) - manipulate regular expressions and character strings
 -    [lubridate](https://lubridate.tidyverse.org/) - simplify working with dates and times
 -    [glue](https://github.com/tidyverse/glue) - concatentate strings and/or data
--    [tidyr](https://tidyr.tidyverse.org/) - change the layout of data sets
 -    [magrittr](https://magrittr.tidyverse.org/) - set of operators to make code more readable such as the pipe
--    [purrr](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229) - functional programming to automate iterations
 -    [janitor](https://garthtarr.github.io/meatR/janitor.html) - simple functions for cleaning dirty data
+-    [tidyr](https://tidyr.tidyverse.org/) - change the layout of data sets
 -    [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
 
 #Modeling
+-    [tidymodels](https://www.tidymodels.org/) - set of assorted tidyverse-friendly modeling packages
 -    [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -    [ggdenro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html) - parses dendogram data into data frames
-
-
-#Exploring
--    [DataExplorer](https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0) - automated scanning and visualizing of each data set field
 
 
 #Visualizing
 -    [ggplot2](https://ggplot2.tidyverse.org/) - R's famous package for beautiful graphics usibg the grammar of graphics
 -    [ggmap](https://www.rdocumentation.org/packages/ggmap/versions/3.0.0) - access Google API to download Google maps and geolocations
--    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
 -    [ggraph](https://github.com/thomasp85/ggraph) - ggplot2 extensions for network diagrams and trees
--    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
--    [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
+-    [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
 -    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
+-    [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
+-    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
 -    [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) - beautiful, visible and color blind friendly color palette
+-    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
+
+
+#Programming
+-    [purrr](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229) - automate code iterations 

@@ -92,6 +92,7 @@ twitter_img: img/large_card.png
 
 -  [Christian Burkhart](https://christianburkhart.de)
 -  [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
+-  [Julia Silge](https://juliasilge.com/blog/)
 -  [Variance Explained](http://varianceexplained.org/) — David Robinson
 -  [Pop Culture + Data Science](https://www.kaylinpavlik.com/) — Kaylin Pavlik
 -  [Calum Webb](http://calumwebb.uk/)

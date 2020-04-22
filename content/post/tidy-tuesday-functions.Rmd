@@ -1,7 +1,7 @@
 ---
 title: Tidy Tuesday Functions
 author: Joel Soroos
-date: '2019-11-23'
+date: '2020-04-20'
 slug: tidy-tuesday-functions
 categories: []
 tags: []

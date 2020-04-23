@@ -70,23 +70,24 @@ twitter_img: img/large_card.png
     
 ##### Aesthetics
 
+-  [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 -  [R Color Key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
 -  [Viridus Color Scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
 -  Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
--  [What to Consider when Choosing Colors](https://blog.datawrapper.de/colors/)
 -  [Google Fonts](https://fonts.google.com/)
 -  [Adding Custom Fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
 
 
 ### Programming
--   [Converting Strings to Symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
+-  [Core Purrr Lessons](https://jennybc.github.io/purrr-tutorial/) - functional programming primer on automating repeated tasks
+-  [Converting Strings to Symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 -  [Run R Code in Browser](https://rdrr.io/snippets/)
 
 
-### Online Community
--  [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
+### Online Communities
 -  [Tidy Tuesday Data] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -  [Tidy Tuesday Rocks] (https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - R Shiny compilation of Tidy Tuesday submissions
+-  [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
 
 
 ###  Data Science Blogs

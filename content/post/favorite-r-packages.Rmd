@@ -11,7 +11,8 @@ tags:
 
 
 #Sourcing
--    [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - A set of useful tools for working with http connections
+-    [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
+-    [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) -  tools for working with http connections
 -    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
 -    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
 -    [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard

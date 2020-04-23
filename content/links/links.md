@@ -16,8 +16,9 @@ twitter_img: img/large_card.png
 ### Learning R
 
 -  ["R for Data Science"](https://r4ds.had.co.nz/) —
-    seminal Tidyverse primer by Hadley Wickham & Garrett Grolemund
+    seminal Tidyverse book by Hadley Wickham & Garrett Grolemund
 -  ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
+-  [Advanced R](https://adv-r.hadley.nz/) - advanced R primer by Hadley Wickham
 -  [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -  [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
 

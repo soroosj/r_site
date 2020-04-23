@@ -35,7 +35,6 @@ tags:
 
 
 #Modeling
--    [tidymodels](https://www.tidymodels.org/) - set of assorted tidyverse-friendly modeling packages
 -    [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -    [ggdenro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html) - parses dendogram data into data frames
 
@@ -47,8 +46,8 @@ tags:
 -    [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
 -    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
 -    [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
+-    [gganimate](https://gganimate.com/) - view chart evolution over time via animation
 -    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
--    [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) - beautiful, visible and color blind friendly color palette
 -    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
 
 

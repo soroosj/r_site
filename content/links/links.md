@@ -1,5 +1,5 @@
 ---
-date: "2019-11-15"
+date: "2020-04-22"
 description: 
 draft: false
 tags:
@@ -18,15 +18,15 @@ twitter_img: img/large_card.png
 -  ["R for Data Science"](https://r4ds.had.co.nz/) —
     seminal Tidyverse book by Hadley Wickham & Garrett Grolemund
 -  ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
--  [Advanced R](https://adv-r.hadley.nz/) - advanced R primer by Hadley Wickham
 -  [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -  [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
+-  [Advanced R](https://adv-r.hadley.nz/) - advanced R primer by Hadley Wickham
 
 
 ### Sourcing 
 -  [Setting Environmental Variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 -  [Spotify API](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like)
--  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
+
 
 
 ### Wrangling
@@ -80,6 +80,7 @@ twitter_img: img/large_card.png
 
 ### Programming
 -  [Core Purrr Lessons](https://jennybc.github.io/purrr-tutorial/) - functional programming primer on automating repeated tasks
+-  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
 -  [Converting Strings to Symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 -  [Run R Code in Browser](https://rdrr.io/snippets/)
 

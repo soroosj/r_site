@@ -6,10 +6,19 @@
     <description>Recent content in tidyverse on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Favorite links</title>
+      <link>/links/links/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/links/links/</guid>
+      <description>Learning R  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera Advanced R - advanced R primer by Hadley Wickham  Sourcing  Setting Environmental Variables Spotify API  Wrangling  Getting and Cleaning Data in R — online Johns Hopkins class via Coursera Data Wrangling in dplyr - tutorials by Susan Baert Pivot Wide &amp;amp; Pivot Long - new dplyr reshaping tools Regular Expressions Simplify Lists to Data Frames  Modelling  Distance Matrixes Clustering  Visualization Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
+    </item>
     
     <item>
       <title>Favorite R Packages</title>
@@ -17,16 +26,7 @@
       <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/04/20/favorite-r-packages/</guid>
-      <description>Sourcing  RODBC - SQL querying against relational databases rvest - tools for working with http connections rio - simplify importing and exporting data across source formats readxl - importing Excel files including individual worksheets datapasta - copy/paste data using clipboard   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - change the layout of data sets tidytext - simplify text mining   Modeling  tidymodels - set of assorted tidyverse-friendly modeling packages broom - converts statistical model output to tidy data ggdenro - parses dendogram data into data frames   Visualizing  ggplot2 - R’s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggridges - density plots geofacet - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology patchwork - combine charts scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
-    </item>
-    
-    <item>
-      <title>Favorite links</title>
-      <link>/links/links/</link>
-      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/links/links/</guid>
-      <description>Learning R  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Advanced R - advanced R primer by Hadley Wickham Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera  Sourcing  Setting Environmental Variables Spotify API Controlling filepaths with here function  Wrangling  Getting and Cleaning Data in R — online Johns Hopkins class via Coursera Data Wrangling in dplyr - tutorials by Susan Baert Pivot Wide &amp;amp; Pivot Long - new dplyr reshaping tools Regular Expressions Simplify Lists to Data Frames  Modelling  Distance Matrixes Clustering  Visualization Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
+      <description>Sourcing  RODBC - SQL querying against relational databases rvest - tools for working with http connections rio - simplify importing and exporting data across source formats readxl - importing Excel files including individual worksheets datapasta - copy/paste data using clipboard   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - change the layout of data sets tidytext - simplify text mining   Modeling  broom - converts statistical model output to tidy data ggdenro - parses dendogram data into data frames   Visualizing  ggplot2 - R’s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggridges - density plots geofacet - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology patchwork - combine charts gganimate - view chart evolution over time via animation scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
     </item>
     
     <item>

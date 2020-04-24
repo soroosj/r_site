@@ -11,10 +11,11 @@ tags:
 
 
 #Sourcing
+-    [readr](https://readr.tidyverse.org/) - fast and friendly way to read rectangular data (i.e. csv, tsv)
 -    [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
+-    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
 -    [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) -  tools for working with http connections
 -    [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
--    [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
 -    [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
 
 
@@ -34,7 +35,7 @@ tags:
 -    [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
 
-#Modeling
+#Modelling
 -    [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -    [ggdenro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html) - parses dendogram data into data frames
 

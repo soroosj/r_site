@@ -203,7 +203,7 @@ $(document).ready(function(){
     
 
     <h4><a href="/2020/04/20/tidy-tuesday-functions/">Tidy Tuesday Functions</a></h4>
-    <h5>April 20, 2020 - 3 minutes</h5>
+    <h5>April 20, 2020 - 4 minutes</h5>
     <h5></h5>
 
     
@@ -216,22 +216,143 @@ $(document).ready(function(){
 <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<pre class="r"><code>library (tidyverse)
-library (kableExtra)
-library (janitor)
-library (lubridate)
-
-functions_raw &lt;- read_csv(&quot;tidy-tuesday-functions.csv&quot;) %&gt;%
-   clean_names()
-
-functions &lt;- functions_raw %&gt;%
-   mutate (data_week = mdy(data_week)) %&gt;%
-   select (data_week, data_description, package, function_name, lesson) %&gt;%
-   arrange (desc(data_week)) 
-
-kable (functions) %&gt;%
-   kable_styling()</code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<p> <br />
+ </p>
+<div id="most-widely-learned-functions-are-in-ggplot2-and-dplyr-packages." class="section level5">
+<h5>1. Most widely learned functions are in ggplot2 and dplyr packages.</h5>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+package
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0.230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.135
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ggraph
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+broom
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ggmap
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+magick
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purrr
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+</tbody>
+</table>
+<p> <br />
+ </p>
+</div>
+<div id="chronological-listing-of-all-functions-that-i-have-learned." class="section level5">
+<h5>2. Chronological listing of all functions that I have learned.</h5>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1512,6 +1633,7 @@ Function to specific columns
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
     

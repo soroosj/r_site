@@ -1,31 +1,62 @@
 ---
-title: Tidy Tuesday Functions
-author: Joel Soroos
+title: "Tidy Tuesday Functions"
+author: "Joel Soroos"
 date: '2020-04-20'
 slug: tidy-tuesday-functions
-categories: []
 tags: []
+categories: []
 ---
 
-\n
-\n
-Below is a list of functions that I have learned from practicing R in Tidy Tuesday submssions. 
-```{r source, echo = FALSE, warning = FALSE, message = FALSE}
 
-library (tidyverse)
-library (kableExtra)
-library (janitor)
-library (lubridate)
-
-functions_raw <- read_csv("tidy-tuesday-functions.csv") %>%
-   clean_names()
-
-functions <- functions_raw %>%
-   mutate (data_week = mdy(data_week)) %>%
-   select (data_week, data_description, package, function_name, lesson) %>%
-   arrange (desc(data_week)) 
-
-kable (functions) %>%
-   kable_styling(bootstrap_options = c("striped", "hover"))
-
+```{r global_options, include=F}
+   library (knitr)
+   
+   opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
+
+
+```{r}
+
+   library (tidyverse)
+   library (janitor)
+   library (lubridate)
+
+   functions_raw <- read_csv("tidy-tuesday-functions.csv") %>%
+      clean_names()
+   
+   functions <- functions_raw %>%
+      mutate (data_week = mdy(data_week)) %>%
+      select (data_week, data_description, package, function_name, lesson) %>%
+      arrange (desc(data_week)) 
+```
+
+\   
+\  
+
+#####1.  Most widely learned functions are in ggplot2 and dplyr packages.
+```{r aggregate}
+   
+   library (kableExtra)
+
+   tabyl (functions, package) %>%
+      arrange (desc(n)) %>%
+      filter (n>1) %>%
+      select (package, n, percent) %>%
+      mutate (percent = round (percent,3)) %>%
+      kable () %>%
+      kable_styling(bootstrap_options = c("striped", "hover"), full_width = T)
+```
+
+\   
+\   
+
+#####2.  Chronological listing of all functions that I have learned. 
+```{r list}
+   
+   kable (functions) %>%
+      kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+
+

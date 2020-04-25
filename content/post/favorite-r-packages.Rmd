@@ -52,7 +52,7 @@ tags:
 -    [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
 
 
-#Publishing
+#Communicating
 -    [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 -    [knitr](https://yihui.org/knitr/)
 

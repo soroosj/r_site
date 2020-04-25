@@ -7,7 +7,10 @@ categories: []
 tags: []
 ---
 
-```{r source, warning = FALSE, message = FALSE}
+\n
+\n
+Below is a list of functions that I have learned from practicing R in Tidy Tuesday submssions. 
+```{r source, echo = FALSE, warning = FALSE, message = FALSE}
 
 library (tidyverse)
 library (kableExtra)
@@ -23,6 +26,6 @@ functions <- functions_raw %>%
    arrange (desc(data_week)) 
 
 kable (functions) %>%
-   kable_styling()
+   kable_styling(bootstrap_options = c("striped", "hover"))
 
 ```

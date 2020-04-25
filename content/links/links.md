@@ -28,7 +28,6 @@ twitter_img: img/large_card.png
 -  [Spotify API](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like)
 
 
-
 ### Wrangling
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data Wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert

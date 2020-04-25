@@ -5,82 +5,24 @@ date: '2020-04-20'
 slug: tidy-tuesday-functions
 categories: []
 tags: []
-thumbnail: "ufo.png"
 ---
 
-| Week | Data Set | Lesson | Function | Package 
-| :---: | :---: | :--- | :--- | :--- |
-|`2019-12-17`| Adoptable Dogs | Alluvial flow diagrams | geom_alluvium | ggalluvial |
-|`2019-12-17`| Adoptable Dogs | Incorporate Viridis color scale | scale_fill_viridis | viridis |
-|`2019-12-17`| Adoptable Dogs | Output data frame to a view | View | utils |
-|`2019-12-17`| Adoptable Dogs | load Tidy Tuesday datasets | tt_load | tidytuesdayR |
-|`2019-12-03`| Tickets | Convert chart to polar coordinates | coord_polar | ggplot2 |
-|`2019-12-03`| Tickets | Create area chart | geom_area | ggplot2 |
-|`2019-12-03`| Tickets | Character to date/time format | ymd_hms | lubridate |
-|`2019-12-03`| Tickets | Group times | floor_date | lubridate |
-|`2019-11-04`| Commute | Add geocode to existing dataframe | mutate_geocode | ggmap |
-|`2019-11-04`| Commute | check for specific string | str_detect | stringr |
-|`2019-10-29`| Squirrels | API keys to environment variables | Sys.getenv | base |
-|`2019-10-29`| Squirrels | Source Google map layer | get_googlempap | ggmap |
-|`2019-10-29`| Squirrels | Chart clones by variable | facet_wrap | ggplot2 |
-|`2019-10-29`| Squirrels | Convert string to title case | str_to_title | stringr |
-|`2019-10-15`| Vehicle MPH | Regression estimates | tidy | broom |
-|`2019-10-15`| Vehicle MPH | Import image | read_impage | magick |
-|`2019-10-15`| Vehicle MPH | Image to grob | rasterGrob | grid |
-|`2019-10-15`| Vehicle MPH | Add image to chart | annotation_custom | ggplot2 |
-|`2019-09-03`| Moore's Law | Calculate loess regression | loess | stats |
-|`2019-09-03`| Moore's Law | Regression fit make tidy | augment | broom |
-|`2019-09-03`| Moore's Law | Data frame from scratch | tibble | tibble |
-|`2019-09-03`| Moore's Law | Title over full plot | plot.title.position | ggplot |
-|`2019-09-03`| Moore's Law | Calculate log | log10 | base |
-|`2019-08-20`| Nuclear bombs | Animate plots | animate | gganimate |
-|`2019-08-20`| Nuclear bombs | Tile plot | geom_tile | ggplot |
-|`2019-08-20`| Nuclear bombs | Extend plot area | ylim, xlim | ggplot |
-|`2019-08-13`| Roman emperors | Segment visualizations | geom_segment | ggplot2 |
-|`2019-08-13`| Roman emperors | Text adjacent to points | geom_text | ggplot2 |
-|`2019-08-13`| Roman emperors | Update date components | update | dplyr |
-|`2019-08-13`| Roman emperors | Combine data into string | glue | glue |
-|`2019-08-06`| Bob Ross | Word cloud in letter shapes | letterCloud | wordcloud2 |
-|`2019-08-06`| Bob Ross | Sentences to records by word | unnest_tokens | tidytext |
-|`2019-07-09`| World Cup | Sum variable by group in one line | tally | dplyr |
-|`2019-07-09`| World Cup | Instance of a record in a group | row_number | dplyr |
-|`2019-07-09`| World Cup | Data frame to vector | pull | dplyr |
-|`2019-07-02`| Franchises | Waffle chart | geom_waffle | waffle |
-|`2019-07-02`| Franchises | 2-row axis labels | paste | dplyr |
-|`2019-07-02`| Franchises | Custom fonts | element.text (family) | extrafont |
-|`2019-06-25`| UFOs | Annotate text | annotate | ggplot2 |
-|`2019-06-25`| UFOs | Annotate arrow | geom_curve | ggplot2 |
-|`2019-06-25`| UFOs | Customize legend position | legend.position | ggplot2 |
-|`2019-05-28`| Wine reviews | Violin charts | geom_violin | ggplot2 |
-|`2019-05-28`| Wine reviews | Black background | dark_mode | ggdark |
-|`2019-05-21`| Plastic waste | LOESS regression line | geom_smooth | ggplot2 |
-|`2019-05-21`| Plastic waste | Logarithimic scales | log10_trans | ggplot2 |
-|`2019-05-07`| Class size | Countries to continents | countrycode | countrycode |
-|`2019-05-07`| Class size | Custom sort categorical field | fct_relevel | forcats |
-|`2019-04-30`| Birds | Ridgeline charts | geom_density_ridges | ggridges |
-|`2019-04-30`| Birds | Categorical variable frequencies | tabyl | janitor |
-|`2019-04-23`| Anime | Aestheticly-pleasing tables | kable | KableExtra |
-|`2019-04-23`| Anime | Summary stats all fields | summarize_all | dplyr |
-|`2019-04-23`| Anime | Function on mutliple fields | mutate_if | dplyr |
-|`2019-04-23`| Tennis | Text labels in charts | geom_label_repel | ggrepel |
-|`2019-04-23`| Tennis | Categorical variables to numeric | case_when | dplyr | 
-|`2019-04-23`| Tennis | Reverse y-axis points | trans = "reverse" | ggplot2 |
-|`2019-03-26`| Pets | Image as axis label | geom_textured_col | ggtextures |
-|`2019-03-26`| Pets | Import images | image_read | magick |
-|`2019-02-26`| Trains | Edges on charts | geom_edge_link | ggraph |
-|`2019-02-26`| Trains | Node points on charts | geom_node_point | ggraph |
-|`2019-02-26`| Trains | Network data to tidy format | tbl_graph | ggraph |
-|`2019-02-26`| Trains | Add unique ID to dataframe |rowid_to_column | tibble |
-|`2019-02-12`| Govt | Multiple charts at once | flexdashboard | flexdashboard |
-|`2019-02-12`| Govt | Border in chart sections | geom_rect | ggplot2 |
-|`2019-02-12`| Govt | Function to specific columns | mutate_at | dplyr |
-|`2020-01-21`| Spotify | Generate sequence of numbers | seq | base |
-|`2020-01-21`| Spotify | Extract records by position | slice | dplyr |
-|`2020-01-21`| Spotify | Round up to nearest integer | ceiling | base |
-|`2020-01-21`| Spotify | Repeat functions off vectors | map | purrr |
-|`2020-01-21`| Spotify | Simplify lists to single values | reduce | purrr |
-|`2020-01-21`| Spotify | Flatten list-columns | unnest | tidyr |
-|`2020-01-21`| Spotify | Create rug chart | geom_rug | ggplot2 |
-|`2020-01-21`| Spotify | Combine charts | plot_annotation | patchwork |
-|`2020-04-07`| Tour | Manage multiple filepaths | here | here |
-|`2020-04-07`| Tour | Remove spaces start/end | str_trim | stringr |
+```{r source, warning = FALSE, message = FALSE}
+
+library (tidyverse)
+library (kableExtra)
+library (janitor)
+library (lubridate)
+
+functions_raw <- read_csv("tidy-tuesday-functions.csv") %>%
+   clean_names()
+
+functions <- functions_raw %>%
+   mutate (data_week = mdy(data_week)) %>%
+   select (data_week, data_description, package, function_name, lesson) %>%
+   arrange (desc(data_week)) 
+
+kable (functions) %>%
+   kable_styling()
+
+```

@@ -77,16 +77,16 @@ twitter_img: img/large_card.png
 -  [Converting strings to symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 
 
-### Misc
--  [Happy Git and GitHub for the R user](https://happygitwithr.com/)
--  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
--  [Run R code in browser](https://rdrr.io/snippets/)
-
-
 ### Online Communities
 -  [Tidy Tuesday Data] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -  [Tidy Tuesday Rocks] (https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - compilation of Tidy Tuesday submissions across users
 -  [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
+
+
+### Misc
+-  [Happy Git and GitHub for the R user](https://happygitwithr.com/)
+-  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
+-  [Run R code in browser](https://rdrr.io/snippets/)
 
 
 ###  Data Science Blogs

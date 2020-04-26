@@ -1,4 +1,4 @@
-Data_Week,Data_Description,Lesson,Function Name,Package
+Data_Week,Data_Description,Purpose,Function Name,Package
 12/17/19,Adoptable Dogs,Alluvial flow diagrams,geom_alluvium,ggalluvial
 12/17/19,Adoptable Dogs,Incorporate Viridis color scale,scale_fill_viridis,viridis
 12/17/19,Adoptable Dogs,Output data frame to a view,View,utils

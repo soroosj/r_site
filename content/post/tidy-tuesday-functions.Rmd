@@ -26,7 +26,7 @@ categories: []
    
    functions <- functions_raw %>%
       mutate (data_week = mdy(data_week)) %>%
-      select (data_week, data_description, package, function_name, lesson) %>%
+      select (data_week, data_description, package, function_name, purpose) %>%
       arrange (desc(data_week)) 
 ```
 

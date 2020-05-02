@@ -6,17 +6,17 @@
     <description>Recent content in Posts on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spotify Song Analytics</title>
-      <link>/2020/05/04/spotify-song-analytics/</link>
-      <pubDate>Mon, 04 May 2020 00:00:00 +0000</pubDate>
+      <link>/2020/05/02/spotify-song-analytics/</link>
+      <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/04/spotify-song-analytics/</guid>
+      <guid>/2020/05/02/spotify-song-analytics/</guid>
       <description>Motivation Spotify is an amazing app to play favorite music, discover new music and rediscover old favorites. In addition, the Spotify API provides free access to a wide array of data on songs, which R users can leverage via Charlie Thompson’s spotifyR package. I wanted to learn more about my musical tastes while learning new R skills.
  1. Activate Spotify connection First step is to sign up for a free Spotify API developer ID and secret token.</description>
     </item>

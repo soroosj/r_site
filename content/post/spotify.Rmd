@@ -1,6 +1,6 @@
 ---
-title: 'Spotify Song Analytics'
-author: 'Joel Soroos'
+title: Spotify Song Analytics
+author: Joel Soroos'
 date: '2020-05-04'
 slug: spotify-song-analytics
 tags: []

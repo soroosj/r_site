@@ -17,12 +17,22 @@
   </url>
   
   <url>
+    <loc>/tags/purrr/</loc>
+    <lastmod>2020-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/r/</loc>
     <lastmod>2020-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/2020/05/02/spotify-song-analytics/</loc>
+    <lastmod>2020-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/spotifyr/</loc>
     <lastmod>2020-05-02T00:00:00+00:00</lastmod>
   </url>
   

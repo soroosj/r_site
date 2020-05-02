@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Spotify Song Analytics</title>
+        <link rel="canonical" href="/2020/05/21/spotify-song-analytics/">
+        <style>
+
+    html body {
+        font-family: 'Mina', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    :root {
+        --accent: #386890;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mina">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/lakeside-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+
+
+<script>
+$(document).ready(function(){
+    
+  var input = $('#night-mode-toggle');
+  var container = $('#bigbody');
+  var stat = $('#button-status');
+  
+  container.toggleClass(localStorage.toggled);
+  stat.bootstrapToggle(localStorage.button).change();
+  
+  input.on('click', function() {
+      if (localStorage.toggled != "-nightmode" ) {
+          container.toggleClass("-nightmode", true );
+          localStorage.toggled = "-nightmode";
+          localStorage.button = "on";
+       } else {
+          container.toggleClass("-nightmode", false );
+          localStorage.toggled = "";
+          localStorage.button = "off"
+       }
+  })
+});
+</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        <link href="" rel="alternate" type="application/rss+xml" title="Joel Soroos" />
+        <link href="" rel="feed" type="application/rss+xml" title="Joel Soroos" />
+        
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    
+    <meta property="og:title" content="Spotify Song Analytics">
+    <meta property="og:type" content="article">
+      
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:image" content="/ufo.png" >
+      
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:site" content="">
+    
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body id = "bigbody">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Spotify Song Analytics</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/visualizations/visualizations/index.html">Visualizations</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/links/links/index.html">Links</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:soroosj@yahoo.com"><i class="far fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/soroosj"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/soroosj/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joelsoroos"><i class="fab fa-linkedin"></i></a></li>
+                            
+                            <li id="night-mode-toggle">
+    <input type="checkbox" id = "button-status"
+        data-toggle="toggle"
+        data-width = "10"
+        data-height = "1"
+        data-on="<i class='far fa-moon fa-lg'></i>"
+        data-off= "<i class='far fa-sun fa-lg'></i>"
+        data-style="ios"
+        data-onstyle = "default">
+</li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/05/21/spotify-song-analytics/">Spotify Song Analytics</a></h4>
+    <h5>May 21, 2020 - 7 minutes</h5>
+    <h5></h5>
+
+    
+    
+
+</div>
+
+
+    <br> <div class="text-justify"> 
+
+
+
+<div id="motivation" class="section level3">
+<h3>Motivation</h3>
+<p>Spotify is an amazing tool to play favorite music, as well as discover new music or rediscover old favorites. The API in turn provides free access to a wide array of statistics on songs and albums in playlists.</p>
+</div>
+<div id="activate-spotify-connection" class="section level3">
+<h3>1. Activate Spotify connection</h3>
+<p>First step is to sign up for a <a href="https://developer.spotify.com/">free Spotify API developer ID and secret token</a>.</p>
+<p>Second, you can either embed the Spotify login information directly in the script or assign to an enivronment variable. The advantage of an environment variable is your private login information will be stored on your computer. That way your R code can be shared without exposure to your login information being stolen. The <a href="https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4">usethis package</a> simplifies creating and updating environment variables.</p>
+<pre class="r"><code>   library (spotifyr)
+
+   access_token &lt;- get_spotify_access_token(
+      client_id=Sys.getenv(&quot;SPOTIFY_CLIENT_ID&quot;),
+      client_secret=Sys.getenv(&quot;SPOTIFY_CLIENT_SECRET&quot;)
+      )</code></pre>
+</div>
+<div id="a.-source-favorite-song-statistics" class="section level3">
+<h3>2a. Source favorite song statistics</h3>
+<p>I decided to focus my analysis on liked tracks (called “favorites” in the Spotify API). The favorite_tracks function extracts information such as song name, album name and artist(s).</p>
+<p>Spotify limits the number of tracks per call to 50, much less than my 200 likes. A <a href="https://rpubs.com/womeimingzi11/how_my_spotify_looks_like">clever workaround by Han Chen</a> is to extract multiple tranches of 50 songs the purrr map function.</p>
+<p>The favorite_tracks function returns the output in an unwieldy list format that requires simplification to the more manageable data frame. The artist name creates multiple records per song because multiple artists can be assigned to individual songs. I simplified by unnesting the list so multiple rows per song for each artist.</p>
+<pre class="r"><code>   library (tidyverse)
+
+   favorite_tracks_stats &lt;-
+        ceiling(get_my_saved_tracks(include_meta_info = TRUE)[[&#39;total&#39;]] / 50) %&gt;%
+        seq() %&gt;%
+        map(function(x) {           
+          get_my_saved_tracks(
+             limit = 50,
+             offset = (x - 1) * 50)
+            }) %&gt;% 
+        reduce (rbind) %&gt;%
+        unnest (track.artists)      #simplifies list to multiple rows for tracks with two artists
+   
+   glimpse (favorite_tracks_stats)</code></pre>
+<pre><code>## Rows: 170
+## Columns: 35
+## $ added_at                           &lt;chr&gt; &quot;2020-04-23T11:14:07Z&quot;, &quot;2020-04-2…
+## $ href                               &lt;chr&gt; &quot;https://api.spotify.com/v1/artist…
+## $ id                                 &lt;chr&gt; &quot;51Blml2LZPmy7TTiAg47vQ&quot;, &quot;51Blml2…
+## $ name                               &lt;chr&gt; &quot;U2&quot;, &quot;U2&quot;, &quot;Ratt&quot;, &quot;AC/DC&quot;, &quot;Twis…
+## $ type                               &lt;chr&gt; &quot;artist&quot;, &quot;artist&quot;, &quot;artist&quot;, &quot;art…
+## $ uri                                &lt;chr&gt; &quot;spotify:artist:51Blml2LZPmy7TTiAg…
+## $ external_urls.spotify              &lt;chr&gt; &quot;https://open.spotify.com/artist/5…
+## $ track.available_markets            &lt;list&gt; [&lt;&quot;AD&quot;, &quot;AE&quot;, &quot;AR&quot;, &quot;AT&quot;, &quot;AU&quot;, &quot;…
+## $ track.disc_number                  &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ track.duration_ms                  &lt;int&gt; 279440, 295515, 265893, 210173, 21…
+## $ track.explicit                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ track.href                         &lt;chr&gt; &quot;https://api.spotify.com/v1/tracks…
+## $ track.id                           &lt;chr&gt; &quot;6C4LXC9UFH1IKiHYOp0BiJ&quot;, &quot;6ADSaE8…
+## $ track.is_local                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ track.name                         &lt;chr&gt; &quot;Sunday Bloody Sunday - Remastered…
+## $ track.popularity                   &lt;int&gt; 72, 80, 65, 79, 74, 51, 38, 65, 46…
+## $ track.preview_url                  &lt;chr&gt; &quot;https://p.scdn.co/mp3-preview/b81…
+## $ track.track_number                 &lt;int&gt; 1, 3, 3, 7, 2, 2, 9, 7, 1, 4, 8, 1…
+## $ track.type                         &lt;chr&gt; &quot;track&quot;, &quot;track&quot;, &quot;track&quot;, &quot;track&quot;…
+## $ track.uri                          &lt;chr&gt; &quot;spotify:track:6C4LXC9UFH1IKiHYOp0…
+## $ track.album.album_type             &lt;chr&gt; &quot;album&quot;, &quot;album&quot;, &quot;album&quot;, &quot;album&quot;…
+## $ track.album.artists                &lt;list&gt; [&lt;data.frame[1 x 6]&gt;, &lt;data.frame…
+## $ track.album.available_markets      &lt;list&gt; [&lt;&quot;AD&quot;, &quot;AE&quot;, &quot;AR&quot;, &quot;AT&quot;, &quot;AU&quot;, &quot;…
+## $ track.album.href                   &lt;chr&gt; &quot;https://api.spotify.com/v1/albums…
+## $ track.album.id                     &lt;chr&gt; &quot;6GaqU0TlYBKHUiSJ0AT9A2&quot;, &quot;5y6wlw1…
+## $ track.album.images                 &lt;list&gt; [&lt;data.frame[3 x 3]&gt;, &lt;data.frame…
+## $ track.album.name                   &lt;chr&gt; &quot;War (Remastered)&quot;, &quot;The Joshua Tr…
+## $ track.album.release_date           &lt;chr&gt; &quot;1983-02-28&quot;, &quot;1987-03-03&quot;, &quot;1984-…
+## $ track.album.release_date_precision &lt;chr&gt; &quot;day&quot;, &quot;day&quot;, &quot;day&quot;, &quot;day&quot;, &quot;year&quot;…
+## $ track.album.total_tracks           &lt;int&gt; 10, 49, 10, 10, 9, 8, 11, 27, 12, …
+## $ track.album.type                   &lt;chr&gt; &quot;album&quot;, &quot;album&quot;, &quot;album&quot;, &quot;album&quot;…
+## $ track.album.uri                    &lt;chr&gt; &quot;spotify:album:6GaqU0TlYBKHUiSJ0AT…
+## $ track.album.external_urls.spotify  &lt;chr&gt; &quot;https://open.spotify.com/album/6G…
+## $ track.external_ids.isrc            &lt;chr&gt; &quot;GBUM70713138&quot;, &quot;GBUM70709792&quot;, &quot;U…
+## $ track.external_urls.spotify        &lt;chr&gt; &quot;https://open.spotify.com/track/6C…</code></pre>
+</div>
+<div id="b.-source-favorite-song-features" class="section level3">
+<h3>2b. Source favorite song features</h3>
+<p>Next step is to source song features such as energy, tempo and valence. Full definitions are available on <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md">Spotify’s developer site</a>. The site again limits the number of songs (to 100 in this case) but can be circumvented via a loop function that breaks into multiples of 100.</p>
+<p>Song duration is clearer in minutes instead of milliseconds. Also, I cleaned song titles by removing “Remaster”, “Remastered” as well as parenthetical qualifiers.</p>
+<p>Initially, I directly charted album release year. Year differences were impossible to discern because bar charts start as zero. To spread across the x-axis I converted the release year to years past 1980.</p>
+<pre class="r"><code>   library (lubridate)
+   
+      favorite_tracks_ids &lt;- favorite_tracks_stats %&gt;%
+         distinct (track.id) %&gt;%       #eliminates duplicate rows by songs with &gt; 1 artist (picks 1st)
+         pull (track.id)
+      
+      favorite_tracks_features &lt;- 
+         seq (1, nrow(favorite_tracks_stats),100) %&gt;%
+         map(function(x) {
+             get_track_audio_features (favorite_tracks_ids[x:(x+99)])   #circumvents max of 100 track IDs
+               }) %&gt;%
+         reduce(rbind) %&gt;%             #simplifies list and appends previously nested frames
+         drop_na() %&gt;%                 #removes N/As resulting from liked song totals less than 100 multiple
+         right_join(favorite_tracks_stats, by = c(&quot;id&quot; = &quot;track.id&quot;)) %&gt;%
+         rename (artist.name = name) %&gt;%
+         mutate (
+            duration = duration_ms / 1000 / 60,                      #converts milliseconds to minutes
+            track.name = str_remove (track.name, c(&quot;Remaster&quot;, &quot;Remastered&quot;)),
+            track.name = str_remove (track.name,&quot;[(-].+&quot;),          
+            track.name = ifelse (str_length (track.name) &lt;= 22, track.name, str_extract(track.name, &quot;^.{22}&quot;)),
+            release = ifelse (
+               track.album.release_date_precision == &quot;year&quot;,         #some songs only lists years not dates
+               as.integer(track.album.release_date),
+               year(as_date(track.album.release_date))
+               ),
+            release = release - 1980                            #enables bar charts to start at 0
+            ) %&gt;%
+         select (artist.name, track.name, danceability, energy, valence, tempo, duration, release) %&gt;%
+         distinct (track.name, .keep_all = T)
+      
+      glimpse (favorite_tracks_features)</code></pre>
+<pre><code>## Rows: 156
+## Columns: 8
+## $ artist.name  &lt;chr&gt; &quot;U2&quot;, &quot;U2&quot;, &quot;Ratt&quot;, &quot;AC/DC&quot;, &quot;Twisted Sister&quot;, &quot;Thompson…
+## $ track.name   &lt;chr&gt; &quot;Sunday Bloody Sunday &quot;, &quot;With Or Without You &quot;, &quot;Round …
+## $ danceability &lt;dbl&gt; 0.543, 0.540, 0.628, 0.532, 0.502, 0.694, 0.809, 0.545, …
+## $ energy       &lt;dbl&gt; 0.944, 0.429, 0.934, 0.767, 0.924, 0.724, 0.907, 0.905, …
+## $ valence      &lt;dbl&gt; 0.7350, 0.1130, 0.4910, 0.7550, 0.9220, 0.8440, 0.9610, …
+## $ tempo        &lt;dbl&gt; 101.174, 110.171, 126.538, 127.361, 149.186, 119.313, 96…
+## $ duration     &lt;dbl&gt; 4.657333, 4.925267, 4.431550, 3.502883, 3.661117, 5.7917…
+## $ release      &lt;dbl&gt; 3, 7, 4, 0, 4, 26, 32, 11, 13, 14, 32, 15, 4, 25, 16, 2,…</code></pre>
+</div>
+<div id="a.-create-charts-by-feature" class="section level3">
+<h3>3a. Create charts by feature</h3>
+<p>Bars represent the top 5 and bottom 5 songs for each attribute. The bottom rug illustrates the full dispersion.</p>
+<p>A map function is necessary to create the separate charts for each attribute. The simpler ggplot facet function generates charts via filtering but cannot sort by variable.</p>
+<pre class="r"><code>   library (glue)
+
+   #define variables to parse charts
+      attributes &lt;- c(&quot;valence&quot;, &quot;energy&quot;, &quot;tempo&quot;, &quot;danceability&quot;, &quot;duration&quot;, &quot;release&quot;)
+
+   #function to create bar chart for dynamic variable
+      attributes_plot = function(attribute) {
+         attribute = ensym (attribute)
+         #attribute = ifelse(attribute == &quot;duration&quot;, attribute, ensym (attribute))
+         ggplot (
+               data = favorite_tracks_features %&gt;%
+                  arrange (-!!attribute) %&gt;%
+                  slice (1:5, (n()-4):n()) %&gt;%
+                  mutate (bar_color = ifelse (!!attribute &gt; median (!!attribute), &quot;Lightgreen&quot;, &quot;Red&quot;)),
+               aes (x = reorder (track.name, !!attribute), y = !!attribute), 
+               size = 1
+               ) +
+            geom_point (
+               aes(color = I(bar_color)),
+               shape = 19
+               ) + 
+            geom_segment (
+               aes(
+                  xend = reorder (track.name, !!attribute), y = 0, yend = !!attribute,
+                  color = I(bar_color)
+                  )
+               ) + 
+            geom_rug (
+               data = favorite_tracks_features,
+               aes (y = !!attribute),
+               inherit.aes = F,
+               sides = &quot;l&quot;,
+               alpha = 0.3
+               ) +
+            scale_y_continuous (n.breaks = 4) +
+            coord_flip () +
+            theme(
+               plot.title = element_text(hjust = 0.5, vjust = 0, size = 10, face = &quot;bold&quot;, margin = margin (10,0,10,0)),
+               axis.text = element_text (size = 8),
+               axis.title = element_blank(),
+               axis.ticks = element_blank(),
+               panel.grid = element_blank(),
+               panel.background = element_blank()
+               ) +
+          labs (
+             title = glue({str_to_title(attribute)})
+             )
+      }
+      
+   #create charts for each attribute
+   song_plots &lt;- map(attributes, attributes_plot)</code></pre>
+</div>
+<div id="b.-combine-charts-add-titlessubtitlescaptions" class="section level3">
+<h3>3b. Combine charts, add titles/subtitles/captions</h3>
+<p>My favorite chart combination package is Thomas Lin Pederson’s excellent <a href="https://www.rdocumentation.org/packages/patchwork/versions/1.0.0">patchwork</a> package. Charts automatically are aligned vertically and/or horizontally. I have six charts so by default patchwork prints the first three charts on top row then second three on bottom row.</p>
+<pre class="r"><code>   library (patchwork)
+   
+   #combine charts into grid
+      song_plots_combine &lt;- 
+         song_plots[[1]] + song_plots[[2]] + song_plots[[3]] + song_plots[[4]] + song_plots[[5]] + song_plots[[6]] +
+         plot_annotation (
+            title =  &quot;My favorite Spotify songs&#39; attributes&quot;,
+            subtitle = &quot;Largest 5 per attribute in green, smallest 5 in red.  Bottom rug is entire distribution.&quot;,
+            caption = &quot;Duration = song length in minutes.  Release = number of years since 1980.  \nVisualization: Joel Soroos @soroosj    |   Data: Spotify API&quot;,
+            theme = theme (
+               plot.title = element_text(hjust = 0.5, vjust = 0, size = 15, face = &quot;bold&quot;, margin = margin (0,0,5,0)),
+               plot.title.position = &quot;plot&quot;,
+               plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 9, margin = margin (0,0,15,0)),
+               plot.caption = element_text (hjust = 0, size = 8, face = &quot;plain&quot;, margin = margin (15,0,0,0)),
+               plot.caption.position = &quot;plot&quot;
+               )
+            )
+      
+      ggsave(&quot;song_attributes.png&quot;, song_plots_combine)
+      song_plots_combine</code></pre>
+<p><img src="/post/spotify_files/figure-html/combine-1.png" width="672" /></p>
+</div>
+</div>
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+</main>
+
+        <footer id = "bigfooter">
+            <div style = "padding:15px;">
+                <p>Powered by <a href="https://gohugo.io">Hugo</a>. Themed by <a href="https://github.com/nathancday/min_night">min_night</a>.
+                </p>
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+                title="Creative Commons Attribution 4.0 International license">
+                <i class="fab fa-creative-commons" aria-hidden="true"></i> Attribution 4.0 International license
+                </a>
+            </div>
+        </footer>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+          gtag('config', '');
+        </script>
+       
+    </body>
+
+</html>
+

@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spotify Song Analytics</title>
+      <link>/2020/05/01/spotify-song-analytics/</link>
+      <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/01/spotify-song-analytics/</guid>
+      <description>Motivation Spotify is an amazing tool to play favorite music, as well as discover new music or rediscover old favorites. The API in turn provides free access to a wide array of statistics on songs and albums in playlists.
+ 1. Activate Spotify connection First step is to sign up for a free Spotify API developer ID and secret token.
+Second, you can either embed the Spotify login information directly in the script or assign to an enivronment variable.</description>
+    </item>
     
     <item>
       <title>Tidy Tuesday Functions</title>

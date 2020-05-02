@@ -1,368 +1,1445 @@
 
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<hr />
-<p>title: Tidy Tuesday Functions author: Joel Soroos date: ‘2019-11-23’ slug: tidy-tuesday-functions categories: [] tags: [] [(/post/tidy-tuesday-functions_files/ufo.png)—]</p>
 <table>
-<thead>
-<tr class="header">
-<th align="center">Week</th>
-<th align="center">Data Set</th>
-<th align="left">Lesson</th>
-<th align="left">Function</th>
-<th align="left">Package</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td align="center"><code>2019-10-29</code></td>
-<td align="center">Squirrels</td>
-<td align="left">API keys to environment variables</td>
-<td align="left">Sys.getenv</td>
-<td align="left">base</td>
+<td>title: “Tidy Tuesday Functions”</td>
 </tr>
 <tr class="even">
-<td align="center"><code>2019-10-29</code></td>
-<td align="center">Squirrels</td>
-<td align="left">Source Google map layer</td>
-<td align="left">get_googlempap</td>
-<td align="left">ggmap</td>
+<td>author: “Joel Soroos”</td>
 </tr>
 <tr class="odd">
-<td align="center"><code>2019-10-29</code></td>
-<td align="center">Squirrels</td>
-<td align="left">Chart clones by variable</td>
-<td align="left">facet_wrap</td>
-<td align="left">ggplot2</td>
+<td>date: ‘2020-04-20’</td>
 </tr>
 <tr class="even">
-<td align="center"><code>2019-10-29</code></td>
-<td align="center">Squirrels</td>
-<td align="left">Convert string to title case</td>
-<td align="left">str_to_title</td>
-<td align="left">stringr</td>
+<td>slug: tidy-tuesday-functions</td>
 </tr>
 <tr class="odd">
-<td align="center"><code>2019-10-15</code></td>
-<td align="center">Vehicle MPH</td>
-<td align="left">Regression estimates</td>
-<td align="left">tidy</td>
-<td align="left">broom</td>
+<td>tags: []</td>
 </tr>
 <tr class="even">
-<td align="center"><code>2019-10-15</code></td>
-<td align="center">Vehicle MPH</td>
-<td align="left">Import image</td>
-<td align="left">read_impage</td>
-<td align="left">magick</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-10-15</code></td>
-<td align="center">Vehicle MPH</td>
-<td align="left">Image to grob</td>
-<td align="left">rasterGrob</td>
-<td align="left">grid</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-10-15</code></td>
-<td align="center">Vehicle MPH</td>
-<td align="left">Add image to chart</td>
-<td align="left">annotation_custom</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-09-03</code></td>
-<td align="center">Moore’s Law</td>
-<td align="left">Calculate loess regression</td>
-<td align="left">loess</td>
-<td align="left">stats</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-09-03</code></td>
-<td align="center">Moore’s Law</td>
-<td align="left">Regression fit make tidy</td>
-<td align="left">augment</td>
-<td align="left">broom</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-09-03</code></td>
-<td align="center">Moore’s Law</td>
-<td align="left">Data frame from scratch</td>
-<td align="left">tibble</td>
-<td align="left">tibble</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-09-03</code></td>
-<td align="center">Moore’s Law</td>
-<td align="left">Title over full plot</td>
-<td align="left">plot.title.position</td>
-<td align="left">ggplot</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-09-03</code></td>
-<td align="center">Moore’s Law</td>
-<td align="left">Calculate log</td>
-<td align="left">log10</td>
-<td align="left">base</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-08-20</code></td>
-<td align="center">Nuclear bombs</td>
-<td align="left">Animate plots</td>
-<td align="left">animate</td>
-<td align="left">gganimate</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-08-20</code></td>
-<td align="center">Nuclear bombs</td>
-<td align="left">Tile plot</td>
-<td align="left">geom_tile</td>
-<td align="left">ggplot</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-08-20</code></td>
-<td align="center">Nuclear bombs</td>
-<td align="left">Extend plot area</td>
-<td align="left">ylim, xlim</td>
-<td align="left">ggplot</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-08-13</code></td>
-<td align="center">Roman emperors</td>
-<td align="left">Segment visualizations</td>
-<td align="left">geom_segment</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-08-13</code></td>
-<td align="center">Roman emperors</td>
-<td align="left">Text adjacent to points</td>
-<td align="left">geom_text</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-08-13</code></td>
-<td align="center">Roman emperors</td>
-<td align="left">Update date components</td>
-<td align="left">update</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-08-13</code></td>
-<td align="center">Roman emperors</td>
-<td align="left">Combine data into string</td>
-<td align="left">glue</td>
-<td align="left">glue</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-08-06</code></td>
-<td align="center">Bob Ross</td>
-<td align="left">Word cloud in letter shapes</td>
-<td align="left">letterCloud</td>
-<td align="left">wordcloud2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-08-06</code></td>
-<td align="center">Bob Ross</td>
-<td align="left">Sentences to records by word</td>
-<td align="left">unnest_tokens</td>
-<td align="left">tidytext</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-07-09</code></td>
-<td align="center">World Cup</td>
-<td align="left">Sum variable by group in one line</td>
-<td align="left">tally</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-07-09</code></td>
-<td align="center">World Cup</td>
-<td align="left">Instance of a record in a group</td>
-<td align="left">row_number</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-07-09</code></td>
-<td align="center">World Cup</td>
-<td align="left">Data frame to vector</td>
-<td align="left">pull</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-07-02</code></td>
-<td align="center">Franchises</td>
-<td align="left">Waffle chart</td>
-<td align="left">geom_waffle</td>
-<td align="left">waffle</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-07-02</code></td>
-<td align="center">Franchises</td>
-<td align="left">2-row axis labels</td>
-<td align="left">paste</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-07-02</code></td>
-<td align="center">Franchises</td>
-<td align="left">Custom fonts</td>
-<td align="left">element.text (family)</td>
-<td align="left">extrafont</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-06-25</code></td>
-<td align="center">UFOs</td>
-<td align="left">Annotate text</td>
-<td align="left">annotate</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-06-25</code></td>
-<td align="center">UFOs</td>
-<td align="left">Annotate arrow</td>
-<td align="left">geom_curve</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-06-25</code></td>
-<td align="center">UFOs</td>
-<td align="left">Customize legend position</td>
-<td align="left">legend.position</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-05-28</code></td>
-<td align="center">Wine reviews</td>
-<td align="left">Violin charts</td>
-<td align="left">geom_violin</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-05-28</code></td>
-<td align="center">Wine reviews</td>
-<td align="left">Black background</td>
-<td align="left">dark_mode</td>
-<td align="left">ggdark</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-05-21</code></td>
-<td align="center">Plastic waste</td>
-<td align="left">LOESS regression line</td>
-<td align="left">geom_smooth</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-05-21</code></td>
-<td align="center">Plastic waste</td>
-<td align="left">Logarithimic scales</td>
-<td align="left">log10_trans</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-05-07</code></td>
-<td align="center">Class size</td>
-<td align="left">Countries to continents</td>
-<td align="left">countrycode</td>
-<td align="left">countrycode</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-05-07</code></td>
-<td align="center">Class size</td>
-<td align="left">Custom sort categorical field</td>
-<td align="left">fct_relevel</td>
-<td align="left">forcats</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-04-30</code></td>
-<td align="center">Birds</td>
-<td align="left">Ridgeline charts</td>
-<td align="left">geom_density_ridges</td>
-<td align="left">ggridges</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-04-30</code></td>
-<td align="center">Birds</td>
-<td align="left">Categorical variable frequencies</td>
-<td align="left">tabyl</td>
-<td align="left">janitor</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Anime</td>
-<td align="left">Aestheticly-pleasing tables</td>
-<td align="left">kable</td>
-<td align="left">KableExtra</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Anime</td>
-<td align="left">Summary statistics on all fields</td>
-<td align="left">summarize_all</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Anime</td>
-<td align="left">Function on mutliple fields</td>
-<td align="left">mutate_if</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Tennis</td>
-<td align="left">Text labels in charts</td>
-<td align="left">geom_label_repel</td>
-<td align="left">ggrepel</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Tennis</td>
-<td align="left">Categorical variables to numeric</td>
-<td align="left">case_when</td>
-<td align="left">dplyr</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-04-23</code></td>
-<td align="center">Tennis</td>
-<td align="left">Reverse y-axis points</td>
-<td align="left">trans = “reverse”</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-03-26</code></td>
-<td align="center">Pets</td>
-<td align="left">Image as axis label</td>
-<td align="left">geom_textured_col</td>
-<td align="left">ggtextures</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-03-26</code></td>
-<td align="center">Pets</td>
-<td align="left">Import images</td>
-<td align="left">image_read</td>
-<td align="left">magick</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-02-12</code></td>
-<td align="center">Govt</td>
-<td align="left">Multiple charts at once</td>
-<td align="left">flexdashboard</td>
-<td align="left">flexdashboard</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>2019-02-12</code></td>
-<td align="center">Govt</td>
-<td align="left">Border in chart sections</td>
-<td align="left">geom_rect</td>
-<td align="left">ggplot2</td>
-</tr>
-<tr class="even">
-<td align="center"><code>2019-02-12</code></td>
-<td align="center">Govt</td>
-<td align="left">Apply function to specific columns</td>
-<td align="left">mutate_at</td>
-<td align="left">dplyr</td>
+<td>categories: []</td>
 </tr>
 </tbody>
 </table>
+<p> <br />
+ </p>
+<div id="most-widely-learned-functions-are-in-ggplot2-and-dplyr-packages." class="section level4">
+<h4>1. Most widely learned functions are in ggplot2 and dplyr packages.</h4>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+package
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0.230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.135
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ggraph
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+broom
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ggmap
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+magick
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purrr
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+</tr>
+</tbody>
+</table>
+<p> <br />
+ </p>
+</div>
+<div id="chronological-listing-of-all-functions-that-i-have-learned." class="section level4">
+<h4>2. Chronological listing of all functions that I have learned.</h4>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+data_week
+</th>
+<th style="text-align:left;">
+data_description
+</th>
+<th style="text-align:left;">
+package
+</th>
+<th style="text-align:left;">
+function_name
+</th>
+<th style="text-align:left;">
+purpose
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2020-04-07
+</td>
+<td style="text-align:left;">
+Tour
+</td>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+Manage multiple filepaths
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-04-07
+</td>
+<td style="text-align:left;">
+Tour
+</td>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:left;">
+str_trim
+</td>
+<td style="text-align:left;">
+Remove spaces start/end
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:left;">
+seq
+</td>
+<td style="text-align:left;">
+Generate sequence of numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+slice
+</td>
+<td style="text-align:left;">
+Extract records by position
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:left;">
+ceiling
+</td>
+<td style="text-align:left;">
+Round up to nearest integer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+purrr
+</td>
+<td style="text-align:left;">
+map
+</td>
+<td style="text-align:left;">
+Repeat functions off vectors
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+purrr
+</td>
+<td style="text-align:left;">
+reduce
+</td>
+<td style="text-align:left;">
+Simplify lists to single values
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+tidyr
+</td>
+<td style="text-align:left;">
+unnest
+</td>
+<td style="text-align:left;">
+Flatten list-columns
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_rug
+</td>
+<td style="text-align:left;">
+Create rug chart
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01-21
+</td>
+<td style="text-align:left;">
+Spotify
+</td>
+<td style="text-align:left;">
+patchwork
+</td>
+<td style="text-align:left;">
+plot_annotation
+</td>
+<td style="text-align:left;">
+Combine charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-17
+</td>
+<td style="text-align:left;">
+Adoptable Dogs
+</td>
+<td style="text-align:left;">
+ggalluvial
+</td>
+<td style="text-align:left;">
+geom_alluvium
+</td>
+<td style="text-align:left;">
+Alluvial flow diagrams
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-17
+</td>
+<td style="text-align:left;">
+Adoptable Dogs
+</td>
+<td style="text-align:left;">
+viridis
+</td>
+<td style="text-align:left;">
+scale_fill_viridis
+</td>
+<td style="text-align:left;">
+Incorporate Viridis color scale
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-17
+</td>
+<td style="text-align:left;">
+Adoptable Dogs
+</td>
+<td style="text-align:left;">
+utils
+</td>
+<td style="text-align:left;">
+View
+</td>
+<td style="text-align:left;">
+Output data frame to a view
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-17
+</td>
+<td style="text-align:left;">
+Adoptable Dogs
+</td>
+<td style="text-align:left;">
+tidytuesdayR
+</td>
+<td style="text-align:left;">
+tt_load
+</td>
+<td style="text-align:left;">
+load Tidy Tuesday datasets
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-03
+</td>
+<td style="text-align:left;">
+Tickets
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+coord_polar
+</td>
+<td style="text-align:left;">
+Convert chart to polar coordinates
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-03
+</td>
+<td style="text-align:left;">
+Tickets
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_area
+</td>
+<td style="text-align:left;">
+Create area chart
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-03
+</td>
+<td style="text-align:left;">
+Tickets
+</td>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:left;">
+ymd_hms
+</td>
+<td style="text-align:left;">
+Character to date/time format
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12-03
+</td>
+<td style="text-align:left;">
+Tickets
+</td>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:left;">
+floor_date
+</td>
+<td style="text-align:left;">
+Group times
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-11-04
+</td>
+<td style="text-align:left;">
+Commute
+</td>
+<td style="text-align:left;">
+ggmap
+</td>
+<td style="text-align:left;">
+mutate_geocode
+</td>
+<td style="text-align:left;">
+Add geocode to existing dataframe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-11-04
+</td>
+<td style="text-align:left;">
+Commute
+</td>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:left;">
+str_detect
+</td>
+<td style="text-align:left;">
+check for specific string
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-29
+</td>
+<td style="text-align:left;">
+Squirrels
+</td>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:left;">
+Sys.getenv
+</td>
+<td style="text-align:left;">
+API keys to environment variables
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-29
+</td>
+<td style="text-align:left;">
+Squirrels
+</td>
+<td style="text-align:left;">
+ggmap
+</td>
+<td style="text-align:left;">
+get_googlempap
+</td>
+<td style="text-align:left;">
+Source Google map layer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-29
+</td>
+<td style="text-align:left;">
+Squirrels
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+facet_wrap
+</td>
+<td style="text-align:left;">
+Chart clones by variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-29
+</td>
+<td style="text-align:left;">
+Squirrels
+</td>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:left;">
+str_to_title
+</td>
+<td style="text-align:left;">
+Convert string to title case
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-15
+</td>
+<td style="text-align:left;">
+Vehicle MPH
+</td>
+<td style="text-align:left;">
+broom
+</td>
+<td style="text-align:left;">
+tidy
+</td>
+<td style="text-align:left;">
+Regression estimates
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-15
+</td>
+<td style="text-align:left;">
+Vehicle MPH
+</td>
+<td style="text-align:left;">
+magick
+</td>
+<td style="text-align:left;">
+read_impage
+</td>
+<td style="text-align:left;">
+Import image
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-15
+</td>
+<td style="text-align:left;">
+Vehicle MPH
+</td>
+<td style="text-align:left;">
+grid
+</td>
+<td style="text-align:left;">
+rasterGrob
+</td>
+<td style="text-align:left;">
+Image to grob
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10-15
+</td>
+<td style="text-align:left;">
+Vehicle MPH
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+annotation_custom
+</td>
+<td style="text-align:left;">
+Add image to chart
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09-03
+</td>
+<td style="text-align:left;">
+Moore’s Law
+</td>
+<td style="text-align:left;">
+stats
+</td>
+<td style="text-align:left;">
+loess
+</td>
+<td style="text-align:left;">
+Calculate loess regression
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09-03
+</td>
+<td style="text-align:left;">
+Moore’s Law
+</td>
+<td style="text-align:left;">
+broom
+</td>
+<td style="text-align:left;">
+augment
+</td>
+<td style="text-align:left;">
+Regression fit make tidy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09-03
+</td>
+<td style="text-align:left;">
+Moore’s Law
+</td>
+<td style="text-align:left;">
+tibble
+</td>
+<td style="text-align:left;">
+tibble
+</td>
+<td style="text-align:left;">
+Data frame from scratch
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09-03
+</td>
+<td style="text-align:left;">
+Moore’s Law
+</td>
+<td style="text-align:left;">
+ggplot
+</td>
+<td style="text-align:left;">
+plot.title.position
+</td>
+<td style="text-align:left;">
+Title over full plot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09-03
+</td>
+<td style="text-align:left;">
+Moore’s Law
+</td>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:left;">
+log10
+</td>
+<td style="text-align:left;">
+Calculate log
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-20
+</td>
+<td style="text-align:left;">
+Nuclear bombs
+</td>
+<td style="text-align:left;">
+gganimate
+</td>
+<td style="text-align:left;">
+animate
+</td>
+<td style="text-align:left;">
+Animate plots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-20
+</td>
+<td style="text-align:left;">
+Nuclear bombs
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_tile
+</td>
+<td style="text-align:left;">
+Tile plot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-20
+</td>
+<td style="text-align:left;">
+Nuclear bombs
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+ylim
+</td>
+<td style="text-align:left;">
+Extend plot area
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-13
+</td>
+<td style="text-align:left;">
+Roman emperors
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_segment
+</td>
+<td style="text-align:left;">
+Segment visualizations
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-13
+</td>
+<td style="text-align:left;">
+Roman emperors
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_text
+</td>
+<td style="text-align:left;">
+Text adjacent to points
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-13
+</td>
+<td style="text-align:left;">
+Roman emperors
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+update
+</td>
+<td style="text-align:left;">
+Update date components
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-13
+</td>
+<td style="text-align:left;">
+Roman emperors
+</td>
+<td style="text-align:left;">
+glue
+</td>
+<td style="text-align:left;">
+glue
+</td>
+<td style="text-align:left;">
+Combine data into string
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-06
+</td>
+<td style="text-align:left;">
+Bob Ross
+</td>
+<td style="text-align:left;">
+wordcloud2
+</td>
+<td style="text-align:left;">
+letterCloud
+</td>
+<td style="text-align:left;">
+Word cloud in letter shapes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08-06
+</td>
+<td style="text-align:left;">
+Bob Ross
+</td>
+<td style="text-align:left;">
+tidytext
+</td>
+<td style="text-align:left;">
+unnest_tokens
+</td>
+<td style="text-align:left;">
+Sentences to records by word
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+World Cup
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+tally
+</td>
+<td style="text-align:left;">
+Sum variable by group in one line
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+World Cup
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+row_number
+</td>
+<td style="text-align:left;">
+Instance of a record in a group
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+World Cup
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+pull
+</td>
+<td style="text-align:left;">
+Data frame to vector
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-02
+</td>
+<td style="text-align:left;">
+Franchises
+</td>
+<td style="text-align:left;">
+waffle
+</td>
+<td style="text-align:left;">
+geom_waffle
+</td>
+<td style="text-align:left;">
+Waffle chart
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-02
+</td>
+<td style="text-align:left;">
+Franchises
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+paste
+</td>
+<td style="text-align:left;">
+2-row axis labels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07-02
+</td>
+<td style="text-align:left;">
+Franchises
+</td>
+<td style="text-align:left;">
+extrafont
+</td>
+<td style="text-align:left;">
+element.text (family)
+</td>
+<td style="text-align:left;">
+Custom fonts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06-25
+</td>
+<td style="text-align:left;">
+UFOs
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+annotate
+</td>
+<td style="text-align:left;">
+Annotate text
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06-25
+</td>
+<td style="text-align:left;">
+UFOs
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_curve
+</td>
+<td style="text-align:left;">
+Annotate arrow
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06-25
+</td>
+<td style="text-align:left;">
+UFOs
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+legend.position
+</td>
+<td style="text-align:left;">
+Customize legend position
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-28
+</td>
+<td style="text-align:left;">
+Wine reviews
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_violin
+</td>
+<td style="text-align:left;">
+Violin charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-28
+</td>
+<td style="text-align:left;">
+Wine reviews
+</td>
+<td style="text-align:left;">
+ggdark
+</td>
+<td style="text-align:left;">
+dark_mode
+</td>
+<td style="text-align:left;">
+Black background
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-21
+</td>
+<td style="text-align:left;">
+Plastic waste
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_smooth
+</td>
+<td style="text-align:left;">
+LOESS regression line
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-21
+</td>
+<td style="text-align:left;">
+Plastic waste
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+log10_trans
+</td>
+<td style="text-align:left;">
+Logarithimic scales
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-07
+</td>
+<td style="text-align:left;">
+Class size
+</td>
+<td style="text-align:left;">
+countrycode
+</td>
+<td style="text-align:left;">
+countrycode
+</td>
+<td style="text-align:left;">
+Countries to continents
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05-07
+</td>
+<td style="text-align:left;">
+Class size
+</td>
+<td style="text-align:left;">
+forcats
+</td>
+<td style="text-align:left;">
+fct_relevel
+</td>
+<td style="text-align:left;">
+Custom sort categorical field
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-30
+</td>
+<td style="text-align:left;">
+Birds
+</td>
+<td style="text-align:left;">
+ggridges
+</td>
+<td style="text-align:left;">
+geom_density_ridges
+</td>
+<td style="text-align:left;">
+Ridgeline charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-30
+</td>
+<td style="text-align:left;">
+Birds
+</td>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+tabyl
+</td>
+<td style="text-align:left;">
+Categorical variable frequencies
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Anime
+</td>
+<td style="text-align:left;">
+KableExtra
+</td>
+<td style="text-align:left;">
+kable
+</td>
+<td style="text-align:left;">
+Aestheticly-pleasing tables
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Anime
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+summarize_all
+</td>
+<td style="text-align:left;">
+Summary stats all fields
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Anime
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+mutate_if
+</td>
+<td style="text-align:left;">
+Function on mutliple fields
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Tennis
+</td>
+<td style="text-align:left;">
+ggrepel
+</td>
+<td style="text-align:left;">
+geom_label_repel
+</td>
+<td style="text-align:left;">
+Text labels in charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Tennis
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+case_when
+</td>
+<td style="text-align:left;">
+Categorical variables to numeric
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04-23
+</td>
+<td style="text-align:left;">
+Tennis
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+trans = “reverse”
+</td>
+<td style="text-align:left;">
+Reverse y-axis points
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-03-26
+</td>
+<td style="text-align:left;">
+Pets
+</td>
+<td style="text-align:left;">
+ggtextures
+</td>
+<td style="text-align:left;">
+geom_textured_col
+</td>
+<td style="text-align:left;">
+Image as axis label
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-03-26
+</td>
+<td style="text-align:left;">
+Pets
+</td>
+<td style="text-align:left;">
+magick
+</td>
+<td style="text-align:left;">
+image_read
+</td>
+<td style="text-align:left;">
+Import images
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-26
+</td>
+<td style="text-align:left;">
+Trains
+</td>
+<td style="text-align:left;">
+ggraph
+</td>
+<td style="text-align:left;">
+geom_edge_link
+</td>
+<td style="text-align:left;">
+Edges on charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-26
+</td>
+<td style="text-align:left;">
+Trains
+</td>
+<td style="text-align:left;">
+ggraph
+</td>
+<td style="text-align:left;">
+geom_node_point
+</td>
+<td style="text-align:left;">
+Node points on charts
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-26
+</td>
+<td style="text-align:left;">
+Trains
+</td>
+<td style="text-align:left;">
+ggraph
+</td>
+<td style="text-align:left;">
+tbl_graph
+</td>
+<td style="text-align:left;">
+Network data to tidy format
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-26
+</td>
+<td style="text-align:left;">
+Trains
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+tibble |
+</td>
+<td style="text-align:left;">
+Add unique ID to dataframe |rowid_to_column
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-12
+</td>
+<td style="text-align:left;">
+Govt
+</td>
+<td style="text-align:left;">
+flexdashboard
+</td>
+<td style="text-align:left;">
+flexdashboard
+</td>
+<td style="text-align:left;">
+Multiple charts at once
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-12
+</td>
+<td style="text-align:left;">
+Govt
+</td>
+<td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+geom_rect
+</td>
+<td style="text-align:left;">
+Border in chart sections
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02-12
+</td>
+<td style="text-align:left;">
+Govt
+</td>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+mutate_at
+</td>
+<td style="text-align:left;">
+Function to specific columns
+</td>
+</tr>
+</tbody>
+</table>
+<p>© 2020 GitHub, Inc. Terms Privacy Security Status Help Contact GitHub Pricing API Training Blog About</p>
+</div>

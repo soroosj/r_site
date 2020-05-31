@@ -32,7 +32,7 @@ tags:
 -    [glue](https://github.com/tidyverse/glue) - concatentate strings and/or data
 -    [magrittr](https://magrittr.tidyverse.org/) - set of operators to make code more readable such as the pipe
 -    [janitor](https://garthtarr.github.io/meatR/janitor.html) - simple functions for cleaning dirty data
--    [tidyr](https://tidyr.tidyverse.org/) - change the layout of data sets
+-    [tidyr](https://tidyr.tidyverse.org/) - transform data layout
 -    [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
 
@@ -47,6 +47,7 @@ tags:
 -    [ggraph](https://github.com/thomasp85/ggraph) - ggplot2 extensions for network diagrams and trees
 -    [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
 -    [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
+-    [ggupset](https://github.com/Ryo-N7/ggupset) - upset charts to visualize set intersections 
 -    [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
 -    [gganimate](https://gganimate.com/) - view chart evolution over time via animation
 -    [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.

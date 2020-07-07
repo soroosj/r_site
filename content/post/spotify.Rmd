@@ -100,7 +100,7 @@ Additionally, we have 49 blank rows that can be removed.  The above map function
 ### 2c.  Combine song features and statistics
 Spotify assigns an alphanumeric ID code for each song.  The ID is in both the statistics and attributes tables so the two tables can be joined together.
 
-A few other housekeeping items are required before proceeding to the the chart.  First, Song duration is clearer in minutes instead of milliseconds.  Second, I cleaned song titles by removing "Remaster", "Remastered" as well as  parenthetical qualifiers.  Third, I converted album release year to number of years past 1980 to better visually discern year differences (bar charts typically start at zero).
+A few other housekeeping items are required before proceeding to the the chart.  First, Song duration is clearer in minutes instead of milliseconds.  Second, I cleaned song titles by removing "Remaster", "Remastered" as well as  parenthetical qualifiers.  Third, I converted album release year to number of years past 1970 to better visually discern year differences (bar charts typically start at zero).
 ```{r combine, warning = FALSE, message = FALSE}
 
    library (lubridate)  
@@ -118,7 +118,7 @@ A few other housekeeping items are required before proceeding to the the chart. 
                as.integer(track.album.release_date),
                year(as_date(track.album.release_date))
                ),
-            release = release - 1980                  #enables bar charts to start at 0
+            release = release - 1970                  #enables bar charts to start at 0
             ) %>%
          select (artist.name, track.name, danceability, energy, valence, tempo, duration, release) %>%
          distinct (track.name, .keep_all = T)

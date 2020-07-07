@@ -137,7 +137,7 @@ tags:
 <div id="c.-combine-song-features-and-statistics" class="section level3">
 <h3>2c. Combine song features and statistics</h3>
 <p>Spotify assigns an alphanumeric ID code for each song. The ID is in both the statistics and attributes tables so the two tables can be joined together.</p>
-<p>A few other housekeeping items are required before proceeding to the the chart. First, Song duration is clearer in minutes instead of milliseconds. Second, I cleaned song titles by removing &quot;Remaster&quot;, &quot;Remastered&quot; as well as parenthetical qualifiers. Third, I converted album release year to number of years past 1980 to better visually discern year differences (bar charts typically start at zero).</p>
+<p>A few other housekeeping items are required before proceeding to the the chart. First, Song duration is clearer in minutes instead of milliseconds. Second, I cleaned song titles by removing &quot;Remaster&quot;, &quot;Remastered&quot; as well as parenthetical qualifiers. Third, I converted album release year to number of years past 1970 to better visually discern year differences (bar charts typically start at zero).</p>
 <pre class="r"><code>   library (lubridate)  
    
    favorite_tracks_combine &lt;- favorite_tracks_features %&gt;%
@@ -153,7 +153,7 @@ tags:
                as.integer(track.album.release_date),
                year(as_date(track.album.release_date))
                ),
-            release = release - 1980                  #enables bar charts to start at 0
+            release = release - 1970                  #enables bar charts to start at 0
             ) %&gt;%
          select (artist.name, track.name, danceability, energy, valence, tempo, duration, release) %&gt;%
          distinct (track.name, .keep_all = T)
@@ -168,7 +168,7 @@ tags:
 ## $ valence      &lt;dbl&gt; 0.5280, 0.0992, 0.2530, 0.9470, 0.1300, 0.7100, 0.9470, …
 ## $ tempo        &lt;dbl&gt; 93.974, 90.264, 112.461, 143.284, 76.972, 124.216, 128.5…
 ## $ duration     &lt;dbl&gt; 3.573333, 3.852217, 6.149333, 4.095550, 3.536400, 5.7713…
-## $ release      &lt;dbl&gt; 24, 14, 12, 26, 36, 5, -3, 33, 33, 9, 8, 8, 9, 13, 30, 1…</code></pre>
+## $ release      &lt;dbl&gt; 34, 24, 22, 36, 46, 15, 7, 43, 43, 19, 18, 18, 19, 23, 4…</code></pre>
 </div>
 <div id="a.-create-charts-by-feature" class="section level3">
 <h3>3a. Create charts by feature</h3>

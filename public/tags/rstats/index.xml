@@ -6,10 +6,21 @@
     <description>Recent content in rstats on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UpSet Charts Comparison</title>
+      <link>/2020/07/09/cocktails-upset/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/07/09/cocktails-upset/</guid>
+      <description>Motivation For the May 26 2020 R4DS Tidy Tuesday data set, I explored UpSet charts, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a useful explanation of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.
+I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.
+ Source The cocktail ingredients data is originally from the Mr.</description>
+    </item>
     
     <item>
       <title>Spotify Song Analytics</title>
@@ -36,7 +47,7 @@
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/11/15/favorite-r-packages/</guid>
-      <description>Sourcing  readr - fast and friendly way to read rectangular data (i.e. csv, tsv) RODBC - SQL querying against relational databases readxl - importing Excel files including individual worksheets rvest - tools for working with http connections rio - simplify importing and exporting data across source formats datapasta - copy/paste data using clipboard   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - change the layout of data sets tidytext - simplify text mining   Modelling  broom - converts statistical model output to tidy data ggdenro - parses dendogram data into data frames   Visualizing  ggplot2 - R’s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggridges - density plots geofacet - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology patchwork - combine charts gganimate - view chart evolution over time via animation scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
+      <description>Sourcing  readr - fast and friendly way to read rectangular data (i.e. csv, tsv) RODBC - SQL querying against relational databases readxl - importing Excel files including individual worksheets rvest - tools for working with http connections rio - simplify importing and exporting data across source formats datapasta - copy/paste data using clipboard   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - transform data layout tidytext - simplify text mining   Modelling  broom - converts statistical model output to tidy data ggdenro - parses dendogram data into data frames   Visualizing  ggplot2 - R&#39;s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggridges - density plots geofacet - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology ggupset - upset charts to visualize set intersections patchwork - combine charts gganimate - view chart evolution over time via animation scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
     </item>
     
   </channel>

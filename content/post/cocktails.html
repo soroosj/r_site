@@ -1,0 +1,369 @@
+---
+title: UpSet Charts Comparison
+author: Joel Soroos
+date: '2020-07-09'
+slug: cocktails-upset
+categories: []
+tags:
+  - tidyverse
+  - r
+  - rstats
+  - ggupset
+  - UpSetR
+---
+
+
+
+<div id="motivation" class="section level2">
+<h2>Motivation</h2>
+<p>For the May 26 2020 R4DS Tidy Tuesday data set, I explored <a href="https://caleydo.org/tools/UpSet/">UpSet charts</a>, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a <a href="https://www.littlemissdata.com/blog/set-analysis">useful explanation</a> of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.</p>
+<p>I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.</p>
+</div>
+<div id="source" class="section level2">
+<h2>Source</h2>
+<p>The <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md">cocktail ingredients data</a> is originally from the <a href="http://swizzle.ru/uploads/article_file/17/mr_boston.pdf">Mr. Boston Bartender's Guide</a> via Kaggle.</p>
+<pre class="r"><code>library(tidyverse)
+library(janitor)
+
+cocktails_raw &lt;- read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-26/boston_cocktails.csv&quot;)
+
+cocktails_raw</code></pre>
+<pre><code>## # A tibble: 3,643 x 6
+##    name        category         row_id ingredient_number ingredient      measure
+##    &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;  
+##  1 Gauguin     Cocktail Classi…      1                 1 Light Rum       2 oz   
+##  2 Gauguin     Cocktail Classi…      1                 2 Passion Fruit … 1 oz   
+##  3 Gauguin     Cocktail Classi…      1                 3 Lemon Juice     1 oz   
+##  4 Gauguin     Cocktail Classi…      1                 4 Lime Juice      1 oz   
+##  5 Fort Laude… Cocktail Classi…      2                 1 Light Rum       1 1/2 …
+##  6 Fort Laude… Cocktail Classi…      2                 2 Sweet Vermouth  1/2 oz 
+##  7 Fort Laude… Cocktail Classi…      2                 3 Juice of Orange 1/4 oz 
+##  8 Fort Laude… Cocktail Classi…      2                 4 Juice of a Lime 1/4 oz 
+##  9 Apple Pie   Cordials and Li…      3                 1 Apple schnapps  3 oz   
+## 10 Apple Pie   Cordials and Li…      3                 2 Cinnamon schna… 1 oz   
+## # … with 3,633 more rows</code></pre>
+</div>
+<div id="explore" class="section level2">
+<h2>Explore</h2>
+<p>The dataset containes 3,643 rows comprising 989 unique cocktail drinks (&quot;names&quot;) with 569 unique ingredients. Each cocktail-ingredient combination is a separate record.</p>
+<p>Ingredients and corresponding serving size for cocktails are listed in the Ingredient and Measure fields. The cocktails are grouped into 11 cocktail categories such as brandy, gin and rum.</p>
+<pre class="r"><code>library(skimr)
+
+skim(cocktails_raw)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">cocktails_raw</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">3643</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">6</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">name</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">36</td>
+<td align="right">0</td>
+<td align="right">989</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">category</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">21</td>
+<td align="right">0</td>
+<td align="right">11</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">ingredient</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">95</td>
+<td align="right">0</td>
+<td align="right">569</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">measure</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">42</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">row_id</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">505.10</td>
+<td align="right">284.40</td>
+<td align="right">1</td>
+<td align="right">264.5</td>
+<td align="right">502</td>
+<td align="right">753.5</td>
+<td align="right">990</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td align="left">ingredient_number</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2.55</td>
+<td align="right">1.32</td>
+<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">2</td>
+<td align="right">3.0</td>
+<td align="right">6</td>
+<td align="left">▇▃▂▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="transform" class="section level2">
+<h2>Transform</h2>
+<p>Similar ingredients with different spellings can be consolidated.</p>
+<pre class="r"><code>tabyl(cocktails_raw, ingredient) %&gt;%
+  arrange(-percent) %&gt;%
+  head(20)</code></pre>
+<pre><code>##         ingredient   n    percent
+##                Gin 176 0.04831183
+##  Fresh lemon juice 138 0.03788087
+##       Simple Syrup 115 0.03156739
+##              Vodka 114 0.03129289
+##          Light Rum 113 0.03101839
+##       Dry Vermouth 107 0.02937140
+##   Fresh Lime Juice 107 0.02937140
+##         Triple Sec 107 0.02937140
+##     Powdered Sugar  90 0.02470491
+##          Grenadine  85 0.02333242
+##     Sweet Vermouth  83 0.02278342
+##             Brandy  80 0.02195992
+##        Lemon Juice  70 0.01921493
+##     Blanco tequila  69 0.01894043
+##          Egg White  67 0.01839144
+##  Angostura Bitters  63 0.01729344
+##   Juice of a Lemon  60 0.01646994
+##    Pineapple Juice  47 0.01290145
+##    Bourbon whiskey  38 0.01043096
+##     Orange Bitters  38 0.01043096</code></pre>
+<pre class="r"><code>cocktails &lt;- cocktails_raw %&gt;%
+  mutate(
+    ingredient = case_when(
+      ingredient == &quot;Fresh lemon juice&quot; ~ &quot;Lemon Juice&quot;,
+      ingredient == &quot;Juice of a Lemon&quot; ~ &quot;Lemon Juice&quot;,
+      ingredient == &quot;Fresh Lime Juice&quot; ~ &quot;Lime Juice&quot;,
+      ingredient == &quot;Juice of a Lime&quot; ~ &quot;Lime Juice&quot;,
+      ingredient == &quot;Powdered Sugar&quot; ~ &quot;Simple Syrup&quot;,
+      ingredient == &quot;Egg White&quot; ~ &quot;Egg&quot;,
+      ingredient == &quot;Whole Egg&quot; ~ &quot;Egg&quot;,
+      ingredient == &quot;Egg Yolk&quot; ~ &quot;Egg&quot;,
+      TRUE ~ ingredient
+    )
+  )
+
+tabyl(cocktails, ingredient) %&gt;%
+  arrange(-percent) %&gt;%
+  head(20)</code></pre>
+<pre><code>##              ingredient   n     percent
+##             Lemon Juice 268 0.073565743
+##            Simple Syrup 205 0.056272303
+##                     Gin 176 0.048311831
+##              Lime Juice 153 0.041998353
+##                     Egg 117 0.032116388
+##                   Vodka 114 0.031292890
+##               Light Rum 113 0.031018391
+##            Dry Vermouth 107 0.029371397
+##              Triple Sec 107 0.029371397
+##               Grenadine  85 0.023332418
+##          Sweet Vermouth  83 0.022783420
+##                  Brandy  80 0.021959923
+##          Blanco tequila  69 0.018940434
+##       Angostura Bitters  63 0.017293439
+##         Pineapple Juice  47 0.012901455
+##         Bourbon whiskey  38 0.010430963
+##          Orange Bitters  38 0.010430963
+##                 Bitters  31 0.008509470
+##            Orange juice  31 0.008509470
+##  Old Mr. Boston Dry Gin  30 0.008234971</code></pre>
+</div>
+<div id="visualizing" class="section level2">
+<h2>Visualizing</h2>
+<p>An UpSet chart can be unwieldy with too many rows. I decided to limit to eight sets.</p>
+<pre class="r"><code>ingredients_top &lt;- cocktails %&gt;%
+  count(ingredient, sort = T) %&gt;%
+  pull(ingredient) %&gt;%
+  head(8)</code></pre>
+<div id="option-1---upsetr-package" class="section level3">
+<h3>Option 1 - UpSetR package</h3>
+<p>The <a href="https://www.rdocumentation.org/packages/UpSetR/versions/1.4.0">UpSetR package</a> by Jack Conway seems to be most widely-referenced so started there. Installing via CRAN was a breeze.</p>
+<p>First required step was transforming the raw data to a matrix format. Instructions were thorough but I struggled to convert, a large part because I am more familiar with the R tidyverse format. Ultimately I achieved through hacking other solutions. Ideas from Timothy Kyle Thomas (see <a href="https://timothykylethomas.me/post/r_notebook/tidytuesday22/tidytuesday22/">here</a>) and Kieran Healy (see <a href="https://www.r-bloggers.com/upset-plots/">here</a>) were particulary helpful.</p>
+<pre class="r"><code>library(UpSetR)
+
+cocktails_matrix &lt;- cocktails %&gt;%
+  select(name, ingredient) %&gt;%
+  filter(ingredient %in% ingredients_top) %&gt;%
+  mutate(ingredient_population = TRUE) %&gt;%
+  pivot_wider(
+    id_cols = name,
+    names_from = ingredient,
+    values_from = ingredient_population,
+    values_fill = FALSE,
+    values_fn = length
+  ) %&gt;%
+  as.data.frame()
+
+cocktails_matrix %&gt;% head(5)</code></pre>
+<pre><code>##                   name Light Rum Lemon Juice Lime Juice Simple Syrup Gin
+## 1              Gauguin         1           1          1            0   0
+## 2      Fort Lauderdale         1           0          1            0   0
+## 3 Cuban Cocktail No. 1         1           0          1            1   0
+## 4         John Collins         0           1          0            1   0
+## 5           Cherry Rum         1           0          0            0   0
+##   Dry Vermouth Egg Vodka
+## 1            0   0     0
+## 2            0   0     0
+## 3            0   0     0
+## 4            0   0     0
+## 5            0   0     0</code></pre>
+<p>Once I had the data in the proper format, creating the charts was pleasingly straightforward in one function call.</p>
+<p>The chart format was clean and easy to interpret. I could quickly see which ingredients (or combination of ingredients) were in the most drinks. For single ingredients, lemon juice led the way, followed by lime juice, vodka and gin. The most popular combinations of ingredients are gin with dry vermouth, lemon juice with simple syrup, then gin with lemon juice.</p>
+<pre class="r"><code>upset(
+  data = cocktails_matrix,
+  order.by = c(&quot;freq&quot;),
+  nsets = 8, nintersects = 30
+)</code></pre>
+<p><img src="/post/cocktails_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="option-2---ggupset-package" class="section level3">
+<h3>Option 2 - ggupset package</h3>
+<p>The <a href="https://cran.r-project.org/web/packages/ggupset/readme/README.html">ggupset</a> package by Constantin Ahlmann-Eltze is tidyverse-friendly so I immediately felt at home. Just a bit of transformation was needed into the tidy format - converting separate rows per ingredient into unique rows per cocktail.</p>
+<pre class="r"><code>library(ggupset)
+
+cocktails_list &lt;- cocktails %&gt;%
+  group_by(name) %&gt;%
+  filter(ingredient %in% ingredients_top) %&gt;%
+  summarize(ingredient = list(ingredient))
+
+cocktails_list</code></pre>
+<pre><code>## # A tibble: 733 x 2
+##    name                       ingredient
+##    &lt;chr&gt;                      &lt;list&gt;    
+##  1 19th Century               &lt;chr [1]&gt; 
+##  2 Absinthe Special Cocktail  &lt;chr [1]&gt; 
+##  3 Acapulco                   &lt;chr [3]&gt; 
+##  4 Adam and Eve               &lt;chr [2]&gt; 
+##  5 Adderly Cocktail           &lt;chr [1]&gt; 
+##  6 Admiral Perry              &lt;chr [1]&gt; 
+##  7 Affinity Cocktail          &lt;chr [1]&gt; 
+##  8 Affinity Cocktail (whisky) &lt;chr [1]&gt; 
+##  9 After Dinner Cocktail      &lt;chr [1]&gt; 
+## 10 After Supper Cocktail      &lt;chr [1]&gt; 
+## # … with 723 more rows</code></pre>
+<p>The upset chart was created by simply adding one row with ggupset's scale_x_upset function.</p>
+<p>The tidyverse-friendly package enables leveraging familiar ggplot2 constructs such as themes, labels and headers/captions.</p>
+<pre class="r"><code>ggplot(cocktails_list, aes(x = ingredient)) +
+  geom_bar() +
+  scale_x_upset(n_intersections = 30) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 0, size = 14, face = &quot;bold&quot;, margin = margin(0, 0, 15, 0)),
+    plot.title.position = &quot;plot&quot;,
+    plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 6, margin = margin(0, 0, 2, 0)),
+    plot.caption = element_text(hjust = 1, size = 8, face = &quot;plain&quot;, margin = margin(15, 0, 0, 0)),
+    plot.caption.position = &quot;plot&quot;,
+    axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 7),
+    axis.ticks.x = element_blank(),
+    legend.position = &quot;none&quot;
+  ) +
+  labs(
+    title = &quot;Most popular cocktail ingredients&quot;,
+    x = &quot;Ingredient intersection&quot;,
+    y = &quot;# of drinks&quot;,
+    caption = &quot;Each column represents unique combinations of ingredients.  Universe is drinks in the Boston Bartender&#39;s Guide.\nVisualization: Joel Soroos @soroosj  |  Data: Mr. Boston Bartender&#39;s Guide via Kaggle via R4DS Tidy Tuesday&quot;
+  ) +
+  ggsave(&quot;cocktails.png&quot;, width = 10, height = 18, units = &quot;cm&quot;)</code></pre>
+<p><img src="/post/cocktails_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Due to my tidyverse background I ultimately preferred the ggupset format.</p>
+<p>The ingredient counts at left were an advantage of the UpSetR package but not worth the incremental time contorting into the matrix format. Additionally, I much appreciated the ability to quickly add familiar ggplot2 themes, headers and captions.</p>
+</div>

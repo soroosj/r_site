@@ -1,0 +1,177 @@
+---
+title: UpSet Charts Comparison
+author: Joel Soroos
+date: '2020-07-09'
+slug: cocktails-upset
+categories: []
+tags:
+  - tidyverse
+  - r
+  - rstats
+  - ggupset
+  - UpSetR
+---
+
+
+##Motivation
+For the May 26 2020 R4DS Tidy Tuesday data set, I explored [UpSet charts](https://caleydo.org/tools/UpSet/), which simplify visualizing overlap of large numbers of sets.  Laura Ellis has a [useful explanation](https://www.littlemissdata.com/blog/set-analysis) of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.
+
+I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.
+
+##Source 
+The [cocktail ingredients data](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md) is originally from the [Mr. Boston Bartender's Guide](http://swizzle.ru/uploads/article_file/17/mr_boston.pdf) via Kaggle.   
+```{r source, warning = TRUE, results = TRUE, message = FALSE}
+
+library(tidyverse)
+library(janitor)
+
+cocktails_raw <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-26/boston_cocktails.csv")
+
+cocktails_raw
+```
+
+
+##Explore
+The dataset containes 3,643 rows comprising 989 unique cocktail drinks ("names") with 569 unique ingredients.  Each cocktail-ingredient combination is a separate record.  
+
+Ingredients and corresponding serving size for cocktails are listed in the Ingredient and Measure fields.  The cocktails are grouped into 11 cocktail categories such as brandy, gin and rum.
+
+
+```{r}
+
+library(skimr)
+
+skim(cocktails_raw)
+```
+
+
+##Transform 
+Similar ingredients with different spellings can be consolidated.
+```{r}
+
+tabyl(cocktails_raw, ingredient) %>%
+  arrange(-percent) %>%
+  head(20)
+
+cocktails <- cocktails_raw %>%
+  mutate(
+    ingredient = case_when(
+      ingredient == "Fresh lemon juice" ~ "Lemon Juice",
+      ingredient == "Juice of a Lemon" ~ "Lemon Juice",
+      ingredient == "Fresh Lime Juice" ~ "Lime Juice",
+      ingredient == "Juice of a Lime" ~ "Lime Juice",
+      ingredient == "Powdered Sugar" ~ "Simple Syrup",
+      ingredient == "Egg White" ~ "Egg",
+      ingredient == "Whole Egg" ~ "Egg",
+      ingredient == "Egg Yolk" ~ "Egg",
+      TRUE ~ ingredient
+    )
+  )
+
+tabyl(cocktails, ingredient) %>%
+  arrange(-percent) %>%
+  head(20)
+``` 
+##Visualizing
+
+An UpSet chart can be unwieldy with too many rows.  I decided to limit to eight sets.
+```{r}
+
+ingredients_top <- cocktails %>%
+  count(ingredient, sort = T) %>%
+  pull(ingredient) %>%
+  head(8)
+```
+
+
+###Option 1 - UpSetR package
+
+The [UpSetR package](https://www.rdocumentation.org/packages/UpSetR/versions/1.4.0) by Jack Conway seems to be most widely-referenced so started there.  Installing via CRAN was a breeze.
+
+First required step was transforming the raw data to a matrix format.  Instructions were thorough but I struggled to convert, a large part because I am more familiar with the R tidyverse format.  Ultimately I achieved through hacking other solutions.  Ideas from  Timothy Kyle Thomas (see [here](https://timothykylethomas.me/post/r_notebook/tidytuesday22/tidytuesday22/)) and Kieran Healy (see [here](https://www.r-bloggers.com/upset-plots/)) were particulary helpful.
+
+```{r}
+
+library(UpSetR)
+
+cocktails_matrix <- cocktails %>%
+  select(name, ingredient) %>%
+  filter(ingredient %in% ingredients_top) %>%
+  mutate(ingredient_population = TRUE) %>%
+  pivot_wider(
+    id_cols = name,
+    names_from = ingredient,
+    values_from = ingredient_population,
+    values_fill = FALSE,
+    values_fn = length
+  ) %>%
+  as.data.frame()
+
+cocktails_matrix %>% head(5)
+```
+
+
+Once I had the data in the proper format, creating the charts was pleasingly straightforward in one function call. 
+
+The chart format was clean and easy to interpret.  I could quickly see which ingredients (or combination of ingredients) were in the most drinks.  For single ingredients, lemon juice led the way, followed by lime juice, vodka and gin. The most popular combinations of ingredients are gin with dry vermouth, lemon juice with simple syrup, then gin with lemon juice.
+
+```{r}
+upset(
+  data = cocktails_matrix,
+  order.by = c("freq"),
+  nsets = 8, nintersects = 30
+)
+```
+
+
+###Option 2 - ggupset package
+
+The [ggupset](https://cran.r-project.org/web/packages/ggupset/readme/README.html) package by Constantin Ahlmann-Eltze is tidyverse-friendly so I immediately felt at home.  Just a bit of transformation was needed into the tidy format - converting separate rows per ingredient into unique rows per cocktail.  
+```{r, message = F}
+
+library(ggupset)
+
+cocktails_list <- cocktails %>%
+  group_by(name) %>%
+  filter(ingredient %in% ingredients_top) %>%
+  summarize(ingredient = list(ingredient))
+
+cocktails_list
+```
+
+
+The upset chart was created by simply adding one row with ggupset's scale_x_upset function.
+
+The tidyverse-friendly package enables leveraging familiar ggplot2 constructs such as themes, labels and headers/captions.
+
+```{r, warning =F}
+ggplot(cocktails_list, aes(x = ingredient)) +
+  geom_bar() +
+  scale_x_upset(n_intersections = 30) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 0, size = 14, face = "bold", margin = margin(0, 0, 15, 0)),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 6, margin = margin(0, 0, 2, 0)),
+    plot.caption = element_text(hjust = 1, size = 8, face = "plain", margin = margin(15, 0, 0, 0)),
+    plot.caption.position = "plot",
+    axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 7),
+    axis.ticks.x = element_blank(),
+    legend.position = "none"
+  ) +
+  labs(
+    title = "Most popular cocktail ingredients",
+    x = "Ingredient intersection",
+    y = "# of drinks",
+    caption = "Each column represents unique combinations of ingredients.  Universe is drinks in the Boston Bartender's Guide.\nVisualization: Joel Soroos @soroosj  |  Data: Mr. Boston Bartender's Guide via Kaggle via R4DS Tidy Tuesday"
+  ) +
+  ggsave("cocktails.png", width = 10, height = 18, units = "cm")
+```
+
+
+##Conclusion
+
+Due to my tidyverse background I ultimately preferred the ggupset format.
+
+The ingredient counts at left were an advantage of the UpSetR package but not worth the incremental time contorting into the matrix format.  Additionally, I much appreciated the ability to quickly add familiar ggplot2 themes, headers and captions.

@@ -303,12 +303,20 @@ cocktails_matrix %&gt;% head(5)</code></pre>
 ## 5            0   0     0</code></pre>
 <p>Once I had the data in the proper format, creating the charts was pleasingly straightforward in one function call.</p>
 <p>The chart format was clean and easy to interpret. I could quickly see which ingredients (or combination of ingredients) were in the most drinks. For single ingredients, lemon juice led the way, followed by lime juice, vodka and gin. The most popular combinations of ingredients are gin with dry vermouth, lemon juice with simple syrup, then gin with lemon juice.</p>
-<pre class="r"><code>upset(
+<pre class="r"><code>library (grid)
+
+png(file=&quot;cocktails UpSetR.png&quot;) # or other device
+
+upset(
   data = cocktails_matrix,
   order.by = c(&quot;freq&quot;),
   nsets = 8, nintersects = 30
-)</code></pre>
-<p><img src="/post/cocktails_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+)
+grid.text(&quot;Most Popular Cocktail Ingredients (using UpSetR package)&quot;,x = 0.65, y=0.95, gp=gpar(fontsize=10))
+
+dev.off()</code></pre>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
 </div>
 <div id="option-2---ggupset-package" class="section level3">
 <h3>Option 2 - ggupset package</h3>
@@ -358,7 +366,8 @@ cocktails_list</code></pre>
     y = &quot;# of drinks&quot;,
     caption = &quot;Each column represents unique combinations of ingredients.  Universe is drinks in the Boston Bartender&#39;s Guide.\nVisualization: Joel Soroos @soroosj  |  Data: Mr. Boston Bartender&#39;s Guide via Kaggle via R4DS Tidy Tuesday&quot;
   ) +
-  ggsave(&quot;cocktails.png&quot;, width = 10, height = 18, units = &quot;cm&quot;)</code></pre>
+ ggsave(&quot;cocktails ggupset.png&quot;)</code></pre>
+<pre><code>## Saving 7 x 5 in image</code></pre>
 <p><img src="/post/cocktails_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>

@@ -73,3 +73,7 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 1/21/20,Spotify,Combine charts,plot_annotation,patchwork
 4/7/20,Tour,Manage multiple filepaths,here,here
 4/7/20,Tour,Remove spaces start/end,str_trim,stringr
+5/26/20,Cocktails,Transform tall to wide data,pivot_wider,tidyr
+5/26/20,Cocktails,Create upset chart,upset,UpSetR
+5/26/20,Cocktails,Create upset chart,scale_x_upset,ggupset
+5/26/20,Cocktails,Add text to base r chart,grid.text,grid

@@ -42,15 +42,6 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
     </item>
     
     <item>
-      <title>Tidy Tuesday Functions</title>
-      <link>/2020/03/20/tidy-tuesday-functions/</link>
-      <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/03/20/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.230    dplyr  10  0.135    base  4  0.054    ggraph  3  0.041    stringr  3  0.041    broom  2  0.</description>
-    </item>
-    
-    <item>
       <title>Favorite R Packages</title>
       <link>/2019/11/15/favorite-r-packages/</link>
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>

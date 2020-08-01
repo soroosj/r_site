@@ -77,3 +77,6 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 5/26/20,Cocktails,Create upset chart,upset,UpSetR
 5/26/20,Cocktails,Create upset chart,scale_x_upset,ggupset
 5/26/20,Cocktails,Add text to base r chart,grid.text,grid
+7/7/20,Coffee,Convert to standardized z-score,scale,base
+7/7/20,Coffee,specify # of digits,format,base
+7/7/20,Coffee,transform from wide to long format,pivot_longer,tidyr

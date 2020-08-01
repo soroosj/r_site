@@ -26,7 +26,7 @@
       <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/07/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.218    dplyr  10  0.128    base  4  0.051    ggraph  3  0.038    stringr  3  0.038    broom  2  0.</description>
+      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
     </item>
     
     <item>

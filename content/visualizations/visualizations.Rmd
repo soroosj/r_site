@@ -22,13 +22,13 @@ The examples source data from the weekly [R4DS #TidyTuesday](https://github.com/
 
 <img src="/img/ufo.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/ufo.png', 'blank');"/>
 
-<img src="/img/moore.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/moore.png', 'blank');"/>
-
 <img src="/img/song_attributes.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/song_attributes.png', 'blank');"/>
 
-<img src="/img/world cup.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/world cup.png', 'blank');"/>
+<img src="/img/moore.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/moore.png', 'blank');"/>
 
 <img src="/img/coffee.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/coffee.png', 'blank');"/>
+
+<img src="/img/world cup.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/world cup.png', 'blank');"/>
 
 <img src="/img/cars.png" style="height: 50%; width: 50%; object-fit: contain" onclick="window.open('https://soroosj.netlify.com/img/cars.png', 'blank');"/>
 

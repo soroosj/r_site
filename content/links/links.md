@@ -24,13 +24,13 @@ twitter_img: img/large_card.png
 
 ### Sourcing 
 -  [Setting environmental variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
--  [Spotify API](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like)
+
 
 
 ### Wrangling
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
--  [Tidyverse tricks you may not know about](https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da) - Keith McNulty
+-  [Tidyverse tricks](https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da) - Keith McNulty
 -  [Regular expressions] (https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
 -  [Simplify lists to data frames] (https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
 

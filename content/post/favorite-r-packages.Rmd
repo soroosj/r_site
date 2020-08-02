@@ -38,7 +38,7 @@ tags:
 -  [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
 
-#Modelling
+#Modeling
 -  [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -  [ggdenro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html) - parses dendogram data into data frames
 

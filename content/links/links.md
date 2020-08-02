@@ -30,7 +30,7 @@ twitter_img: img/large_card.png
 ### Wrangling
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
--  [Pivot wide & pivot long] (https://www.brodrigues.co/blog/2019-03-20-pivot/) - new dplyr reshaping tools
+-  [Tidyverse tricks you may not know about](https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da) - Keith McNulty
 -  [Regular expressions] (https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
 -  [Simplify lists to data frames] (https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
 
@@ -54,6 +54,7 @@ twitter_img: img/large_card.png
 -  [Top 50 ggplot
     visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -  [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
+-  [Ggplot aesthetics cheat sheet](https://tinyurl.com/y3y8wyap)
 -  [Automating charts using ggplot2 and purrr](https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/)
 
 
@@ -73,8 +74,10 @@ twitter_img: img/large_card.png
 
 
 ### Programming
+-  [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
 -  [Core Purrr lessons](https://jennybc.github.io/purrr-tutorial/) - functional programming primer on automating repeated tasks
 -  [Converting strings to symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
+-  [Folder structure and here package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/#:~:text=The%20here%20package%20allows%20you%20to%20set%20the,of%20your%20project%20file%20everytime%20you%20use%20it)
 
 
 ### Online Communities
@@ -90,8 +93,11 @@ twitter_img: img/large_card.png
 
 
 ###  Data Science Blogs
+-  [Keith McNulty](https://drkeithmcnulty.com/)
 -  [Christian Burkhart](https://christianburkhart.de)
 -  [Data Imaginist](https://www.data-imaginist.com/) - Thomas Lin Pederson
+-  [Georgios Karamanis](https://karaman.is/)
+-  [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -  [Hugo Toscano](https://toscano84.github.io/)
 -  [Julia Silge](https://juliasilge.com/blog/)
 -  [Variance Explained](http://varianceexplained.org/) — David Robinson
@@ -103,6 +109,5 @@ twitter_img: img/large_card.png
 -  [Very Statisticious](https://aosmith.rbind.io/) - Ariel Muldoon
 -  [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
 -  [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues
--  [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
--  [Pop Culture + Data Science](https://www.kaylinpavlik.com/) — Kaylin Pavlik
+-  [Kaylin Pavlik](https://www.kaylinpavlik.com/author/walkerkq/)
 -  [NateDayta](https://www.natedayta.com/) - Nathan Day

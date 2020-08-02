@@ -6,19 +6,10 @@
     <description>Recent content in tidyverse on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Tidy Tuesday Functions</title>
-      <link>/2020/07/09/tidy-tuesday-functions/</link>
-      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/07/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
-    </item>
     
     <item>
       <title>UpSet Charts Comparison</title>
@@ -48,6 +39,15 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       
       <guid>/links/links/</guid>
       <description>Learning R  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera Advanced R - advanced R primer by Hadley Wickham  Sourcing  Setting environmental variables  Wrangling  Getting and Cleaning Data in R — online Johns Hopkins class via Coursera Data wrangling in dplyr - tutorials by Susan Baert Tidyverse tricks - Keith McNulty Regular expressions Simplify lists to data frames  Modelling  Distance matrixes Clustering  Visualizing Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday Functions</title>
+      <link>/2020/02/09/tidy-tuesday-functions/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/02/09/tidy-tuesday-functions/</guid>
+      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
     </item>
     
     <item>

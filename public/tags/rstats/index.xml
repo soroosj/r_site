@@ -6,19 +6,10 @@
     <description>Recent content in rstats on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Tidy Tuesday Functions</title>
-      <link>/2020/07/09/tidy-tuesday-functions/</link>
-      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/07/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
-    </item>
     
     <item>
       <title>UpSet Charts Comparison</title>
@@ -39,6 +30,15 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <guid>/2020/05/02/spotify-song-analytics/</guid>
       <description>Motivation Spotify is an amazing app to play favorite music, discover new music and rediscover old favorites. In addition, the Spotify API provides free access to a wide array of data on songs, which R users can leverage via Charlie Thompson&#39;s spotifyR package. I wanted to learn more about my musical tastes while learning new R skills.
  1. Activate Spotify connection First step is to sign up for a free Spotify API developer ID and secret token.</description>
+    </item>
+    
+    <item>
+      <title>Tidy Tuesday Functions</title>
+      <link>/2020/02/09/tidy-tuesday-functions/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/02/09/tidy-tuesday-functions/</guid>
+      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
     </item>
     
     <item>

@@ -6,17 +6,17 @@
     <description>Recent content in functions on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/functions/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tidy Tuesday Functions</title>
-      <link>/2020/07/09/tidy-tuesday-functions/</link>
-      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      <link>/2020/02/09/tidy-tuesday-functions/</link>
+      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/07/09/tidy-tuesday-functions/</guid>
+      <guid>/2020/02/09/tidy-tuesday-functions/</guid>
       <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.210    dplyr  10  0.123    base  6  0.074    ggraph  3  0.037    stringr  3  0.037    tidyr  3  0.</description>
     </item>
     

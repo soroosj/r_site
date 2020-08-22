@@ -84,4 +84,5 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 7/14/20,Astronauts,line on ggplot object,draw_line,cowplot
 7/14/20,Astronauts,image to chart background,ggbackground,ggimage
 7/14/20,Astronauts,country flag to chart,geom_flag,ggimage
+7/14/20,Astronauts,image to plot area,geom_image,ggimage
 7/14/20,Astronauts,parse specific words in string,word,dplyr

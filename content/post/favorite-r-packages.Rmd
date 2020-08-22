@@ -45,12 +45,13 @@ tags:
 
 #Visualizing
 -  [ggplot2](https://ggplot2.tidyverse.org/) - R's famous package for beautiful graphics usibg the grammar of graphics
--  [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
 -  [ggmap](https://www.rdocumentation.org/packages/ggmap/versions/3.0.0) - access Google API to download Google maps and geolocations
 -  [ggraph](https://github.com/thomasp85/ggraph) - ggplot2 extensions for network diagrams and trees
+-  [ggimage](https://guangchuangyu.github.io/pkgdocs/ggimage.html) - adding custom images to charts
 -  [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
+-  [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
 -  [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
--  [geofacet](https://hafen.github.io/geofacet/) -  visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
+-  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
 -  [gganimate](https://gganimate.com/) - view chart evolution over time via animation
 -  [ggupset](https://github.com/Ryo-N7/ggupset) - upset charts to visualize set intersections 
 -  [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme

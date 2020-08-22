@@ -80,3 +80,8 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 7/7/20,Coffee,Convert to standardized z-score,scale,base
 7/7/20,Coffee,specify # of digits,format,base
 7/7/20,Coffee,transform from wide to long format,pivot_longer,tidyr
+7/14/20,Astronauts,label on ggplot object,draw_label,cowplot
+7/14/20,Astronauts,line on ggplot object,draw_line,cowplot
+7/14/20,Astronauts,image to chart background,ggbackground,ggimage
+7/14/20,Astronauts,country flag to chart,geom_flag,ggimage
+7/14/20,Astronauts,parse specific words in string,word,dplyr

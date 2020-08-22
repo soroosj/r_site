@@ -108,6 +108,7 @@ twitter_img: img/large_card.png
 -  [Little Miss Data](https://www.littlemissdata.com) - Laura Ellis
 -  [Very Statisticious](https://aosmith.rbind.io/) - Ariel Muldoon
 -  [Haystacks](https://caitlinhudon.com/blog-links/) - Caitlan Hudon
+-  [Claus Wilke](https://clauswilke.com/)
 -  [Econometrics](https://www.brodrigues.co/) — Bruno Rodrigues
 -  [Kaylin Pavlik](https://www.kaylinpavlik.com/author/walkerkq/)
 -  [NateDayta](https://www.natedayta.com/) - Nathan Day

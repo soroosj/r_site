@@ -39,10 +39,10 @@ percent
 ggplot2
 </td>
 <td style="text-align:right;">
-17
+16
 </td>
 <td style="text-align:right;">
-0.195
+0.186
 </td>
 </tr>
 <tr>
@@ -50,10 +50,10 @@ ggplot2
 dplyr
 </td>
 <td style="text-align:right;">
-11
+9
 </td>
 <td style="text-align:right;">
-0.126
+0.105
 </td>
 </tr>
 <tr>
@@ -64,7 +64,18 @@ base
 6
 </td>
 <td style="text-align:right;">
-0.069
+0.070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stringr
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0.058
 </td>
 </tr>
 <tr>
@@ -75,7 +86,7 @@ ggimage
 3
 </td>
 <td style="text-align:right;">
-0.034
+0.035
 </td>
 </tr>
 <tr>
@@ -86,18 +97,18 @@ ggraph
 3
 </td>
 <td style="text-align:right;">
-0.034
+0.035
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-stringr
+lubridate
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-0.034
+0.035
 </td>
 </tr>
 <tr>
@@ -108,7 +119,7 @@ tidyr
 3
 </td>
 <td style="text-align:right;">
-0.034
+0.035
 </td>
 </tr>
 <tr>
@@ -157,17 +168,6 @@ grid
 </tr>
 <tr>
 <td style="text-align:left;">
-lubridate
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.023
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 magick
 </td>
 <td style="text-align:right;">
@@ -180,6 +180,17 @@ magick
 <tr>
 <td style="text-align:left;">
 purrr
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tibble
 </td>
 <td style="text-align:right;">
 2
@@ -224,13 +235,13 @@ purpose
 Astronauts
 </td>
 <td style="text-align:left;">
-cowplot
+stringr
 </td>
 <td style="text-align:left;">
-draw_label
+word
 </td>
 <td style="text-align:left;">
-label on ggplot object
+parse specific words in string
 </td>
 </tr>
 <tr>
@@ -241,13 +252,30 @@ label on ggplot object
 Astronauts
 </td>
 <td style="text-align:left;">
-cowplot
+stringr
 </td>
 <td style="text-align:left;">
-draw_line
+str_remove
 </td>
 <td style="text-align:left;">
-line on ggplot object
+remove character(s) from string
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-07-14
+</td>
+<td style="text-align:left;">
+Astronauts
+</td>
+<td style="text-align:left;">
+ggimage
+</td>
+<td style="text-align:left;">
+geom_image
+</td>
+<td style="text-align:left;">
+image to plot area
 </td>
 </tr>
 <tr>
@@ -292,13 +320,13 @@ country flag to chart
 Astronauts
 </td>
 <td style="text-align:left;">
-ggimage
+cowplot
 </td>
 <td style="text-align:left;">
-geom_image
+draw_label
 </td>
 <td style="text-align:left;">
-image to plot area
+label on ggplot object
 </td>
 </tr>
 <tr>
@@ -309,13 +337,13 @@ image to plot area
 Astronauts
 </td>
 <td style="text-align:left;">
-dplyr
+cowplot
 </td>
 <td style="text-align:left;">
-word
+draw_line
 </td>
 <td style="text-align:left;">
-parse specific words in string
+line on ggplot object
 </td>
 </tr>
 <tr>
@@ -972,23 +1000,6 @@ Data frame from scratch
 Moore's Law
 </td>
 <td style="text-align:left;">
-ggplot
-</td>
-<td style="text-align:left;">
-plot.title.position
-</td>
-<td style="text-align:left;">
-Title over full plot
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2019-09-03
-</td>
-<td style="text-align:left;">
-Moore's Law
-</td>
-<td style="text-align:left;">
 base
 </td>
 <td style="text-align:left;">
@@ -1091,7 +1102,7 @@ Text adjacent to points
 Roman emperors
 </td>
 <td style="text-align:left;">
-dplyr
+lubridate
 </td>
 <td style="text-align:left;">
 update
@@ -1527,23 +1538,6 @@ Categorical variables to numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-2019-04-23
-</td>
-<td style="text-align:left;">
-Tennis
-</td>
-<td style="text-align:left;">
-ggplot2
-</td>
-<td style="text-align:left;">
-trans = &quot;reverse&quot;
-</td>
-<td style="text-align:left;">
-Reverse y-axis points
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 2019-03-26
 </td>
 <td style="text-align:left;">
@@ -1635,13 +1629,13 @@ Network data to tidy format
 Trains
 </td>
 <td style="text-align:left;">
-NA
+tibble
 </td>
 <td style="text-align:left;">
-tibble |
+rowid_to_column
 </td>
 <td style="text-align:left;">
-Add unique ID to dataframe |rowid_to_column
+Add unique ID to dataframe
 </td>
 </tr>
 <tr>

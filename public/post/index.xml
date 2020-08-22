@@ -38,7 +38,7 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/02/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  17  0.195    dplyr  11  0.126    base  6  0.069    ggimage  3  0.034    ggraph  3  0.034    stringr  3  0.</description>
+      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  16  0.186    dplyr  9  0.105    base  6  0.070    stringr  5  0.058    ggimage  3  0.035    ggraph  3  0.</description>
     </item>
     
     <item>

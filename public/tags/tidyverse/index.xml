@@ -12,14 +12,13 @@
     
     
     <item>
-      <title>Kmeans Clustering in R of Palmer Penguins</title>
+      <title>Kmeans Clustering of Palmer Penguins</title>
       <link>/2020/09/20/penguins-clustering/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/09/20/penguins-clustering/</guid>
-      <description>In today&#39;s blog, I explore k-means clustering capabilities in the R factoextra package.
-K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.
-All data is from the palmerpenguins package authored by Alison Hill and Kristen Gorman.</description>
+      <description>In today&#39;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;quot;k&amp;quot;).
+K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.</description>
     </item>
     
     <item>
@@ -58,7 +57,7 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/02/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  16  0.186    dplyr  9  0.105    base  6  0.070    stringr  5  0.058    ggimage  3  0.035    ggraph  3  0.</description>
+      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  16  0.176    dplyr  9  0.099    base  6  0.066    stringr  5  0.055    ggimage  3  0.033    ggraph  3  0.</description>
     </item>
     
     <item>

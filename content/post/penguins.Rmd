@@ -14,7 +14,7 @@ tags:
 ---
 
 
-In today's blog, I explore k-means clustering capabilities in the R factoextra package.
+In today's blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters ("k").
 
 K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data.  K-means is the most widely used unsupervised machine learning tool and considered "unsupervised" due to absence of labelled data in the analysis.
 

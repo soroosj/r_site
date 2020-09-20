@@ -1,5 +1,5 @@
 ---
-title: Kmeans Clustering in R of Palmer Penguins
+title: Kmeans Clustering of Palmer Penguins
 author: Joel Soroos
 date: '2020-09-20'
 slug: penguins-clustering
@@ -12,7 +12,6 @@ tags:
   - factoextra
   - machine learning
 ---
-
 
 
 In today's blog, I explore k-means clustering capabilities in the R factoextra package.

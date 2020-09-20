@@ -41,6 +41,7 @@ tags:
 #Modeling
 -  [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -  [factoextra](https://www.rdocumentation.org/packages/factoextra/versions/1.0.3) - kmeans clustering algoriths, visualizations
+-  [NbClust](https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust) - index of 30 kmeans clustering optimal K methodologies
 -  [ggdenro](https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html) - parses dendogram data into data frames
 
 

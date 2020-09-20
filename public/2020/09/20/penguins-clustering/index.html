@@ -591,7 +591,7 @@ $(document).ready(function(){
 <div id="method-1---visual-inspection" class="section level4">
 <h4>Method 1 - Visual Inspection</h4>
 <p>The most blunt method is to visualize cluster data for assorted values of k.</p>
-<p>We will be largely using the excellent <a href="https://cran.r-project.org/web/packages/factoextra/factoextra.pdf">factoextra package</a> by Alboukadel Kassambara and Fabian Mundt. The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters. Even more helpful is factoextra's clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions.</p>
+<p>I will be largely using the <a href="https://cran.r-project.org/web/packages/factoextra/factoextra.pdf">factoextra package</a> by Alboukadel Kassambara and Fabian Mundt. The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters. Particulary helpful is factoextra's clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions.</p>
 <p>Fviz_cluster is a useful function to visualize clusters for a given k. The function creates a scatterplot with points in a cluster color-coordinated and encircled with a polygram. Clustering on greater than two fields is difficult to visualize so fields are helpfully automatically converted to two dimensions via principal component analysis (PCA).</p>
 <p>Multiple fviz_cluster visualizations can be easily created in R. First, the factoextra::fviz_cluster function creates the chart for one K. Second, the functdional purrr:map creates charts for multiple instaces of K. Finally, patchwork::patchwork plots the resulting charts into a common visualization. A traditional starting point for k values is 1 to 9.</p>
 <pre class="r"><code>   library(factoextra)
@@ -627,9 +627,7 @@ $(document).ready(function(){
             plot.caption = element_text (hjust = 1, size = 7, margin = margin (15,0,0,0)) 
             )
          )</code></pre>
-<p><img src="/post/penguins_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>      #ggsave(here(&quot;2020-07-28&quot;, &quot;output&quot;, &quot;cluster_possibles.png&quot;))</code></pre>
-<p>Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.</p>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-1-1.png" width="672" /> Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.</p>
 <p>The visualizations did not provide a clear answer whether a cluster size of 2 or 3 is optimal. We need to proceed to more sophisticated methodologies.</p>
 <p>The factoextra:fviz_nbclust function provides assorted methodologies to determine the optimal K. I calculated results for all three methodologies using another functional loop.</p>
 <pre class="r"><code>   methodologies &lt;- c(&quot;wss&quot;, &quot;silhouette&quot;, &quot;gap_stat&quot;)
@@ -650,13 +648,13 @@ $(document).ready(function(){
 </div>
 <div id="method-4---gap-statistic" class="section level4">
 <h4>Method 4 - Gap Statistic</h4>
-<p><a href="https://statweb.stanford.edu/~gwalther/gap">The gap statistic test</a> compares the total within intra-cluster variation for different values of k with expected values under null reference distribution of the data. The optimal cluster estimate that maximizes the gap statistic (i.e, that yields the largest gap statistic). This means that the clustering structure is far away from the random uniform distribution of points.</p>
+<p><a href="https://statweb.stanford.edu/~gwalther/gap">The gap statistic test</a> is a newer optimal K test by Robert Tisharni, Guenther Walther and Trevor Hastie. The methodology compares the total within intra-cluster variation (&quot;WSS&quot;) for different values of k relative to a random uniform distribution of the data (that has no obvious clustering). The optimal cluster value of k has the largest gap statistic because signifies the cluster infrastructure furthest from the random uniform point distribution.</p>
 <pre class="r"><code>   cluster_optimal[[3]]</code></pre>
 <p><img src="/post/penguins_files/figure-html/unnamed-chunk-5-1.png" width="672" /> The gap statistic test calls for a cluster size (k) of 3.</p>
 </div>
 <div id="method-5-multiple-indexes" class="section level4">
 <h4>Method 5: Multiple indexes</h4>
-<p>The <a href="https://rdrr.io/cran/NbClust/man/NbClust.html">NbClust package</a> by Malika Charrad, Nadia Ghazzali and Azam Niknafs provides 30 indices for determining the relevant number of clusters by varying combinations of number of clusters and clustering methods.</p>
+<p>The <a href="https://rdrr.io/cran/NbClust/man/NbClust.html">NbClust package</a> by Malika Charrad, Nadia Ghazzali and Azam Niknafs calculates the optimal K using 30 methodologies and aggregates into an index. The package equal-weightes each methodology and presents results in a histogram. The suggested optimal k is the k with the most optimizations across the 30 index methodologies.</p>
 <pre class="r"><code>   library (NbClust)
 
    cluster_30_indexes &lt;- NbClust(data = penguins[5:7], distance = &quot;euclidean&quot;, min.nc = 2, max.nc = 9, method = &quot;complete&quot;, index =&quot;all&quot;)</code></pre>

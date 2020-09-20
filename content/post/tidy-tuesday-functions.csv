@@ -85,3 +85,8 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 7/14/20,Astronauts,country flag to chart,geom_flag,ggimage
 7/14/20,Astronauts,label on ggplot object,draw_label,cowplot
 7/14/20,Astronauts,line on ggplot object,draw_line,cowplot
+7/28/20,Penguins,pairwise summary statistics,ggpairs,GGally
+7/28/20,Penguins,calculate kmeans clusters,kmeans,stats
+7/28/20,Penguins,visualize data points grouped by cluster,fviz_cluster,factoextra
+7/28/20,Penguins,visualize optimal cluster size test output,fviz_nbclust,factoextra
+7/28/20,Penguins,optimal cluster size index of 30 methodologies,NbClust,NbClust

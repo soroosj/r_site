@@ -1,0 +1,210 @@
+---
+title: Kmeans Clustering in R of Palmer Penguins
+author: Joel Soroos
+date: '2020-09-20'
+slug: penguins-clustering
+categories: []
+tags:
+  - tidyverse
+  - r
+  - rstats
+  - kmeans clustering
+  - factoextra
+  - machine learning
+---
+
+
+
+In today's blog, I explore k-means clustering capabilities in the R factoextra package.
+
+K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data.  K-means is the most widely used unsupervised machine learning tool and considered "unsupervised" due to absence of labelled data in the analysis.
+
+All data is from the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) package authored by Alison Hill and Kristen Gorman.  The dataset was identifed via the weekly R4DS Tidy Tuesday community.
+
+
+##1. Source data
+Data is sourced from the palmerpenguins package via its path_to_file function.  I then converted to friendly file names using janitor::clean_names.
+```{r source, warning = FALSE, message = FALSE}
+
+   library(tidyverse)
+   library(janitor)
+   library(palmerpenguins)
+   library(knitr)
+
+   penguins_raw <- read_csv(path_to_file("penguins_raw.csv")) %>%
+      clean_names()
+   
+   opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+##2. Exploratory Data Analysis
+The dataset contains statistics on 344 penguins from the Palmer Archipelago near Palmer Station, Antarctica.  17 columns comprise statistics on size, clutch and blood isotope ratios, as well as categorical variables such as island, species and region.
+
+The data is well-populated with minimal missing data.  A minor gap is the sex variable (which is still 97% populated).
+
+```{r skim, warning = F, message =F}
+
+   library(skimr)
+
+   skim (penguins_raw)
+```
+
+
+GGally::ggpairs efficiently calculates summary statistics which is helpful to identify fields with high correlations that can potentially be removed from the analysis.  
+```{r pairs, warning = F, message = F}
+
+   library (GGally)
+   
+   ggpairs(
+      data = penguins_raw,
+      columns = c(10:14),
+      diag = list(continuous = wrap("barDiag", color = "blue", size =4)),
+      upper = list(continuous = wrap("cor", size = 4, bins = 60))
+         )
+```
+Body mass_g and flipper length_mm are highly positively correlated so I decided to remove body mass from the clustering algorithm.
+
+
+##3. Data wrangling
+The existing field names are a bit technical and unwieldy.  I renamed "culmen" as "bill" for clarity (assuming "bill" is clearer to most people) and removed units for brevity.
+
+The dataset does not have a unique identifier.  Accordingly I added a row ID because can be helpful when joining data sets.
+
+I converted all units to standardized Z-scores because fields with larger absolute sizes can bias clustering results.
+
+Finally, I removed the categorical variables because today's unsupervised machine learning analysis focuses on non-labelled data.
+```{r transform}
+
+   penguins <- penguins_raw %>%
+      rename (
+         bill_length = culmen_length_mm,
+         bill_depth = culmen_depth_mm,
+         flipper_length = flipper_length_mm
+         ) %>%
+      mutate (
+         id = row_number(),
+         species = word (species, 1),
+         bill_length = scale(bill_length),
+         bill_depth = scale(bill_depth),
+         flipper_length = scale(flipper_length)
+         ) %>%
+      select (id, species, island, sex, bill_length, bill_depth, flipper_length) %>%
+      drop_na (sex)
+```
+
+
+##4.  Identify number of clusters
+Kmeans clustering algorithms require number of clusters ("k") as an input.
+
+Identifying the appropriate k is important because too many or too few clusters impedes viewing overall trends.  Too many clusters can lead to over-fitting (which limits generalizations) while insufficient clusters limits insights into commonality of groups.
+
+There are assorted methodologies to identify the approriate k.  Tests range from blunt visual inspections to robust algorithms.  The optimal number of clusterse is ultimately a subjective decision 
+
+
+####Method 1 - Visual Inspection
+The most blunt method is to visualize cluster data for assorted values of k.
+
+We will be largely using the excellent [factoextra package](https://cran.r-project.org/web/packages/factoextra/factoextra.pdf) by Alboukadel Kassambara and Fabian Mundt.  The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters.  Even more helpful is factoextra's clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions. 
+
+Fviz_cluster is a useful function to visualize clusters for a given k.  The function creates a scatterplot with points in a cluster color-coordinated and encircled with a polygram.  Clustering on greater than two fields is difficult to visualize so fields are helpfully automatically converted to two dimensions via principal component analysis (PCA).
+
+Multiple fviz_cluster visualizations can be easily created in R.  First, the factoextra::fviz_cluster function creates the chart for one K.  Second, the functdional purrr:map creates charts for multiple instaces of K.  Finally, patchwork::patchwork plots the resulting charts into a common visualization.  A traditional starting point for k values is 1 to 9.
+```{r}
+
+   library(factoextra)
+   library(patchwork)
+   library(glue)
+   library(here)
+
+   kmeans_flex <- function (k) {
+      penguins_kmeans <- kmeans(penguins[5:7], k) 
+      fviz_cluster(penguins_kmeans, geom = "point", data = penguins[5:7]) +
+      labs(title = glue("{k} clusters")) +
+      theme (
+         plot.background = element_blank(),
+         panel.background = element_blank(),plot.title = element_text (margin = margin(0,0,5,0), hjust = 0.5, size = 12, color = "grey", family = "Lato"),
+         legend.text = element_text(hjust = 0, size = 8, family = "Lato"),
+         legend.position = "none",
+         legend.title = element_text(size = 8),
+         axis.title = element_text (size = 8),
+         axis.text = element_text (size = 8)
+      )
+      }
+
+   cluster_possibles <- map (1:9, kmeans_flex)
+   
+   cluster_possibles[[1]] + cluster_possibles[[2]] + cluster_possibles[[3]] +
+      cluster_possibles[[4]] + cluster_possibles[[5]] + cluster_possibles[[6]] +
+      cluster_possibles[[7]] + cluster_possibles[[8]] + cluster_possibles[[9]] +
+      plot_annotation (
+         title = "Kmeans Clustering of Penguins across potential number of clusters \U0022k\U0022 ",
+         caption = "Visualization: Joel Soroos @soroosj  |  Data: R palmerpenguins package via R4DS Tidy Tuesday",
+         theme = theme (
+            plot.title = element_text(hjust = 0.5, vjust = 0.5, size = 14, face = "bold", margin = margin (0,0,20,0)),
+            plot.caption = element_text (hjust = 1, size = 7, margin = margin (15,0,0,0)) 
+            )
+         )
+
+      #ggsave(here("2020-07-28", "output", "cluster_possibles.png"))
+```
+Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight.  Two or three clusters look promising as minimal overlap.  Clusters greater than three have significant overlap so seem less optimal.
+
+The visualizations did not provide a clear answer whether a cluster size of 2 or 3 is optimal.  We need to proceed to more sophisticated methodologies.
+
+The factoextra:fviz_nbclust function provides assorted methodologies to determine the optimal K.  I calculated results for all three methodologies using another functional loop.
+
+
+```{r}
+   methodologies <- c("wss", "silhouette", "gap_stat")
+   
+   cluster_optimal <- map (methodologies, ~fviz_nbclust (penguins[5:7], kmeans, method = .x))
+```
+
+
+####Method 2 - Elbow
+Optimal clusters are at the point in which the knee "bends" or in mathemetical terms when the marginal total within sum of squares ("wss") for an additional cluster begins to decrease at a linear rate.  Similar to the visualization method, the results are subjective.
+
+```{r}
+
+   cluster_optimal[[1]]
+```
+There are significant inflections at both 2 at 3 clusters.  We can rule out an optimal number of clusters above 3 because minimal marginal reduction in total within sum of squares.  However, the model is ambiguous on whether 2 or 3 clusters is optimal.
+
+
+####Method 3 - Silhouette
+
+The [silhouette value](https://en.wikipedia.org/wiki/Silhouette_(clustering)) indicates the quality of the clustering.   similarity of a data point to its own cluster compared to other clusters. A silhoutte width nearer to 1 indicates the point is well-matched to its cluster and poorly matched to neighboring clusters.  Silhouette widths approaching -1 are better matched to neighboring clusters. 
+```{r}
+
+   cluster_optimal[[2]]
+```
+The average silhouette length begins to decrease after 2 clusters.  Accordingly the recommendation here is k = 2.
+
+
+####Method 4 - Gap Statistic
+[The gap statistic test](https://statweb.stanford.edu/~gwalther/gap) compares the total within intra-cluster variation for different values of k with expected values under null reference distribution of the data. The optimal cluster estimate that maximizes the gap statistic (i.e, that yields the largest gap statistic). This means that the clustering structure is far away from the random uniform distribution of points.
+```{r}
+
+   cluster_optimal[[3]]
+```
+The gap statistic test calls for a cluster size (k) of 3.
+
+
+####Method 5: Multiple indexes
+The [NbClust package](https://rdrr.io/cran/NbClust/man/NbClust.html) by Malika Charrad, Nadia Ghazzali and Azam Niknafs provides 30 indices for determining the relevant number of clusters by varying combinations of number of clusters and clustering methods.
+
+```{r}
+   library (NbClust)
+
+   cluster_30_indexes <- NbClust(data = penguins[5:7], distance = "euclidean", min.nc = 2, max.nc = 9, method = "complete", index ="all")
+   
+   fviz_nbclust(cluster_30_indexes) +
+      theme_minimal() +
+      labs(title = "Frequency of Optimal Clusters using 30 indexes in NbClust Package")
+```
+The 30 indexes seem to suggest 3 is the optimal number of clusters.
+
+
+##5. Conclusion
+The kmeans study indicates penguin size is optimally grouped into 3 clusters.  The blunt visual test inconclusively suggested 2 or 3 clusters.  The quantitative tests were no more conclusive with three clusters recommmended by the elbow and gap statistic tests while two clusters by the silhoutte algorithm.  The 30 index package tipped the results toward 3.

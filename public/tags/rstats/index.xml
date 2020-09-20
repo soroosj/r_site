@@ -6,10 +6,21 @@
     <description>Recent content in rstats on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kmeans Clustering in R of Palmer Penguins</title>
+      <link>/2020/09/20/penguins-clustering/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/09/20/penguins-clustering/</guid>
+      <description>In today&#39;s blog, I explore k-means clustering capabilities in the R factoextra package.
+K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.
+All data is from the palmerpenguins package authored by Alison Hill and Kristen Gorman.</description>
+    </item>
     
     <item>
       <title>UpSet Charts Comparison</title>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kmeans Clustering in R of Palmer Penguins</title>
+        <link rel="canonical" href="/2020/09/20/penguins-clustering/">
+        <style>
+
+    html body {
+        font-family: 'Mina', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    :root {
+        --accent: #386890;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mina">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/lakeside-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+
+
+<script>
+$(document).ready(function(){
+    
+  var input = $('#night-mode-toggle');
+  var container = $('#bigbody');
+  var stat = $('#button-status');
+  
+  container.toggleClass(localStorage.toggled);
+  stat.bootstrapToggle(localStorage.button).change();
+  
+  input.on('click', function() {
+      if (localStorage.toggled != "-nightmode" ) {
+          container.toggleClass("-nightmode", true );
+          localStorage.toggled = "-nightmode";
+          localStorage.button = "on";
+       } else {
+          container.toggleClass("-nightmode", false );
+          localStorage.toggled = "";
+          localStorage.button = "off"
+       }
+  })
+});
+</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        <link href="" rel="alternate" type="application/rss+xml" title="Joel Soroos" />
+        <link href="" rel="feed" type="application/rss+xml" title="Joel Soroos" />
+        
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    
+    <meta property="og:title" content="Kmeans Clustering in R of Palmer Penguins">
+    <meta property="og:type" content="article">
+      
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:image" content="/ufo.png" >
+      
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:site" content="">
+    
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body id = "bigbody">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Kmeans Clustering in R of Palmer Penguins</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/visualizations/visualizations/index.html">Visualizations</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/links/links/index.html">Links</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:soroosj@yahoo.com"><i class="far fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/soroosj"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/soroosj/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joelsoroos"><i class="fab fa-linkedin"></i></a></li>
+                            
+                            <li id="night-mode-toggle">
+    <input type="checkbox" id = "button-status"
+        data-toggle="toggle"
+        data-width = "10"
+        data-height = "1"
+        data-on="<i class='far fa-moon fa-lg'></i>"
+        data-off= "<i class='far fa-sun fa-lg'></i>"
+        data-style="ios"
+        data-onstyle = "default">
+</li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/09/20/penguins-clustering/">Kmeans Clustering in R of Palmer Penguins</a></h4>
+    <h5>September 20, 2020 - 9 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/kmeans-clustering">
+        <kbd class="item-tag"> kmeans clustering </kbd>
+    </a>
+    
+    <a href="/tags/factoextra">
+        <kbd class="item-tag"> factoextra </kbd>
+    </a>
+    
+    <a href="/tags/machine-learning">
+        <kbd class="item-tag"> machine learning </kbd>
+    </a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+
+<p>In today's blog, I explore k-means clustering capabilities in the R factoextra package.</p>
+<p>K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &quot;unsupervised&quot; due to absence of labelled data in the analysis.</p>
+<p>All data is from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> package authored by Alison Hill and Kristen Gorman. The dataset was identifed via the weekly R4DS Tidy Tuesday community.</p>
+<div id="source-data" class="section level2">
+<h2>1. Source data</h2>
+<p>Data is sourced from the palmerpenguins package via its path_to_file function. I then converted to friendly file names using janitor::clean_names.</p>
+<pre class="r"><code>   library(tidyverse)
+   library(janitor)
+   library(palmerpenguins)
+   library(knitr)
+
+   penguins_raw &lt;- read_csv(path_to_file(&quot;penguins_raw.csv&quot;)) %&gt;%
+      clean_names()
+   
+   opts_chunk$set(warning = FALSE, message = FALSE)</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>2. Exploratory Data Analysis</h2>
+<p>The dataset contains statistics on 344 penguins from the Palmer Archipelago near Palmer Station, Antarctica. 17 columns comprise statistics on size, clutch and blood isotope ratios, as well as categorical variables such as island, species and region.</p>
+<p>The data is well-populated with minimal missing data. A minor gap is the sex variable (which is still 97% populated).</p>
+<pre class="r"><code>   library(skimr)
+
+   skim (penguins_raw)</code></pre>
+<table>
+<caption><span id="tab:skim">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">penguins_raw</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">344</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">17</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">9</td>
+</tr>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">7</td>
+</tr>
+<tr class="odd">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">study_name</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">species</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">33</td>
+<td align="right">41</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">region</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">island</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">5</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">stage</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">18</td>
+<td align="right">18</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">individual_id</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">190</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">clutch_completion</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">sex</td>
+<td align="right">11</td>
+<td align="right">0.97</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">comments</td>
+<td align="right">290</td>
+<td align="right">0.16</td>
+<td align="right">18</td>
+<td align="right">68</td>
+<td align="right">0</td>
+<td align="right">10</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: Date</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="left">min</th>
+<th align="left">max</th>
+<th align="left">median</th>
+<th align="right">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">date_egg</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">2007-11-09</td>
+<td align="left">2009-12-01</td>
+<td align="left">2008-11-09</td>
+<td align="right">50</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">sample_number</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">63.15</td>
+<td align="right">40.43</td>
+<td align="right">1.00</td>
+<td align="right">29.00</td>
+<td align="right">58.00</td>
+<td align="right">95.25</td>
+<td align="right">152.00</td>
+<td align="left">▇▇▆▅▃</td>
+</tr>
+<tr class="even">
+<td align="left">culmen_length_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">43.92</td>
+<td align="right">5.46</td>
+<td align="right">32.10</td>
+<td align="right">39.23</td>
+<td align="right">44.45</td>
+<td align="right">48.50</td>
+<td align="right">59.60</td>
+<td align="left">▃▇▇▆▁</td>
+</tr>
+<tr class="odd">
+<td align="left">culmen_depth_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">17.15</td>
+<td align="right">1.97</td>
+<td align="right">13.10</td>
+<td align="right">15.60</td>
+<td align="right">17.30</td>
+<td align="right">18.70</td>
+<td align="right">21.50</td>
+<td align="left">▅▅▇▇▂</td>
+</tr>
+<tr class="even">
+<td align="left">flipper_length_mm</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">200.92</td>
+<td align="right">14.06</td>
+<td align="right">172.00</td>
+<td align="right">190.00</td>
+<td align="right">197.00</td>
+<td align="right">213.00</td>
+<td align="right">231.00</td>
+<td align="left">▂▇▃▅▂</td>
+</tr>
+<tr class="odd">
+<td align="left">body_mass_g</td>
+<td align="right">2</td>
+<td align="right">0.99</td>
+<td align="right">4201.75</td>
+<td align="right">801.95</td>
+<td align="right">2700.00</td>
+<td align="right">3550.00</td>
+<td align="right">4050.00</td>
+<td align="right">4750.00</td>
+<td align="right">6300.00</td>
+<td align="left">▃▇▆▃▂</td>
+</tr>
+<tr class="even">
+<td align="left">delta_15_n_o_oo</td>
+<td align="right">14</td>
+<td align="right">0.96</td>
+<td align="right">8.73</td>
+<td align="right">0.55</td>
+<td align="right">7.63</td>
+<td align="right">8.30</td>
+<td align="right">8.65</td>
+<td align="right">9.17</td>
+<td align="right">10.03</td>
+<td align="left">▃▇▆▅▂</td>
+</tr>
+<tr class="odd">
+<td align="left">delta_13_c_o_oo</td>
+<td align="right">13</td>
+<td align="right">0.96</td>
+<td align="right">-25.69</td>
+<td align="right">0.79</td>
+<td align="right">-27.02</td>
+<td align="right">-26.32</td>
+<td align="right">-25.83</td>
+<td align="right">-25.06</td>
+<td align="right">-23.79</td>
+<td align="left">▆▇▅▅▂</td>
+</tr>
+</tbody>
+</table>
+<p>GGally::ggpairs efficiently calculates summary statistics which is helpful to identify fields with high correlations that can potentially be removed from the analysis.</p>
+<pre class="r"><code>   library (GGally)
+   
+   ggpairs(
+      data = penguins_raw,
+      columns = c(10:14),
+      diag = list(continuous = wrap(&quot;barDiag&quot;, color = &quot;blue&quot;, size =4)),
+      upper = list(continuous = wrap(&quot;cor&quot;, size = 4, bins = 60))
+         )</code></pre>
+<p><img src="/post/penguins_files/figure-html/pairs-1.png" width="672" /> Body mass_g and flipper length_mm are highly positively correlated so I decided to remove body mass from the clustering algorithm.</p>
+</div>
+<div id="data-wrangling" class="section level2">
+<h2>3. Data wrangling</h2>
+<p>The existing field names are a bit technical and unwieldy. I renamed &quot;culmen&quot; as &quot;bill&quot; for clarity (assuming &quot;bill&quot; is clearer to most people) and removed units for brevity.</p>
+<p>The dataset does not have a unique identifier. Accordingly I added a row ID because can be helpful when joining data sets.</p>
+<p>I converted all units to standardized Z-scores because fields with larger absolute sizes can bias clustering results.</p>
+<p>Finally, I removed the categorical variables because today's unsupervised machine learning analysis focuses on non-labelled data.</p>
+<pre class="r"><code>   penguins &lt;- penguins_raw %&gt;%
+      rename (
+         bill_length = culmen_length_mm,
+         bill_depth = culmen_depth_mm,
+         flipper_length = flipper_length_mm
+         ) %&gt;%
+      mutate (
+         id = row_number(),
+         species = word (species, 1),
+         bill_length = scale(bill_length),
+         bill_depth = scale(bill_depth),
+         flipper_length = scale(flipper_length)
+         ) %&gt;%
+      select (id, species, island, sex, bill_length, bill_depth, flipper_length) %&gt;%
+      drop_na (sex)</code></pre>
+</div>
+<div id="identify-number-of-clusters" class="section level2">
+<h2>4. Identify number of clusters</h2>
+<p>Kmeans clustering algorithms require number of clusters (&quot;k&quot;) as an input.</p>
+<p>Identifying the appropriate k is important because too many or too few clusters impedes viewing overall trends. Too many clusters can lead to over-fitting (which limits generalizations) while insufficient clusters limits insights into commonality of groups.</p>
+<p>There are assorted methodologies to identify the approriate k. Tests range from blunt visual inspections to robust algorithms. The optimal number of clusterse is ultimately a subjective decision</p>
+<div id="method-1---visual-inspection" class="section level4">
+<h4>Method 1 - Visual Inspection</h4>
+<p>The most blunt method is to visualize cluster data for assorted values of k.</p>
+<p>We will be largely using the excellent <a href="https://cran.r-project.org/web/packages/factoextra/factoextra.pdf">factoextra package</a> by Alboukadel Kassambara and Fabian Mundt. The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters. Even more helpful is factoextra's clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions.</p>
+<p>Fviz_cluster is a useful function to visualize clusters for a given k. The function creates a scatterplot with points in a cluster color-coordinated and encircled with a polygram. Clustering on greater than two fields is difficult to visualize so fields are helpfully automatically converted to two dimensions via principal component analysis (PCA).</p>
+<p>Multiple fviz_cluster visualizations can be easily created in R. First, the factoextra::fviz_cluster function creates the chart for one K. Second, the functdional purrr:map creates charts for multiple instaces of K. Finally, patchwork::patchwork plots the resulting charts into a common visualization. A traditional starting point for k values is 1 to 9.</p>
+<pre class="r"><code>   library(factoextra)
+   library(patchwork)
+   library(glue)
+   library(here)
+
+   kmeans_flex &lt;- function (k) {
+      penguins_kmeans &lt;- kmeans(penguins[5:7], k) 
+      fviz_cluster(penguins_kmeans, geom = &quot;point&quot;, data = penguins[5:7]) +
+      labs(title = glue(&quot;{k} clusters&quot;)) +
+      theme (
+         plot.background = element_blank(),
+         panel.background = element_blank(),plot.title = element_text (margin = margin(0,0,5,0), hjust = 0.5, size = 12, color = &quot;grey&quot;, family = &quot;Lato&quot;),
+         legend.text = element_text(hjust = 0, size = 8, family = &quot;Lato&quot;),
+         legend.position = &quot;none&quot;,
+         legend.title = element_text(size = 8),
+         axis.title = element_text (size = 8),
+         axis.text = element_text (size = 8)
+      )
+      }
+
+   cluster_possibles &lt;- map (1:9, kmeans_flex)
+   
+   cluster_possibles[[1]] + cluster_possibles[[2]] + cluster_possibles[[3]] +
+      cluster_possibles[[4]] + cluster_possibles[[5]] + cluster_possibles[[6]] +
+      cluster_possibles[[7]] + cluster_possibles[[8]] + cluster_possibles[[9]] +
+      plot_annotation (
+         title = &quot;Kmeans Clustering of Penguins across potential number of clusters \U0022k\U0022 &quot;,
+         caption = &quot;Visualization: Joel Soroos @soroosj  |  Data: R palmerpenguins package via R4DS Tidy Tuesday&quot;,
+         theme = theme (
+            plot.title = element_text(hjust = 0.5, vjust = 0.5, size = 14, face = &quot;bold&quot;, margin = margin (0,0,20,0)),
+            plot.caption = element_text (hjust = 1, size = 7, margin = margin (15,0,0,0)) 
+            )
+         )</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>      #ggsave(here(&quot;2020-07-28&quot;, &quot;output&quot;, &quot;cluster_possibles.png&quot;))</code></pre>
+<p>Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.</p>
+<p>The visualizations did not provide a clear answer whether a cluster size of 2 or 3 is optimal. We need to proceed to more sophisticated methodologies.</p>
+<p>The factoextra:fviz_nbclust function provides assorted methodologies to determine the optimal K. I calculated results for all three methodologies using another functional loop.</p>
+<pre class="r"><code>   methodologies &lt;- c(&quot;wss&quot;, &quot;silhouette&quot;, &quot;gap_stat&quot;)
+   
+   cluster_optimal &lt;- map (methodologies, ~fviz_nbclust (penguins[5:7], kmeans, method = .x))</code></pre>
+</div>
+<div id="method-2---elbow" class="section level4">
+<h4>Method 2 - Elbow</h4>
+<p>Optimal clusters are at the point in which the knee &quot;bends&quot; or in mathemetical terms when the marginal total within sum of squares (&quot;wss&quot;) for an additional cluster begins to decrease at a linear rate. Similar to the visualization method, the results are subjective.</p>
+<pre class="r"><code>   cluster_optimal[[1]]</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-3-1.png" width="672" /> There are significant inflections at both 2 at 3 clusters. We can rule out an optimal number of clusters above 3 because minimal marginal reduction in total within sum of squares. However, the model is ambiguous on whether 2 or 3 clusters is optimal.</p>
+</div>
+<div id="method-3---silhouette" class="section level4">
+<h4>Method 3 - Silhouette</h4>
+<p>The <a href="https://en.wikipedia.org/wiki/Silhouette_(clustering)">silhouette value</a> indicates the quality of the clustering. similarity of a data point to its own cluster compared to other clusters. A silhoutte width nearer to 1 indicates the point is well-matched to its cluster and poorly matched to neighboring clusters. Silhouette widths approaching -1 are better matched to neighboring clusters.</p>
+<pre class="r"><code>   cluster_optimal[[2]]</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-4-1.png" width="672" /> The average silhouette length begins to decrease after 2 clusters. Accordingly the recommendation here is k = 2.</p>
+</div>
+<div id="method-4---gap-statistic" class="section level4">
+<h4>Method 4 - Gap Statistic</h4>
+<p><a href="https://statweb.stanford.edu/~gwalther/gap">The gap statistic test</a> compares the total within intra-cluster variation for different values of k with expected values under null reference distribution of the data. The optimal cluster estimate that maximizes the gap statistic (i.e, that yields the largest gap statistic). This means that the clustering structure is far away from the random uniform distribution of points.</p>
+<pre class="r"><code>   cluster_optimal[[3]]</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-5-1.png" width="672" /> The gap statistic test calls for a cluster size (k) of 3.</p>
+</div>
+<div id="method-5-multiple-indexes" class="section level4">
+<h4>Method 5: Multiple indexes</h4>
+<p>The <a href="https://rdrr.io/cran/NbClust/man/NbClust.html">NbClust package</a> by Malika Charrad, Nadia Ghazzali and Azam Niknafs provides 30 indices for determining the relevant number of clusters by varying combinations of number of clusters and clustering methods.</p>
+<pre class="r"><code>   library (NbClust)
+
+   cluster_30_indexes &lt;- NbClust(data = penguins[5:7], distance = &quot;euclidean&quot;, min.nc = 2, max.nc = 9, method = &quot;complete&quot;, index =&quot;all&quot;)</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
+##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
+##                 significant increase of the value of the measure i.e the significant peak in Hubert
+##                 index second differences plot. 
+## </code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
+##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
+##                 second differences plot) that corresponds to a significant increase of the value of
+##                 the measure. 
+##  
+## ******************************************************************* 
+## * Among all indices:                                                
+## * 2 proposed 2 as the best number of clusters 
+## * 16 proposed 3 as the best number of clusters 
+## * 1 proposed 4 as the best number of clusters 
+## * 2 proposed 6 as the best number of clusters 
+## * 1 proposed 8 as the best number of clusters 
+## * 1 proposed 9 as the best number of clusters 
+## 
+##                    ***** Conclusion *****                            
+##  
+## * According to the majority rule, the best number of clusters is  3 
+##  
+##  
+## *******************************************************************</code></pre>
+<pre class="r"><code>   fviz_nbclust(cluster_30_indexes) +
+      theme_minimal() +
+      labs(title = &quot;Frequency of Optimal Clusters using 30 indexes in NbClust Package&quot;)</code></pre>
+<pre><code>## Among all indices: 
+## ===================
+## * 2 proposed  0 as the best number of clusters
+## * 1 proposed  1 as the best number of clusters
+## * 2 proposed  2 as the best number of clusters
+## * 16 proposed  3 as the best number of clusters
+## * 1 proposed  4 as the best number of clusters
+## * 2 proposed  6 as the best number of clusters
+## * 1 proposed  8 as the best number of clusters
+## * 1 proposed  9 as the best number of clusters
+## 
+## Conclusion
+## =========================
+## * According to the majority rule, the best number of clusters is  3 .</code></pre>
+<p><img src="/post/penguins_files/figure-html/unnamed-chunk-6-3.png" width="672" /> The 30 indexes seem to suggest 3 is the optimal number of clusters.</p>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>5. Conclusion</h2>
+<p>The kmeans study indicates penguin size is optimally grouped into 3 clusters. The blunt visual test inconclusively suggested 2 or 3 clusters. The quantitative tests were no more conclusive with three clusters recommmended by the elbow and gap statistic tests while two clusters by the silhoutte algorithm. The 30 index package tipped the results toward 3.</p>
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/07/07/cocktails-upset/">UpSet Charts Comparison</a></h4>
+    <h5>July 7, 2020 - 7 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/ggupset">
+        <kbd class="item-tag"> ggupset </kbd>
+    </a>
+    
+    <a href="/tags/upsetr">
+        <kbd class="item-tag"> UpSetR </kbd>
+    </a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/05/02/spotify-song-analytics/">Spotify Song Analytics</a></h4>
+    <h5>May 2, 2020 - 10 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/spotifyr">
+        <kbd class="item-tag"> spotifyr </kbd>
+    </a>
+    
+    <a href="/tags/purrr">
+        <kbd class="item-tag"> purrr </kbd>
+    </a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/02/09/tidy-tuesday-functions/">Tidy Tuesday Functions</a></h4>
+    <h5>February 9, 2020 - 4 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/tidytuesday">
+        <kbd class="item-tag"> tidytuesday </kbd>
+    </a>
+    
+    <a href="/tags/functions">
+        <kbd class="item-tag"> functions </kbd>
+    </a>
+    
+
+</div>
+ 
+
+    
+
+    
+
+    
+
+    
+
+</main>
+
+        <footer id = "bigfooter">
+            <div style = "padding:15px;">
+                <p>Powered by <a href="https://gohugo.io">Hugo</a>. Themed by <a href="https://github.com/nathancday/min_night">min_night</a>.
+                </p>
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+                title="Creative Commons Attribution 4.0 International license">
+                <i class="fab fa-creative-commons" aria-hidden="true"></i> Attribution 4.0 International license
+                </a>
+            </div>
+        </footer>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+          gtag('config', '');
+        </script>
+       
+    </body>
+
+</html>
+

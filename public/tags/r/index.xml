@@ -6,17 +6,17 @@
     <description>Recent content in r on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kmeans Clustering of Palmer Penguins</title>
-      <link>/2020/09/21/penguins-clustering/</link>
-      <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
+      <link>/2020/09/20/penguins-clustering/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/09/21/penguins-clustering/</guid>
+      <guid>/2020/09/20/penguins-clustering/</guid>
       <description>In today&#39;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;quot;k&amp;quot;).
 K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.</description>
     </item>

@@ -93,7 +93,7 @@ twitter_img: img/large_card.png
 
 
 ###  Data Science Blogs
--  [R Bloggers](https://www.r-bloggers.com/) - great source for a massive number of blogs
+-  [R Bloggers](https://www.r-bloggers.com/) - curated centralized source for numerous R blogs
 -  [Keith McNulty](https://drkeithmcnulty.com/)
 -  [Christian Burkhart](https://christianburkhart.de)
 -  [Data Imaginist](https://www.data-imaginist.com/) - Thomas Lin Pederson

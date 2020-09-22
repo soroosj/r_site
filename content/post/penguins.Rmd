@@ -1,7 +1,7 @@
 ---
 title: Kmeans Clustering of Palmer Penguins
 author: Joel Soroos
-date: '2020-09-20'
+date: '2020-09-21'
 slug: penguins-clustering
 categories: []
 tags:

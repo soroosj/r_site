@@ -2,15 +2,14 @@
 title: Kmeans Clustering of Penguins
 author: Joel Soroos
 date: '2020-09-20'
-slug: penguins-clustering
+slug: penguins-cluster
 categories: []
 tags:
   - tidyverse
   - r
   - rstats
-  - kmeans clustering
-  - factoextra
-  - machine learning
+  - clustering
+  - kmeans
 ---
 
 

@@ -12,29 +12,20 @@
     
     
     <item>
-      <title>factoextra</title>
-      <link>/tags/factoextra/</link>
+      <title>clustering</title>
+      <link>/tags/clustering/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/factoextra/</guid>
+      <guid>/tags/clustering/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>kmeans clustering</title>
-      <link>/tags/kmeans-clustering/</link>
+      <title>kmeans</title>
+      <link>/tags/kmeans/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/kmeans-clustering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>/tags/machine-learning/</link>
-      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/machine-learning/</guid>
+      <guid>/tags/kmeans/</guid>
       <description></description>
     </item>
     

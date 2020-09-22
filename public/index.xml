@@ -31,6 +31,28 @@ K-means clustering is an unsupervised machine learning tool to group similar unl
     </item>
     
     <item>
+      <title>Kmeans Clustering of Palmer Penguins</title>
+      <link>/2020/09/20/penguins-clustering/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/09/20/penguins-clustering/</guid>
+      <description>In today&amp;rsquo;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;ldquo;k&amp;rdquo;).
+K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;ldquo;unsupervised&amp;rdquo; due to absence of labelled data in the analysis.
+All data is from the palmerpenguins package authored by Alison Hill and Kristen Gorman.</description>
+    </item>
+    
+    <item>
+      <title>Kmeans Clustering of Palmer Penguins</title>
+      <link>/2020/09/20/penguins-clustering/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/09/20/penguins-clustering/</guid>
+      <description>In today&amp;rsquo;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;ldquo;k&amp;rdquo;).
+K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;ldquo;unsupervised&amp;rdquo; due to absence of labelled data in the analysis.
+All data is from the palmerpenguins package authored by Alison Hill and Kristen Gorman.</description>
+    </item>
+    
+    <item>
       <title>UpSet Charts Comparison</title>
       <link>/2020/07/07/cocktails-upset/</link>
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>

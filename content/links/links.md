@@ -26,7 +26,6 @@ twitter_img: img/large_card.png
 -  [Setting environmental variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 
 
-
 ### Wrangling
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
 -  [Data wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert

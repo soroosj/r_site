@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Joel Soroos</title>
@@ -8,84 +7,43 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Project 1</title>
-      <link>/project/project1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Posts</title>
+      <link>/post/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/project/project1/</guid>
+      <guid>/post/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Kmeans Clustering of Penguins</title>
-      <link>/2020/09/20/penguins-cluster/</link>
-      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/09/20/penguins-cluster/</guid>
-      <description>In today&#39;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;quot;k&amp;quot;).
-K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.</description>
-    </item>
-    
-    <item>
-      <title>UpSet Charts Comparison</title>
-      <link>/2020/07/07/cocktails-upset/</link>
-      <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/07/07/cocktails-upset/</guid>
-      <description>Motivation For the May 26 2020 R4DS Tidy Tuesday data set, I explored UpSet charts, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a useful explanation of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.
-I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.
- Source The cocktail ingredients data is originally from the Mr.</description>
-    </item>
-    
-    <item>
-      <title>Spotify Song Analytics</title>
-      <link>/2020/05/02/spotify-song-analytics/</link>
-      <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/05/02/spotify-song-analytics/</guid>
-      <description>Motivation Spotify is an amazing app to play favorite music, discover new music and rediscover old favorites. In addition, the Spotify API provides free access to a wide array of data on songs, which R users can leverage via Charlie Thompson&#39;s spotifyR package. I wanted to learn more about my musical tastes while learning new R skills.
- 1. Activate Spotify connection First step is to sign up for a free Spotify API developer ID and secret token.</description>
-    </item>
-    
-    <item>
-      <title>Favorite links</title>
-      <link>/links/links/</link>
+      <title>Links</title>
+      <link>/links/</link>
       <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/links/links/</guid>
-      <description>Learning R  &amp;ldquo;R for Data Science&amp;rdquo; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund &amp;ldquo;Learning R Step by Step&amp;rdquo; - hard copy book by Richard Cotton Statistics with R — online Duke courses via Coursera R Programming — online Johns Hopkins class via Coursera Advanced R - advanced R primer by Hadley Wickham  Sourcing  Setting environmental variables  Wrangling  Getting and Cleaning Data in R — online Johns Hopkins class via Coursera Data wrangling in dplyr - tutorials by Susan Baert Tidyverse tricks - Keith McNulty Regular expressions Simplify lists to data frames  Modelling  Distance matrixes Clustering  Visualizing Fundamentals  &amp;ldquo;Fundamentals of Data Visualization&amp;rdquo; — free online book by Claus Wilke.</description>
-    </item>
-    
-    <item>
-      <title>Tidy Tuesday Functions</title>
-      <link>/2020/02/09/tidy-tuesday-functions/</link>
-      <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/02/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  16  0.176    dplyr  9  0.099    base  6  0.066    stringr  5  0.055    ggimage  3  0.033    ggraph  3  0.</description>
-    </item>
-    
-    <item>
-      <title>Favorite R Packages</title>
-      <link>/2019/11/15/favorite-r-packages/</link>
-      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/11/15/favorite-r-packages/</guid>
-      <description>Sourcing  readr - fast and friendly way to read rectangular data (i.e. csv, tsv) RODBC - SQL querying against relational databases readxl - importing Excel files including individual worksheets rvest - tools for working with http connections rio - simplify importing and exporting data across source formats datapasta - copy/paste data using clipboard rtweet - Twitter API via R spotifyr - access Spotfiy API via R   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - transform data layout tidytext - simplify text mining   Modeling  broom - converts statistical model output to tidy data factoextra - kmeans clustering algoriths, visualizations NbClust - index of 30 kmeans clustering optimal K methodologies ggdenro - parses dendogram data into data frames stats - assorted machine learning, statistics and probability algorithms   Visualizing  ggplot2 - R&#39;s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggimage - adding custom images to charts ggridges - density plots patchwork - combine charts scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
+      <guid>/links/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Visualizations</title>
-      <link>/visualizations/visualizations/</link>
+      <link>/visualizations/</link>
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/visualizations/visualizations/</guid>
-      <description>A collection of data visualizations I have built for fun using the R programming language. All visualizations are produced via code without post-processing. 
-The examples source data from the weekly R4DS #TidyTuesday project, which is a community for R and tidyverse enthusisasts to practice and share ideas in wrangling, exploring and visualizing data.</description>
+      <guid>/visualizations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/</guid>
+      <description></description>
     </item>
     
   </channel>

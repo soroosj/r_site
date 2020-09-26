@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Joel Soroos</title>
@@ -8,7 +7,7 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +16,480 @@
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/09/20/penguins-cluster/</guid>
-      <description>In today&#39;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;quot;k&amp;quot;).
-K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.</description>
+      <description>
+
+
+&lt;p&gt;In today&#39;s blog, I explore k-means clustering capabilities in R including algorithms, visualizations and methodologies to identify the optimal number of clusters (&amp;quot;k&amp;quot;).&lt;/p&gt;
+&lt;p&gt;K-means clustering is an unsupervised machine learning tool to group similar unlabeled data or to identify patterns outside of existing categorizations in labelled data. K-means is the most widely used unsupervised machine learning tool and considered &amp;quot;unsupervised&amp;quot; due to absence of labelled data in the analysis.&lt;/p&gt;
+&lt;p&gt;All data is from the &lt;a href=&#34;https://allisonhorst.github.io/palmerpenguins/&#34;&gt;palmerpenguins&lt;/a&gt; package authored by Alison Hill and Kristen Gorman. The dataset was identifed via the weekly R4DS Tidy Tuesday community.&lt;/p&gt;
+&lt;div id=&#34;source-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Source data&lt;/h2&gt;
+&lt;p&gt;Data is sourced from the palmerpenguins package via its path_to_file function. I then converted to friendly file names using janitor::clean_names.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(tidyverse)
+   library(janitor)
+   library(palmerpenguins)
+   library(knitr)
+
+   penguins_raw &amp;lt;- read_csv(path_to_file(&amp;quot;penguins_raw.csv&amp;quot;)) %&amp;gt;%
+      clean_names()
+   
+   opts_chunk$set(warning = FALSE, message = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Exploratory Data Analysis&lt;/h2&gt;
+&lt;p&gt;The dataset contains statistics on 344 penguins from the Palmer Archipelago near Palmer Station, Antarctica. 17 columns comprise statistics on size, clutch and blood isotope ratios, as well as categorical variables such as island, species and region.&lt;/p&gt;
+&lt;p&gt;The data is well-populated with minimal missing data. A minor gap is the sex variable (which is still 97% populated).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(skimr)
+
+   skim (penguins_raw)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:skim&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;penguins_raw&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;344&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;17&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Date&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;study_name&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;species&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;33&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;region&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;island&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;stage&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;individual_id&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;190&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;clutch_completion&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;sex&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;11&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.97&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;comments&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;290&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.16&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;68&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: Date&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;median&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;date_egg&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2007-11-09&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2009-12-01&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2008-11-09&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;sample_number&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;63.15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40.43&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;29.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;58.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;95.25&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;152.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▇▆▅▃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;culmen_length_mm&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;43.92&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.46&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;32.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;39.23&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;44.45&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;48.50&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;59.60&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▃▇▇▆▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;culmen_depth_mm&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;17.15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.97&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;13.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15.60&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;17.30&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18.70&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21.50&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▅▅▇▇▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;flipper_length_mm&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;200.92&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;14.06&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;172.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;190.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;197.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;213.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;231.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▂▇▃▅▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;body_mass_g&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4201.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;801.95&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2700.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3550.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4050.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4750.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6300.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▃▇▆▃▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;delta_15_n_o_oo&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.96&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.73&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.55&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.30&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.65&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9.17&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.03&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▃▇▆▅▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;delta_13_c_o_oo&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;13&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.96&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-25.69&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.79&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-27.02&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-26.32&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-25.83&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-25.06&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-23.79&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▆▇▅▅▂&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;GGally::ggpairs efficiently calculates summary statistics which is helpful to identify fields with high correlations that can potentially be removed from the analysis.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (GGally)
+   
+   ggpairs(
+      data = penguins_raw,
+      columns = c(10:14),
+      diag = list(continuous = wrap(&amp;quot;barDiag&amp;quot;, color = &amp;quot;blue&amp;quot;, size =4)),
+      upper = list(continuous = wrap(&amp;quot;cor&amp;quot;, size = 4, bins = 60))
+         )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/pairs-1.png&#34; width=&#34;672&#34; /&gt; Body mass_g and flipper length_mm are highly positively correlated so I decided to remove body mass from the clustering algorithm.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-wrangling&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Data wrangling&lt;/h2&gt;
+&lt;p&gt;The existing field names are a bit technical and unwieldy. I renamed &amp;quot;culmen&amp;quot; as &amp;quot;bill&amp;quot; for clarity (assuming &amp;quot;bill&amp;quot; is clearer to most people) and removed units for brevity.&lt;/p&gt;
+&lt;p&gt;The dataset does not have a unique identifier. Accordingly I added a row ID because can be helpful when joining data sets.&lt;/p&gt;
+&lt;p&gt;I converted all units to standardized Z-scores because fields with larger absolute sizes can bias clustering results.&lt;/p&gt;
+&lt;p&gt;Finally, I removed the categorical variables because today&#39;s unsupervised machine learning analysis focuses on non-labelled data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   penguins &amp;lt;- penguins_raw %&amp;gt;%
+      rename (
+         bill_length = culmen_length_mm,
+         bill_depth = culmen_depth_mm,
+         flipper_length = flipper_length_mm
+         ) %&amp;gt;%
+      mutate (
+         id = row_number(),
+         species = word (species, 1),
+         bill_length = scale(bill_length),
+         bill_depth = scale(bill_depth),
+         flipper_length = scale(flipper_length)
+         ) %&amp;gt;%
+      select (id, species, island, sex, bill_length, bill_depth, flipper_length) %&amp;gt;%
+      drop_na (sex)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;identify-number-of-clusters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Identify number of clusters&lt;/h2&gt;
+&lt;p&gt;Kmeans clustering algorithms require number of clusters (&amp;quot;k&amp;quot;) as an input.&lt;/p&gt;
+&lt;p&gt;Identifying the appropriate k is important because too many or too few clusters impedes viewing overall trends. Too many clusters can lead to over-fitting (which limits generalizations) while insufficient clusters limits insights into commonality of groups.&lt;/p&gt;
+&lt;p&gt;There are assorted methodologies to identify the approriate k. Tests range from blunt visual inspections to robust algorithms. The optimal number of clusterse is ultimately a subjective decision&lt;/p&gt;
+&lt;div id=&#34;method-1---visual-inspection&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Method 1 - Visual Inspection&lt;/h4&gt;
+&lt;p&gt;The most blunt method is to visualize cluster data for assorted values of k.&lt;/p&gt;
+&lt;p&gt;I will be largely using the &lt;a href=&#34;https://cran.r-project.org/web/packages/factoextra/factoextra.pdf&#34;&gt;factoextra package&lt;/a&gt; by Alboukadel Kassambara and Fabian Mundt. The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters. Particulary helpful is factoextra&#39;s clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions.&lt;/p&gt;
+&lt;p&gt;Fviz_cluster is a useful function to visualize clusters for a given k. The function creates a scatterplot with points in a cluster color-coordinated and encircled with a polygram. Clustering on greater than two fields is difficult to visualize so fields are helpfully automatically converted to two dimensions via principal component analysis (PCA).&lt;/p&gt;
+&lt;p&gt;Multiple fviz_cluster visualizations can be easily created in R. First, the factoextra::fviz_cluster function creates the chart for one K. Second, the functdional purrr:map creates charts for multiple instaces of K. Finally, patchwork::patchwork plots the resulting charts into a common visualization. A traditional starting point for k values is 1 to 9.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(factoextra)
+   library(patchwork)
+   library(glue)
+   library(here)
+
+   kmeans_flex &amp;lt;- function (k) {
+      penguins_kmeans &amp;lt;- kmeans(penguins[5:7], k) 
+      fviz_cluster(penguins_kmeans, geom = &amp;quot;point&amp;quot;, data = penguins[5:7]) +
+      labs(title = glue(&amp;quot;{k} clusters&amp;quot;)) +
+      theme (
+         plot.background = element_blank(),
+         panel.background = element_blank(),plot.title = element_text (margin = margin(0,0,5,0), hjust = 0.5, size = 12, color = &amp;quot;grey&amp;quot;, family = &amp;quot;Lato&amp;quot;),
+         legend.text = element_text(hjust = 0, size = 8, family = &amp;quot;Lato&amp;quot;),
+         legend.position = &amp;quot;none&amp;quot;,
+         legend.title = element_text(size = 8),
+         axis.title = element_text (size = 8),
+         axis.text = element_text (size = 8)
+      )
+      }
+
+   cluster_possibles &amp;lt;- map (1:9, kmeans_flex)
+   
+   cluster_possibles[[1]] + cluster_possibles[[2]] + cluster_possibles[[3]] +
+      cluster_possibles[[4]] + cluster_possibles[[5]] + cluster_possibles[[6]] +
+      cluster_possibles[[7]] + cluster_possibles[[8]] + cluster_possibles[[9]] +
+      plot_annotation (
+         title = &amp;quot;Kmeans Clustering of Penguins across potential number of clusters \U0022k\U0022 &amp;quot;,
+         caption = &amp;quot;Visualization: Joel Soroos @soroosj  |  Data: R palmerpenguins package via R4DS Tidy Tuesday&amp;quot;,
+         theme = theme (
+            plot.title = element_text(hjust = 0.5, vjust = 0.5, size = 14, face = &amp;quot;bold&amp;quot;, margin = margin (0,0,20,0)),
+            plot.caption = element_text (hjust = 1, size = 7, margin = margin (15,0,0,0)) 
+            )
+         )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt; Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.&lt;/p&gt;
+&lt;p&gt;The visualizations did not provide a clear answer whether a cluster size of 2 or 3 is optimal. We need to proceed to more sophisticated methodologies.&lt;/p&gt;
+&lt;p&gt;The factoextra:fviz_nbclust function provides assorted methodologies to determine the optimal K. I calculated results for all three methodologies using another functional loop.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   methodologies &amp;lt;- c(&amp;quot;wss&amp;quot;, &amp;quot;silhouette&amp;quot;, &amp;quot;gap_stat&amp;quot;)
+   
+   cluster_optimal &amp;lt;- map (methodologies, ~fviz_nbclust (penguins[5:7], kmeans, method = .x))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;method-2---elbow&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Method 2 - Elbow&lt;/h4&gt;
+&lt;p&gt;Optimal clusters are at the point in which the knee &amp;quot;bends&amp;quot; or in mathemetical terms when the marginal total within sum of squares (&amp;quot;wss&amp;quot;) for an additional cluster begins to decrease at a linear rate. Similar to the visualization method, the results are subjective.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt; There are significant inflections at both 2 at 3 clusters. We can rule out an optimal number of clusters above 3 because minimal marginal reduction in total within sum of squares. However, the model is ambiguous on whether 2 or 3 clusters is optimal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;method-3---silhouette&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Method 3 - Silhouette&lt;/h4&gt;
+&lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Silhouette_(clustering)&#34;&gt;silhouette value&lt;/a&gt; indicates the quality of the clustering. similarity of a data point to its own cluster compared to other clusters. A silhoutte width nearer to 1 indicates the point is well-matched to its cluster and poorly matched to neighboring clusters. Silhouette widths approaching -1 are better matched to neighboring clusters.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt; The average silhouette length begins to decrease after 2 clusters. Accordingly the recommendation here is k = 2.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;method-4---gap-statistic&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Method 4 - Gap Statistic&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://statweb.stanford.edu/~gwalther/gap&#34;&gt;The gap statistic test&lt;/a&gt; is a newer optimal K test by Robert Tisharni, Guenther Walther and Trevor Hastie. The methodology compares the total within intra-cluster variation (&amp;quot;WSS&amp;quot;) for different values of k relative to a random uniform distribution of the data (that has no obvious clustering). The optimal cluster value of k has the largest gap statistic because signifies the cluster infrastructure furthest from the random uniform point distribution.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[3]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt; The gap statistic test calls for a cluster size (k) of 3.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;method-5-multiple-indexes&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Method 5: Multiple indexes&lt;/h4&gt;
+&lt;p&gt;The &lt;a href=&#34;https://rdrr.io/cran/NbClust/man/NbClust.html&#34;&gt;NbClust package&lt;/a&gt; by Malika Charrad, Nadia Ghazzali and Azam Niknafs calculates the optimal K using 30 methodologies and aggregates into an index. The package equal-weightes each methodology and presents results in a histogram. The suggested optimal k is the k with the most optimizations across the 30 index methodologies.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (NbClust)
+
+   cluster_30_indexes &amp;lt;- NbClust(data = penguins[5:7], distance = &amp;quot;euclidean&amp;quot;, min.nc = 2, max.nc = 9, method = &amp;quot;complete&amp;quot;, index =&amp;quot;all&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## *** : The Hubert index is a graphical method of determining the number of clusters.
+##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
+##                 significant increase of the value of the measure i.e the significant peak in Hubert
+##                 index second differences plot. 
+## &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## *** : The D index is a graphical method of determining the number of clusters. 
+##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
+##                 second differences plot) that corresponds to a significant increase of the value of
+##                 the measure. 
+##  
+## ******************************************************************* 
+## * Among all indices:                                                
+## * 2 proposed 2 as the best number of clusters 
+## * 16 proposed 3 as the best number of clusters 
+## * 1 proposed 4 as the best number of clusters 
+## * 2 proposed 6 as the best number of clusters 
+## * 1 proposed 8 as the best number of clusters 
+## * 1 proposed 9 as the best number of clusters 
+## 
+##                    ***** Conclusion *****                            
+##  
+## * According to the majority rule, the best number of clusters is  3 
+##  
+##  
+## *******************************************************************&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   fviz_nbclust(cluster_30_indexes) +
+      theme_minimal() +
+      labs(title = &amp;quot;Frequency of Optimal Clusters using 30 indexes in NbClust Package&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Among all indices: 
+## ===================
+## * 2 proposed  0 as the best number of clusters
+## * 1 proposed  1 as the best number of clusters
+## * 2 proposed  2 as the best number of clusters
+## * 16 proposed  3 as the best number of clusters
+## * 1 proposed  4 as the best number of clusters
+## * 2 proposed  6 as the best number of clusters
+## * 1 proposed  8 as the best number of clusters
+## * 1 proposed  9 as the best number of clusters
+## 
+## Conclusion
+## =========================
+## * According to the majority rule, the best number of clusters is  3 .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt; The 30 indexes seem to suggest 3 is the optimal number of clusters.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5. Conclusion&lt;/h2&gt;
+&lt;p&gt;The kmeans study indicates penguin size is optimally grouped into 3 clusters. The blunt visual test inconclusively suggested 2 or 3 clusters. The quantitative tests were no more conclusive with three clusters recommmended by the elbow and gap statistic tests while two clusters by the silhoutte algorithm. The 30 index package tipped the results toward 3.&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -27,9 +498,372 @@ K-means clustering is an unsupervised machine learning tool to group similar unl
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/07/07/cocktails-upset/</guid>
-      <description>Motivation For the May 26 2020 R4DS Tidy Tuesday data set, I explored UpSet charts, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a useful explanation of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.
-I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.
- Source The cocktail ingredients data is originally from the Mr.</description>
+      <description>
+
+
+&lt;div id=&#34;motivation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;For the May 26 2020 R4DS Tidy Tuesday data set, I explored &lt;a href=&#34;https://caleydo.org/tools/UpSet/&#34;&gt;UpSet charts&lt;/a&gt;, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a &lt;a href=&#34;https://www.littlemissdata.com/blog/set-analysis&#34;&gt;useful explanation&lt;/a&gt; of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.&lt;/p&gt;
+&lt;p&gt;I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;source&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Source&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md&#34;&gt;cocktail ingredients data&lt;/a&gt; is originally from the &lt;a href=&#34;http://swizzle.ru/uploads/article_file/17/mr_boston.pdf&#34;&gt;Mr. Boston Bartender&#39;s Guide&lt;/a&gt; via Kaggle.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(janitor)
+
+cocktails_raw &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-26/boston_cocktails.csv&amp;quot;)
+
+cocktails_raw&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3,643 x 6
+##    name        category         row_id ingredient_number ingredient      measure
+##    &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;             &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;  
+##  1 Gauguin     Cocktail Classi…      1                 1 Light Rum       2 oz   
+##  2 Gauguin     Cocktail Classi…      1                 2 Passion Fruit … 1 oz   
+##  3 Gauguin     Cocktail Classi…      1                 3 Lemon Juice     1 oz   
+##  4 Gauguin     Cocktail Classi…      1                 4 Lime Juice      1 oz   
+##  5 Fort Laude… Cocktail Classi…      2                 1 Light Rum       1 1/2 …
+##  6 Fort Laude… Cocktail Classi…      2                 2 Sweet Vermouth  1/2 oz 
+##  7 Fort Laude… Cocktail Classi…      2                 3 Juice of Orange 1/4 oz 
+##  8 Fort Laude… Cocktail Classi…      2                 4 Juice of a Lime 1/4 oz 
+##  9 Apple Pie   Cordials and Li…      3                 1 Apple schnapps  3 oz   
+## 10 Apple Pie   Cordials and Li…      3                 2 Cinnamon schna… 1 oz   
+## # … with 3,633 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;explore&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Explore&lt;/h2&gt;
+&lt;p&gt;The dataset containes 3,643 rows comprising 989 unique cocktail drinks (&amp;quot;names&amp;quot;) with 569 unique ingredients. Each cocktail-ingredient combination is a separate record.&lt;/p&gt;
+&lt;p&gt;Ingredients and corresponding serving size for cocktails are listed in the Ingredient and Measure fields. The cocktails are grouped into 11 cocktail categories such as brandy, gin and rum.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(skimr)
+
+skim(cocktails_raw)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-1&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;cocktails_raw&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;name&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;36&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;989&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;category&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;11&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ingredient&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;95&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;569&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;measure&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;42&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;row_id&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;505.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;284.40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;264.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;502&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;753.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;990&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▇▇▇▇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ingredient_number&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.55&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.32&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▃▂▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transform&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Transform&lt;/h2&gt;
+&lt;p&gt;Similar ingredients with different spellings can be consolidated.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabyl(cocktails_raw, ingredient) %&amp;gt;%
+  arrange(-percent) %&amp;gt;%
+  head(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         ingredient   n    percent
+##                Gin 176 0.04831183
+##  Fresh lemon juice 138 0.03788087
+##       Simple Syrup 115 0.03156739
+##              Vodka 114 0.03129289
+##          Light Rum 113 0.03101839
+##       Dry Vermouth 107 0.02937140
+##   Fresh Lime Juice 107 0.02937140
+##         Triple Sec 107 0.02937140
+##     Powdered Sugar  90 0.02470491
+##          Grenadine  85 0.02333242
+##     Sweet Vermouth  83 0.02278342
+##             Brandy  80 0.02195992
+##        Lemon Juice  70 0.01921493
+##     Blanco tequila  69 0.01894043
+##          Egg White  67 0.01839144
+##  Angostura Bitters  63 0.01729344
+##   Juice of a Lemon  60 0.01646994
+##    Pineapple Juice  47 0.01290145
+##    Bourbon whiskey  38 0.01043096
+##     Orange Bitters  38 0.01043096&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cocktails &amp;lt;- cocktails_raw %&amp;gt;%
+  mutate(
+    ingredient = case_when(
+      ingredient == &amp;quot;Fresh lemon juice&amp;quot; ~ &amp;quot;Lemon Juice&amp;quot;,
+      ingredient == &amp;quot;Juice of a Lemon&amp;quot; ~ &amp;quot;Lemon Juice&amp;quot;,
+      ingredient == &amp;quot;Fresh Lime Juice&amp;quot; ~ &amp;quot;Lime Juice&amp;quot;,
+      ingredient == &amp;quot;Juice of a Lime&amp;quot; ~ &amp;quot;Lime Juice&amp;quot;,
+      ingredient == &amp;quot;Powdered Sugar&amp;quot; ~ &amp;quot;Simple Syrup&amp;quot;,
+      ingredient == &amp;quot;Egg White&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      ingredient == &amp;quot;Whole Egg&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      ingredient == &amp;quot;Egg Yolk&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      TRUE ~ ingredient
+    )
+  )
+
+tabyl(cocktails, ingredient) %&amp;gt;%
+  arrange(-percent) %&amp;gt;%
+  head(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              ingredient   n     percent
+##             Lemon Juice 268 0.073565743
+##            Simple Syrup 205 0.056272303
+##                     Gin 176 0.048311831
+##              Lime Juice 153 0.041998353
+##                     Egg 117 0.032116388
+##                   Vodka 114 0.031292890
+##               Light Rum 113 0.031018391
+##            Dry Vermouth 107 0.029371397
+##              Triple Sec 107 0.029371397
+##               Grenadine  85 0.023332418
+##          Sweet Vermouth  83 0.022783420
+##                  Brandy  80 0.021959923
+##          Blanco tequila  69 0.018940434
+##       Angostura Bitters  63 0.017293439
+##         Pineapple Juice  47 0.012901455
+##         Bourbon whiskey  38 0.010430963
+##          Orange Bitters  38 0.010430963
+##                 Bitters  31 0.008509470
+##            Orange juice  31 0.008509470
+##  Old Mr. Boston Dry Gin  30 0.008234971&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Visualizing&lt;/h2&gt;
+&lt;p&gt;An UpSet chart can be unwieldy with too many rows. I decided to limit to eight sets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ingredients_top &amp;lt;- cocktails %&amp;gt;%
+  count(ingredient, sort = T) %&amp;gt;%
+  pull(ingredient) %&amp;gt;%
+  head(8)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;option-1---upsetr-package&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 1 - UpSetR package&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://www.rdocumentation.org/packages/UpSetR/versions/1.4.0&#34;&gt;UpSetR package&lt;/a&gt; by Jack Conway seems to be most widely-referenced so started there. Installing via CRAN was a breeze.&lt;/p&gt;
+&lt;p&gt;First required step was transforming the raw data to a matrix format. Instructions were thorough but I struggled to convert, a large part because I am more familiar with the R tidyverse format. Ultimately I achieved through hacking other solutions. Ideas from Timothy Kyle Thomas (see &lt;a href=&#34;https://timothykylethomas.me/post/r_notebook/tidytuesday22/tidytuesday22/&#34;&gt;here&lt;/a&gt;) and Kieran Healy (see &lt;a href=&#34;https://www.r-bloggers.com/upset-plots/&#34;&gt;here&lt;/a&gt;) were particulary helpful.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(UpSetR)
+
+cocktails_matrix &amp;lt;- cocktails %&amp;gt;%
+  select(name, ingredient) %&amp;gt;%
+  filter(ingredient %in% ingredients_top) %&amp;gt;%
+  mutate(ingredient_population = TRUE) %&amp;gt;%
+  pivot_wider(
+    id_cols = name,
+    names_from = ingredient,
+    values_from = ingredient_population,
+    values_fill = FALSE,
+    values_fn = length
+  ) %&amp;gt;%
+  as.data.frame()
+
+cocktails_matrix %&amp;gt;% head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                   name Light Rum Lemon Juice Lime Juice Simple Syrup Gin
+## 1              Gauguin         1           1          1            0   0
+## 2      Fort Lauderdale         1           0          1            0   0
+## 3 Cuban Cocktail No. 1         1           0          1            1   0
+## 4         John Collins         0           1          0            1   0
+## 5           Cherry Rum         1           0          0            0   0
+##   Dry Vermouth Egg Vodka
+## 1            0   0     0
+## 2            0   0     0
+## 3            0   0     0
+## 4            0   0     0
+## 5            0   0     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once I had the data in the proper format, creating the charts was pleasingly straightforward in one function call.&lt;/p&gt;
+&lt;p&gt;The chart format was clean and easy to interpret. I could quickly see which ingredients (or combination of ingredients) were in the most drinks. For single ingredients, lemon juice led the way, followed by lime juice, vodka and gin. The most popular combinations of ingredients are gin with dry vermouth, lemon juice with simple syrup, then gin with lemon juice.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library (grid)
+
+png(file=&amp;quot;cocktails UpSetR.png&amp;quot;) # or other device
+
+upset(
+  data = cocktails_matrix,
+  order.by = c(&amp;quot;freq&amp;quot;),
+  nsets = 8, nintersects = 30
+)
+grid.text(&amp;quot;Most Popular Cocktail Ingredients (using UpSetR package)&amp;quot;,x = 0.65, y=0.95, gp=gpar(fontsize=10))
+
+dev.off()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## quartz_off_screen 
+##                 2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;option-2---ggupset-package&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 2 - ggupset package&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://cran.r-project.org/web/packages/ggupset/readme/README.html&#34;&gt;ggupset&lt;/a&gt; package by Constantin Ahlmann-Eltze is tidyverse-friendly so I immediately felt at home. Just a bit of transformation was needed into the tidy format - converting separate rows per ingredient into unique rows per cocktail.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggupset)
+
+cocktails_list &amp;lt;- cocktails %&amp;gt;%
+  group_by(name) %&amp;gt;%
+  filter(ingredient %in% ingredients_top) %&amp;gt;%
+  summarize(ingredient = list(ingredient))
+
+cocktails_list&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 733 x 2
+##    name                       ingredient
+##    &amp;lt;chr&amp;gt;                      &amp;lt;list&amp;gt;    
+##  1 19th Century               &amp;lt;chr [1]&amp;gt; 
+##  2 Absinthe Special Cocktail  &amp;lt;chr [1]&amp;gt; 
+##  3 Acapulco                   &amp;lt;chr [3]&amp;gt; 
+##  4 Adam and Eve               &amp;lt;chr [2]&amp;gt; 
+##  5 Adderly Cocktail           &amp;lt;chr [1]&amp;gt; 
+##  6 Admiral Perry              &amp;lt;chr [1]&amp;gt; 
+##  7 Affinity Cocktail          &amp;lt;chr [1]&amp;gt; 
+##  8 Affinity Cocktail (whisky) &amp;lt;chr [1]&amp;gt; 
+##  9 After Dinner Cocktail      &amp;lt;chr [1]&amp;gt; 
+## 10 After Supper Cocktail      &amp;lt;chr [1]&amp;gt; 
+## # … with 723 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The upset chart was created by simply adding one row with ggupset&#39;s scale_x_upset function.&lt;/p&gt;
+&lt;p&gt;The tidyverse-friendly package enables leveraging familiar ggplot2 constructs such as themes, labels and headers/captions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(cocktails_list, aes(x = ingredient)) +
+  geom_bar() +
+  scale_x_upset(n_intersections = 30) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 0, size = 14, face = &amp;quot;bold&amp;quot;, margin = margin(0, 0, 15, 0)),
+    plot.title.position = &amp;quot;plot&amp;quot;,
+    plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 6, margin = margin(0, 0, 2, 0)),
+    plot.caption = element_text(hjust = 1, size = 8, face = &amp;quot;plain&amp;quot;, margin = margin(15, 0, 0, 0)),
+    plot.caption.position = &amp;quot;plot&amp;quot;,
+    axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 7),
+    axis.ticks.x = element_blank(),
+    legend.position = &amp;quot;none&amp;quot;
+  ) +
+  labs(
+    title = &amp;quot;Most popular cocktail ingredients&amp;quot;,
+    x = &amp;quot;Ingredient intersection&amp;quot;,
+    y = &amp;quot;# of drinks&amp;quot;,
+    caption = &amp;quot;Each column represents unique combinations of ingredients.  Universe is drinks in the Boston Bartender&amp;#39;s Guide.\nVisualization: Joel Soroos @soroosj  |  Data: Mr. Boston Bartender&amp;#39;s Guide via Kaggle via R4DS Tidy Tuesday&amp;quot;
+  ) +
+ ggsave(&amp;quot;cocktails ggupset.png&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Saving 7 x 5 in image&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/cocktails_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Due to my tidyverse background I ultimately preferred the ggupset format.&lt;/p&gt;
+&lt;p&gt;The ingredient counts at left were an advantage of the UpSetR package but not worth the incremental time contorting into the matrix format. Additionally, I much appreciated the ability to quickly add familiar ggplot2 themes, headers and captions.&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -38,8 +872,264 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <pubDate>Sat, 02 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/05/02/spotify-song-analytics/</guid>
-      <description>Motivation Spotify is an amazing app to play favorite music, discover new music and rediscover old favorites. In addition, the Spotify API provides free access to a wide array of data on songs, which R users can leverage via Charlie Thompson&#39;s spotifyR package. I wanted to learn more about my musical tastes while learning new R skills.
- 1. Activate Spotify connection First step is to sign up for a free Spotify API developer ID and secret token.</description>
+      <description>
+
+
+&lt;div id=&#34;motivation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;Spotify is an amazing app to play favorite music, discover new music and rediscover old favorites. In addition, the Spotify API provides free access to a wide array of data on songs, which R users can leverage via Charlie Thompson&#39;s &lt;a href=&#34;https://www.rdocumentation.org/packages/spotifyr/versions/2.1.1&#34;&gt;spotifyR package&lt;/a&gt;. I wanted to learn more about my musical tastes while learning new R skills.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;activate-spotify-connection&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. Activate Spotify connection&lt;/h3&gt;
+&lt;p&gt;First step is to sign up for a &lt;a href=&#34;https://developer.spotify.com/&#34;&gt;free Spotify API developer ID and secret token&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Next we install the spotifyR library.&lt;/p&gt;
+&lt;p&gt;Finally, you can either embed the Spotify login information directly in the script or assign to an enivronment variable. The advantage of an environment variable is your private login information will be stored on your computer. That way your R code can be shared without exposure to your login information being stolen. The &lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;usethis package&lt;/a&gt; simplifies creating and updating environment variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (spotifyr)
+
+   access_token &amp;lt;- get_spotify_access_token(
+      client_id=Sys.getenv(&amp;quot;SPOTIFY_CLIENT_ID&amp;quot;),
+      client_secret=Sys.getenv(&amp;quot;SPOTIFY_CLIENT_SECRET&amp;quot;)
+      )&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a.-source-favorite-song-statistics&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2a. Source favorite song statistics&lt;/h3&gt;
+&lt;p&gt;I decided to focus my analysis on liked tracks (called &amp;quot;favorites&amp;quot; in the Spotify API). The get_my_saved_tracks function extracts all liked songs along with basic information such as artist(s), album name and album release year.&lt;/p&gt;
+&lt;p&gt;Spotify limits the number of tracks per call to 50, much less than my 159 favorites. A &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;clever workaround by Han Chen&lt;/a&gt; is to extract multiple tranches of 50 songs the purrr map function.&lt;/p&gt;
+&lt;p&gt;The output is a bit unwieldy because contains three layers of nested lists. The highest level is the list is the overall structure. The next layer is the 4 data frames of 50 records produced by each iteration of the map function. The most granular layer contains a mixture of data formats from logical to character to integer to lists. Track.album.artists field is in an example of the &amp;quot;list&amp;quot; variable type becuase multiple artists are assigned for some songs.&lt;/p&gt;
+&lt;p&gt;Simplifying to a manageable one level list format enables greater flexibility. I consolidated the four 50 record lists into one via the reduce function. I converted the multiple artists per track to separate rows which increased the number of records from 159 unique tracks to 170 unique artist/track combinations.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (tidyverse)
+
+   favorite_tracks_stats &amp;lt;-
+        ceiling(get_my_saved_tracks(include_meta_info = TRUE)[[&amp;#39;total&amp;#39;]] / 50) %&amp;gt;%
+        seq() %&amp;gt;%
+        map(function(x) {           
+          get_my_saved_tracks(
+             limit = 50,
+             offset = (x - 1) * 50)
+            }) %&amp;gt;%
+        reduce (rbind) %&amp;gt;%   #combines assorted lists generated by map function into one
+        unnest (track.artists)      #simplifies list to multiple rows for tracks with two artists
+   
+   glimpse (favorite_tracks_stats)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 186
+## Columns: 35
+## $ added_at                           &amp;lt;chr&amp;gt; &amp;quot;2020-07-07T01:40:59Z&amp;quot;, &amp;quot;2020-07-0…
+## $ href                               &amp;lt;chr&amp;gt; &amp;quot;https://api.spotify.com/v1/artist…
+## $ id                                 &amp;lt;chr&amp;gt; &amp;quot;2sil8z5kiy4r76CRTXxBCA&amp;quot;, &amp;quot;6eoJpTI…
+## $ name                               &amp;lt;chr&amp;gt; &amp;quot;The Goo Goo Dolls&amp;quot;, &amp;quot;Live&amp;quot;, &amp;quot;Mani…
+## $ type                               &amp;lt;chr&amp;gt; &amp;quot;artist&amp;quot;, &amp;quot;artist&amp;quot;, &amp;quot;artist&amp;quot;, &amp;quot;art…
+## $ uri                                &amp;lt;chr&amp;gt; &amp;quot;spotify:artist:2sil8z5kiy4r76CRTX…
+## $ external_urls.spotify              &amp;lt;chr&amp;gt; &amp;quot;https://open.spotify.com/artist/2…
+## $ track.available_markets            &amp;lt;list&amp;gt; [&amp;lt;&amp;quot;AD&amp;quot;, &amp;quot;AE&amp;quot;, &amp;quot;AR&amp;quot;, &amp;quot;AT&amp;quot;, &amp;quot;AU&amp;quot;, &amp;quot;…
+## $ track.disc_number                  &amp;lt;int&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ track.duration_ms                  &amp;lt;int&amp;gt; 214400, 231133, 368960, 245733, 21…
+## $ track.explicit                     &amp;lt;lgl&amp;gt; FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ track.href                         &amp;lt;chr&amp;gt; &amp;quot;https://api.spotify.com/v1/tracks…
+## $ track.id                           &amp;lt;chr&amp;gt; &amp;quot;4umYKCvExzDsGJlqCNyRvZ&amp;quot;, &amp;quot;3LpnzPx…
+## $ track.is_local                     &amp;lt;lgl&amp;gt; FALSE, FALSE, FALSE, FALSE, FALSE,…
+## $ track.name                         &amp;lt;chr&amp;gt; &amp;quot;Give a Little Bit&amp;quot;, &amp;quot;I Alone&amp;quot;, &amp;quot;M…
+## $ track.popularity                   &amp;lt;int&amp;gt; 38, 62, 44, 43, 58, 63, 48, 23, 26…
+## $ track.preview_url                  &amp;lt;chr&amp;gt; &amp;quot;https://p.scdn.co/mp3-preview/17b…
+## $ track.track_number                 &amp;lt;int&amp;gt; 1, 3, 4, 1, 5, 8, 8, 3, 9, 2, 10, …
+## $ track.type                         &amp;lt;chr&amp;gt; &amp;quot;track&amp;quot;, &amp;quot;track&amp;quot;, &amp;quot;track&amp;quot;, &amp;quot;track&amp;quot;…
+## $ track.uri                          &amp;lt;chr&amp;gt; &amp;quot;spotify:track:4umYKCvExzDsGJlqCNy…
+## $ track.album.album_type             &amp;lt;chr&amp;gt; &amp;quot;album&amp;quot;, &amp;quot;album&amp;quot;, &amp;quot;album&amp;quot;, &amp;quot;compil…
+## $ track.album.artists                &amp;lt;list&amp;gt; [&amp;lt;data.frame[1 x 6]&amp;gt;, &amp;lt;data.frame…
+## $ track.album.available_markets      &amp;lt;list&amp;gt; [&amp;lt;&amp;quot;AD&amp;quot;, &amp;quot;AE&amp;quot;, &amp;quot;AR&amp;quot;, &amp;quot;AT&amp;quot;, &amp;quot;AU&amp;quot;, &amp;quot;…
+## $ track.album.href                   &amp;lt;chr&amp;gt; &amp;quot;https://api.spotify.com/v1/albums…
+## $ track.album.id                     &amp;lt;chr&amp;gt; &amp;quot;0nshkyiazdyELKNJuNldoa&amp;quot;, &amp;quot;4ZsG3if…
+## $ track.album.images                 &amp;lt;list&amp;gt; [&amp;lt;data.frame[3 x 3]&amp;gt;, &amp;lt;data.frame…
+## $ track.album.name                   &amp;lt;chr&amp;gt; &amp;quot;Live in Buffalo July 4th, 2004&amp;quot;, …
+## $ track.album.release_date           &amp;lt;chr&amp;gt; &amp;quot;2004-11-23&amp;quot;, &amp;quot;1994-01-01&amp;quot;, &amp;quot;1992-…
+## $ track.album.release_date_precision &amp;lt;chr&amp;gt; &amp;quot;day&amp;quot;, &amp;quot;day&amp;quot;, &amp;quot;day&amp;quot;, &amp;quot;day&amp;quot;, &amp;quot;day&amp;quot;,…
+## $ track.album.total_tracks           &amp;lt;int&amp;gt; 20, 14, 40, 21, 11, 11, 10, 18, 18…
+## $ track.album.type                   &amp;lt;chr&amp;gt; &amp;quot;album&amp;quot;, &amp;quot;album&amp;quot;, &amp;quot;album&amp;quot;, &amp;quot;album&amp;quot;…
+## $ track.album.uri                    &amp;lt;chr&amp;gt; &amp;quot;spotify:album:0nshkyiazdyELKNJuNl…
+## $ track.album.external_urls.spotify  &amp;lt;chr&amp;gt; &amp;quot;https://open.spotify.com/album/0n…
+## $ track.external_ids.isrc            &amp;lt;chr&amp;gt; &amp;quot;USWB10402743&amp;quot;, &amp;quot;USRR29442178&amp;quot;, &amp;quot;G…
+## $ track.external_urls.spotify        &amp;lt;chr&amp;gt; &amp;quot;https://open.spotify.com/track/4u…&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;b.-source-favorite-song-features&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2b. Source favorite song features&lt;/h3&gt;
+&lt;p&gt;The above statistics are useful but perhaps not as interesting as song features such as energy, tempo and valence. Full definitions are available on &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/readme.md&#34;&gt;Spotify&#39;s developer site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Track features are stored in a separate Spotify API table so requires a separate SpotifyR called get_track_audio_features.&lt;/p&gt;
+&lt;p&gt;The function requires a list of track IDs. As such we need to extract track IDs from the above data frame that used the get_my_saved_tracks function. We can remove duplicates as song attributes are unique at song level.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  favorite_tracks_ids &amp;lt;- favorite_tracks_stats %&amp;gt;%
+         distinct (track.id) %&amp;gt;%   
+         pull (track.id)
+
+  glimpse(favorite_tracks_ids)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  chr [1:178] &amp;quot;4umYKCvExzDsGJlqCNyRvZ&amp;quot; &amp;quot;3LpnzPxkMI6XS4JCbhNeek&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We now have our list of track IDs required by the SpotifyR get_track_audio_features function.&lt;/p&gt;
+&lt;p&gt;Spotify limits the number of songs per extract to 100 so another iterative map function is required. The output is a list of two data frames, each with 100 songs.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;      favorite_tracks_features_list &amp;lt;- 
+         seq (1, nrow(favorite_tracks_stats),100) %&amp;gt;%
+         map(function(x) {
+             get_track_audio_features (favorite_tracks_ids[x:(x+99)])
+               }) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A list of data frames is awkward to work with, so we use the reduce function to reduce the complexity by a level. The list of two nested data frames converts into one consolidated data frame.&lt;/p&gt;
+&lt;p&gt;Additionally, we have 49 blank rows that can be removed. The above map function extracted songs in multiples of 100 so only 51 songs in the second iteration.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;      favorite_tracks_features &amp;lt;- favorite_tracks_features_list %&amp;gt;%
+         reduce(rbind) %&amp;gt;%    
+         drop_na()
+      
+      glimpse (favorite_tracks_features)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 178
+## Columns: 18
+## $ danceability     &amp;lt;dbl&amp;gt; 0.557, 0.396, 0.529, 0.581, 0.360, 0.522, 0.747, 0.9…
+## $ energy           &amp;lt;dbl&amp;gt; 0.951, 0.817, 0.784, 0.874, 0.257, 0.850, 0.448, 0.8…
+## $ key              &amp;lt;int&amp;gt; 0, 6, 1, 10, 7, 7, 4, 11, 4, 7, 2, 7, 4, 7, 1, 5, 5,…
+## $ loudness         &amp;lt;dbl&amp;gt; -3.003, -7.282, -5.288, -5.811, -9.655, -4.769, -15.…
+## $ mode             &amp;lt;int&amp;gt; 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1…
+## $ speechiness      &amp;lt;dbl&amp;gt; 0.0330, 0.0450, 0.0283, 0.0347, 0.0315, 0.0361, 0.06…
+## $ acousticness     &amp;lt;dbl&amp;gt; 1.94e-03, 2.28e-03, 6.61e-06, 2.21e-02, 1.59e-02, 1.…
+## $ instrumentalness &amp;lt;dbl&amp;gt; 1.72e-04, 4.17e-03, 1.42e-01, 2.38e-06, 5.12e-03, 3.…
+## $ liveness         &amp;lt;dbl&amp;gt; 0.1570, 0.3720, 0.1350, 0.1130, 0.2260, 0.2950, 0.12…
+## $ valence          &amp;lt;dbl&amp;gt; 0.5280, 0.0992, 0.2530, 0.9470, 0.1300, 0.7100, 0.94…
+## $ tempo            &amp;lt;dbl&amp;gt; 93.974, 90.264, 112.461, 143.284, 76.972, 124.216, 1…
+## $ type             &amp;lt;chr&amp;gt; &amp;quot;audio_features&amp;quot;, &amp;quot;audio_features&amp;quot;, &amp;quot;audio_features&amp;quot;…
+## $ id               &amp;lt;chr&amp;gt; &amp;quot;4umYKCvExzDsGJlqCNyRvZ&amp;quot;, &amp;quot;3LpnzPxkMI6XS4JCbhNeek&amp;quot;, …
+## $ uri              &amp;lt;chr&amp;gt; &amp;quot;spotify:track:4umYKCvExzDsGJlqCNyRvZ&amp;quot;, &amp;quot;spotify:tra…
+## $ track_href       &amp;lt;chr&amp;gt; &amp;quot;https://api.spotify.com/v1/tracks/4umYKCvExzDsGJlqC…
+## $ analysis_url     &amp;lt;chr&amp;gt; &amp;quot;https://api.spotify.com/v1/audio-analysis/4umYKCvEx…
+## $ duration_ms      &amp;lt;int&amp;gt; 214400, 231133, 368960, 245733, 212184, 346280, 2196…
+## $ time_signature   &amp;lt;int&amp;gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;c.-combine-song-features-and-statistics&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2c. Combine song features and statistics&lt;/h3&gt;
+&lt;p&gt;Spotify assigns an alphanumeric ID code for each song. The ID is in both the statistics and attributes tables so the two tables can be joined together.&lt;/p&gt;
+&lt;p&gt;A few other housekeeping items are required before proceeding to the the chart. First, Song duration is clearer in minutes instead of milliseconds. Second, I cleaned song titles by removing &amp;quot;Remaster&amp;quot;, &amp;quot;Remastered&amp;quot; as well as parenthetical qualifiers. Third, I converted album release year to number of years past 1970 to better visually discern year differences (bar charts typically start at zero).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (lubridate)  
+   
+   favorite_tracks_combine &amp;lt;- favorite_tracks_features %&amp;gt;%
+         right_join(favorite_tracks_stats, by = c(&amp;quot;id&amp;quot; = &amp;quot;track.id&amp;quot;)) %&amp;gt;%
+         rename (artist.name = name) %&amp;gt;%
+         mutate (
+            duration = duration_ms / 1000 / 60,             #converts milliseconds to minutes
+            track.name = str_remove (track.name, c(&amp;quot;Remaster&amp;quot;, &amp;quot;Remastered&amp;quot;)),
+            track.name = str_remove (track.name,&amp;quot;[(-].+&amp;quot;),          
+            track.name = ifelse (str_length (track.name) &amp;lt;= 22, track.name, str_extract(track.name, &amp;quot;^.{22}&amp;quot;)),
+            release = ifelse (
+               track.album.release_date_precision == &amp;quot;year&amp;quot;,      #some songs only lists years not dates
+               as.integer(track.album.release_date),
+               year(as_date(track.album.release_date))
+               ),
+            release = release - 1970                  #enables bar charts to start at 0
+            ) %&amp;gt;%
+         select (artist.name, track.name, danceability, energy, valence, tempo, duration, release) %&amp;gt;%
+         distinct (track.name, .keep_all = T)
+      
+      glimpse (favorite_tracks_combine)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 177
+## Columns: 8
+## $ artist.name  &amp;lt;chr&amp;gt; &amp;quot;The Goo Goo Dolls&amp;quot;, &amp;quot;Live&amp;quot;, &amp;quot;Manic Street Preachers&amp;quot;, &amp;quot;…
+## $ track.name   &amp;lt;chr&amp;gt; &amp;quot;Give a Little Bit&amp;quot;, &amp;quot;I Alone&amp;quot;, &amp;quot;Motorcycle Emptiness &amp;quot;,…
+## $ danceability &amp;lt;dbl&amp;gt; 0.557, 0.396, 0.529, 0.581, 0.360, 0.522, 0.747, 0.958, …
+## $ energy       &amp;lt;dbl&amp;gt; 0.951, 0.817, 0.784, 0.874, 0.257, 0.850, 0.448, 0.880, …
+## $ valence      &amp;lt;dbl&amp;gt; 0.5280, 0.0992, 0.2530, 0.9470, 0.1300, 0.7100, 0.9470, …
+## $ tempo        &amp;lt;dbl&amp;gt; 93.974, 90.264, 112.461, 143.284, 76.972, 124.216, 128.5…
+## $ duration     &amp;lt;dbl&amp;gt; 3.573333, 3.852217, 6.149333, 4.095550, 3.536400, 5.7713…
+## $ release      &amp;lt;dbl&amp;gt; 34, 24, 22, 36, 46, 15, 7, 43, 43, 19, 18, 18, 19, 23, 4…&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a.-create-charts-by-feature&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3a. Create charts by feature&lt;/h3&gt;
+&lt;p&gt;We will create a bar chart for each attribute that represent the top 5 and bottom 5 songs for each attribute. A bottom rug illustrates the full dispersion.&lt;/p&gt;
+&lt;p&gt;Manually creating 6 charts is inefficient with high inconsistency exposure - not to mention boring. Unfortunately the simpler ggplot facet function generates charts via filtering but cannot sort by variable. Instead I wrote a map function that cycles through each attribute which sorts the metrics and creates the charts.&lt;/p&gt;
+&lt;p&gt;First step is to create the map function inputs, which are the six variables in the charts.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;      attributes &amp;lt;- c(&amp;quot;valence&amp;quot;, &amp;quot;energy&amp;quot;, &amp;quot;tempo&amp;quot;, &amp;quot;danceability&amp;quot;, &amp;quot;duration&amp;quot;, &amp;quot;release&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Second step is to create the function which calculates the statistics and creates the chart. Each variable iteration of the function sorts songs by attribute, identifies top 5 / bottom 5, creates a bar chart and bottom rug.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (glue)
+
+      attributes_plot = function(attribute) {
+         attribute = ensym (attribute)
+         ggplot (
+               data = favorite_tracks_combine %&amp;gt;%
+                  arrange (-!!attribute) %&amp;gt;%
+                  slice (1:5, (n()-4):n()) %&amp;gt;%
+                  mutate (bar_color = ifelse (!!attribute &amp;gt; median (!!attribute), &amp;quot;Lightgreen&amp;quot;, &amp;quot;Red&amp;quot;)),
+               aes (x = reorder (track.name, !!attribute), y = !!attribute), 
+               size = 1
+               ) +
+            geom_point (
+               aes(color = I(bar_color)),
+               shape = 19
+               ) + 
+            geom_segment (
+               aes(
+                  xend = reorder (track.name, !!attribute), y = 0, yend = !!attribute,
+                  color = I(bar_color)
+                  )
+               ) + 
+            geom_rug (
+               data = favorite_tracks_combine,
+               aes (y = !!attribute),
+               inherit.aes = F,
+               sides = &amp;quot;l&amp;quot;,
+               alpha = 0.3
+               ) +
+            scale_y_continuous (n.breaks = 4) +
+            coord_flip () +
+            theme(
+               plot.title = element_text(hjust = 0.5, vjust = 0, size = 10, face = &amp;quot;bold&amp;quot;, margin = margin (10,0,10,0)),
+               axis.text = element_text (size = 8),
+               axis.title = element_blank(),
+               axis.ticks = element_blank(),
+               panel.grid = element_blank(),
+               panel.background = element_blank()
+               ) +
+          labs (
+             title = glue({str_to_title(attribute)})
+             )
+      }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, we call the map function which sources the above vector input and chart creation function.&lt;/p&gt;
+&lt;p&gt;The output is a list of charts. These are not yet terribly useful because listed sequentially without titles, subtitles and captions drawing together.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   song_plots &amp;lt;- map(attributes, attributes_plot)
+   song_plots&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[3]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[4]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[5]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[6]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/unnamed-chunk-2-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;b.-combine-charts-add-titlessubtitlescaptions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3b. Combine charts, add titles/subtitles/captions&lt;/h3&gt;
+&lt;p&gt;My favorite chart combination package is Thomas Lin Pederson&#39;s excellent &lt;a href=&#34;https://www.rdocumentation.org/packages/patchwork/versions/1.0.0&#34;&gt;patchwork&lt;/a&gt; package. Charts automatically are aligned vertically and/or horizontally. I have six charts so by default patchwork prints the first three charts on top row then second three on bottom row.&lt;/p&gt;
+&lt;p&gt;Results show my musical tastes skew toward songs with greater valence (postive emotions), high energy, low tempo, medium danceability, 4-5 minutes of duration and the 1980s.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (patchwork)
+   
+   #combine charts into grid
+      song_plots_combine &amp;lt;- 
+         song_plots[[1]] + song_plots[[2]] + song_plots[[3]] + song_plots[[4]] + song_plots[[5]] + song_plots[[6]] +
+         plot_annotation (
+            title =  &amp;quot;My favorite Spotify songs&amp;#39; attributes&amp;quot;,
+            subtitle = &amp;quot;Largest 5 per attribute in green, smallest 5 in red.  Bottom rug is entire distribution.&amp;quot;,
+            caption = &amp;quot;Duration = song length in minutes.  Release = number of years since 1980.  \nVisualization: Joel Soroos @soroosj    |   Data: Spotify API&amp;quot;,
+            theme = theme (
+               plot.title = element_text(hjust = 0.5, vjust = 0, size = 15, face = &amp;quot;bold&amp;quot;, margin = margin (0,0,5,0)),
+               plot.title.position = &amp;quot;plot&amp;quot;,
+               plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 9, margin = margin (0,0,15,0)),
+               plot.caption = element_text (hjust = 0, size = 8, face = &amp;quot;plain&amp;quot;, margin = margin (15,0,0,0)),
+               plot.caption.position = &amp;quot;plot&amp;quot;
+               )
+            )
+      
+      ggsave(&amp;quot;song_attributes.png&amp;quot;, song_plots_combine)
+      song_plots_combine&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/final-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -48,7 +1138,1796 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/02/09/tidy-tuesday-functions/</guid>
-      <description>1. Most widely learned functions are in ggplot2 and dplyr packages.   package  n  percent      ggplot2  16  0.176    dplyr  9  0.099    base  6  0.066    stringr  5  0.055    ggimage  3  0.033    ggraph  3  0.</description>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt; &lt;br /&gt;
+ &lt;/p&gt;
+&lt;div id=&#34;most-widely-learned-functions-are-in-ggplot2-and-dplyr-packages.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;1. Most widely learned functions are in ggplot2 and dplyr packages.&lt;/h4&gt;
+&lt;table class=&#34;table table-striped table-hover&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+package
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+percent
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+16
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.176
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.099
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.066
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.055
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggimage
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.033
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggraph
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.033
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lubridate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.033
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.033
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+broom
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+cowplot
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+factoextra
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggmap
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+grid
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+magick
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+purrr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stats
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tibble
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.022
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt; &lt;br /&gt;
+ &lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chronological-listing-of-all-functions-that-i-have-learned.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;2. Chronological listing of all functions that I have learned.&lt;/h4&gt;
+&lt;table class=&#34;table table-striped table-hover&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+data_week
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+data_description
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+package
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+function_name
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+purpose
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Penguins
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+GGally
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggpairs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pairwise summary statistics
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Penguins
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stats
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+kmeans
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+calculate kmeans clusters
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Penguins
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+factoextra
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+fviz_cluster
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+visualize data points grouped by cluster
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Penguins
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+factoextra
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+fviz_nbclust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+visualize optimal cluster size test output
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Penguins
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NbClust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NbClust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+optimal cluster size index of 30 methodologies
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+parse specific words in string
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+str_remove
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+remove character(s) from string
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggimage
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_image
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+image to plot area
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggimage
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggbackground
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+image to chart background
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggimage
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_flag
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+country flag to chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+cowplot
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+draw_label
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+label on ggplot object
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Astronauts
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+cowplot
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+draw_line
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+line on ggplot object
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Coffee
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+scale
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Convert to standardized z-score
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Coffee
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+format
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+specify # of digits
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-07-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Coffee
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pivot_longer
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+transform from wide to long format
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-05-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cocktails
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pivot_wider
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Transform tall to wide data
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-05-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cocktails
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+UpSetR
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+upset
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Create upset chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-05-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cocktails
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggupset
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+scale_x_upset
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Create upset chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-05-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cocktails
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+grid
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+grid.text
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Add text to base r chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-04-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tour
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+here
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+here
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Manage multiple filepaths
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-04-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tour
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+str_trim
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Remove spaces start/end
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+seq
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Generate sequence of numbers
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+slice
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Extract records by position
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ceiling
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Round up to nearest integer
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+purrr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+map
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Repeat functions off vectors
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+purrr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reduce
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Simplify lists to single values
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+unnest
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Flatten list-columns
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_rug
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Create rug chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-01-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spotify
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+patchwork
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+plot_annotation
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Combine charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-17
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Adoptable Dogs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggalluvial
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_alluvium
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Alluvial flow diagrams
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-17
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Adoptable Dogs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+viridis
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+scale_fill_viridis
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Incorporate Viridis color scale
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-17
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Adoptable Dogs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+utils
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+View
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Output data frame to a view
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-17
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Adoptable Dogs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidytuesdayR
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tt_load
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+load Tidy Tuesday datasets
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tickets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+coord_polar
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Convert chart to polar coordinates
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tickets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_area
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Create area chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tickets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lubridate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ymd_hms
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Character to date/time format
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-12-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tickets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lubridate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+floor_date
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Group times
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-11-04
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Commute
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggmap
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mutate_geocode
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Add geocode to existing dataframe
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-11-04
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Commute
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+str_detect
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+check for specific string
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-29
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Squirrels
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sys.getenv
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+API keys to environment variables
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-29
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Squirrels
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggmap
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+get_googlempap
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Source Google map layer
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-29
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Squirrels
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+facet_wrap
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Chart clones by variable
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-29
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Squirrels
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stringr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+str_to_title
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Convert string to title case
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Vehicle MPH
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+broom
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidy
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Regression estimates
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Vehicle MPH
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+magick
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+read_impage
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Import image
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Vehicle MPH
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+grid
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rasterGrob
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Image to grob
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-10-15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Vehicle MPH
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+annotation_custom
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Add image to chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-09-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Moore&#39;s Law
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+stats
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+loess
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Calculate loess regression
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-09-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Moore&#39;s Law
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+broom
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+augment
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Regression fit make tidy
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-09-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Moore&#39;s Law
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tibble
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tibble
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Data frame from scratch
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-09-03
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Moore&#39;s Law
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+base
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+log10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Calculate log
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nuclear bombs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gganimate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+animate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Animate plots
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nuclear bombs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_tile
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tile plot
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-20
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nuclear bombs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ylim
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Extend plot area
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Roman emperors
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_segment
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Segment visualizations
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Roman emperors
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_text
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Text adjacent to points
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Roman emperors
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lubridate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+update
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Update date components
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-13
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Roman emperors
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+glue
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+glue
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Combine data into string
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-06
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Bob Ross
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+wordcloud2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+letterCloud
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Word cloud in letter shapes
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-08-06
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Bob Ross
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidytext
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+unnest_tokens
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sentences to records by word
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-09
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+World Cup
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tally
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sum variable by group in one line
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-09
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+World Cup
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+row_number
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Instance of a record in a group
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-09
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+World Cup
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pull
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Data frame to vector
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Franchises
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+waffle
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_waffle
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Waffle chart
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Franchises
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+paste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2-row axis labels
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-07-02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Franchises
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+extrafont
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+element.text (family)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Custom fonts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-06-25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+UFOs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+annotate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Annotate text
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-06-25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+UFOs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_curve
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Annotate arrow
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-06-25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+UFOs
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+legend.position
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Customize legend position
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Wine reviews
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_violin
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Violin charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-28
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Wine reviews
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggdark
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dark_mode
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Black background
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Plastic waste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_smooth
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+LOESS regression line
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Plastic waste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+log10_trans
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Logarithimic scales
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Class size
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+countrycode
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+countrycode
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Countries to continents
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-05-07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Class size
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+forcats
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+fct_relevel
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Custom sort categorical field
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Birds
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggridges
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_density_ridges
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Ridgeline charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Birds
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+janitor
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tabyl
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Categorical variable frequencies
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anime
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+KableExtra
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+kable
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Aestheticly-pleasing tables
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anime
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+summarize_all
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Summary stats all fields
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anime
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mutate_if
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Function on mutliple fields
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tennis
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggrepel
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_label_repel
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Text labels in charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-04-23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tennis
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+case_when
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Categorical variables to numeric
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-03-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggtextures
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_textured_col
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Image as axis label
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-03-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pets
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+magick
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+image_read
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Import images
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trains
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggraph
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_edge_link
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Edges on charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trains
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggraph
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_node_point
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Node points on charts
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trains
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggraph
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tbl_graph
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Network data to tidy format
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trains
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tibble
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rowid_to_column
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Add unique ID to dataframe
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-12
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Govt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+flexdashboard
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+flexdashboard
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Multiple charts at once
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-12
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Govt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_rect
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Border in chart sections
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-02-12
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Govt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mutate_at
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Function to specific columns
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;© 2020 GitHub, Inc. Terms Privacy Security Status Help Contact GitHub Pricing API Training Blog About&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -57,7 +2936,83 @@ I analyzed which ingredients, as well as combination of ingredients, are most co
       <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/11/15/favorite-r-packages/</guid>
-      <description>Sourcing  readr - fast and friendly way to read rectangular data (i.e. csv, tsv) RODBC - SQL querying against relational databases readxl - importing Excel files including individual worksheets rvest - tools for working with http connections rio - simplify importing and exporting data across source formats datapasta - copy/paste data using clipboard rtweet - Twitter API via R spotifyr - access Spotfiy API via R   Exploring  skimr - displays summary statistics the user can skim quickly to understand their data dataexplorer - automated scanning and visualizing of each data set field   Wrangling  dplyr - transform and summarize data frames stringr - manipulate regular expressions and character strings lubridate - simplify working with dates and times glue - concatentate strings and/or data magrittr - set of operators to make code more readable such as the pipe janitor - simple functions for cleaning dirty data tidyr - transform data layout tidytext - simplify text mining   Modeling  broom - converts statistical model output to tidy data factoextra - kmeans clustering algoriths, visualizations NbClust - index of 30 kmeans clustering optimal K methodologies ggdenro - parses dendogram data into data frames stats - assorted machine learning, statistics and probability algorithms   Visualizing  ggplot2 - R&#39;s famous package for beautiful graphics usibg the grammar of graphics ggmap - access Google API to download Google maps and geolocations ggraph - ggplot2 extensions for network diagrams and trees ggimage - adding custom images to charts ggridges - density plots patchwork - combine charts scales - maps data to aesthetics, automatically determines breaks and labels for axes and legends.</description>
+      <description>
+
+
+&lt;div id=&#34;sourcing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Sourcing&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploring&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exploring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/skimr/versions/2.1&#34;&gt;skimr&lt;/a&gt; - displays summary statistics the user can skim quickly to understand their data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0&#34;&gt;dataexplorer&lt;/a&gt; - automated scanning and visualizing of each data set field&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wrangling&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Wrangling&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://genomicsclass.github.io/book/pages/dplyr_tutorial.html&#34;&gt;dplyr&lt;/a&gt; - transform and summarize data frames&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stringr.tidyverse.org/&#34;&gt;stringr&lt;/a&gt; - manipulate regular expressions and character strings&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lubridate.tidyverse.org/&#34;&gt;lubridate&lt;/a&gt; - simplify working with dates and times&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tidyverse/glue&#34;&gt;glue&lt;/a&gt; - concatentate strings and/or data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;magrittr&lt;/a&gt; - set of operators to make code more readable such as the pipe&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://garthtarr.github.io/meatR/janitor.html&#34;&gt;janitor&lt;/a&gt; - simple functions for cleaning dirty data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tidyr.tidyverse.org/&#34;&gt;tidyr&lt;/a&gt; - transform data layout&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html&#34;&gt;tidytext&lt;/a&gt; - simplify text mining&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;modeling&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Modeling&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://varianceexplained.org/r/broom-intro/&#34;&gt;broom&lt;/a&gt; - converts statistical model output to tidy data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/factoextra/versions/1.0.3&#34;&gt;factoextra&lt;/a&gt; - kmeans clustering algoriths, visualizations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust&#34;&gt;NbClust&lt;/a&gt; - index of 30 kmeans clustering optimal K methodologies&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34;&gt;ggdenro&lt;/a&gt; - parses dendogram data into data frames&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/stats/versions/3.6.2&#34;&gt;stats&lt;/a&gt; - assorted machine learning, statistics and probability algorithms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Visualizing&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;ggplot2&lt;/a&gt; - R&#39;s famous package for beautiful graphics usibg the grammar of graphics&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/ggmap/versions/3.0.0&#34;&gt;ggmap&lt;/a&gt; - access Google API to download Google maps and geolocations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/thomasp85/ggraph&#34;&gt;ggraph&lt;/a&gt; - ggplot2 extensions for network diagrams and trees&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://guangchuangyu.github.io/pkgdocs/ggimage.html&#34;&gt;ggimage&lt;/a&gt; - adding custom images to charts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wilkelab.org/ggridges/articles/introduction.html&#34;&gt;ggridges&lt;/a&gt; - density plots&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package&#34;&gt;patchwork&lt;/a&gt; - combine charts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/scales/scales.pdf&#34;&gt;scales&lt;/a&gt; - maps data to aesthetics, automatically determines breaks and labels for axes and legends.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gganimate.com/&#34;&gt;gganimate&lt;/a&gt; - view chart evolution over time via animation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Ryo-N7/ggupset&#34;&gt;ggupset&lt;/a&gt; - upset charts to visualize set intersections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdark/readme/README.html&#34;&gt;ggdark&lt;/a&gt; - uncluttered chart theme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;communicating&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Communicating&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://haozhu233.github.io/kableExtra/awesome_table_in_html.html&#34;&gt;kableExtra&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://yihui.org/knitr/&#34;&gt;knitr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;programming&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Programming&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229&#34;&gt;purrr&lt;/a&gt; - automate code iterations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/here/versions/0.1&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

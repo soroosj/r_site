@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UpSetR on Joel Soroos</title>
@@ -8,7 +7,7 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Jul 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/upsetr/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/upsetr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,9 +16,372 @@
       <pubDate>Tue, 07 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/07/07/cocktails-upset/</guid>
-      <description>Motivation For the May 26 2020 R4DS Tidy Tuesday data set, I explored UpSet charts, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a useful explanation of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.
-I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.
- Source The cocktail ingredients data is originally from the Mr.</description>
+      <description>
+
+
+&lt;div id=&#34;motivation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;For the May 26 2020 R4DS Tidy Tuesday data set, I explored &lt;a href=&#34;https://caleydo.org/tools/UpSet/&#34;&gt;UpSet charts&lt;/a&gt;, which simplify visualizing overlap of large numbers of sets. Laura Ellis has a &lt;a href=&#34;https://www.littlemissdata.com/blog/set-analysis&#34;&gt;useful explanation&lt;/a&gt; of how Venn and Euler diagrams become unwieldy for intersections of greater than two sets.&lt;/p&gt;
+&lt;p&gt;I analyzed which ingredients, as well as combination of ingredients, are most common in U.S. cocktail drinks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;source&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Source&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-26/readme.md&#34;&gt;cocktail ingredients data&lt;/a&gt; is originally from the &lt;a href=&#34;http://swizzle.ru/uploads/article_file/17/mr_boston.pdf&#34;&gt;Mr. Boston Bartender&#39;s Guide&lt;/a&gt; via Kaggle.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(janitor)
+
+cocktails_raw &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-26/boston_cocktails.csv&amp;quot;)
+
+cocktails_raw&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3,643 x 6
+##    name        category         row_id ingredient_number ingredient      measure
+##    &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt;             &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;  
+##  1 Gauguin     Cocktail Classi…      1                 1 Light Rum       2 oz   
+##  2 Gauguin     Cocktail Classi…      1                 2 Passion Fruit … 1 oz   
+##  3 Gauguin     Cocktail Classi…      1                 3 Lemon Juice     1 oz   
+##  4 Gauguin     Cocktail Classi…      1                 4 Lime Juice      1 oz   
+##  5 Fort Laude… Cocktail Classi…      2                 1 Light Rum       1 1/2 …
+##  6 Fort Laude… Cocktail Classi…      2                 2 Sweet Vermouth  1/2 oz 
+##  7 Fort Laude… Cocktail Classi…      2                 3 Juice of Orange 1/4 oz 
+##  8 Fort Laude… Cocktail Classi…      2                 4 Juice of a Lime 1/4 oz 
+##  9 Apple Pie   Cordials and Li…      3                 1 Apple schnapps  3 oz   
+## 10 Apple Pie   Cordials and Li…      3                 2 Cinnamon schna… 1 oz   
+## # … with 3,633 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;explore&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Explore&lt;/h2&gt;
+&lt;p&gt;The dataset containes 3,643 rows comprising 989 unique cocktail drinks (&amp;quot;names&amp;quot;) with 569 unique ingredients. Each cocktail-ingredient combination is a separate record.&lt;/p&gt;
+&lt;p&gt;Ingredients and corresponding serving size for cocktails are listed in the Ingredient and Measure fields. The cocktails are grouped into 11 cocktail categories such as brandy, gin and rum.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(skimr)
+
+skim(cocktails_raw)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-1&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;cocktails_raw&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3643&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;name&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;36&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;989&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;category&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;11&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ingredient&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;95&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;569&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;measure&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;42&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;row_id&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;505.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;284.40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;264.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;502&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;753.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;990&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▇▇▇▇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ingredient_number&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.55&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.32&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▃▂▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transform&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Transform&lt;/h2&gt;
+&lt;p&gt;Similar ingredients with different spellings can be consolidated.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabyl(cocktails_raw, ingredient) %&amp;gt;%
+  arrange(-percent) %&amp;gt;%
+  head(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         ingredient   n    percent
+##                Gin 176 0.04831183
+##  Fresh lemon juice 138 0.03788087
+##       Simple Syrup 115 0.03156739
+##              Vodka 114 0.03129289
+##          Light Rum 113 0.03101839
+##       Dry Vermouth 107 0.02937140
+##   Fresh Lime Juice 107 0.02937140
+##         Triple Sec 107 0.02937140
+##     Powdered Sugar  90 0.02470491
+##          Grenadine  85 0.02333242
+##     Sweet Vermouth  83 0.02278342
+##             Brandy  80 0.02195992
+##        Lemon Juice  70 0.01921493
+##     Blanco tequila  69 0.01894043
+##          Egg White  67 0.01839144
+##  Angostura Bitters  63 0.01729344
+##   Juice of a Lemon  60 0.01646994
+##    Pineapple Juice  47 0.01290145
+##    Bourbon whiskey  38 0.01043096
+##     Orange Bitters  38 0.01043096&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cocktails &amp;lt;- cocktails_raw %&amp;gt;%
+  mutate(
+    ingredient = case_when(
+      ingredient == &amp;quot;Fresh lemon juice&amp;quot; ~ &amp;quot;Lemon Juice&amp;quot;,
+      ingredient == &amp;quot;Juice of a Lemon&amp;quot; ~ &amp;quot;Lemon Juice&amp;quot;,
+      ingredient == &amp;quot;Fresh Lime Juice&amp;quot; ~ &amp;quot;Lime Juice&amp;quot;,
+      ingredient == &amp;quot;Juice of a Lime&amp;quot; ~ &amp;quot;Lime Juice&amp;quot;,
+      ingredient == &amp;quot;Powdered Sugar&amp;quot; ~ &amp;quot;Simple Syrup&amp;quot;,
+      ingredient == &amp;quot;Egg White&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      ingredient == &amp;quot;Whole Egg&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      ingredient == &amp;quot;Egg Yolk&amp;quot; ~ &amp;quot;Egg&amp;quot;,
+      TRUE ~ ingredient
+    )
+  )
+
+tabyl(cocktails, ingredient) %&amp;gt;%
+  arrange(-percent) %&amp;gt;%
+  head(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##              ingredient   n     percent
+##             Lemon Juice 268 0.073565743
+##            Simple Syrup 205 0.056272303
+##                     Gin 176 0.048311831
+##              Lime Juice 153 0.041998353
+##                     Egg 117 0.032116388
+##                   Vodka 114 0.031292890
+##               Light Rum 113 0.031018391
+##            Dry Vermouth 107 0.029371397
+##              Triple Sec 107 0.029371397
+##               Grenadine  85 0.023332418
+##          Sweet Vermouth  83 0.022783420
+##                  Brandy  80 0.021959923
+##          Blanco tequila  69 0.018940434
+##       Angostura Bitters  63 0.017293439
+##         Pineapple Juice  47 0.012901455
+##         Bourbon whiskey  38 0.010430963
+##          Orange Bitters  38 0.010430963
+##                 Bitters  31 0.008509470
+##            Orange juice  31 0.008509470
+##  Old Mr. Boston Dry Gin  30 0.008234971&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Visualizing&lt;/h2&gt;
+&lt;p&gt;An UpSet chart can be unwieldy with too many rows. I decided to limit to eight sets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ingredients_top &amp;lt;- cocktails %&amp;gt;%
+  count(ingredient, sort = T) %&amp;gt;%
+  pull(ingredient) %&amp;gt;%
+  head(8)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;option-1---upsetr-package&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 1 - UpSetR package&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://www.rdocumentation.org/packages/UpSetR/versions/1.4.0&#34;&gt;UpSetR package&lt;/a&gt; by Jack Conway seems to be most widely-referenced so started there. Installing via CRAN was a breeze.&lt;/p&gt;
+&lt;p&gt;First required step was transforming the raw data to a matrix format. Instructions were thorough but I struggled to convert, a large part because I am more familiar with the R tidyverse format. Ultimately I achieved through hacking other solutions. Ideas from Timothy Kyle Thomas (see &lt;a href=&#34;https://timothykylethomas.me/post/r_notebook/tidytuesday22/tidytuesday22/&#34;&gt;here&lt;/a&gt;) and Kieran Healy (see &lt;a href=&#34;https://www.r-bloggers.com/upset-plots/&#34;&gt;here&lt;/a&gt;) were particulary helpful.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(UpSetR)
+
+cocktails_matrix &amp;lt;- cocktails %&amp;gt;%
+  select(name, ingredient) %&amp;gt;%
+  filter(ingredient %in% ingredients_top) %&amp;gt;%
+  mutate(ingredient_population = TRUE) %&amp;gt;%
+  pivot_wider(
+    id_cols = name,
+    names_from = ingredient,
+    values_from = ingredient_population,
+    values_fill = FALSE,
+    values_fn = length
+  ) %&amp;gt;%
+  as.data.frame()
+
+cocktails_matrix %&amp;gt;% head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                   name Light Rum Lemon Juice Lime Juice Simple Syrup Gin
+## 1              Gauguin         1           1          1            0   0
+## 2      Fort Lauderdale         1           0          1            0   0
+## 3 Cuban Cocktail No. 1         1           0          1            1   0
+## 4         John Collins         0           1          0            1   0
+## 5           Cherry Rum         1           0          0            0   0
+##   Dry Vermouth Egg Vodka
+## 1            0   0     0
+## 2            0   0     0
+## 3            0   0     0
+## 4            0   0     0
+## 5            0   0     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once I had the data in the proper format, creating the charts was pleasingly straightforward in one function call.&lt;/p&gt;
+&lt;p&gt;The chart format was clean and easy to interpret. I could quickly see which ingredients (or combination of ingredients) were in the most drinks. For single ingredients, lemon juice led the way, followed by lime juice, vodka and gin. The most popular combinations of ingredients are gin with dry vermouth, lemon juice with simple syrup, then gin with lemon juice.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library (grid)
+
+png(file=&amp;quot;cocktails UpSetR.png&amp;quot;) # or other device
+
+upset(
+  data = cocktails_matrix,
+  order.by = c(&amp;quot;freq&amp;quot;),
+  nsets = 8, nintersects = 30
+)
+grid.text(&amp;quot;Most Popular Cocktail Ingredients (using UpSetR package)&amp;quot;,x = 0.65, y=0.95, gp=gpar(fontsize=10))
+
+dev.off()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## quartz_off_screen 
+##                 2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;option-2---ggupset-package&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Option 2 - ggupset package&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://cran.r-project.org/web/packages/ggupset/readme/README.html&#34;&gt;ggupset&lt;/a&gt; package by Constantin Ahlmann-Eltze is tidyverse-friendly so I immediately felt at home. Just a bit of transformation was needed into the tidy format - converting separate rows per ingredient into unique rows per cocktail.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggupset)
+
+cocktails_list &amp;lt;- cocktails %&amp;gt;%
+  group_by(name) %&amp;gt;%
+  filter(ingredient %in% ingredients_top) %&amp;gt;%
+  summarize(ingredient = list(ingredient))
+
+cocktails_list&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 733 x 2
+##    name                       ingredient
+##    &amp;lt;chr&amp;gt;                      &amp;lt;list&amp;gt;    
+##  1 19th Century               &amp;lt;chr [1]&amp;gt; 
+##  2 Absinthe Special Cocktail  &amp;lt;chr [1]&amp;gt; 
+##  3 Acapulco                   &amp;lt;chr [3]&amp;gt; 
+##  4 Adam and Eve               &amp;lt;chr [2]&amp;gt; 
+##  5 Adderly Cocktail           &amp;lt;chr [1]&amp;gt; 
+##  6 Admiral Perry              &amp;lt;chr [1]&amp;gt; 
+##  7 Affinity Cocktail          &amp;lt;chr [1]&amp;gt; 
+##  8 Affinity Cocktail (whisky) &amp;lt;chr [1]&amp;gt; 
+##  9 After Dinner Cocktail      &amp;lt;chr [1]&amp;gt; 
+## 10 After Supper Cocktail      &amp;lt;chr [1]&amp;gt; 
+## # … with 723 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The upset chart was created by simply adding one row with ggupset&#39;s scale_x_upset function.&lt;/p&gt;
+&lt;p&gt;The tidyverse-friendly package enables leveraging familiar ggplot2 constructs such as themes, labels and headers/captions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(cocktails_list, aes(x = ingredient)) +
+  geom_bar() +
+  scale_x_upset(n_intersections = 30) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 0, size = 14, face = &amp;quot;bold&amp;quot;, margin = margin(0, 0, 15, 0)),
+    plot.title.position = &amp;quot;plot&amp;quot;,
+    plot.subtitle = element_text(hjust = 0.5, vjust = 0, size = 6, margin = margin(0, 0, 2, 0)),
+    plot.caption = element_text(hjust = 1, size = 8, face = &amp;quot;plain&amp;quot;, margin = margin(15, 0, 0, 0)),
+    plot.caption.position = &amp;quot;plot&amp;quot;,
+    axis.title.y = element_text(margin = margin(0, 10, 0, 0)),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 7),
+    axis.ticks.x = element_blank(),
+    legend.position = &amp;quot;none&amp;quot;
+  ) +
+  labs(
+    title = &amp;quot;Most popular cocktail ingredients&amp;quot;,
+    x = &amp;quot;Ingredient intersection&amp;quot;,
+    y = &amp;quot;# of drinks&amp;quot;,
+    caption = &amp;quot;Each column represents unique combinations of ingredients.  Universe is drinks in the Boston Bartender&amp;#39;s Guide.\nVisualization: Joel Soroos @soroosj  |  Data: Mr. Boston Bartender&amp;#39;s Guide via Kaggle via R4DS Tidy Tuesday&amp;quot;
+  ) +
+ ggsave(&amp;quot;cocktails ggupset.png&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Saving 7 x 5 in image&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/cocktails_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Due to my tidyverse background I ultimately preferred the ggupset format.&lt;/p&gt;
+&lt;p&gt;The ingredient counts at left were an advantage of the UpSetR package but not worth the incremental time contorting into the matrix format. Additionally, I much appreciated the ability to quickly add familiar ggplot2 themes, headers and captions.&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

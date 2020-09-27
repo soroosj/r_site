@@ -5,17 +5,17 @@
     <description>Recent content in tidyverse on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kmeans Clustering of Penguins</title>
-      <link>/2020/09/20/penguins-cluster/</link>
-      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      <link>/2020/09/26/penguins-cluster/</link>
+      <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/09/20/penguins-cluster/</guid>
+      <guid>/2020/09/26/penguins-cluster/</guid>
       <description>
 
 
@@ -351,7 +351,8 @@
       rename (
          bill_length = culmen_length_mm,
          bill_depth = culmen_depth_mm,
-         flipper_length = flipper_length_mm
+         flipper_length = flipper_length_mm,
+         body_mass = body_mass_g
          ) %&amp;gt;%
       mutate (
          id = row_number(),
@@ -360,11 +361,30 @@
          bill_depth = scale(bill_depth),
          flipper_length = scale(flipper_length)
          ) %&amp;gt;%
-      select (id, species, island, sex, bill_length, bill_depth, flipper_length) %&amp;gt;%
+      select (id, species, island, sex, bill_length, bill_depth, flipper_length, body_mass) %&amp;gt;%
       drop_na (sex)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;identify-number-of-clusters&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. Identify number of clusters&lt;/h2&gt;
+&lt;div id=&#34;principal-component-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Principal component analysis&lt;/h2&gt;
+&lt;p&gt;Large data sets can be difficult to visualize and require a larger sample size for statistical significance. Principal component analysis (PCA) is a feature extraction method that reduces the data set dimensionality (number of variables) by creating new uncorrelated variables while minimizing loss of information on the original vaiables. More detail &lt;a href=&#34;https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A Scree plot is a typical means to identify the appropriate number of dimensions (or factors) in a cluster analysis. The Scree plot visualizes the percentage of variance explained by each of the PCA dimensions (also known as eigenvectors). Factors that add minimal variance explanation can be removed.&lt;/p&gt;
+&lt;p&gt;For this analysis, the first two dimensions explain over 90% of the variance, with 66% by the first dimension alone. We can confidently focus the cluster analysis on two dimensions, which is significantly easily to visualize than the original three variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(factoextra)
+   library(FactoMineR)
+
+   penguins_PCA &amp;lt;-PCA(penguins[5:7], graph = F)
+   fviz_screeplot(penguins_PCA)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A loading plot, in turn, shows how strongly each of the original variables influences each of the new PCA dimensions. I have augmented the loading plot with a PCA score plot, which is a scatterplot of the data points with the PCA dimensions as X and Y axes. The combination of the loading and score plots is called a PCA biplot.&lt;/p&gt;
+&lt;p&gt;Bill depth and bill length both significantly drive dimensions 1 with bill depth positive and bill length negative. Both variables are postive contributors to dimension 2, although on a smaller scale than dimemsion 1 (hence the smaller percent variance explained for dimension 2).&lt;/p&gt;
+&lt;p&gt;The similarity of the angles in the loading plot indicates the correlation between the original variables. Angles between variables less than 90 are positively correlated, 90 degree angles are uncorrelated, while angles greater than 90 degress indicate negative correlation.&lt;/p&gt;
+&lt;p&gt;Flipper length is more correlated to bill length than bill depth.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   fviz_pca_biplot(penguins_PCA, geom = &amp;quot;point&amp;quot;) +
+      geom_point (alpha = 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;identify-optimal-number-of-clusters&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5. Identify optimal number of clusters&lt;/h2&gt;
 &lt;p&gt;Kmeans clustering algorithms require number of clusters (&amp;quot;k&amp;quot;) as an input.&lt;/p&gt;
 &lt;p&gt;Identifying the appropriate k is important because too many or too few clusters impedes viewing overall trends. Too many clusters can lead to over-fitting (which limits generalizations) while insufficient clusters limits insights into commonality of groups.&lt;/p&gt;
 &lt;p&gt;There are assorted methodologies to identify the approriate k. Tests range from blunt visual inspections to robust algorithms. The optimal number of clusterse is ultimately a subjective decision&lt;/p&gt;
@@ -374,8 +394,7 @@
 &lt;p&gt;I will be largely using the &lt;a href=&#34;https://cran.r-project.org/web/packages/factoextra/factoextra.pdf&#34;&gt;factoextra package&lt;/a&gt; by Alboukadel Kassambara and Fabian Mundt. The package contains a wide array of clustering algorithms and visualizations, along with tools to identify the optimal number of clusters. Particulary helpful is factoextra&#39;s clustering visualizations output in ggplot format, which simplifies further chart adjustments by leveraging the standard ggplot functions.&lt;/p&gt;
 &lt;p&gt;Fviz_cluster is a useful function to visualize clusters for a given k. The function creates a scatterplot with points in a cluster color-coordinated and encircled with a polygram. Clustering on greater than two fields is difficult to visualize so fields are helpfully automatically converted to two dimensions via principal component analysis (PCA).&lt;/p&gt;
 &lt;p&gt;Multiple fviz_cluster visualizations can be easily created in R. First, the factoextra::fviz_cluster function creates the chart for one K. Second, the functdional purrr:map creates charts for multiple instaces of K. Finally, patchwork::patchwork plots the resulting charts into a common visualization. A traditional starting point for k values is 1 to 9.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(factoextra)
-   library(patchwork)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(patchwork)
    library(glue)
    library(here)
 
@@ -407,7 +426,7 @@
             plot.caption = element_text (hjust = 1, size = 7, margin = margin (15,0,0,0)) 
             )
          )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt; Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt; Results indicate a significant white space in middle of the chart so clearly a k of 1 is too small; therefore, clustering will add insight. Two or three clusters look promising as minimal overlap. Clusters greater than three have significant overlap so seem less optimal.&lt;/p&gt;
 &lt;p&gt;The visualizations did not provide a clear answer whether a cluster size of 2 or 3 is optimal. We need to proceed to more sophisticated methodologies.&lt;/p&gt;
 &lt;p&gt;The factoextra:fviz_nbclust function provides assorted methodologies to determine the optimal K. I calculated results for all three methodologies using another functional loop.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   methodologies &amp;lt;- c(&amp;quot;wss&amp;quot;, &amp;quot;silhouette&amp;quot;, &amp;quot;gap_stat&amp;quot;)
@@ -418,19 +437,19 @@
 &lt;h4&gt;Method 2 - Elbow&lt;/h4&gt;
 &lt;p&gt;Optimal clusters are at the point in which the knee &amp;quot;bends&amp;quot; or in mathemetical terms when the marginal total within sum of squares (&amp;quot;wss&amp;quot;) for an additional cluster begins to decrease at a linear rate. Similar to the visualization method, the results are subjective.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[1]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt; There are significant inflections at both 2 at 3 clusters. We can rule out an optimal number of clusters above 3 because minimal marginal reduction in total within sum of squares. However, the model is ambiguous on whether 2 or 3 clusters is optimal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt; There are significant inflections at both 2 at 3 clusters. We can rule out an optimal number of clusters above 3 because minimal marginal reduction in total within sum of squares. However, the model is ambiguous on whether 2 or 3 clusters is optimal.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;method-3---silhouette&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Method 3 - Silhouette&lt;/h4&gt;
 &lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Silhouette_(clustering)&#34;&gt;silhouette value&lt;/a&gt; indicates the quality of the clustering. similarity of a data point to its own cluster compared to other clusters. A silhoutte width nearer to 1 indicates the point is well-matched to its cluster and poorly matched to neighboring clusters. Silhouette widths approaching -1 are better matched to neighboring clusters.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt; The average silhouette length begins to decrease after 2 clusters. Accordingly the recommendation here is k = 2.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; The average silhouette length begins to decrease after 2 clusters. Accordingly the recommendation here is k = 2.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;method-4---gap-statistic&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Method 4 - Gap Statistic&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://statweb.stanford.edu/~gwalther/gap&#34;&gt;The gap statistic test&lt;/a&gt; is a newer optimal K test by Robert Tisharni, Guenther Walther and Trevor Hastie. The methodology compares the total within intra-cluster variation (&amp;quot;WSS&amp;quot;) for different values of k relative to a random uniform distribution of the data (that has no obvious clustering). The optimal cluster value of k has the largest gap statistic because signifies the cluster infrastructure furthest from the random uniform point distribution.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   cluster_optimal[[3]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt; The gap statistic test calls for a cluster size (k) of 3.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt; The gap statistic test calls for a cluster size (k) of 3.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;method-5-multiple-indexes&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Method 5: Multiple indexes&lt;/h4&gt;
@@ -438,13 +457,13 @@
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (NbClust)
 
    cluster_30_indexes &amp;lt;- NbClust(data = penguins[5:7], distance = &amp;quot;euclidean&amp;quot;, min.nc = 2, max.nc = 9, method = &amp;quot;complete&amp;quot;, index =&amp;quot;all&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## *** : The Hubert index is a graphical method of determining the number of clusters.
 ##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
 ##                 significant increase of the value of the measure i.e the significant peak in Hubert
 ##                 index second differences plot. 
 ## &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## *** : The D index is a graphical method of determining the number of clusters. 
 ##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
 ##                 second differences plot) that corresponds to a significant increase of the value of
@@ -482,11 +501,11 @@
 ## Conclusion
 ## =========================
 ## * According to the majority rule, the best number of clusters is  3 .&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt; The 30 indexes seem to suggest 3 is the optimal number of clusters.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/penguins_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt; The 30 indexes seem to suggest 3 is the optimal number of clusters.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. Conclusion&lt;/h2&gt;
+&lt;h2&gt;6. Conclusion&lt;/h2&gt;
 &lt;p&gt;The kmeans study indicates penguin size is optimally grouped into 3 clusters. The blunt visual test inconclusively suggested 2 or 3 clusters. The quantitative tests were no more conclusive with three clusters recommmended by the elbow and gap statistic tests while two clusters by the silhoutte algorithm. The 30 index package tipped the results toward 3.&lt;/p&gt;
 &lt;/div&gt;
 </description>

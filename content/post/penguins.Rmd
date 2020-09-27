@@ -1,7 +1,7 @@
 ---
 title: Kmeans Clustering of Penguins
 author: Joel Soroos
-date: '2020-09-20'
+date: '2020-09-26'
 slug: penguins-cluster
 categories: []
 tags:
@@ -78,7 +78,8 @@ Finally, I removed the categorical variables because today's unsupervised machin
       rename (
          bill_length = culmen_length_mm,
          bill_depth = culmen_depth_mm,
-         flipper_length = flipper_length_mm
+         flipper_length = flipper_length_mm,
+         body_mass = body_mass_g
          ) %>%
       mutate (
          id = row_number(),
@@ -87,12 +88,42 @@ Finally, I removed the categorical variables because today's unsupervised machin
          bill_depth = scale(bill_depth),
          flipper_length = scale(flipper_length)
          ) %>%
-      select (id, species, island, sex, bill_length, bill_depth, flipper_length) %>%
+      select (id, species, island, sex, bill_length, bill_depth, flipper_length, body_mass) %>%
       drop_na (sex)
 ```
 
 
-##4.  Identify number of clusters
+##4.  Principal component analysis
+Large data sets can be difficult to visualize and require a larger sample size for statistical significance.  Principal component analysis (PCA) is a feature extraction method that reduces the data set dimensionality (number of variables) by creating new uncorrelated variables while minimizing loss of information on the original vaiables.  More detail [here](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202).
+
+A Scree plot is a typical means to identify the appropriate number of dimensions (or factors) in a cluster analysis.  The Scree plot visualizes the percentage of variance explained by each of the PCA dimensions (also known as eigenvectors).  Factors that add minimal variance explanation can be removed.
+
+For this analysis, the first two dimensions explain over 90% of the variance, with 66% by the first dimension alone. We can confidently focus the cluster analysis on two dimensions, which is significantly easily to visualize than the original three variables.
+```{r}
+
+   library(factoextra)
+   library(FactoMineR)
+
+   penguins_PCA <-PCA(penguins[5:7], graph = F)
+   fviz_screeplot(penguins_PCA)
+```
+
+
+A loading plot, in turn, shows how strongly each of the original variables influences each of the new PCA dimensions. I have augmented the loading plot with a PCA score plot, which is a scatterplot of the data points with the PCA dimensions as X and Y axes. The combination of the loading and score plots is called a PCA biplot.
+
+Bill depth and bill length both significantly drive dimensions 1 with bill depth positive and bill length negative.  Both variables are postive contributors to dimension 2, although on a smaller scale than dimemsion 1 (hence the smaller percent variance explained for dimension 2).
+
+The similarity of the angles in the loading plot indicates the correlation between the original variables.  Angles between variables less than 90 are positively correlated, 90 degree angles are uncorrelated, while angles greater than 90 degress indicate negative correlation.  
+
+Flipper length is more correlated to bill length than bill depth.  
+```{r}
+
+   fviz_pca_biplot(penguins_PCA, geom = "point") +
+      geom_point (alpha = 0.2)
+```
+
+
+##5.  Identify optimal number of clusters
 Kmeans clustering algorithms require number of clusters ("k") as an input.
 
 Identifying the appropriate k is important because too many or too few clusters impedes viewing overall trends.  Too many clusters can lead to over-fitting (which limits generalizations) while insufficient clusters limits insights into commonality of groups.
@@ -110,7 +141,6 @@ Fviz_cluster is a useful function to visualize clusters for a given k.  The func
 Multiple fviz_cluster visualizations can be easily created in R.  First, the factoextra::fviz_cluster function creates the chart for one K.  Second, the functdional purrr:map creates charts for multiple instaces of K.  Finally, patchwork::patchwork plots the resulting charts into a common visualization.  A traditional starting point for k values is 1 to 9.
 ```{r}
 
-   library(factoextra)
    library(patchwork)
    library(glue)
    library(here)
@@ -201,5 +231,5 @@ The [NbClust package](https://rdrr.io/cran/NbClust/man/NbClust.html) by Malika C
 The 30 indexes seem to suggest 3 is the optimal number of clusters.
 
 
-##5. Conclusion
+##6. Conclusion
 The kmeans study indicates penguin size is optimally grouped into 3 clusters.  The blunt visual test inconclusively suggested 2 or 3 clusters.  The quantitative tests were no more conclusive with three clusters recommmended by the elbow and gap statistic tests while two clusters by the silhoutte algorithm.  The 30 index package tipped the results toward 3.

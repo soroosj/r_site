@@ -55,6 +55,7 @@ tags:
 -  [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
 -  [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
 -  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
+-  [gt](https://gt.rstudio.com/) - creating tables using the tidyverse spirit
 -  [gganimate](https://gganimate.com/) - view chart evolution over time via animation
 -  [ggupset](https://github.com/Ryo-N7/ggupset) - upset charts to visualize set intersections 
 -  [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme

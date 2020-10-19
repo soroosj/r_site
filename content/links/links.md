@@ -100,7 +100,7 @@ twitter_img: img/large_card.png
 -  [Computational Ecology and Data Visualization](https://cedricscherer.netlify.com) - Cédric Scherer
 -  [Hugo Toscano](https://toscano84.github.io/)
 -  [Julia Silge](https://juliasilge.com/blog/)
--  [Variance Explained](http://varianceexplained.org/) — David Robinson
+-  [Mockup Blog](https://themockup.blog/) - Tom Mock
 -  [Garrick Aden-buie](https://www.garrickadenbuie.com/blog/)
 -  [Calum Webb](http://calumwebb.uk/)
 -  [David Smale](https://davidsmale.netlify.com/)

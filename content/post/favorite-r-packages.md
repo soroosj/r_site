@@ -2,32 +2,32 @@
 title: Favorite R Packages
 author: Joel Soroos
 date: '2019-11-15'
-slug: favorite-r-packages
 categories: []
 tags:
-  - tidyverse
-  - r
-  - rstats
+   - tidyverse
+   - r
+   - rstats
+slug: favorite-r-packages
+twitter_img: img/large_card.png
 ---
 
-
-#Sourcing
+# Sourcing
 -  [readr](https://readr.tidyverse.org/) - fast and friendly way to read rectangular data (i.e. csv, tsv)
 -  [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
 -  [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
--  [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) -  tools for working with http connections
+-  [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - tools for working with http connections
 -  [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
 -  [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
 -  [rtweet](https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html) - Twitter API via R
 -  [spotifyr](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like) - access Spotfiy API via R
 
 
-#Exploring
+# Exploring
 -  [skimr](https://www.rdocumentation.org/packages/skimr/versions/2.1) - displays summary statistics the user can skim quickly to understand their data
 -  [dataexplorer](https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0) - automated scanning and visualizing of each data set field
 
 
-#Wrangling
+# Wrangling
 -  [dplyr](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html) - transform and summarize data frames
 -  [stringr](https://stringr.tidyverse.org/) - manipulate regular expressions and character strings
 -  [lubridate](https://lubridate.tidyverse.org/) - simplify working with dates and times
@@ -38,7 +38,7 @@ tags:
 -  [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) - simplify text mining
 
 
-#Modeling
+# Modeling
 -  [broom](http://varianceexplained.org/r/broom-intro/) - converts statistical model output to tidy data
 -  [factoextra](https://www.rdocumentation.org/packages/factoextra/versions/1.0.3) - kmeans clustering algoriths, visualizations
 -  [NbClust](https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust) - index of 30 kmeans clustering optimal K methodologies
@@ -46,26 +46,26 @@ tags:
 -  [stats](https://www.rdocumentation.org/packages/stats/versions/3.6.2) - assorted machine learning, statistics and probability algorithms
 
 
-#Visualizing
+# Visualizing
 -  [ggplot2](https://ggplot2.tidyverse.org/) - R's famous package for beautiful graphics usibg the grammar of graphics
 -  [ggmap](https://www.rdocumentation.org/packages/ggmap/versions/3.0.0) - access Google API to download Google maps and geolocations
 -  [ggraph](https://github.com/thomasp85/ggraph) - ggplot2 extensions for network diagrams and trees
 -  [ggimage](https://guangchuangyu.github.io/pkgdocs/ggimage.html) - adding custom images to charts
 -  [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
 -  [patchwork](https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package) - combine charts
--  [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
--  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
--  [gt](https://gt.rstudio.com/) - creating tables using the tidyverse spirit
+-  [scales](https://cran.r-project.org/web/packages/scales/scales.pdf) - maps data to aesthetics, automatically determines breaks and labels for axes and legends
+-  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographical regions via faceting with arrangement of panels mimicking original geographic topology
+-  [gt](https://gt.rstudio.com/) - creating tables in the tidyverse spirit
 -  [gganimate](https://gganimate.com/) - view chart evolution over time via animation
 -  [ggupset](https://github.com/Ryo-N7/ggupset) - upset charts to visualize set intersections 
 -  [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme
 
 
-#Communicating
+# Communicating
 -  [kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 -  [knitr](https://yihui.org/knitr/)
 
 
-#Programming
+# Programming
 -  [purrr](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229) - automate code iterations 
 -  [here](https://www.rdocumentation.org/packages/here/versions/0.1)

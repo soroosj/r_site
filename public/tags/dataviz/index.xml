@@ -18,11 +18,20 @@
       <guid>/links/links/</guid>
       <description>
 
+&lt;p&gt;##Sourcing
+-  &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases
+-  &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets
+-  &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R
+-  &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
+
 &lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; —
-seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34;&gt;&amp;ldquo;Learning R Step by Step&amp;rdquo;&lt;/a&gt; - hard copy book by Richard Cotton&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34;&gt;Statistics with R&lt;/a&gt; — online Duke courses via Coursera&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/r-programming&#34;&gt;R Programming&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;

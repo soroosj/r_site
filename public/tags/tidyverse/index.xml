@@ -1159,11 +1159,20 @@ cocktails_list&lt;/code&gt;&lt;/pre&gt;
       <guid>/links/links/</guid>
       <description>
 
+&lt;p&gt;##Sourcing
+-  &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases
+-  &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets
+-  &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard
+-  &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R
+-  &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
+
 &lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; —
-seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34;&gt;&amp;ldquo;Learning R Step by Step&amp;rdquo;&lt;/a&gt; - hard copy book by Richard Cotton&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34;&gt;Statistics with R&lt;/a&gt; — online Duke courses via Coursera&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/r-programming&#34;&gt;R Programming&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
@@ -3095,53 +3104,79 @@ Function to specific columns
       <guid>/2019/11/15/favorite-r-packages/</guid>
       <description>
 
+&lt;h1 id=&#34;sourcing&#34;&gt;Sourcing&lt;/h1&gt;
 
-&lt;p&gt;#Sourcing
-- &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases
-- &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets
-- &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R
-- &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
-&lt;p&gt;#Exploring
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/skimr/versions/2.1&#34;&gt;skimr&lt;/a&gt; - displays summary statistics the user can skim quickly to understand their data
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0&#34;&gt;dataexplorer&lt;/a&gt; - automated scanning and visualizing of each data set field&lt;/p&gt;
-&lt;p&gt;#Wrangling
-- &lt;a href=&#34;http://genomicsclass.github.io/book/pages/dplyr_tutorial.html&#34;&gt;dplyr&lt;/a&gt; - transform and summarize data frames
-- &lt;a href=&#34;https://stringr.tidyverse.org/&#34;&gt;stringr&lt;/a&gt; - manipulate regular expressions and character strings
-- &lt;a href=&#34;https://lubridate.tidyverse.org/&#34;&gt;lubridate&lt;/a&gt; - simplify working with dates and times
-- &lt;a href=&#34;https://github.com/tidyverse/glue&#34;&gt;glue&lt;/a&gt; - concatentate strings and/or data
-- &lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;magrittr&lt;/a&gt; - set of operators to make code more readable such as the pipe
-- &lt;a href=&#34;https://garthtarr.github.io/meatR/janitor.html&#34;&gt;janitor&lt;/a&gt; - simple functions for cleaning dirty data
-- &lt;a href=&#34;https://tidyr.tidyverse.org/&#34;&gt;tidyr&lt;/a&gt; - transform data layout
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html&#34;&gt;tidytext&lt;/a&gt; - simplify text mining&lt;/p&gt;
-&lt;p&gt;#Modeling
-- &lt;a href=&#34;http://varianceexplained.org/r/broom-intro/&#34;&gt;broom&lt;/a&gt; - converts statistical model output to tidy data
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/factoextra/versions/1.0.3&#34;&gt;factoextra&lt;/a&gt; - kmeans clustering algoriths, visualizations
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust&#34;&gt;NbClust&lt;/a&gt; - index of 30 kmeans clustering optimal K methodologies
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34;&gt;ggdenro&lt;/a&gt; - parses dendogram data into data frames
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/stats/versions/3.6.2&#34;&gt;stats&lt;/a&gt; - assorted machine learning, statistics and probability algorithms&lt;/p&gt;
-&lt;p&gt;#Visualizing
-- &lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;ggplot2&lt;/a&gt; - R’s famous package for beautiful graphics usibg the grammar of graphics
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/ggmap/versions/3.0.0&#34;&gt;ggmap&lt;/a&gt; - access Google API to download Google maps and geolocations
-- &lt;a href=&#34;https://github.com/thomasp85/ggraph&#34;&gt;ggraph&lt;/a&gt; - ggplot2 extensions for network diagrams and trees
-- &lt;a href=&#34;https://guangchuangyu.github.io/pkgdocs/ggimage.html&#34;&gt;ggimage&lt;/a&gt; - adding custom images to charts
-- &lt;a href=&#34;https://wilkelab.org/ggridges/articles/introduction.html&#34;&gt;ggridges&lt;/a&gt; - density plots
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package&#34;&gt;patchwork&lt;/a&gt; - combine charts
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/scales/scales.pdf&#34;&gt;scales&lt;/a&gt; - maps data to aesthetics, automatically determines breaks and labels for axes and legends.
-- &lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographical regions via faceting with arrangement of panels mimicing original geographic topology
-- &lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;gt&lt;/a&gt; - creating tables using the tidyverse spirit
-- &lt;a href=&#34;https://gganimate.com/&#34;&gt;gganimate&lt;/a&gt; - view chart evolution over time via animation
-- &lt;a href=&#34;https://github.com/Ryo-N7/ggupset&#34;&gt;ggupset&lt;/a&gt; - upset charts to visualize set intersections
-- &lt;a href=&#34;https://cran.r-project.org/web/packages/ggdark/readme/README.html&#34;&gt;ggdark&lt;/a&gt; - uncluttered chart theme&lt;/p&gt;
-&lt;p&gt;#Communicating
-- &lt;a href=&#34;https://haozhu233.github.io/kableExtra/awesome_table_in_html.html&#34;&gt;kableExtra&lt;/a&gt;
-- &lt;a href=&#34;https://yihui.org/knitr/&#34;&gt;knitr&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;#Programming
-- &lt;a href=&#34;https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229&#34;&gt;purrr&lt;/a&gt; - automate code iterations
-- &lt;a href=&#34;https://www.rdocumentation.org/packages/here/versions/0.1&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;exploring&#34;&gt;Exploring&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/skimr/versions/2.1&#34;&gt;skimr&lt;/a&gt; - displays summary statistics the user can skim quickly to understand their data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0&#34;&gt;dataexplorer&lt;/a&gt; - automated scanning and visualizing of each data set field&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;wrangling&#34;&gt;Wrangling&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://genomicsclass.github.io/book/pages/dplyr_tutorial.html&#34;&gt;dplyr&lt;/a&gt; - transform and summarize data frames&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stringr.tidyverse.org/&#34;&gt;stringr&lt;/a&gt; - manipulate regular expressions and character strings&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lubridate.tidyverse.org/&#34;&gt;lubridate&lt;/a&gt; - simplify working with dates and times&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tidyverse/glue&#34;&gt;glue&lt;/a&gt; - concatentate strings and/or data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;magrittr&lt;/a&gt; - set of operators to make code more readable such as the pipe&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://garthtarr.github.io/meatR/janitor.html&#34;&gt;janitor&lt;/a&gt; - simple functions for cleaning dirty data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tidyr.tidyverse.org/&#34;&gt;tidyr&lt;/a&gt; - transform data layout&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html&#34;&gt;tidytext&lt;/a&gt; - simplify text mining&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;modeling&#34;&gt;Modeling&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://varianceexplained.org/r/broom-intro/&#34;&gt;broom&lt;/a&gt; - converts statistical model output to tidy data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/factoextra/versions/1.0.3&#34;&gt;factoextra&lt;/a&gt; - kmeans clustering algoriths, visualizations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust&#34;&gt;NbClust&lt;/a&gt; - index of 30 kmeans clustering optimal K methodologies&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html&#34;&gt;ggdenro&lt;/a&gt; - parses dendogram data into data frames&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/stats/versions/3.6.2&#34;&gt;stats&lt;/a&gt; - assorted machine learning, statistics and probability algorithms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;visualizing&#34;&gt;Visualizing&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;ggplot2&lt;/a&gt; - R&amp;rsquo;s famous package for beautiful graphics usibg the grammar of graphics&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/ggmap/versions/3.0.0&#34;&gt;ggmap&lt;/a&gt; - access Google API to download Google maps and geolocations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/thomasp85/ggraph&#34;&gt;ggraph&lt;/a&gt; - ggplot2 extensions for network diagrams and trees&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://guangchuangyu.github.io/pkgdocs/ggimage.html&#34;&gt;ggimage&lt;/a&gt; - adding custom images to charts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wilkelab.org/ggridges/articles/introduction.html&#34;&gt;ggridges&lt;/a&gt; - density plots&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package&#34;&gt;patchwork&lt;/a&gt; - combine charts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/scales/scales.pdf&#34;&gt;scales&lt;/a&gt; - maps data to aesthetics, automatically determines breaks and labels for axes and legends&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographical regions via faceting with arrangement of panels mimicking original geographic topology&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;gt&lt;/a&gt; - creating tables in the tidyverse spirit&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gganimate.com/&#34;&gt;gganimate&lt;/a&gt; - view chart evolution over time via animation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Ryo-N7/ggupset&#34;&gt;ggupset&lt;/a&gt; - upset charts to visualize set intersections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdark/readme/README.html&#34;&gt;ggdark&lt;/a&gt; - uncluttered chart theme&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;communicating&#34;&gt;Communicating&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://haozhu233.github.io/kableExtra/awesome_table_in_html.html&#34;&gt;kableExtra&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://yihui.org/knitr/&#34;&gt;knitr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;programming&#34;&gt;Programming&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229&#34;&gt;purrr&lt;/a&gt; - automate code iterations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rdocumentation.org/packages/here/versions/0.1&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

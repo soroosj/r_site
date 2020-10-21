@@ -1,0 +1,161 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Favorite R Packages},
+  pdfauthor={Joel Soroos},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Favorite R Packages}
+\author{Joel Soroos}
+\date{2019-11-15}
+
+\begin{document}
+\maketitle
+
+\#Sourcing - \href{https://readr.tidyverse.org/}{readr} - fast and
+friendly way to read rectangular data (i.e.~csv, tsv)\\
+-
+\href{https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf}{RODBC}
+- SQL querying against relational databases\\
+-
+\href{https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/}{readxl}
+- importing Excel files including individual worksheets\\
+- \href{https://github.com/tidyverse/rvest/blob/master/README.md}{rvest}
+- tools for working with http connections\\
+-
+\href{https://cran.r-project.org/web/packages/rio/vignettes/rio.html}{rio}
+- simplify importing and exporting data across source formats\\
+-
+\href{https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html}{datapasta}
+- copy/paste data using clipboard\\
+-
+\href{https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html}{rtweet}
+- Twitter API via R\\
+-
+\href{https://rpubs.com/womeimingzi11/how_my_spotify_looks_like}{spotifyr}
+- access Spotfiy API via R
+
+\#Exploring -
+\href{https://www.rdocumentation.org/packages/skimr/versions/2.1}{skimr}
+- displays summary statistics the user can skim quickly to understand
+their data -
+\href{https://www.rdocumentation.org/packages/DataExplorer/versions/0.8.0}{dataexplorer}
+- automated scanning and visualizing of each data set field
+
+\#Wrangling -
+\href{http://genomicsclass.github.io/book/pages/dplyr_tutorial.html}{dplyr}
+- transform and summarize data frames -
+\href{https://stringr.tidyverse.org/}{stringr} - manipulate regular
+expressions and character strings -
+\href{https://lubridate.tidyverse.org/}{lubridate} - simplify working
+with dates and times - \href{https://github.com/tidyverse/glue}{glue} -
+concatentate strings and/or data -
+\href{https://magrittr.tidyverse.org/}{magrittr} - set of operators to
+make code more readable such as the pipe -
+\href{https://garthtarr.github.io/meatR/janitor.html}{janitor} - simple
+functions for cleaning dirty data -
+\href{https://tidyr.tidyverse.org/}{tidyr} - transform data layout -
+\href{https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html}{tidytext}
+- simplify text mining
+
+\#Modeling - \href{http://varianceexplained.org/r/broom-intro/}{broom} -
+converts statistical model output to tidy data -
+\href{https://www.rdocumentation.org/packages/factoextra/versions/1.0.3}{factoextra}
+- kmeans clustering algoriths, visualizations -
+\href{https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust}{NbClust}
+- index of 30 kmeans clustering optimal K methodologies -
+\href{https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html}{ggdenro}
+- parses dendogram data into data frames -
+\href{https://www.rdocumentation.org/packages/stats/versions/3.6.2}{stats}
+- assorted machine learning, statistics and probability algorithms
+
+\#Visualizing - \href{https://ggplot2.tidyverse.org/}{ggplot2} - R's
+famous package for beautiful graphics usibg the grammar of graphics -
+\href{https://www.rdocumentation.org/packages/ggmap/versions/3.0.0}{ggmap}
+- access Google API to download Google maps and geolocations -
+\href{https://github.com/thomasp85/ggraph}{ggraph} - ggplot2 extensions
+for network diagrams and trees -
+\href{https://guangchuangyu.github.io/pkgdocs/ggimage.html}{ggimage} -
+adding custom images to charts -
+\href{https://wilkelab.org/ggridges/articles/introduction.html}{ggridges}
+- density plots -
+\href{https://www.rdocumentation.org/packages/patchwork/versions/1.0.0/topics/patchwork-package}{patchwork}
+- combine charts -
+\href{https://cran.r-project.org/web/packages/scales/scales.pdf}{scales}
+- maps data to aesthetics, automatically determines breaks and labels
+for axes and legends -
+\href{https://hafen.github.io/geofacet/}{geofacet} - visualize data for
+geographical regions via faceting with arrangement of panels mimicking
+original geographic topology - \href{https://gt.rstudio.com/}{gt} -
+creating tables using the tidyverse spirit -
+\href{https://gganimate.com/}{gganimate} - view chart evolution over
+time via animation - \href{https://github.com/Ryo-N7/ggupset}{ggupset} -
+upset charts to visualize set intersections -
+\href{https://cran.r-project.org/web/packages/ggdark/readme/README.html}{ggdark}
+- uncluttered chart theme
+
+\#Communicating -
+\href{https://haozhu233.github.io/kableExtra/awesome_table_in_html.html}{kableExtra}
+- \href{https://yihui.org/knitr/}{knitr}
+
+\#Programming -
+\href{https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229}{purrr}
+- automate code iterations -
+\href{https://www.rdocumentation.org/packages/here/versions/0.1}{here}
+
+\end{document}

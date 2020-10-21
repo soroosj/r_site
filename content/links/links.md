@@ -13,9 +13,18 @@ title: Favorite links
 twitter_img: img/large_card.png
 ---
 
+##Sourcing 
+-  [readr](https://readr.tidyverse.org/) - fast and friendly way to read rectangular data (i.e. csv, tsv)
+-  [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
+-  [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
+-  [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - tools for working with http connections
+-  [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
+-  [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
+-  [rtweet](https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html) - Twitter API via R
+-  [spotifyr](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like) - access Spotfiy API via R
+
 ### Learning R
--  ["R for Data Science"](https://r4ds.had.co.nz/) —
-    seminal Tidyverse book by Hadley Wickham & Garrett Grolemund
+-  ["R for Data Science"](https://r4ds.had.co.nz/) — seminal Tidyverse book by Hadley Wickham & Garrett Grolemund
 -  ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
 -  [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -  [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera

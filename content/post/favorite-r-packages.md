@@ -11,6 +11,7 @@ slug: favorite-r-packages
 twitter_img: img/large_card.png
 ---
 
+
 # Sourcing
 -  [readr](https://readr.tidyverse.org/) - fast and friendly way to read rectangular data in flat file format (i.e. csv, tsv)
 -  [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
@@ -55,7 +56,7 @@ twitter_img: img/large_card.png
 -  [ggimage](https://guangchuangyu.github.io/pkgdocs/ggimage.html) - adding custom images to charts
 -  [gt](https://gt.rstudio.com/) - creating tables in the tidyverse spirit
 -  [gganimate](https://gganimate.com/) - view chart evolution over time via animation
--  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographical regions via arrangement of panels mimicking topology
+-  [geofacet](https://hafen.github.io/geofacet/) - visualize data for geographies via arrangement of panels mimicking topology
 -  [ggridges](https://wilkelab.org/ggridges/articles/introduction.html) - density plots
 -  [ggupset](https://github.com/Ryo-N7/ggupset) - upset charts to visualize set intersections 
 -  [ggdark](https://cran.r-project.org/web/packages/ggdark/readme/README.html) - uncluttered chart theme

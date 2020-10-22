@@ -18,16 +18,6 @@
       <guid>/links/links/</guid>
       <description>
 
-&lt;p&gt;##Sourcing
--  &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases
--  &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets
--  &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R
--  &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
-
 &lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -77,8 +67,7 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.data-to-viz.com/&#34;&gt;From Data to Viz&lt;/a&gt; - selecting chart types&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot
-visualizations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.ggplot2-exts.org/gallery/&#34;&gt;Ggplot2 extensions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tinyurl.com/y3y8wyap&#34;&gt;Ggplot aesthetics cheat sheet&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/&#34;&gt;Automating charts using ggplot2 and purrr&lt;/a&gt;&lt;/li&gt;
@@ -119,7 +108,7 @@ visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
@@ -133,7 +122,7 @@ visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;h3 id=&#34;data-science-blogs&#34;&gt;Data Science Blogs&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated centralized source for numerous R blogs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated central source for numerous R blogs&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://drkeithmcnulty.com/&#34;&gt;Keith McNulty&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://christianburkhart.de&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.data-imaginist.com/&#34;&gt;Data Imaginist&lt;/a&gt; - Thomas Lin Pederson&lt;/li&gt;
@@ -542,13 +531,12 @@ summary {
 &lt;/div&gt;
 
 
-&lt;p&gt;##Sourcing - &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv) - &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases - &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets - &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections - &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats - &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard - &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R - &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
 &lt;div id=&#34;learning-r&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Learning R&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;“R for Data Science”&lt;/a&gt; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
-&lt;li&gt;[“Learning R Step by Step”] (&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&lt;/a&gt;) - hard copy book by Richard Cotton&lt;/li&gt;
-&lt;li&gt;[Statistics with R] (&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34; class=&#34;uri&#34;&gt;https://www.coursera.org/specializations/statistics&lt;/a&gt;) — online Duke courses via Coursera&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34;&gt;“Learning R Step by Step”&lt;/a&gt; - hard copy book by Richard Cotton&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34;&gt;Statistics with R&lt;/a&gt; — online Duke courses via Coursera&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/r-programming&#34;&gt;R Programming&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://adv-r.hadley.nz/&#34;&gt;Advanced R&lt;/a&gt; - advanced R primer by Hadley Wickham&lt;/li&gt;
 &lt;/ul&gt;
@@ -563,17 +551,17 @@ summary {
 &lt;h3&gt;Wrangling&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/data-cleaning&#34;&gt;Getting and Cleaning Data in R&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
-&lt;li&gt;[Data wrangling in dplyr] (&lt;a href=&#34;https://suzan.rbind.io/categories/tutorial/&#34; class=&#34;uri&#34;&gt;https://suzan.rbind.io/categories/tutorial/&lt;/a&gt;) - tutorials by Susan Baert&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://suzan.rbind.io/categories/tutorial/&#34;&gt;Data wrangling in dplyr&lt;/a&gt; - tutorials by Susan Baert&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da&#34;&gt;Tidyverse tricks&lt;/a&gt; - Keith McNulty&lt;/li&gt;
-&lt;li&gt;[Regular expressions] (&lt;a href=&#34;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;[Simplify lists to data frames] (&lt;a href=&#34;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&#34;&gt;Regular expressions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&#34;&gt;Simplify lists to data frames&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;modelling&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Modelling&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;[Distance matrixes] (&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34; class=&#34;uri&#34;&gt;https://www.displayr.com/what-is-a-distance-matrix/&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;[Clustering] (&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34; class=&#34;uri&#34;&gt;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;visualizing&#34; class=&#34;section level3&#34;&gt;
@@ -581,7 +569,7 @@ summary {
 &lt;div id=&#34;fundamentals&#34; class=&#34;section level5&#34;&gt;
 &lt;h5&gt;Fundamentals&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;[“Fundamentals of Data Visualization”] (&lt;a href=&#34;https://serialmentor.com/dataviz/&#34; class=&#34;uri&#34;&gt;https://serialmentor.com/dataviz/&lt;/a&gt;) — free online book by Claus Wilke. Source code &lt;a href=&#34;https://github.com/clauswilke/dataviz&#34;&gt;here.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://serialmentor.com/dataviz/&#34;&gt;“Fundamentals of Data Visualization”&lt;/a&gt; — free online book by Claus Wilke. Source code &lt;a href=&#34;https://github.com/clauswilke/dataviz&#34;&gt;here.&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://socviz.co/&#34;&gt;“Data Visualization”&lt;/a&gt; — free online book by Kieran Healy&lt;br /&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://graphicsprinciples.github.io/&#34;&gt;Graphics principles cheatsheet&lt;/a&gt;&lt;/li&gt;
@@ -629,8 +617,8 @@ summary {
 &lt;div id=&#34;online-communities&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Online Communities&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;[Tidy Tuesday Data] (&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34; class=&#34;uri&#34;&gt;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&lt;/a&gt;) - data sets to practice Tidyverse concepts&lt;/li&gt;
-&lt;li&gt;[Tidy Tuesday Rocks] (&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34; class=&#34;uri&#34;&gt;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&lt;/a&gt;) - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;

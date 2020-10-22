@@ -13,20 +13,11 @@ title: Favorite links
 twitter_img: img/large_card.png
 ---
 
-##Sourcing 
--  [readr](https://readr.tidyverse.org/) - fast and friendly way to read rectangular data (i.e. csv, tsv)
--  [RODBC](https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf) - SQL querying against relational databases
--  [readxl](https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/) - importing Excel files including individual worksheets
--  [rvest](https://github.com/tidyverse/rvest/blob/master/README.md) - tools for working with http connections
--  [rio](https://cran.r-project.org/web/packages/rio/vignettes/rio.html) - simplify importing and exporting data across source formats
--  [datapasta](https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html) - copy/paste data using clipboard
--  [rtweet](https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html) - Twitter API via R
--  [spotifyr](https://rpubs.com/womeimingzi11/how_my_spotify_looks_like) - access Spotfiy API via R
 
 ### Learning R
 -  ["R for Data Science"](https://r4ds.had.co.nz/) — seminal Tidyverse book by Hadley Wickham & Garrett Grolemund
--  ["Learning R Step by Step"] (https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
--  [Statistics with R] (https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
+-  ["Learning R Step by Step"](https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105) - hard copy book by Richard Cotton
+-  [Statistics with R](https://www.coursera.org/specializations/statistics) — online Duke courses via Coursera
 -  [R Programming](https://www.coursera.org/learn/r-programming) — online Johns Hopkins class via Coursera
 -  [Advanced R](https://adv-r.hadley.nz/) - advanced R primer by Hadley Wickham
 
@@ -37,20 +28,20 @@ twitter_img: img/large_card.png
 
 ### Wrangling
 -  [Getting and Cleaning Data in R](https://www.coursera.org/learn/data-cleaning) — online Johns Hopkins class via Coursera
--  [Data wrangling in dplyr] (https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
+-  [Data wrangling in dplyr](https://suzan.rbind.io/categories/tutorial/) - tutorials by Susan Baert
 -  [Tidyverse tricks](https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da) - Keith McNulty
--  [Regular expressions] (https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
--  [Simplify lists to data frames] (https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
+-  [Regular expressions](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
+-  [Simplify lists to data frames](https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
 
 
 ### Modelling
--  [Distance matrixes] (https://www.displayr.com/what-is-a-distance-matrix/)
--  [Clustering] (https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
+-  [Distance matrixes](https://www.displayr.com/what-is-a-distance-matrix/)
+-  [Clustering](https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
 
 
 ### Visualizing
 ##### Fundamentals
--  ["Fundamentals of Data Visualization"] (https://serialmentor.com/dataviz/) — free online
+-  ["Fundamentals of Data Visualization"](https://serialmentor.com/dataviz/) — free online
     book by Claus Wilke.  Source code [here.](https://github.com/clauswilke/dataviz)
 -  ["Data Visualization"](http://socviz.co/) — free online book by
     Kieran Healy  
@@ -59,8 +50,7 @@ twitter_img: img/large_card.png
 
 ##### Charts
 -  [From Data to Viz](https://www.data-to-viz.com/) - selecting chart types
--  [Top 50 ggplot
-    visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+-  [Top 50 ggplot visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 -  [Ggplot2 extensions](http://www.ggplot2-exts.org/gallery/)
 -  [Ggplot aesthetics cheat sheet](https://tinyurl.com/y3y8wyap)
 -  [Automating charts using ggplot2 and purrr](https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/)
@@ -89,9 +79,9 @@ twitter_img: img/large_card.png
 
 
 ### Online Communities
--  [Tidy Tuesday Data] (https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
--  [Tidy Tuesday Rocks] (https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - compilation of Tidy Tuesday submissions across users
--  [R for Data Science (R4DS) Online Learning Community ](https://www.rfordatasci.com)
+-  [Tidy Tuesday Data](https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
+-  [Tidy Tuesday Rocks](https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - compilation of Tidy Tuesday submissions across users
+-  [R for Data Science (R4DS) Online Learning Community](https://www.rfordatasci.com)
 
 
 ### Misc
@@ -101,7 +91,7 @@ twitter_img: img/large_card.png
 
 
 ###  Data Science Blogs
--  [R Bloggers](https://www.r-bloggers.com/) - curated centralized source for numerous R blogs
+-  [R Bloggers](https://www.r-bloggers.com/) - curated central source for numerous R blogs
 -  [Keith McNulty](https://drkeithmcnulty.com/)
 -  [Christian Burkhart](https://christianburkhart.de)
 -  [Data Imaginist](https://www.data-imaginist.com/) - Thomas Lin Pederson

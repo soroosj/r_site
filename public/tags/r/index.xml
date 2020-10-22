@@ -1159,16 +1159,6 @@ cocktails_list&lt;/code&gt;&lt;/pre&gt;
       <guid>/links/links/</guid>
       <description>
 
-&lt;p&gt;##Sourcing
--  &lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;readr&lt;/a&gt; - fast and friendly way to read rectangular data (i.e. csv, tsv)
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf&#34;&gt;RODBC&lt;/a&gt; - SQL querying against relational databases
--  &lt;a href=&#34;https://tutorials.methodsconsultants.com/posts/reading-and-writing-excel-files-with-r-using-readxl-and-writexl/&#34;&gt;readxl&lt;/a&gt; - importing Excel files including individual worksheets
--  &lt;a href=&#34;https://github.com/tidyverse/rvest/blob/master/README.md&#34;&gt;rvest&lt;/a&gt; - tools for working with http connections
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/rio/vignettes/rio.html&#34;&gt;rio&lt;/a&gt; - simplify importing and exporting data across source formats
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/datapasta/vignettes/how-to-datapasta.html&#34;&gt;datapasta&lt;/a&gt; - copy/paste data using clipboard
--  &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html&#34;&gt;rtweet&lt;/a&gt; - Twitter API via R
--  &lt;a href=&#34;https://rpubs.com/womeimingzi11/how_my_spotify_looks_like&#34;&gt;spotifyr&lt;/a&gt; - access Spotfiy API via R&lt;/p&gt;
-
 &lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -1218,8 +1208,7 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.data-to-viz.com/&#34;&gt;From Data to Viz&lt;/a&gt; - selecting chart types&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot
-visualizations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.ggplot2-exts.org/gallery/&#34;&gt;Ggplot2 extensions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tinyurl.com/y3y8wyap&#34;&gt;Ggplot aesthetics cheat sheet&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/&#34;&gt;Automating charts using ggplot2 and purrr&lt;/a&gt;&lt;/li&gt;
@@ -1260,7 +1249,7 @@ visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
@@ -1274,7 +1263,7 @@ visualizations&lt;/a&gt;&lt;/li&gt;
 &lt;h3 id=&#34;data-science-blogs&#34;&gt;Data Science Blogs&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated centralized source for numerous R blogs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated central source for numerous R blogs&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://drkeithmcnulty.com/&#34;&gt;Keith McNulty&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://christianburkhart.de&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.data-imaginist.com/&#34;&gt;Data Imaginist&lt;/a&gt; - Thomas Lin Pederson&lt;/li&gt;
@@ -3158,7 +3147,7 @@ Function to specific columns
 &lt;li&gt;&lt;a href=&#34;https://guangchuangyu.github.io/pkgdocs/ggimage.html&#34;&gt;ggimage&lt;/a&gt; - adding custom images to charts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;gt&lt;/a&gt; - creating tables in the tidyverse spirit&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gganimate.com/&#34;&gt;gganimate&lt;/a&gt; - view chart evolution over time via animation&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographical regions via arrangement of panels mimicking topology&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographies via arrangement of panels mimicking topology&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://wilkelab.org/ggridges/articles/introduction.html&#34;&gt;ggridges&lt;/a&gt; - density plots&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/Ryo-N7/ggupset&#34;&gt;ggupset&lt;/a&gt; - upset charts to visualize set intersections&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdark/readme/README.html&#34;&gt;ggdark&lt;/a&gt; - uncluttered chart theme&lt;/li&gt;

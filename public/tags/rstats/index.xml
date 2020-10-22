@@ -3011,7 +3011,7 @@ Function to specific columns
 &lt;li&gt;&lt;a href=&#34;https://guangchuangyu.github.io/pkgdocs/ggimage.html&#34;&gt;ggimage&lt;/a&gt; - adding custom images to charts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;gt&lt;/a&gt; - creating tables in the tidyverse spirit&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://gganimate.com/&#34;&gt;gganimate&lt;/a&gt; - view chart evolution over time via animation&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographical regions via arrangement of panels mimicking topology&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hafen.github.io/geofacet/&#34;&gt;geofacet&lt;/a&gt; - visualize data for geographies via arrangement of panels mimicking topology&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://wilkelab.org/ggridges/articles/introduction.html&#34;&gt;ggridges&lt;/a&gt; - density plots&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/Ryo-N7/ggupset&#34;&gt;ggupset&lt;/a&gt; - upset charts to visualize set intersections&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ggdark/readme/README.html&#34;&gt;ggdark&lt;/a&gt; - uncluttered chart theme&lt;/li&gt;

@@ -90,3 +90,9 @@ Data_Week,Data_Description,Purpose,Function Name,Package
 7/28/20,Penguins,visualize data points grouped by cluster,fviz_cluster,factoextra
 7/28/20,Penguins,visualize optimal cluster size test output,fviz_nbclust,factoextra
 7/28/20,Penguins,optimal cluster size index of 30 methodologies,NbClust,NbClust
+9/1/20,Crops,list-column on grouping variable,nest,tidyr
+9/1/20,Crops,calculate summary statistics within row,rowwise,dplyr
+9/1/20,Crops,formatted table in tidyverse spirit,gt,gt
+9/1/20,Crops,convert ggplot object to HTML,ggplot_image,gt
+9/1/20,Crops,maps data to colors,col_numeric,scales
+9/1/20,Crops,line chart,geom_line,ggplot2

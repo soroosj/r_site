@@ -34,9 +34,8 @@ categories: []
 ```
 
 \   
-\  
 
-####1.  Most widely learned functions are in ggplot2 and dplyr packages.
+### 1.Most widely learned functions are in ggplot2 and dplyr packages.
 ```{r aggregate}
    
    library (kableExtra)
@@ -52,7 +51,7 @@ categories: []
 \   
 \   
 
-####2.  Chronological listing of all functions that I have learned. 
+### 2.Chronological listing of all functions that I have learned. 
 ```{r list}
    
    kable (functions) %>%

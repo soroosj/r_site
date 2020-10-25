@@ -5,19 +5,10 @@
     <description>Recent content in Posts on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title></title>
-      <link>/2020/10/20/</link>
-      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/10/20/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Kmeans Clustering of Penguins</title>
@@ -1168,12 +1159,12 @@ cocktails_list&lt;/code&gt;&lt;/pre&gt;
       <guid>/2020/02/09/tidy-tuesday-functions/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
-&lt;p&gt; &lt;br /&gt;
- &lt;/p&gt;
-&lt;div id=&#34;most-widely-learned-functions-are-in-ggplot2-and-dplyr-packages.&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;1. Most widely learned functions are in ggplot2 and dplyr packages.&lt;/h4&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div id=&#34;most-widely-learned-functions-are-in-ggplot2-and-dplyr-packages.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1.Most widely learned functions are in ggplot2 and dplyr packages.&lt;/h3&gt;
 &lt;table class=&#34;table table-striped table-hover&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1194,10 +1185,10 @@ percent
 ggplot2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-16
+17
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.176
+0.175
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1205,10 +1196,10 @@ ggplot2
 dplyr
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-9
+10
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.099
+0.103
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1219,7 +1210,7 @@ base
 6
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.066
+0.062
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1230,7 +1221,18 @@ stringr
 5
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.055
+0.052
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.041
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1241,7 +1243,7 @@ ggimage
 3
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.033
+0.031
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1252,7 +1254,7 @@ ggraph
 3
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.033
+0.031
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1263,18 +1265,7 @@ lubridate
 3
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.033
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-tidyr
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0.033
+0.031
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1285,7 +1276,7 @@ broom
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1296,7 +1287,7 @@ cowplot
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1307,7 +1298,7 @@ factoextra
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1318,7 +1309,7 @@ ggmap
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1329,7 +1320,18 @@ grid
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1340,7 +1342,7 @@ magick
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1351,7 +1353,7 @@ purrr
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1362,7 +1364,7 @@ stats
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1373,7 +1375,7 @@ tibble
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-0.022
+0.021
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1381,8 +1383,8 @@ tibble
 &lt;p&gt; &lt;br /&gt;
  &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;chronological-listing-of-all-functions-that-i-have-learned.&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2. Chronological listing of all functions that I have learned.&lt;/h4&gt;
+&lt;div id=&#34;chronological-listing-of-all-functions-that-i-have-learned.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2.Chronological listing of all functions that I have learned.&lt;/h3&gt;
 &lt;table class=&#34;table table-striped table-hover&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1404,6 +1406,108 @@ purpose
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tidyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+nest
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+list-column on grouping variable
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+dplyr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rowwise
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+calculate summary statistics within row
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+formatted table in tidyverse spirit
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot_image
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+convert ggplot object to HTML
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+scales
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+col_numeric
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+maps data to colors
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2020-09-01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Crops
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ggplot2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+geom_line
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+line chart
+&lt;/td&gt;
+&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 2020-07-28
@@ -2208,7 +2312,7 @@ Add image to chart
 2019-09-03
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Moore&#39;s Law
+Moore’s Law
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 stats
@@ -2225,7 +2329,7 @@ Calculate loess regression
 2019-09-03
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Moore&#39;s Law
+Moore’s Law
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 broom
@@ -2242,7 +2346,7 @@ Regression fit make tidy
 2019-09-03
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Moore&#39;s Law
+Moore’s Law
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 tibble
@@ -2259,7 +2363,7 @@ Data frame from scratch
 2019-09-03
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Moore&#39;s Law
+Moore’s Law
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 base
@@ -2953,7 +3057,18 @@ Function to specific columns
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;© 2020 GitHub, Inc. Terms Privacy Security Status Help Contact GitHub Pricing API Training Blog About&lt;/p&gt;
+&lt;p&gt;© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

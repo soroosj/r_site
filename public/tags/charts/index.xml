@@ -155,7 +155,8 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
       <description>
 
 
-&lt;p&gt;A collection of data visualizations I have built for fun using the &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt; programming language. All visualizations are produced via code without post-processing. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;A collection of data visualizations I have built for fun using the &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt; programming language. All visualizations are produced via code without post-processing.
+&lt;br/&gt;&lt;/p&gt;
 &lt;p&gt;The examples source data from the weekly &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R4DS #TidyTuesday&lt;/a&gt; project, which is a community for R and tidyverse enthusisasts to practice and share ideas in wrangling, exploring and visualizing data.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/franchise.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/franchise.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/ufo.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/ufo.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
@@ -164,6 +165,7 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
 &lt;p&gt;&lt;img src=&#34;/img/coffee.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/coffee.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/world cup.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/world cup.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/penguins.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/penguins.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/crops.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/crops.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/cars.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/cars.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/waste.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/waste.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/img/anime.png&#34; style=&#34;height: 50%; width: 50%; object-fit: contain&#34; onclick=&#34;window.open(&#39;https://soroosj.netlify.com/img/anime.png&#39;, &#39;blank&#39;);&#34;/&gt;&lt;/p&gt;

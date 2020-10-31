@@ -5,10 +5,149 @@
     <description>Recent content in tidyverse on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Favorite links</title>
+      <link>/links/links/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/links/links/</guid>
+      <description>
+
+&lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34;&gt;&amp;ldquo;Learning R Step by Step&amp;rdquo;&lt;/a&gt; - hard copy book by Richard Cotton&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34;&gt;Statistics with R&lt;/a&gt; — online Duke courses via Coursera&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/r-programming&#34;&gt;R Programming&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://adv-r.hadley.nz/&#34;&gt;Advanced R&lt;/a&gt; - advanced R primer by Hadley Wickham&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sourcing&#34;&gt;Sourcing&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;Setting environmental variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;wrangling&#34;&gt;Wrangling&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/data-cleaning&#34;&gt;Getting and Cleaning Data in R&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://suzan.rbind.io/categories/tutorial/&#34;&gt;Data wrangling in dplyr&lt;/a&gt; - tutorials by Susan Baert&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da&#34;&gt;Tidyverse tricks&lt;/a&gt; - Keith McNulty&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&#34;&gt;Regular expressions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&#34;&gt;Simplify lists to data frames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593&#34;&gt;Converting strings to symbols&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;modelling&#34;&gt;Modelling&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;Tidymodels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;visualizing&#34;&gt;Visualizing&lt;/h3&gt;
+
+&lt;h5 id=&#34;fundamentals&#34;&gt;Fundamentals&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://serialmentor.com/dataviz/&#34;&gt;&amp;ldquo;Fundamentals of Data Visualization&amp;rdquo;&lt;/a&gt; — free online
+book by Claus Wilke.  Source code &lt;a href=&#34;https://github.com/clauswilke/dataviz&#34;&gt;here.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://socviz.co/&#34;&gt;&amp;ldquo;Data Visualization&amp;rdquo;&lt;/a&gt; — free online book by
+Kieran Healy&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://graphicsprinciples.github.io/&#34;&gt;Graphics principles cheatsheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;charts&#34;&gt;Charts&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.data-to-viz.com/&#34;&gt;From Data to Viz&lt;/a&gt; - selecting chart types&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot visualizations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.ggplot2-exts.org/gallery/&#34;&gt;Ggplot2 extensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tinyurl.com/y3y8wyap&#34;&gt;Ggplot aesthetics cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/&#34;&gt;Automating charts using ggplot2 and purrr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;maps&#34;&gt;Maps&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html&#34;&gt;Making maps with R&lt;/a&gt; - introduction to geom_polygon and ggmap methodologies&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations&#34;&gt;Google Maps API developers guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.co/7Om5iEPMQe?amp=1&#34;&gt;Creating street Maps with ggplot2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;tables&#34;&gt;Tables&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/exploring-the-gt-grammar-of-tables-package-in-r-7fff9d0b40cd&#34;&gt;Exploring GT tables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Grammar of Tables&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;aesthetics&#34;&gt;Aesthetics&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/&#34;&gt;R color key&lt;/a&gt; - view names of all R colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html&#34;&gt;Viridus color scales&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.datawrapper.de/colors/&#34;&gt;What to consider when choosing colors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fonts.google.com/&#34;&gt;Google fonts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/&#34;&gt;Adding custom fonts to R&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf&#34;&gt;R Markdown Cheat Sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/&#34;&gt;Core Purrr lessons&lt;/a&gt; - functional programming primer on automating repeated tasks&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jenrichmond.rbind.io/post/how-to-use-the-here-package/#:~:text=The%20here%20package%20allows%20you%20to%20set%20the,of%20your%20project%20file%20everytime%20you%20use%20it&#34;&gt;Folder structure and here package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://happygitwithr.com/&#34;&gt;Happy Git and GitHub for the R user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rdrr.io/snippets/&#34;&gt;Run R code in browser&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;online-communities&#34;&gt;Online Communities&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;data-science-blogs&#34;&gt;Data Science Blogs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated central source for numerous R blogs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://drkeithmcnulty.com/&#34;&gt;Keith McNulty&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://christianburkhart.de&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.data-imaginist.com/&#34;&gt;Data Imaginist&lt;/a&gt; - Thomas Lin Pederson&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://karaman.is/&#34;&gt;Georgios Karamanis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cedricscherer.netlify.com&#34;&gt;Computational Ecology and Data Visualization&lt;/a&gt; - Cédric Scherer&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://toscano84.github.io/&#34;&gt;Hugo Toscano&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://juliasilge.com/blog/&#34;&gt;Julia Silge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/&#34;&gt;Mockup Blog&lt;/a&gt; - Tom Mock&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.garrickadenbuie.com/blog/&#34;&gt;Garrick Aden-buie&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://calumwebb.uk/&#34;&gt;Calum Webb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://davidsmale.netlify.com/&#34;&gt;David Smale&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.visualisingdata.com/blog/&#34;&gt;Visualizing Data&lt;/a&gt; — Andy Kirk&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.littlemissdata.com&#34;&gt;Little Miss Data&lt;/a&gt; - Laura Ellis&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/&#34;&gt;Very Statisticious&lt;/a&gt; - Ariel Muldoon&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://caitlinhudon.com/blog-links/&#34;&gt;Haystacks&lt;/a&gt; - Caitlan Hudon&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://clauswilke.com/&#34;&gt;Claus Wilke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.brodrigues.co/&#34;&gt;Econometrics&lt;/a&gt; — Bruno Rodrigues&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaylinpavlik.com/author/walkerkq/&#34;&gt;Kaylin Pavlik&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.natedayta.com/&#34;&gt;NateDayta&lt;/a&gt; - Nathan Day&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Kmeans Clustering of Penguins</title>
@@ -1148,145 +1287,6 @@ cocktails_list&lt;/code&gt;&lt;/pre&gt;
       song_plots_combine&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/spotify_files/figure-html/final-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Favorite links</title>
-      <link>/links/links/</link>
-      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/links/links/</guid>
-      <description>
-
-&lt;h3 id=&#34;learning-r&#34;&gt;Learning R&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;&amp;ldquo;R for Data Science&amp;rdquo;&lt;/a&gt; — seminal Tidyverse book by Hadley Wickham &amp;amp; Garrett Grolemund&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Learning-Step-Step-Function-Analysis/dp/1449357105&#34;&gt;&amp;ldquo;Learning R Step by Step&amp;rdquo;&lt;/a&gt; - hard copy book by Richard Cotton&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/specializations/statistics&#34;&gt;Statistics with R&lt;/a&gt; — online Duke courses via Coursera&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/r-programming&#34;&gt;R Programming&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://adv-r.hadley.nz/&#34;&gt;Advanced R&lt;/a&gt; - advanced R primer by Hadley Wickham&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;sourcing&#34;&gt;Sourcing&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;Setting environmental variables&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;wrangling&#34;&gt;Wrangling&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/data-cleaning&#34;&gt;Getting and Cleaning Data in R&lt;/a&gt; — online Johns Hopkins class via Coursera&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://suzan.rbind.io/categories/tutorial/&#34;&gt;Data wrangling in dplyr&lt;/a&gt; - tutorials by Susan Baert&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da&#34;&gt;Tidyverse tricks&lt;/a&gt; - Keith McNulty&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&#34;&gt;Regular expressions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&#34;&gt;Simplify lists to data frames&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593&#34;&gt;Converting strings to symbols&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;modelling&#34;&gt;Modelling&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;Tidymodels&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;visualizing&#34;&gt;Visualizing&lt;/h3&gt;
-
-&lt;h5 id=&#34;fundamentals&#34;&gt;Fundamentals&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://serialmentor.com/dataviz/&#34;&gt;&amp;ldquo;Fundamentals of Data Visualization&amp;rdquo;&lt;/a&gt; — free online
-book by Claus Wilke.  Source code &lt;a href=&#34;https://github.com/clauswilke/dataviz&#34;&gt;here.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://socviz.co/&#34;&gt;&amp;ldquo;Data Visualization&amp;rdquo;&lt;/a&gt; — free online book by
-Kieran Healy&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://graphicsprinciples.github.io/&#34;&gt;Graphics principles cheatsheet&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;charts&#34;&gt;Charts&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.data-to-viz.com/&#34;&gt;From Data to Viz&lt;/a&gt; - selecting chart types&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html&#34;&gt;Top 50 ggplot visualizations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ggplot2-exts.org/gallery/&#34;&gt;Ggplot2 extensions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://tinyurl.com/y3y8wyap&#34;&gt;Ggplot aesthetics cheat sheet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/2018/08/20/automating-exploratory-plots/&#34;&gt;Automating charts using ggplot2 and purrr&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;maps&#34;&gt;Maps&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html&#34;&gt;Making maps with R&lt;/a&gt; - introduction to geom_polygon and ggmap methodologies&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations&#34;&gt;Google Maps API developers guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.co/7Om5iEPMQe?amp=1&#34;&gt;Creating street Maps with ggplot2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;tables&#34;&gt;Tables&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/exploring-the-gt-grammar-of-tables-package-in-r-7fff9d0b40cd&#34;&gt;Exploring GT tables&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Grammar of Tables&lt;/a&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;aesthetics&#34;&gt;Aesthetics&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/&#34;&gt;R color key&lt;/a&gt; - view names of all R colors&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html&#34;&gt;Viridus color scales&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.datawrapper.de/colors/&#34;&gt;What to consider when choosing colors&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://fonts.google.com/&#34;&gt;Google fonts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/&#34;&gt;Adding custom fonts to R&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf&#34;&gt;R Markdown Cheat Sheet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/&#34;&gt;Core Purrr lessons&lt;/a&gt; - functional programming primer on automating repeated tasks&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://jenrichmond.rbind.io/post/how-to-use-the-here-package/#:~:text=The%20here%20package%20allows%20you%20to%20set%20the,of%20your%20project%20file%20everytime%20you%20use%20it&#34;&gt;Folder structure and here package&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://happygitwithr.com/&#34;&gt;Happy Git and GitHub for the R user&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rdrr.io/snippets/&#34;&gt;Run R code in browser&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;online-communities&#34;&gt;Online Communities&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;data-science-blogs&#34;&gt;Data Science Blogs&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated central source for numerous R blogs&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://drkeithmcnulty.com/&#34;&gt;Keith McNulty&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://christianburkhart.de&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.data-imaginist.com/&#34;&gt;Data Imaginist&lt;/a&gt; - Thomas Lin Pederson&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://karaman.is/&#34;&gt;Georgios Karamanis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cedricscherer.netlify.com&#34;&gt;Computational Ecology and Data Visualization&lt;/a&gt; - Cédric Scherer&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://toscano84.github.io/&#34;&gt;Hugo Toscano&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://juliasilge.com/blog/&#34;&gt;Julia Silge&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://themockup.blog/&#34;&gt;Mockup Blog&lt;/a&gt; - Tom Mock&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.garrickadenbuie.com/blog/&#34;&gt;Garrick Aden-buie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://calumwebb.uk/&#34;&gt;Calum Webb&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://davidsmale.netlify.com/&#34;&gt;David Smale&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.visualisingdata.com/blog/&#34;&gt;Visualizing Data&lt;/a&gt; — Andy Kirk&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.littlemissdata.com&#34;&gt;Little Miss Data&lt;/a&gt; - Laura Ellis&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://aosmith.rbind.io/&#34;&gt;Very Statisticious&lt;/a&gt; - Ariel Muldoon&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://caitlinhudon.com/blog-links/&#34;&gt;Haystacks&lt;/a&gt; - Caitlan Hudon&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://clauswilke.com/&#34;&gt;Claus Wilke&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.brodrigues.co/&#34;&gt;Econometrics&lt;/a&gt; — Bruno Rodrigues&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.kaylinpavlik.com/author/walkerkq/&#34;&gt;Kaylin Pavlik&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.natedayta.com/&#34;&gt;NateDayta&lt;/a&gt; - Nathan Day&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

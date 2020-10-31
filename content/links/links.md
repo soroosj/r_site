@@ -1,5 +1,5 @@
 ---
-date: "2020-04-22"
+date: "2020-10-30"
 description: 
 draft: false
 tags:
@@ -23,7 +23,7 @@ twitter_img: img/large_card.png
 
 
 ### Sourcing 
--  [Parsing JSON files with purrr](https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/)
+-  [Parsing JSON files with purrr](https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/)
 -  [Setting environmental variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 
 
@@ -38,9 +38,9 @@ twitter_img: img/large_card.png
 
 ### Modelling
 -  [Tidymodels](https://www.tidymodels.org/)
+-  [Broom and dplyr interaction](https://broom.tidymodels.org/articles/broom_and_dplyr.html)
 -  [Distance matrixes](https://www.displayr.com/what-is-a-distance-matrix/)
 -  [Clustering](https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
--  [Broom and dplyr interaction](https://broom.tidymodels.org/articles/broom_and_dplyr.html)
 
 
 ### Visualizing

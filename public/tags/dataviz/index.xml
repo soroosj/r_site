@@ -5,7 +5,7 @@
     <description>Recent content in dataviz on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +13,7 @@
     <item>
       <title>Favorite links</title>
       <link>/links/links/</link>
-      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/links/links/</guid>
       <description>
@@ -31,7 +31,7 @@
 &lt;h3 id=&#34;sourcing&#34;&gt;Sourcing&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-22-parsing-json-in-r-with-jsonlite/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;Setting environmental variables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -50,9 +50,9 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;Tidymodels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;visualizing&#34;&gt;Visualizing&lt;/h3&gt;

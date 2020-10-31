@@ -7,12 +7,52 @@
   </url>
   
   <url>
-    <loc>/tags/clustering/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
+    <loc>/tags/charts/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/dataviz/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/links/links/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/links/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/maps/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tidyverse/</loc>
+    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/clustering/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -32,22 +72,7 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/rstats/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-09-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/tidyverse/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -79,31 +104,6 @@
   <url>
     <loc>/tags/spotifyr/</loc>
     <lastmod>2020-05-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/charts/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/dataviz/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/links/links/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/links/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/maps/</loc>
-    <lastmod>2020-04-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>

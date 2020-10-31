@@ -31,6 +31,7 @@
 &lt;h3 id=&#34;sourcing&#34;&gt;Sourcing&lt;/h3&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;Setting environmental variables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -42,13 +43,16 @@
 &lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da&#34;&gt;Tidyverse tricks&lt;/a&gt; - Keith McNulty&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html&#34;&gt;Regular expressions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame&#34;&gt;Simplify lists to data frames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593&#34;&gt;Converting strings to symbols&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;modelling&#34;&gt;Modelling&lt;/h3&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;Tidymodels&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;visualizing&#34;&gt;Visualizing&lt;/h3&gt;
@@ -78,29 +82,36 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html&#34;&gt;Making maps with R&lt;/a&gt; - introduction to geom_polygon and ggmap methodologies&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations&#34;&gt;Google Maps API developers guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.co/7Om5iEPMQe?amp=1&#34;&gt;Creating street Maps with ggplot2&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.co/7Om5iEPMQe?amp=1&#34;&gt;Creating street Maps with ggplot2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;h5 id=&#34;tables&#34;&gt;Tables&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://towardsdatascience.com/exploring-the-gt-grammar-of-tables-package-in-r-7fff9d0b40cd&#34;&gt;Exploring GT tables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Grammar of Tables&lt;/a&gt;
+&lt;br /&gt;
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&#34;aesthetics&#34;&gt;Aesthetics&lt;/h5&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.datawrapper.de/colors/&#34;&gt;What to consider when choosing colors&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/&#34;&gt;R color key&lt;/a&gt; - view names of all R colors&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html&#34;&gt;Viridus color scales&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Colorbrewer &lt;a href=&#34;https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png&#34;&gt;standard schemes&lt;/a&gt; and &lt;a href=&#34;http://colorbrewer2.org/#type=sequential&amp;amp;scheme=BuGn&amp;amp;n=3&#34;&gt;ad hoc schemes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.datawrapper.de/colors/&#34;&gt;What to consider when choosing colors&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://fonts.google.com/&#34;&gt;Google fonts&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/&#34;&gt;Adding custom fonts to R&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;programming&#34;&gt;Programming&lt;/h3&gt;
+&lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf&#34;&gt;R Markdown Cheat Sheet&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://jennybc.github.io/purrr-tutorial/&#34;&gt;Core Purrr lessons&lt;/a&gt; - functional programming primer on automating repeated tasks&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593&#34;&gt;Converting strings to symbols&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://jenrichmond.rbind.io/post/how-to-use-the-here-package/#:~:text=The%20here%20package%20allows%20you%20to%20set%20the,of%20your%20project%20file%20everytime%20you%20use%20it&#34;&gt;Folder structure and here package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://happygitwithr.com/&#34;&gt;Happy Git and GitHub for the R user&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rdrr.io/snippets/&#34;&gt;Run R code in browser&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;online-communities&#34;&gt;Online Communities&lt;/h3&gt;
@@ -109,14 +120,6 @@ Kieran Healy&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/blob/master/README.md&#34;&gt;Tidy Tuesday Data&lt;/a&gt; - data sets to practice Tidyverse concepts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://nsgrantham.shinyapps.io/tidytuesdayrocks/&#34;&gt;Tidy Tuesday Rocks&lt;/a&gt; - compilation of Tidy Tuesday submissions across users&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.rfordatasci.com&#34;&gt;R for Data Science (R4DS) Online Learning Community&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://happygitwithr.com/&#34;&gt;Happy Git and GitHub for the R user&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://jenrichmond.rbind.io/post/how-to-use-the-here-package/&#34;&gt;Controlling filepaths with here function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://rdrr.io/snippets/&#34;&gt;Run R code in browser&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;data-science-blogs&#34;&gt;Data Science Blogs&lt;/h3&gt;
@@ -544,6 +547,7 @@ summary {
 &lt;div id=&#34;sourcing&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Sourcing&lt;/h3&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Parsing JSON files with purrr&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4&#34;&gt;Setting environmental variables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -560,8 +564,10 @@ summary {
 &lt;div id=&#34;modelling&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Modelling&lt;/h3&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;Tidymodels&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.displayr.com/what-is-a-distance-matrix/&#34;&gt;Distance matrixes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://broom.tidymodels.org/articles/broom_and_dplyr.html&#34;&gt;Broom and dplyr interaction&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;visualizing&#34; class=&#34;section level3&#34;&gt;
@@ -591,6 +597,12 @@ summary {
 &lt;li&gt;&lt;a href=&#34;http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html&#34;&gt;Making maps with R&lt;/a&gt; - introduction to geom_polygon and ggmap methodologies&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations&#34;&gt;Google Maps API developers guide&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://t.co/7Om5iEPMQe?amp=1&#34;&gt;Creating street Maps with ggplot2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tables&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;Tables&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/&#34;&gt;Grammar of Tables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;aesthetics&#34; class=&#34;section level5&#34;&gt;
@@ -633,7 +645,7 @@ summary {
 &lt;div id=&#34;data-science-blogs&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Data Science Blogs&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated centralized source for numerous R blogs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.r-bloggers.com/&#34;&gt;R Bloggers&lt;/a&gt; - curated central source for numerous R blogs&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://drkeithmcnulty.com/&#34;&gt;Keith McNulty&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://christianburkhart.de&#34;&gt;Christian Burkhart&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.data-imaginist.com/&#34;&gt;Data Imaginist&lt;/a&gt; - Thomas Lin Pederson&lt;/li&gt;

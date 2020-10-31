@@ -23,6 +23,7 @@ twitter_img: img/large_card.png
 
 
 ### Sourcing 
+-  [Parsing JSON files with purrr](https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/)
 -  [Setting environmental variables](https://community.rstudio.com/t/how-to-set-a-variable-in-renviron/5029/4)
 
 
@@ -32,11 +33,14 @@ twitter_img: img/large_card.png
 -  [Tidyverse tricks](https://towardsdatascience.com/five-tidyverse-tricks-you-may-not-know-about-c5026d5a19da) - Keith McNulty
 -  [Regular expressions](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) 
 -  [Simplify lists to data frames](https://stackoverflow.com/questions/4227223/convert-a-list-to-a-data-frame)
+-  [Converting strings to symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 
 
 ### Modelling
+-  [Tidymodels](https://www.tidymodels.org/)
 -  [Distance matrixes](https://www.displayr.com/what-is-a-distance-matrix/)
 -  [Clustering](https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/)
+-  [Broom and dplyr interaction](https://broom.tidymodels.org/articles/broom_and_dplyr.html)
 
 
 ### Visualizing
@@ -61,33 +65,32 @@ twitter_img: img/large_card.png
 -  [Google Maps API developers guide](https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations)
 -  [Creating street Maps with ggplot2](https://t.co/7Om5iEPMQe?amp=1)
 
+
+##### Tables
+-  [Exploring GT tables](https://towardsdatascience.com/exploring-the-gt-grammar-of-tables-package-in-r-7fff9d0b40cd)
+-  [Grammar of Tables](https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/)
+    
     
 ##### Aesthetics
--  [What to consider when choosing colors](https://blog.datawrapper.de/colors/)
 -  [R color key](https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/) - view names of all R colors
 -  [Viridus color scales](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
--  Colorbrewer [standard schemes](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/45208/versions/17/screenshot.png) and [ad hoc schemes](http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+-  [What to consider when choosing colors](https://blog.datawrapper.de/colors/)
 -  [Google fonts](https://fonts.google.com/)
 -  [Adding custom fonts to R](http://gradientdescending.com/adding-custom-fonts-to-ggplot-in-r/)
 
 
-### Programming
+### Misc
 -  [R Markdown Cheat Sheet](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
 -  [Core Purrr lessons](https://jennybc.github.io/purrr-tutorial/) - functional programming primer on automating repeated tasks
--  [Converting strings to symbols](https://stackoverflow.com/questions/22309285/how-to-use-a-variable-to-specify-column-name-in-ggplot/53168593#53168593)
 -  [Folder structure and here package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/#:~:text=The%20here%20package%20allows%20you%20to%20set%20the,of%20your%20project%20file%20everytime%20you%20use%20it)
+-  [Happy Git and GitHub for the R user](https://happygitwithr.com/)
+-  [Run R code in browser](https://rdrr.io/snippets/)
 
 
 ### Online Communities
 -  [Tidy Tuesday Data](https://github.com/rfordatascience/tidytuesday/blob/master/README.md) - data sets to practice Tidyverse concepts
 -  [Tidy Tuesday Rocks](https://nsgrantham.shinyapps.io/tidytuesdayrocks/) - compilation of Tidy Tuesday submissions across users
 -  [R for Data Science (R4DS) Online Learning Community](https://www.rfordatasci.com)
-
-
-### Misc
--  [Happy Git and GitHub for the R user](https://happygitwithr.com/)
--  [Controlling filepaths with here function](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
--  [Run R code in browser](https://rdrr.io/snippets/)
 
 
 ###  Data Science Blogs

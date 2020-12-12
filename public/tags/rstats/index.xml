@@ -82,7 +82,7 @@
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#zdeaaziycb .gt_table {
+#rdknupjxtm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -107,7 +107,7 @@
   border-left-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_heading {
+#rdknupjxtm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -119,7 +119,7 @@
   border-right-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_title {
+#rdknupjxtm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -129,7 +129,7 @@
   border-bottom-width: 0;
 }
 
-#zdeaaziycb .gt_subtitle {
+#rdknupjxtm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -139,13 +139,13 @@
   border-top-width: 0;
 }
 
-#zdeaaziycb .gt_bottom_border {
+#rdknupjxtm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_col_headings {
+#rdknupjxtm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -160,7 +160,7 @@
   border-right-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_col_heading {
+#rdknupjxtm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -180,7 +180,7 @@
   overflow-x: hidden;
 }
 
-#zdeaaziycb .gt_column_spanner_outer {
+#rdknupjxtm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -192,15 +192,15 @@
   padding-right: 4px;
 }
 
-#zdeaaziycb .gt_column_spanner_outer:first-child {
+#rdknupjxtm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zdeaaziycb .gt_column_spanner_outer:last-child {
+#rdknupjxtm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zdeaaziycb .gt_column_spanner {
+#rdknupjxtm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -212,7 +212,7 @@
   width: 100%;
 }
 
-#zdeaaziycb .gt_group_heading {
+#rdknupjxtm .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -234,7 +234,7 @@
   vertical-align: middle;
 }
 
-#zdeaaziycb .gt_empty_group_heading {
+#rdknupjxtm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -249,15 +249,15 @@
   vertical-align: middle;
 }
 
-#zdeaaziycb .gt_from_md &gt; :first-child {
+#rdknupjxtm .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#zdeaaziycb .gt_from_md &gt; :last-child {
+#rdknupjxtm .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#zdeaaziycb .gt_row {
+#rdknupjxtm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -276,7 +276,7 @@
   overflow-x: hidden;
 }
 
-#zdeaaziycb .gt_stub {
+#rdknupjxtm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -288,7 +288,7 @@
   padding-left: 12px;
 }
 
-#zdeaaziycb .gt_summary_row {
+#rdknupjxtm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -298,7 +298,7 @@
   padding-right: 5px;
 }
 
-#zdeaaziycb .gt_first_summary_row {
+#rdknupjxtm .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -308,7 +308,7 @@
   border-top-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_grand_summary_row {
+#rdknupjxtm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -318,7 +318,7 @@
   padding-right: 5px;
 }
 
-#zdeaaziycb .gt_first_grand_summary_row {
+#rdknupjxtm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -328,11 +328,11 @@
   border-top-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_striped {
+#rdknupjxtm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zdeaaziycb .gt_table_body {
+#rdknupjxtm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -341,7 +341,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_footnotes {
+#rdknupjxtm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -355,13 +355,13 @@
   border-right-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_footnote {
+#rdknupjxtm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#zdeaaziycb .gt_sourcenotes {
+#rdknupjxtm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -375,46 +375,46 @@
   border-right-color: #D3D3D3;
 }
 
-#zdeaaziycb .gt_sourcenote {
+#rdknupjxtm .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#zdeaaziycb .gt_left {
+#rdknupjxtm .gt_left {
   text-align: left;
 }
 
-#zdeaaziycb .gt_center {
+#rdknupjxtm .gt_center {
   text-align: center;
 }
 
-#zdeaaziycb .gt_right {
+#rdknupjxtm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zdeaaziycb .gt_font_normal {
+#rdknupjxtm .gt_font_normal {
   font-weight: normal;
 }
 
-#zdeaaziycb .gt_font_bold {
+#rdknupjxtm .gt_font_bold {
   font-weight: bold;
 }
 
-#zdeaaziycb .gt_font_italic {
+#rdknupjxtm .gt_font_italic {
   font-style: italic;
 }
 
-#zdeaaziycb .gt_super {
+#rdknupjxtm .gt_super {
   font-size: 65%;
 }
 
-#zdeaaziycb .gt_footnote_marks {
+#rdknupjxtm .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;zdeaaziycb&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;rdknupjxtm&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -430,7 +430,7 @@
       &lt;td class=&#34;gt_row gt_center&#34;&gt;1&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-25&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;39019&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;39014&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;2541&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -446,14 +446,14 @@
       &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;“Only two?” 😂 https://t.co/OHcaIkNGnt&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-24&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;23053&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;23054&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;1004&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;4&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;He is not real.&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;21003&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;21004&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;1010&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -467,14 +467,14 @@
       &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;He&#39;s the Golden Boy for a reason&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;16179&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;16180&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;788&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;7&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;The Goalden Boy 🥅⚽️ https://t.co/XgIiDyKcC2&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-22&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;13388&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;13386&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;354&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
@@ -490,14 +490,14 @@
 
 Yes   &lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-18&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;12740&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;12741&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;494&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;10&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;Sweet Sixteen, Youssoufa Moukoko 🥳🎂 https://t.co/UaGEFhV0hC&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-20&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;11925&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;11921&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;385&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -519,7 +519,7 @@ Yes   &lt;/td&gt;
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#lwfzrurnxe .gt_table {
+#acdrskasak .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -544,7 +544,7 @@ Yes   &lt;/td&gt;
   border-left-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_heading {
+#acdrskasak .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -556,7 +556,7 @@ Yes   &lt;/td&gt;
   border-right-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_title {
+#acdrskasak .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -566,7 +566,7 @@ Yes   &lt;/td&gt;
   border-bottom-width: 0;
 }
 
-#lwfzrurnxe .gt_subtitle {
+#acdrskasak .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -576,13 +576,13 @@ Yes   &lt;/td&gt;
   border-top-width: 0;
 }
 
-#lwfzrurnxe .gt_bottom_border {
+#acdrskasak .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_col_headings {
+#acdrskasak .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -597,7 +597,7 @@ Yes   &lt;/td&gt;
   border-right-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_col_heading {
+#acdrskasak .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -617,7 +617,7 @@ Yes   &lt;/td&gt;
   overflow-x: hidden;
 }
 
-#lwfzrurnxe .gt_column_spanner_outer {
+#acdrskasak .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -629,15 +629,15 @@ Yes   &lt;/td&gt;
   padding-right: 4px;
 }
 
-#lwfzrurnxe .gt_column_spanner_outer:first-child {
+#acdrskasak .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lwfzrurnxe .gt_column_spanner_outer:last-child {
+#acdrskasak .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lwfzrurnxe .gt_column_spanner {
+#acdrskasak .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -649,7 +649,7 @@ Yes   &lt;/td&gt;
   width: 100%;
 }
 
-#lwfzrurnxe .gt_group_heading {
+#acdrskasak .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -671,7 +671,7 @@ Yes   &lt;/td&gt;
   vertical-align: middle;
 }
 
-#lwfzrurnxe .gt_empty_group_heading {
+#acdrskasak .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -686,15 +686,15 @@ Yes   &lt;/td&gt;
   vertical-align: middle;
 }
 
-#lwfzrurnxe .gt_from_md &gt; :first-child {
+#acdrskasak .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#lwfzrurnxe .gt_from_md &gt; :last-child {
+#acdrskasak .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#lwfzrurnxe .gt_row {
+#acdrskasak .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,7 +713,7 @@ Yes   &lt;/td&gt;
   overflow-x: hidden;
 }
 
-#lwfzrurnxe .gt_stub {
+#acdrskasak .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -725,7 +725,7 @@ Yes   &lt;/td&gt;
   padding-left: 12px;
 }
 
-#lwfzrurnxe .gt_summary_row {
+#acdrskasak .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -735,7 +735,7 @@ Yes   &lt;/td&gt;
   padding-right: 5px;
 }
 
-#lwfzrurnxe .gt_first_summary_row {
+#acdrskasak .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -745,7 +745,7 @@ Yes   &lt;/td&gt;
   border-top-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_grand_summary_row {
+#acdrskasak .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -755,7 +755,7 @@ Yes   &lt;/td&gt;
   padding-right: 5px;
 }
 
-#lwfzrurnxe .gt_first_grand_summary_row {
+#acdrskasak .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,11 +765,11 @@ Yes   &lt;/td&gt;
   border-top-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_striped {
+#acdrskasak .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lwfzrurnxe .gt_table_body {
+#acdrskasak .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -778,7 +778,7 @@ Yes   &lt;/td&gt;
   border-bottom-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_footnotes {
+#acdrskasak .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -792,13 +792,13 @@ Yes   &lt;/td&gt;
   border-right-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_footnote {
+#acdrskasak .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#lwfzrurnxe .gt_sourcenotes {
+#acdrskasak .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -812,46 +812,46 @@ Yes   &lt;/td&gt;
   border-right-color: #D3D3D3;
 }
 
-#lwfzrurnxe .gt_sourcenote {
+#acdrskasak .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#lwfzrurnxe .gt_left {
+#acdrskasak .gt_left {
   text-align: left;
 }
 
-#lwfzrurnxe .gt_center {
+#acdrskasak .gt_center {
   text-align: center;
 }
 
-#lwfzrurnxe .gt_right {
+#acdrskasak .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lwfzrurnxe .gt_font_normal {
+#acdrskasak .gt_font_normal {
   font-weight: normal;
 }
 
-#lwfzrurnxe .gt_font_bold {
+#acdrskasak .gt_font_bold {
   font-weight: bold;
 }
 
-#lwfzrurnxe .gt_font_italic {
+#acdrskasak .gt_font_italic {
   font-style: italic;
 }
 
-#lwfzrurnxe .gt_super {
+#acdrskasak .gt_super {
   font-size: 65%;
 }
 
-#lwfzrurnxe .gt_footnote_marks {
+#acdrskasak .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;lwfzrurnxe&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;acdrskasak&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -870,14 +870,14 @@ Yes   &lt;/td&gt;
 To celebrate Gio’s contract extensi&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;4926&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;3328&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3327&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;2&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-25&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;2541&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;39019&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;39014&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
@@ -900,14 +900,14 @@ To celebrate Gio’s contract extensi&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;He is not real.&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;1010&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;21003&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;21004&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;“Only two?” 😂 https://t.co/OHcaIkNGnt&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-24&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;1004&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;23053&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;23054&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;7&lt;/td&gt;
@@ -925,7 +925,7 @@ THIS MAN IS NOT HUMAN!!!
       &lt;td class=&#34;gt_row gt_left&#34;&gt;He&#39;s the Golden Boy for a reason&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;788&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;16179&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;16180&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;9&lt;/td&gt;
@@ -1041,7 +1041,7 @@ THIS MAN IS NOT HUMAN!!!
 &lt;td align=&#34;left&#34;&gt;screen_name&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
@@ -1052,7 +1052,7 @@ THIS MAN IS NOT HUMAN!!!
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;43&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;46&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
@@ -1063,8 +1063,8 @@ THIS MAN IS NOT HUMAN!!!
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;30&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;342&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;146&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;339&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;151&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1091,7 +1091,7 @@ THIS MAN IS NOT HUMAN!!!
 &lt;td align=&#34;left&#34;&gt;rank&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;250.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;250.50&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;144.48&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;125.75&lt;/td&gt;
@@ -1104,12 +1104,12 @@ THIS MAN IS NOT HUMAN!!!
 &lt;td align=&#34;left&#34;&gt;followers_count&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;209.0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1636.61&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;212.32&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1636.84&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.0&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;46.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;46.25&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;30252&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
 &lt;/tr&gt;
@@ -1129,7 +1129,7 @@ THIS MAN IS NOT HUMAN!!!
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#amltshcgkq .gt_table {
+#teinnjosic .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1154,7 +1154,7 @@ THIS MAN IS NOT HUMAN!!!
   border-left-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_heading {
+#teinnjosic .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1166,7 +1166,7 @@ THIS MAN IS NOT HUMAN!!!
   border-right-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_title {
+#teinnjosic .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1176,7 +1176,7 @@ THIS MAN IS NOT HUMAN!!!
   border-bottom-width: 0;
 }
 
-#amltshcgkq .gt_subtitle {
+#teinnjosic .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1186,13 +1186,13 @@ THIS MAN IS NOT HUMAN!!!
   border-top-width: 0;
 }
 
-#amltshcgkq .gt_bottom_border {
+#teinnjosic .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_col_headings {
+#teinnjosic .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1207,7 +1207,7 @@ THIS MAN IS NOT HUMAN!!!
   border-right-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_col_heading {
+#teinnjosic .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1227,7 +1227,7 @@ THIS MAN IS NOT HUMAN!!!
   overflow-x: hidden;
 }
 
-#amltshcgkq .gt_column_spanner_outer {
+#teinnjosic .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1239,15 +1239,15 @@ THIS MAN IS NOT HUMAN!!!
   padding-right: 4px;
 }
 
-#amltshcgkq .gt_column_spanner_outer:first-child {
+#teinnjosic .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#amltshcgkq .gt_column_spanner_outer:last-child {
+#teinnjosic .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#amltshcgkq .gt_column_spanner {
+#teinnjosic .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1259,7 +1259,7 @@ THIS MAN IS NOT HUMAN!!!
   width: 100%;
 }
 
-#amltshcgkq .gt_group_heading {
+#teinnjosic .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1281,7 +1281,7 @@ THIS MAN IS NOT HUMAN!!!
   vertical-align: middle;
 }
 
-#amltshcgkq .gt_empty_group_heading {
+#teinnjosic .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1296,15 +1296,15 @@ THIS MAN IS NOT HUMAN!!!
   vertical-align: middle;
 }
 
-#amltshcgkq .gt_from_md &gt; :first-child {
+#teinnjosic .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#amltshcgkq .gt_from_md &gt; :last-child {
+#teinnjosic .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#amltshcgkq .gt_row {
+#teinnjosic .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1323,7 +1323,7 @@ THIS MAN IS NOT HUMAN!!!
   overflow-x: hidden;
 }
 
-#amltshcgkq .gt_stub {
+#teinnjosic .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1335,7 +1335,7 @@ THIS MAN IS NOT HUMAN!!!
   padding-left: 12px;
 }
 
-#amltshcgkq .gt_summary_row {
+#teinnjosic .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1345,7 +1345,7 @@ THIS MAN IS NOT HUMAN!!!
   padding-right: 5px;
 }
 
-#amltshcgkq .gt_first_summary_row {
+#teinnjosic .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1355,7 +1355,7 @@ THIS MAN IS NOT HUMAN!!!
   border-top-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_grand_summary_row {
+#teinnjosic .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1365,7 +1365,7 @@ THIS MAN IS NOT HUMAN!!!
   padding-right: 5px;
 }
 
-#amltshcgkq .gt_first_grand_summary_row {
+#teinnjosic .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1375,11 +1375,11 @@ THIS MAN IS NOT HUMAN!!!
   border-top-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_striped {
+#teinnjosic .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#amltshcgkq .gt_table_body {
+#teinnjosic .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1388,7 +1388,7 @@ THIS MAN IS NOT HUMAN!!!
   border-bottom-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_footnotes {
+#teinnjosic .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1402,13 +1402,13 @@ THIS MAN IS NOT HUMAN!!!
   border-right-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_footnote {
+#teinnjosic .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#amltshcgkq .gt_sourcenotes {
+#teinnjosic .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1422,46 +1422,46 @@ THIS MAN IS NOT HUMAN!!!
   border-right-color: #D3D3D3;
 }
 
-#amltshcgkq .gt_sourcenote {
+#teinnjosic .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#amltshcgkq .gt_left {
+#teinnjosic .gt_left {
   text-align: left;
 }
 
-#amltshcgkq .gt_center {
+#teinnjosic .gt_center {
   text-align: center;
 }
 
-#amltshcgkq .gt_right {
+#teinnjosic .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#amltshcgkq .gt_font_normal {
+#teinnjosic .gt_font_normal {
   font-weight: normal;
 }
 
-#amltshcgkq .gt_font_bold {
+#teinnjosic .gt_font_bold {
   font-weight: bold;
 }
 
-#amltshcgkq .gt_font_italic {
+#teinnjosic .gt_font_italic {
   font-style: italic;
 }
 
-#amltshcgkq .gt_super {
+#teinnjosic .gt_super {
   font-size: 65%;
 }
 
-#amltshcgkq .gt_footnote_marks {
+#teinnjosic .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;amltshcgkq&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;teinnjosic&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -1488,7 +1488,7 @@ THIS MAN IS NOT HUMAN!!!
       &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;James Fielden&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;London&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;9,752&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;9,751&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;4&lt;/td&gt;
@@ -1500,7 +1500,7 @@ THIS MAN IS NOT HUMAN!!!
       &lt;td class=&#34;gt_row gt_center&#34;&gt;5&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;feyyaz&lt;/td&gt;
       &lt;td class=&#34;gt_row gt_left&#34;&gt;Sanliurfa, Turkey&lt;/td&gt;
-      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,801&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,802&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
@@ -1562,9 +1562,9 @@ THIS MAN IS NOT HUMAN!!!
 ##    &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;              &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;
 ##  1     1 spencechec… Spen… &amp;quot;Salt L…           30252 USA     salt l… -112.   
 ##  2     2 shawkiii14  شوقي  &amp;quot;&amp;quot;                 16916 NOT LI… &amp;lt;NA&amp;gt;      NA    
-##  3     3 James_Fiel… Jame… &amp;quot;London&amp;quot;            9752 UK      london…   -0.128
+##  3     3 James_Fiel… Jame… &amp;quot;London&amp;quot;            9751 UK      london…   -0.128
 ##  4     4 MalomaPale… 11.0… &amp;quot;Pretor…            3386 SOUTH … pretor…   28.2  
-##  5     5 feyyyaz     feyy… &amp;quot;Sanliu…            2801 TURKEY  şanlıu…   38.8  
+##  5     5 feyyyaz     feyy… &amp;quot;Sanliu…            2802 TURKEY  şanlıu…   38.8  
 ##  6     6 biyanrizal… Biya… &amp;quot;Indone…            2800 INDONE… indone…  114.   
 ##  7     7 ashwinappi… Ashw… &amp;quot;Seattl…            2592 USA     seattl… -122.   
 ##  8     8 TheGreekMa… TheG… &amp;quot;Toront…            2358 CANADA  toront…  -79.4  
@@ -1578,7 +1578,7 @@ THIS MAN IS NOT HUMAN!!!
 &lt;p&gt;The largest countries of followers in the sample are US, UK and Nigeria. The wider population for BVB followers of the English language account may be significantly different as the first 500 accounts are pulled, which is not a representative sample. Additionally, many followers of BVB’s tweets follow sister accounts in different languages, such as the primary German language Twitter handle.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   followers_agg &amp;lt;- followers_geo %&amp;gt;%
       count (country) %&amp;gt;%
-      filter (country != &amp;quot;NOT LISTED&amp;quot;) %&amp;gt;%
+      filter (country != &amp;quot;NOT LISTED&amp;quot;, n &amp;gt; 1) %&amp;gt;%
       arrange (-n)
    
    ggplot (followers_agg, aes (x = reorder(country, n), y = n)) +
@@ -1601,7 +1601,9 @@ THIS MAN IS NOT HUMAN!!!
       ggplot () +
          geom_map (map = world, aes (x = long, y = lat, map_id = region, fill = n)) +
          scale_fill_viridis_c () +
-         theme_grey () &lt;/code&gt;&lt;/pre&gt;
+         theme_grey () +
+         labs (title = &amp;quot;Distribution of BVB Football Club English Account Followers&amp;quot;) +
+         ggsave (&amp;quot;bvb_map.png&amp;quot;, width = 11)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/twitter_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

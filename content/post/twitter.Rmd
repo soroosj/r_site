@@ -204,7 +204,7 @@ The largest countries of followers in the sample are US, UK and Nigeria.  The wi
 
    followers_agg <- followers_geo %>%
       count (country) %>%
-      filter (country != "NOT LISTED") %>%
+      filter (country != "NOT LISTED", n > 1) %>%
       arrange (-n)
    
    ggplot (followers_agg, aes (x = reorder(country, n), y = n)) +
@@ -229,7 +229,9 @@ Next we will convert to a map to enable viewing the location of all users along 
       ggplot () +
          geom_map (map = world, aes (x = long, y = lat, map_id = region, fill = n)) +
          scale_fill_viridis_c () +
-         theme_grey () 
+         theme_grey () +
+         labs (title = "Distribution of BVB Football Club English Account Followers") +
+         ggsave ("bvb_map.png", width = 11)
 ```
 
 

@@ -1,0 +1,241 @@
+---
+title: Digging into BVB Dortmund Football Club's Tweets with R
+author: Joel Soroos
+date: '2020-12-12'
+slug: twitter
+categories: []
+tags:
+  - tidyverse
+  - r
+  - rstats
+  - gt
+  - rtweet
+  - ggmap
+---
+
+
+## Purpose
+The goal of this post is to source and analyze Twitter posts and followers for a given Twitter account ("handle") using R.  We will identify tweets with the most likes and retweets, as well as posting trends over time.  We will also map the geographic distribution of Twitter followers by leveraging Google Maps API attributes.  
+
+The example Twitter handle will be the English language account of [BVB Dortmund ("BVB")](https://www.bvb.de/eng), a football team in Germany's top professional league, the [Bundesliga](https://www.bundesliga.com/en/bundesliga).  We are using BVB's English Twitter account instead of the club's primary German language Twitter account because this blog post is written in English.
+
+## 1. Setup
+First, we need to obtain and authorize a free Twitter Developer account (instructions [here](https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html)).
+
+Second step is to install and load the R [rtweet](https://cran.r-project.org/web/packages/rtweet/rtweet.pdf) package by Michael Kearney. 
+
+We will extract Twitter data multiple times so I have created two variables to avoid duplication and inconsistencies.  The "twitter_user" variable stores the Twitter handle.  The "sample" variable specifies the number of extracted records as some Twitter accounts have large volumes of followers and tweets.
+
+```{r , warning = TRUE, results = FALSE, message = FALSE}
+   
+   library (rtweet)
+   library (tidyverse)
+
+   twitter_user <- "@blackyellow"
+```
+
+
+## 2. Analyze tweets
+### Source tweets
+Now we will extract our first set of Twitter data.
+
+The get_timeline function contains 90 fields for each tweet.  The BVB account posts frequently so we will limit to the last 500 tweets.
+
+```{r , warning = FALSE, message = FALSE}
+
+   tweets_raw <- get_timeline (twitter_user, n = 500)
+```
+
+
+### Transform Tweets
+Many fields are not needed for this exercise so we can cull the dataset.  I have also renamed several fields for brevity and more standard Twitter notation (i.e. likes instead of favorites).
+
+We are focusing on original tweets so have filtered out retweets.
+
+I have extracted year from the creation date to enable summarizing tweet volume by year.  Also, I have truncated the Tweet text field from 280 to 60 characters so more cleanly fits in a formatted table. 
+
+```{r , warning = TRUE, message = FALSE}
+
+   library (lubridate)
+
+   tweets <- tweets_raw %>%
+      filter (is_retweet == FALSE) %>%
+      rename (
+         likes = favorite_count,
+         retweets = retweet_count,
+         created = created_at
+         ) %>%
+      mutate (
+         text = str_sub(text,1,60),
+         created = as.Date(created),
+         year = year(created)
+         ) %>%
+      rename(date = created) %>%
+      select (text, date, year, likes, retweets)
+```
+
+
+### Visualize most liked tweets 
+We will sort by most liked tweets over time and rank via the dplyr row_to_column formula.
+
+The [GT package](https://gt.rstudio.com/) by Richard Iannone formats tables in a easy-to-read manner.  The core gt::gt function adds lines between rows.  Many other table formatting enhancements are available but out of scope for this blog.
+
+The tweet with the most likes was BVB's tribute to football legend Diego Maradona, who recently passed away.
+
+```{r chart_likes, warning = TRUE, message = FALSE}
+
+   library (gt)
+
+   tweets %>%
+      arrange (-likes, -retweets) %>%
+      head (10) %>%
+      rowid_to_column("rank") %>%
+      select (-year) %>%
+      relocate (rank) %>%
+      gt () 
+```
+
+### Visualize most retweeted tweets
+Next we will re-sort and re-rank by retweets, again using the GT package to cleanly format.
+
+A tweet celebrating player striker Giovanni Reyna signing a contract extension produced the most retweets.  The tribute to Argentine football legend Diego Maradona (most liked tweet) was #2 when ranking by retweets.
+```{r chart_retweet, warning = TRUE, message = FALSE}
+
+   tweets %>%
+      arrange (-retweets, -likes) %>%
+      head (10) %>%
+      rowid_to_column("rank") %>%
+      select (rank, text, date, retweets, likes) %>%
+      gt ()
+```
+
+
+### Visualize number of tweets trends
+Another area of interest is how tweet activity has evolved over time.  Using dplyr we can easily summarize by number of tweets by day.
+
+The volume of tweets was smallest during the international break in early to mid November.  BVB does not play games during international breaks because the players are away representing their respective national football teams.  
+
+```{r warning = F, message =F}
+
+   tweets %>%
+      group_by (date) %>%
+      count () %>%
+      ggplot (aes (x = date, y = n)) +
+         geom_col () +
+         geom_label (aes(label = n)) +
+         theme_minimal() +
+         labs (x="", y = "Number of tweets")
+```
+
+
+## 3. Analyze Twitter followers
+### Source followers 
+Learning about followers for a Twitter handle is also frequently useful.
+
+Two rtweet package functions are helpful here.  First, get_followers returns a vector of Twitter user_ids of followers.  The lookup_users function then extracts user attributes such as screen name, physical location (if supplied in profile) and number of  followers. 
+
+The BVB account enjoys 583,000 followers so we will limit to 500 users for this blog entry.  This is not a representative sample and is provided for illustrating R's visualization capabilities.
+
+We will also add a row ID ranking each follower by largest number of followers via dplyr's rowid_to_column function.
+
+```{r warning = F, message =F}
+
+   library(skimr)
+
+  followers <- twitter_user %>%
+      get_followers() %>%
+      head (500) %>%
+      pull (user_id) %>%
+      lookup_users () %>%
+      select (screen_name, name, location, followers_count) %>%
+      arrange (-followers_count) %>%
+      rowid_to_column("rank")
+
+   skim (followers)
+```
+
+
+### Top followers
+We will first list the 10 largest followers by respective number of followers.
+
+The follower from the sample with the most followers is winnie.  
+```{r message=FALSE, warning=FALSE}
+
+   followers %>%
+      head (10) %>%
+      select (rank, name, location, followers_count) %>%
+      gt () %>%
+         fmt_number (columns = vars(followers_count), use_seps = T, decimals = 0)
+```
+
+
+### Obtain follower geographic attributes
+Another interesting item to research on followers is geographic distribution.
+
+The provided location in Twitter profile is a good starting point.  However, locations are neither standardized by level of detail (city, country) nor spelling.  Standardization is necessary to group in table or map.
+
+We will standardize at the highest level of detail, which is country, via the [Google Maps API](https://developers.google.com/maps/documentation) and accessed via the [ggmaps package](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf).  If this is the first time you have accessed the Google Maps API, you will need to complete a one-time step of obtaining a free Google maps API key (instructions [here](https://rdrr.io/cran/ggmap/man/register_google.html)).
+
+```{r warning = F, message =F}
+   
+   library (ggmap)
+
+   register_google(key = Sys.getenv("GOOGLE_MAPS_API"))
+
+   followers_geo <- followers %>%
+      mutate_geocode (location, output = "more") %>%
+      mutate (
+         country = word (address, -1, -1, sep = ","),
+         country = str_to_upper (country),
+         country = str_trim(country),
+         country = ifelse(is.na(country), "NOT LISTED", country)
+         ) %>%
+      select (rank:followers_count, country, address, lon, lat) 
+   
+   followers_geo
+```
+
+
+### Visualize followers by country
+We will first identify the top follower countries and summarize in a GT table.
+
+The largest countries of followers in the sample are US, UK and Nigeria.  The wider population for BVB followers of the English language account may be significantly different as the first 500 accounts are pulled, which is not a representative sample.   Additionally, many followers of BVB's tweets follow sister accounts in different languages, such as the primary German language Twitter handle.
+```{r warning = F, message =F}
+
+   followers_agg <- followers_geo %>%
+      count (country) %>%
+      filter (country != "NOT LISTED") %>%
+      arrange (-n)
+   
+   ggplot (followers_agg, aes (x = reorder(country, n), y = n)) +
+      geom_col () +
+      coord_flip () +
+      theme_minimal() +
+      labs (x="", y = "Followers")
+```
+
+
+### Visualize followers on a map
+Next we will convert to a map to enable viewing the location of all users along with countries with most users.
+```{r warning = F, message =F}
+   
+   library (maps)
+
+   world <- map_data ("world") %>%
+      mutate (region = str_to_upper (region)) %>%
+      left_join (followers_agg, by = c("region" = "country"), keep = T) 
+   
+   world %>%
+      ggplot () +
+         geom_map (map = world, aes (x = long, y = lat, map_id = region, fill = n)) +
+         scale_fill_viridis_c () +
+         theme_grey () 
+```
+
+
+## 4. Potential future analyses
+We are only scratching the surface of available Twitter data, subsequent data enrichment from complementary packages and subsequent analytics.  Second generation followers (followers of followers) could easily be sourced and subtotaled to identify possible impact from a tweet.  Or Twitter users that the account itself follows could also be extracted.  Another idea is to convert the R code to Shiny to enable interactivity to efficiently change Twitter handles.
+
+
+## 5. Conclusion 
+R offers many powerful tools to source, analyze and visualize Twitter information.  The Twitter API (accessed via the rtweet package) enables free sourcing of follower and tweet attributes that can be easily imported into R.  The raw data can then be enriched by sourcing geographic attributes from Google's API via the ggmap package.   Tidyverse package such as dplyr, ggplot and GT can then be leveraged to transform and visualize for insight.

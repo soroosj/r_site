@@ -5,10 +5,1616 @@
     <description>Recent content in Posts on Joel Soroos</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Digging into BVB Dortmund Football Club&#39;s Tweets with R</title>
+      <link>/2020/12/12/twitter/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/12/twitter/</guid>
+      <description>
+
+
+&lt;div id=&#34;purpose&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;The goal of this post is to source and analyze Twitter posts and followers for a given Twitter account (“handle”) using R. We will identify tweets with the most likes and retweets, as well as posting trends over time. We will also map the geographic distribution of Twitter followers by leveraging Google Maps API attributes.&lt;/p&gt;
+&lt;p&gt;The example Twitter handle will be the English language account of &lt;a href=&#34;https://www.bvb.de/eng&#34;&gt;BVB Dortmund (“BVB”)&lt;/a&gt;, a football team in Germany’s top professional league, the &lt;a href=&#34;https://www.bundesliga.com/en/bundesliga&#34;&gt;Bundesliga&lt;/a&gt;. We are using BVB’s English Twitter account instead of the club’s primary German language Twitter account because this blog post is written in English.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;setup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Setup&lt;/h2&gt;
+&lt;p&gt;First, we need to obtain and authorize a free Twitter Developer account (instructions &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Second step is to install and load the R &lt;a href=&#34;https://cran.r-project.org/web/packages/rtweet/rtweet.pdf&#34;&gt;rtweet&lt;/a&gt; package by Michael Kearney.&lt;/p&gt;
+&lt;p&gt;We will extract Twitter data multiple times so I have created two variables to avoid duplication and inconsistencies. The “twitter_user” variable stores the Twitter handle. The “sample” variable specifies the number of extracted records as some Twitter accounts have large volumes of followers and tweets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (rtweet)
+   library (tidyverse)
+
+   twitter_user &amp;lt;- &amp;quot;@blackyellow&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analyze-tweets&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. Analyze tweets&lt;/h2&gt;
+&lt;div id=&#34;source-tweets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Source tweets&lt;/h3&gt;
+&lt;p&gt;Now we will extract our first set of Twitter data.&lt;/p&gt;
+&lt;p&gt;The get_timeline function contains 90 fields for each tweet. The BVB account posts frequently so we will limit to the last 500 tweets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   tweets_raw &amp;lt;- get_timeline (twitter_user, n = 500)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transform-tweets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Transform Tweets&lt;/h3&gt;
+&lt;p&gt;Many fields are not needed for this exercise so we can cull the dataset. I have also renamed several fields for brevity and more standard Twitter notation (i.e. likes instead of favorites).&lt;/p&gt;
+&lt;p&gt;We are focusing on original tweets so have filtered out retweets.&lt;/p&gt;
+&lt;p&gt;I have extracted year from the creation date to enable summarizing tweet volume by year. Also, I have truncated the Tweet text field from 280 to 60 characters so more cleanly fits in a formatted table.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (lubridate)
+
+   tweets &amp;lt;- tweets_raw %&amp;gt;%
+      filter (is_retweet == FALSE) %&amp;gt;%
+      rename (
+         likes = favorite_count,
+         retweets = retweet_count,
+         created = created_at
+         ) %&amp;gt;%
+      mutate (
+         text = str_sub(text,1,60),
+         created = as.Date(created),
+         year = year(created)
+         ) %&amp;gt;%
+      rename(date = created) %&amp;gt;%
+      select (text, date, year, likes, retweets)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualize-most-liked-tweets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualize most liked tweets&lt;/h3&gt;
+&lt;p&gt;We will sort by most liked tweets over time and rank via the dplyr row_to_column formula.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;GT package&lt;/a&gt; by Richard Iannone formats tables in a easy-to-read manner. The core gt::gt function adds lines between rows. Many other table formatting enhancements are available but out of scope for this blog.&lt;/p&gt;
+&lt;p&gt;The tweet with the most likes was BVB’s tribute to football legend Diego Maradona, who recently passed away.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (gt)
+
+   tweets %&amp;gt;%
+      arrange (-likes, -retweets) %&amp;gt;%
+      head (10) %&amp;gt;%
+      rowid_to_column(&amp;quot;rank&amp;quot;) %&amp;gt;%
+      select (-year) %&amp;gt;%
+      relocate (rank) %&amp;gt;%
+      gt () &lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#zdeaaziycb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zdeaaziycb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zdeaaziycb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zdeaaziycb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zdeaaziycb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zdeaaziycb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zdeaaziycb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zdeaaziycb .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zdeaaziycb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zdeaaziycb .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#zdeaaziycb .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#zdeaaziycb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zdeaaziycb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#zdeaaziycb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zdeaaziycb .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zdeaaziycb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zdeaaziycb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zdeaaziycb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zdeaaziycb .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zdeaaziycb .gt_left {
+  text-align: left;
+}
+
+#zdeaaziycb .gt_center {
+  text-align: center;
+}
+
+#zdeaaziycb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zdeaaziycb .gt_font_normal {
+  font-weight: normal;
+}
+
+#zdeaaziycb .gt_font_bold {
+  font-weight: bold;
+}
+
+#zdeaaziycb .gt_font_italic {
+  font-style: italic;
+}
+
+#zdeaaziycb .gt_super {
+  font-size: 65%;
+}
+
+#zdeaaziycb .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;zdeaaziycb&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;rank&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;text&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;date&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;likes&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;retweets&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-25&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;39019&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2541&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Your 2020 Golden Boy Award Winner:
+
+⭐️ ERRRRRLIIINNNGG HAAAA&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;25891&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1462&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;“Only two?” 😂 https://t.co/OHcaIkNGnt&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-24&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;23053&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1004&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;4&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;He is not real.&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;21003&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1010&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;5&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Just another day in the office 🎮 https://t.co/yE1IpiC6gc&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-26&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;19328&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;359&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;He&#39;s the Golden Boy for a reason&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;16179&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;788&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;The Goalden Boy 🥅⚽️ https://t.co/XgIiDyKcC2&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-22&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;13388&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;354&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;8&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Hakuna Matata - Marco Reus 🤙 https://t.co/PlTGdBLrhg&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-28&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;12865&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1520&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;9&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Are you excited for the international break to end? 
+
+Yes   &lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-18&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;12740&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;494&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;10&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Sweet Sixteen, Youssoufa Moukoko 🥳🎂 https://t.co/UaGEFhV0hC&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-20&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;11925&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;385&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualize-most-retweeted-tweets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualize most retweeted tweets&lt;/h3&gt;
+&lt;p&gt;Next we will re-sort and re-rank by retweets, again using the GT package to cleanly format.&lt;/p&gt;
+&lt;p&gt;A tweet celebrating player striker Giovanni Reyna signing a contract extension produced the most retweets. The tribute to Argentine football legend Diego Maradona (most liked tweet) was #2 when ranking by retweets.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   tweets %&amp;gt;%
+      arrange (-retweets, -likes) %&amp;gt;%
+      head (10) %&amp;gt;%
+      rowid_to_column(&amp;quot;rank&amp;quot;) %&amp;gt;%
+      select (rank, text, date, retweets, likes) %&amp;gt;%
+      gt ()&lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#lwfzrurnxe .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lwfzrurnxe .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lwfzrurnxe .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lwfzrurnxe .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lwfzrurnxe .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lwfzrurnxe .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lwfzrurnxe .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lwfzrurnxe .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lwfzrurnxe .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lwfzrurnxe .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#lwfzrurnxe .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#lwfzrurnxe .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lwfzrurnxe .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lwfzrurnxe .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lwfzrurnxe .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lwfzrurnxe .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lwfzrurnxe .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lwfzrurnxe .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lwfzrurnxe .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lwfzrurnxe .gt_left {
+  text-align: left;
+}
+
+#lwfzrurnxe .gt_center {
+  text-align: center;
+}
+
+#lwfzrurnxe .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lwfzrurnxe .gt_font_normal {
+  font-weight: normal;
+}
+
+#lwfzrurnxe .gt_font_bold {
+  font-weight: bold;
+}
+
+#lwfzrurnxe .gt_font_italic {
+  font-style: italic;
+}
+
+#lwfzrurnxe .gt_super {
+  font-size: 65%;
+}
+
+#lwfzrurnxe .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;lwfzrurnxe&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;rank&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;text&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;date&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;retweets&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;likes&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;🚨 #REYNA2025 GIVEAWAY 🚨
+
+To celebrate Gio’s contract extensi&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;4926&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3328&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-25&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2541&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;39019&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Hakuna Matata - Marco Reus 🤙 https://t.co/PlTGdBLrhg&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-28&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1520&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;12865&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;4&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Your 2020 Golden Boy Award Winner:
+
+⭐️ ERRRRRLIIINNNGG HAAAA&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1462&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;25891&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;5&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;He is not real.&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1010&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;21003&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;“Only two?” 😂 https://t.co/OHcaIkNGnt&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-24&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1004&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;23053&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;63 | HAATTRICK!!!
+
+THIS MAN IS NOT HUMAN!!!
+
+#BSCBVB 1-3 htt&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;844&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;10091&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;8&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;He&#39;s the Golden Boy for a reason&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;788&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;16179&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;9&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Just had to make sure 🤖 https://t.co/xScWp4Taw1&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-11-21&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;749&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7233&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;10&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;The last time we faced Frankfurt...💛🏟 https://t.co/hlg7Z18Dl&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;2020-12-04&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;597&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;11384&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualize-number-of-tweets-trends&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualize number of tweets trends&lt;/h3&gt;
+&lt;p&gt;Another area of interest is how tweet activity has evolved over time. Using dplyr we can easily summarize by number of tweets by day.&lt;/p&gt;
+&lt;p&gt;The volume of tweets was smallest during the international break in early to mid November. BVB does not play games during international breaks because the players are away representing their respective national football teams.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   tweets %&amp;gt;%
+      group_by (date) %&amp;gt;%
+      count () %&amp;gt;%
+      ggplot (aes (x = date, y = n)) +
+         geom_col () +
+         geom_label (aes(label = n)) +
+         theme_minimal() +
+         labs (x=&amp;quot;&amp;quot;, y = &amp;quot;Number of tweets&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/twitter_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analyze-twitter-followers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. Analyze Twitter followers&lt;/h2&gt;
+&lt;div id=&#34;source-followers&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Source followers&lt;/h3&gt;
+&lt;p&gt;Learning about followers for a Twitter handle is also frequently useful.&lt;/p&gt;
+&lt;p&gt;Two rtweet package functions are helpful here. First, get_followers returns a vector of Twitter user_ids of followers. The lookup_users function then extracts user attributes such as screen name, physical location (if supplied in profile) and number of followers.&lt;/p&gt;
+&lt;p&gt;The BVB account enjoys 583,000 followers so we will limit to 500 users for this blog entry. This is not a representative sample and is provided for illustrating R’s visualization capabilities.&lt;/p&gt;
+&lt;p&gt;We will also add a row ID ranking each follower by largest number of followers via dplyr’s rowid_to_column function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library(skimr)
+
+  followers &amp;lt;- twitter_user %&amp;gt;%
+      get_followers() %&amp;gt;%
+      head (500) %&amp;gt;%
+      pull (user_id) %&amp;gt;%
+      lookup_users () %&amp;gt;%
+      select (screen_name, name, location, followers_count) %&amp;gt;%
+      arrange (-followers_count) %&amp;gt;%
+      rowid_to_column(&amp;quot;rank&amp;quot;)
+
+   skim (followers)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-5&#34;&gt;Table 1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;followers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;character&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;min&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;max&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;empty&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;whitespace&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;screen_name&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;name&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;43&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;location&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;342&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;146&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;rank&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;250.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;144.48&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;125.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;250.5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;375.25&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;500&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▇▇▇▇&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;followers_count&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;209.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1636.61&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;7.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;46.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30252&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;top-followers&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Top followers&lt;/h3&gt;
+&lt;p&gt;We will first list the 10 largest followers by respective number of followers.&lt;/p&gt;
+&lt;p&gt;The follower from the sample with the most followers is winnie.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   followers %&amp;gt;%
+      head (10) %&amp;gt;%
+      select (rank, name, location, followers_count) %&amp;gt;%
+      gt () %&amp;gt;%
+         fmt_number (columns = vars(followers_count), use_seps = T, decimals = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#amltshcgkq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#amltshcgkq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#amltshcgkq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#amltshcgkq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#amltshcgkq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#amltshcgkq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#amltshcgkq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#amltshcgkq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#amltshcgkq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#amltshcgkq .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#amltshcgkq .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#amltshcgkq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#amltshcgkq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#amltshcgkq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltshcgkq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltshcgkq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#amltshcgkq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#amltshcgkq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#amltshcgkq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#amltshcgkq .gt_left {
+  text-align: left;
+}
+
+#amltshcgkq .gt_center {
+  text-align: center;
+}
+
+#amltshcgkq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#amltshcgkq .gt_font_normal {
+  font-weight: normal;
+}
+
+#amltshcgkq .gt_font_bold {
+  font-weight: bold;
+}
+
+#amltshcgkq .gt_font_italic {
+  font-style: italic;
+}
+
+#amltshcgkq .gt_super {
+  font-size: 65%;
+}
+
+#amltshcgkq .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;amltshcgkq&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;rank&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;name&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;location&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;followers_count&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Spence Checketts&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Salt Lake City, Utah&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;30,252&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;شوقي&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;16,916&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;James Fielden&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;London&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;9,752&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;4&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;11.01🥂🎈&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Pretoria, South Africa&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3,386&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;5&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;feyyaz&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Sanliurfa, Turkey&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,801&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;6&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Biyan Rizaldy&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Indonesia&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Ashwin Appiah&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Seattle, WA&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,592&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;8&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;TheGreekMamba 🇬🇷🇨🇦&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Toronto, Ontario&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,358&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;9&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Likes&amp;amp;Retweets&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Nigeria&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;2,009&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;10&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Dj Irakoze&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;Kampala, Uganda&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1,951&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;obtain-follower-geographic-attributes&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Obtain follower geographic attributes&lt;/h3&gt;
+&lt;p&gt;Another interesting item to research on followers is geographic distribution.&lt;/p&gt;
+&lt;p&gt;The provided location in Twitter profile is a good starting point. However, locations are neither standardized by level of detail (city, country) nor spelling. Standardization is necessary to group in table or map.&lt;/p&gt;
+&lt;p&gt;We will standardize at the highest level of detail, which is country, via the &lt;a href=&#34;https://developers.google.com/maps/documentation&#34;&gt;Google Maps API&lt;/a&gt; and accessed via the &lt;a href=&#34;https://cran.r-project.org/web/packages/ggmap/ggmap.pdf&#34;&gt;ggmaps package&lt;/a&gt;. If this is the first time you have accessed the Google Maps API, you will need to complete a one-time step of obtaining a free Google maps API key (instructions &lt;a href=&#34;https://rdrr.io/cran/ggmap/man/register_google.html&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (ggmap)
+
+   register_google(key = Sys.getenv(&amp;quot;GOOGLE_MAPS_API&amp;quot;))
+
+   followers_geo &amp;lt;- followers %&amp;gt;%
+      mutate_geocode (location, output = &amp;quot;more&amp;quot;) %&amp;gt;%
+      mutate (
+         country = word (address, -1, -1, sep = &amp;quot;,&amp;quot;),
+         country = str_to_upper (country),
+         country = str_trim(country),
+         country = ifelse(is.na(country), &amp;quot;NOT LISTED&amp;quot;, country)
+         ) %&amp;gt;%
+      select (rank:followers_count, country, address, lon, lat) 
+   
+   followers_geo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 500 x 9
+##     rank screen_name name  location followers_count country address      lon
+##    &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;       &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;              &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;
+##  1     1 spencechec… Spen… &amp;quot;Salt L…           30252 USA     salt l… -112.   
+##  2     2 shawkiii14  شوقي  &amp;quot;&amp;quot;                 16916 NOT LI… &amp;lt;NA&amp;gt;      NA    
+##  3     3 James_Fiel… Jame… &amp;quot;London&amp;quot;            9752 UK      london…   -0.128
+##  4     4 MalomaPale… 11.0… &amp;quot;Pretor…            3386 SOUTH … pretor…   28.2  
+##  5     5 feyyyaz     feyy… &amp;quot;Sanliu…            2801 TURKEY  şanlıu…   38.8  
+##  6     6 biyanrizal… Biya… &amp;quot;Indone…            2800 INDONE… indone…  114.   
+##  7     7 ashwinappi… Ashw… &amp;quot;Seattl…            2592 USA     seattl… -122.   
+##  8     8 TheGreekMa… TheG… &amp;quot;Toront…            2358 CANADA  toront…  -79.4  
+##  9     9 folamisegun Like… &amp;quot;Nigeri…            2009 NIGERIA nigeria    8.68 
+## 10    10 DeejayIrak… Dj I… &amp;quot;Kampal…            1951 UGANDA  kampal…   32.6  
+## # … with 490 more rows, and 1 more variable: lat &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualize-followers-by-country&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualize followers by country&lt;/h3&gt;
+&lt;p&gt;We will first identify the top follower countries and summarize in a GT table.&lt;/p&gt;
+&lt;p&gt;The largest countries of followers in the sample are US, UK and Nigeria. The wider population for BVB followers of the English language account may be significantly different as the first 500 accounts are pulled, which is not a representative sample. Additionally, many followers of BVB’s tweets follow sister accounts in different languages, such as the primary German language Twitter handle.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   followers_agg &amp;lt;- followers_geo %&amp;gt;%
+      count (country) %&amp;gt;%
+      filter (country != &amp;quot;NOT LISTED&amp;quot;) %&amp;gt;%
+      arrange (-n)
+   
+   ggplot (followers_agg, aes (x = reorder(country, n), y = n)) +
+      geom_col () +
+      coord_flip () +
+      theme_minimal() +
+      labs (x=&amp;quot;&amp;quot;, y = &amp;quot;Followers&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/twitter_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualize-followers-on-a-map&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Visualize followers on a map&lt;/h3&gt;
+&lt;p&gt;Next we will convert to a map to enable viewing the location of all users along with countries with most users.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;   library (maps)
+
+   world &amp;lt;- map_data (&amp;quot;world&amp;quot;) %&amp;gt;%
+      mutate (region = str_to_upper (region)) %&amp;gt;%
+      left_join (followers_agg, by = c(&amp;quot;region&amp;quot; = &amp;quot;country&amp;quot;), keep = T) 
+   
+   world %&amp;gt;%
+      ggplot () +
+         geom_map (map = world, aes (x = long, y = lat, map_id = region, fill = n)) +
+         scale_fill_viridis_c () +
+         theme_grey () &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/twitter_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;potential-future-analyses&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Potential future analyses&lt;/h2&gt;
+&lt;p&gt;We are only scratching the surface of available Twitter data, subsequent data enrichment from complementary packages and subsequent analytics. Second generation followers (followers of followers) could easily be sourced and subtotaled to identify possible impact from a tweet. Or Twitter users that the account itself follows could also be extracted. Another idea is to convert the R code to Shiny to enable interactivity to efficiently change Twitter handles.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;5. Conclusion&lt;/h2&gt;
+&lt;p&gt;R offers many powerful tools to source, analyze and visualize Twitter information. The Twitter API (accessed via the rtweet package) enables free sourcing of follower and tweet attributes that can be easily imported into R. The raw data can then be enriched by sourcing geographic attributes from Google’s API via the ggmap package. Tidyverse package such as dplyr, ggplot and GT can then be leveraged to transform and visualize for insight.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Kmeans Clustering of Penguins</title>

@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Digging into BVB Dortmund Football Club&#39;s Tweets</title>
+        <link rel="canonical" href="/2020/12/06/twitter/">
+        <style>
+
+    html body {
+        font-family: 'Mina', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    :root {
+        --accent: #386890;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mina">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/lakeside-light.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+
+
+<script>
+$(document).ready(function(){
+    
+  var input = $('#night-mode-toggle');
+  var container = $('#bigbody');
+  var stat = $('#button-status');
+  
+  container.toggleClass(localStorage.toggled);
+  stat.bootstrapToggle(localStorage.button).change();
+  
+  input.on('click', function() {
+      if (localStorage.toggled != "-nightmode" ) {
+          container.toggleClass("-nightmode", true );
+          localStorage.toggled = "-nightmode";
+          localStorage.button = "on";
+       } else {
+          container.toggleClass("-nightmode", false );
+          localStorage.toggled = "";
+          localStorage.button = "off"
+       }
+  })
+});
+</script>
+ <meta name="generator" content="Hugo 0.59.1" />
+        <link href="" rel="alternate" type="application/rss+xml" title="Joel Soroos" />
+        <link href="" rel="feed" type="application/rss+xml" title="Joel Soroos" />
+        
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    
+    
+    <meta property="og:title" content="Digging into BVB Dortmund Football Club&#39;s Tweets">
+    <meta property="og:type" content="article">
+      
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:image" content="/ufo.png" >
+      
+    <meta property="description" content="">
+    <meta property="og:description" content="">
+    
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:site" content="">
+    
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body id = "bigbody">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Digging into BVB Dortmund Football Club&#39;s Tweets</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/visualizations/visualizations/index.html">Visualizations</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/links/links/index.html">Links</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:soroosj@yahoo.com"><i class="far fa-envelope"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/soroosj"><i class="fab fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/soroosj/"><i class="fab fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/joelsoroos"><i class="fab fa-linkedin"></i></a></li>
+                            
+                            <li id="night-mode-toggle">
+    <input type="checkbox" id = "button-status"
+        data-toggle="toggle"
+        data-width = "10"
+        data-height = "1"
+        data-on="<i class='far fa-moon fa-lg'></i>"
+        data-off= "<i class='far fa-sun fa-lg'></i>"
+        data-style="ios"
+        data-onstyle = "default">
+</li>
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/12/06/twitter/">Digging into BVB Dortmund Football Club&#39;s Tweets</a></h4>
+    <h5>December 6, 2020 - 17 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/gt">
+        <kbd class="item-tag"> gt </kbd>
+    </a>
+    
+    <a href="/tags/rtweet">
+        <kbd class="item-tag"> rtweet </kbd>
+    </a>
+    
+    <a href="/tags/ggmap">
+        <kbd class="item-tag"> ggmap </kbd>
+    </a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+
+<div id="purpose" class="section level2">
+<h2>Purpose</h2>
+<p>The goal of this post is to source and analyze Twitter posts and followers for a given Twitter account (“handle”) using R. We will identify tweets with the most likes and retweets, as well as posting trends over time. We will also calculate the geographic distribution of Twitter followers by enriching the raw Twitter data with Google Maps API attributes.</p>
+</div>
+<div id="setup" class="section level2">
+<h2>1. Setup</h2>
+<p>First, we need to obtain and authorize a free Twitter Developer account (instructions <a href="https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html">here</a>).</p>
+<p>Second step is to install and load the R <a href="https://cran.r-project.org/web/packages/rtweet/rtweet.pdf">rtweet</a> package by Michael Kearney.</p>
+<p>We will extract Twitter data multiple times so I have created two variables to avoid duplication and inconsistencies. The “twitter_user” variable stores the Twitter handle. The “sample” variable specifies the number of extracted records as some Twitter accounts have large volumes of followers and tweets.</p>
+<pre class="r"><code>   library (rtweet)
+
+   twitter_user &lt;- &quot;@blackyellow&quot;</code></pre>
+</div>
+<div id="analyze-tweets" class="section level2">
+<h2>2. Analyze tweets</h2>
+<div id="source-tweets" class="section level3">
+<h3>Source tweets</h3>
+<p>Now we will extract our first set of Twitter data, which will be tweets from the Borussia Dortmund Football (“BVB”) club English account.</p>
+<p>The get_timeline function contains 90 fields for each tweet.</p>
+<p>The BVB account mosts frequently so we will limit to the last 200 tweets.</p>
+<pre class="r"><code>   tweets_raw &lt;- get_timeline (twitter_user, n = 500)</code></pre>
+</div>
+<div id="transform-tweets" class="section level3">
+<h3>Transform Tweets</h3>
+<p>Many fields are not needed for this exercise so we can cull the dataset. I have also renamed several fields for brevity and more standard Twitter notation (i.e. likes instead of favorites).</p>
+<p>We are focusing on original tweets so have filtered out retweets.</p>
+<p>I have extracted year from the creation date to enable summarizing tweet volume by year. Also, I have truncated the Tweet text field from 280 to 60 characters so more cleanly fits in a formatted table.</p>
+<pre class="r"><code>   library (tidyverse)
+   library (lubridate)
+
+   tweets &lt;- tweets_raw %&gt;%
+      filter (is_retweet == FALSE) %&gt;%
+      rename (
+         likes = favorite_count,
+         retweets = retweet_count,
+         created = created_at
+         ) %&gt;%
+      mutate (
+         text = str_sub(text,1,60),
+         created = as.Date(created),
+         year = year(created)
+         ) %&gt;%
+      rename(date = created) %&gt;%
+      select (text, date, year, likes, retweets)</code></pre>
+</div>
+<div id="visualize-most-liked-tweets" class="section level3">
+<h3>Visualize most liked tweets</h3>
+<p>We will sort by most liked tweets over time and rank via the dplyr row_to_column formula.</p>
+<p>The <a href="https://gt.rstudio.com/">gt package</a> by Richard Iannone formats tables in a easy-to-read manner. The core gt::gt function adds lines between rows. Many other table formatting enhancements are available but out of scope for this blog.</p>
+<p>The tweet with the most likes was BVB’s tribute to football legend Diego Maradona, who recently passed away.</p>
+<pre class="r"><code>   library (gt)
+
+   tweets %&gt;%
+      arrange (-likes, -retweets) %&gt;%
+      head (10) %&gt;%
+      rowid_to_column(&quot;rank&quot;) %&gt;%
+      select (-year) %&gt;%
+      relocate (rank) %&gt;%
+      gt () </code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#axncighcig .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#axncighcig .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#axncighcig .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#axncighcig .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#axncighcig .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#axncighcig .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#axncighcig .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#axncighcig .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#axncighcig .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#axncighcig .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#axncighcig .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#axncighcig .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#axncighcig .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#axncighcig .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#axncighcig .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#axncighcig .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#axncighcig .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#axncighcig .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#axncighcig .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#axncighcig .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#axncighcig .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#axncighcig .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#axncighcig .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#axncighcig .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#axncighcig .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#axncighcig .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#axncighcig .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#axncighcig .gt_left {
+  text-align: left;
+}
+
+#axncighcig .gt_center {
+  text-align: center;
+}
+
+#axncighcig .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#axncighcig .gt_font_normal {
+  font-weight: normal;
+}
+
+#axncighcig .gt_font_bold {
+  font-weight: bold;
+}
+
+#axncighcig .gt_font_italic {
+  font-style: italic;
+}
+
+#axncighcig .gt_super {
+  font-size: 65%;
+}
+
+#axncighcig .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="axncighcig" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">text</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">likes</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">retweets</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_left">Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE</td>
+      <td class="gt_row gt_left">2020-11-25</td>
+      <td class="gt_row gt_center">39059</td>
+      <td class="gt_row gt_center">2542</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">2</td>
+      <td class="gt_row gt_left">Your 2020 Golden Boy Award Winner:
+
+⭐️ ERRRRRLIIINNNGG HAAAA</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">25932</td>
+      <td class="gt_row gt_center">1463</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">3</td>
+      <td class="gt_row gt_left">“Only two?” 😂 https://t.co/OHcaIkNGnt</td>
+      <td class="gt_row gt_left">2020-11-24</td>
+      <td class="gt_row gt_center">23097</td>
+      <td class="gt_row gt_center">1007</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_left">He is not real.</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">21028</td>
+      <td class="gt_row gt_center">1012</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_left">Just another day in the office 🎮 https://t.co/yE1IpiC6gc</td>
+      <td class="gt_row gt_left">2020-11-26</td>
+      <td class="gt_row gt_center">19344</td>
+      <td class="gt_row gt_center">359</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">6</td>
+      <td class="gt_row gt_left">He's the Golden Boy for a reason</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">16188</td>
+      <td class="gt_row gt_center">790</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">7</td>
+      <td class="gt_row gt_left">The Goalden Boy 🥅⚽️ https://t.co/XgIiDyKcC2</td>
+      <td class="gt_row gt_left">2020-11-22</td>
+      <td class="gt_row gt_center">13395</td>
+      <td class="gt_row gt_center">354</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">8</td>
+      <td class="gt_row gt_left">Hakuna Matata - Marco Reus 🤙 https://t.co/PlTGdBLrhg</td>
+      <td class="gt_row gt_left">2020-11-28</td>
+      <td class="gt_row gt_center">12871</td>
+      <td class="gt_row gt_center">1524</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">9</td>
+      <td class="gt_row gt_left">Are you excited for the international break to end? 
+
+Yes   </td>
+      <td class="gt_row gt_left">2020-11-18</td>
+      <td class="gt_row gt_center">12757</td>
+      <td class="gt_row gt_center">496</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">10</td>
+      <td class="gt_row gt_left">Sweet Sixteen, Youssoufa Moukoko 🥳🎂 https://t.co/UaGEFhV0hC</td>
+      <td class="gt_row gt_left">2020-11-20</td>
+      <td class="gt_row gt_center">11933</td>
+      <td class="gt_row gt_center">386</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="visualize-most-retweeted-tweets" class="section level3">
+<h3>Visualize most retweeted tweets</h3>
+<p>Next we will re-sort and re-rank by retweets, again using the GT package to cleanly format.</p>
+<p>A tweet celebrating player Giovanni Reyna signing a contract extension earned the most retweets. The tribute to Diego Mardona (most liked tweet) was #2 when ranking by retweets.</p>
+<pre class="r"><code>   tweets %&gt;%
+      arrange (-retweets, -likes) %&gt;%
+      head (10) %&gt;%
+      rowid_to_column(&quot;rank&quot;) %&gt;%
+      select (rank, text, date, retweets, likes) %&gt;%
+      gt ()</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ambkabhlfx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ambkabhlfx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ambkabhlfx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ambkabhlfx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ambkabhlfx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ambkabhlfx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ambkabhlfx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ambkabhlfx .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ambkabhlfx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ambkabhlfx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ambkabhlfx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ambkabhlfx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ambkabhlfx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ambkabhlfx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ambkabhlfx .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ambkabhlfx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ambkabhlfx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ambkabhlfx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ambkabhlfx .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ambkabhlfx .gt_left {
+  text-align: left;
+}
+
+#ambkabhlfx .gt_center {
+  text-align: center;
+}
+
+#ambkabhlfx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ambkabhlfx .gt_font_normal {
+  font-weight: normal;
+}
+
+#ambkabhlfx .gt_font_bold {
+  font-weight: bold;
+}
+
+#ambkabhlfx .gt_font_italic {
+  font-style: italic;
+}
+
+#ambkabhlfx .gt_super {
+  font-size: 65%;
+}
+
+#ambkabhlfx .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ambkabhlfx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">text</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">retweets</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">likes</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_left">🚨 #REYNA2025 GIVEAWAY 🚨
+
+To celebrate Gio’s contract extensi</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">4952</td>
+      <td class="gt_row gt_center">3194</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">2</td>
+      <td class="gt_row gt_left">Rest In Peace, Diego Armando Maradona 🙏 https://t.co/JB0DiVE</td>
+      <td class="gt_row gt_left">2020-11-25</td>
+      <td class="gt_row gt_center">2542</td>
+      <td class="gt_row gt_center">39059</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">3</td>
+      <td class="gt_row gt_left">Hakuna Matata - Marco Reus 🤙 https://t.co/PlTGdBLrhg</td>
+      <td class="gt_row gt_left">2020-11-28</td>
+      <td class="gt_row gt_center">1524</td>
+      <td class="gt_row gt_center">12871</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_left">Your 2020 Golden Boy Award Winner:
+
+⭐️ ERRRRRLIIINNNGG HAAAA</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">1463</td>
+      <td class="gt_row gt_center">25932</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_left">Happy Independence Day to our friends and family celebrating</td>
+      <td class="gt_row gt_left">2020-11-03</td>
+      <td class="gt_row gt_center">1234</td>
+      <td class="gt_row gt_center">5012</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">6</td>
+      <td class="gt_row gt_left">He is not real.</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">1012</td>
+      <td class="gt_row gt_center">21028</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">7</td>
+      <td class="gt_row gt_left">“Only two?” 😂 https://t.co/OHcaIkNGnt</td>
+      <td class="gt_row gt_left">2020-11-24</td>
+      <td class="gt_row gt_center">1007</td>
+      <td class="gt_row gt_center">23097</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">8</td>
+      <td class="gt_row gt_left">63 | HAATTRICK!!!
+
+THIS MAN IS NOT HUMAN!!!
+
+#BSCBVB 1-3 htt</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">848</td>
+      <td class="gt_row gt_center">10114</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">9</td>
+      <td class="gt_row gt_left">He's the Golden Boy for a reason</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">790</td>
+      <td class="gt_row gt_center">16188</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">10</td>
+      <td class="gt_row gt_left">Just had to make sure 🤖 https://t.co/xScWp4Taw1</td>
+      <td class="gt_row gt_left">2020-11-21</td>
+      <td class="gt_row gt_center">751</td>
+      <td class="gt_row gt_center">7255</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="visualize-number-of-tweets-trends" class="section level3">
+<h3>Visualize number of tweets trends</h3>
+<p>Another area of interest is how tweet activity has evolved over time. Using dplyr we can easily summarize by number of tweets by day.</p>
+<p>The volume of tweets was smallest during the international break when BVB does not play games. Its players are representing their separate national teams.</p>
+<pre class="r"><code>   tweets %&gt;%
+      group_by (date) %&gt;%
+      count () %&gt;%
+      ggplot (aes (x = date, y = n)) +
+         geom_col () +
+         geom_label (aes(label = n)) +
+         theme_minimal() +
+         labs (x=&quot;&quot;, y = &quot;Number of tweets&quot;)</code></pre>
+<p><img src="/post/twitter_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+<div id="analyze-twitter-followers" class="section level2">
+<h2>3. Analyze Twitter followers</h2>
+<div id="source-followers" class="section level3">
+<h3>Source followers</h3>
+<p>Learning about followers for a Twitter handle is also frequently useful.</p>
+<p>Two rtweet package functions are helpful here. First, get_followers returns a vector of Twitter user_ids of followers. The lookup_users function then extracts user attributes such as screen name, physical location (if supplied in profile) and number of followers.</p>
+<p>The BVB account enjoys 583,000 followers so we will limit to 500 users for purpose of the post.</p>
+<p>We will also add a row ID ranking each follower by largest number of followers via dplyr’s rowid_to_column function.</p>
+<pre class="r"><code>   library(skimr)
+
+  followers &lt;- twitter_user %&gt;%
+      get_followers() %&gt;%
+      head (500) %&gt;%
+      pull (user_id) %&gt;%
+      lookup_users () %&gt;%
+      select (screen_name, name, location, followers_count) %&gt;%
+      arrange (-followers_count) %&gt;%
+      rowid_to_column(&quot;rank&quot;)
+
+   skim (followers)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">followers</td>
+</tr>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">500</td>
+</tr>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">screen_name</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">15</td>
+<td align="right">0</td>
+<td align="right">500</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">name</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">34</td>
+<td align="right">0</td>
+<td align="right">498</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">location</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">30</td>
+<td align="right">353</td>
+<td align="right">142</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">rank</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">250.50</td>
+<td align="right">144.48</td>
+<td align="right">1</td>
+<td align="right">125.75</td>
+<td align="right">250.5</td>
+<td align="right">375.25</td>
+<td align="right">500</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td align="left">followers_count</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">64.57</td>
+<td align="right">194.85</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">3.0</td>
+<td align="right">28.00</td>
+<td align="right">1802</td>
+<td align="left">▇▁▁▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="top-followers" class="section level3">
+<h3>Top followers</h3>
+<p>We will first list the 10 largest followers by respective number of followers.</p>
+<pre class="r"><code>   followers %&gt;%
+      head (10) %&gt;%
+      select (rank, name, location, followers_count) %&gt;%
+      gt () %&gt;%
+         fmt_number (columns = vars(followers_count), use_seps = T, decimals = 0)</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tabpvyxrdj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tabpvyxrdj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tabpvyxrdj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tabpvyxrdj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tabpvyxrdj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tabpvyxrdj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tabpvyxrdj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tabpvyxrdj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tabpvyxrdj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tabpvyxrdj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tabpvyxrdj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tabpvyxrdj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tabpvyxrdj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tabpvyxrdj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tabpvyxrdj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tabpvyxrdj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tabpvyxrdj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tabpvyxrdj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tabpvyxrdj .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tabpvyxrdj .gt_left {
+  text-align: left;
+}
+
+#tabpvyxrdj .gt_center {
+  text-align: center;
+}
+
+#tabpvyxrdj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tabpvyxrdj .gt_font_normal {
+  font-weight: normal;
+}
+
+#tabpvyxrdj .gt_font_bold {
+  font-weight: bold;
+}
+
+#tabpvyxrdj .gt_font_italic {
+  font-style: italic;
+}
+
+#tabpvyxrdj .gt_super {
+  font-size: 65%;
+}
+
+#tabpvyxrdj .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="tabpvyxrdj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">location</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">followers_count</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_left">IG:@washamzulu_mr_khululeka</td>
+      <td class="gt_row gt_left">Soshanguve, South Africa</td>
+      <td class="gt_row gt_center">1,802</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">2</td>
+      <td class="gt_row gt_left">Pedro Gull</td>
+      <td class="gt_row gt_left"></td>
+      <td class="gt_row gt_center">1,649</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">3</td>
+      <td class="gt_row gt_left">Àýìbäńèņģímóťé🇳🇬(Daniel)</td>
+      <td class="gt_row gt_left">Yenagoa, Nigeria</td>
+      <td class="gt_row gt_center">1,518</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_left">observation🌚🇳🇬</td>
+      <td class="gt_row gt_left"></td>
+      <td class="gt_row gt_center">1,297</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_left">Mostafa Mohamed9️⃣🏆🦅</td>
+      <td class="gt_row gt_left">Assiut,Egypt </td>
+      <td class="gt_row gt_center">1,210</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">6</td>
+      <td class="gt_row gt_left">Thabo</td>
+      <td class="gt_row gt_left">Polokwane, South Africa</td>
+      <td class="gt_row gt_center">942</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">7</td>
+      <td class="gt_row gt_left">🇿🇦Nyandeni🇿🇦NND</td>
+      <td class="gt_row gt_left">Mapleton, South Africa</td>
+      <td class="gt_row gt_center">940</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">8</td>
+      <td class="gt_row gt_left">Thunder Hart 🦥🗽</td>
+      <td class="gt_row gt_left">Sand Springs, OK</td>
+      <td class="gt_row gt_center">857</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">9</td>
+      <td class="gt_row gt_left">lepantsula</td>
+      <td class="gt_row gt_left">Pretoria, South Africa</td>
+      <td class="gt_row gt_center">804</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">10</td>
+      <td class="gt_row gt_left">Buhle Skhindi Mogale</td>
+      <td class="gt_row gt_left">South Africa</td>
+      <td class="gt_row gt_center">786</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="obtain-follower-geographic-attributes" class="section level3">
+<h3>Obtain follower geographic attributes</h3>
+<p>Another interesting item to research on followers is geographic distribution.</p>
+<p>The provided location in Twitter profile is a good starting point. However, locations are neither standardized by level of detail (city, country) nor spelling. Standardization is necessary to group in table or map.</p>
+<p>We will standardize at the highest level of detail, which is country, via the <a href="https://developers.google.com/maps/documentation">Google Maps API</a> and accessed via the <a href="https://cran.r-project.org/web/packages/ggmap/ggmap.pdf">ggmaps package</a>. If this is the first time you have accessed the Google Maps API, you will need to complete a one-time step of obtaining a free Google maps API key (instructions <a href="https://rdrr.io/cran/ggmap/man/register_google.html">here</a>).</p>
+<pre class="r"><code>   library (ggmap)
+
+   register_google(key = Sys.getenv(&quot;GOOGLE_MAPS_API&quot;))
+
+   followers_geo &lt;- followers %&gt;%
+      mutate_geocode (location, output = &quot;more&quot;) %&gt;%
+      mutate (
+         country = word (address, -1,-1),
+         country = str_to_upper(country),
+         country = ifelse(is.na(country), &quot;NOT LISTED&quot;, country)
+         ) %&gt;%
+      select (rank:followers_count, country, lon, lat) 
+   
+   followers_geo</code></pre>
+<pre><code>## # A tibble: 500 x 8
+##     rank screen_name  name      location   followers_count country    lon    lat
+##    &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+##  1     1 washamzulu   &quot;IG:@was… &quot;Soshangu…            1802 AFRICA   28.1  -25.5 
+##  2     2 pedrogull    &quot;Pedro G… &quot;&quot;                    1649 NOT LI…  NA     NA   
+##  3     3 iwowari      &quot;Àýìbäńè… &quot;Yenagoa,…            1518 NIGERIA   6.27   4.92
+##  4     4 tyler_drille &quot;observa… &quot;&quot;                    1297 NOT LI…  NA     NA   
+##  5     5 Mostafa7621… &quot;Mostafa… &quot;Assiut,E…            1210 EGYPT    31.2   27.2 
+##  6     6 Thabo_kganza &quot;Thabo&quot;   &quot;Polokwan…             942 AFRICA   29.4  -23.9 
+##  7     7 mhlengigase… &quot;🇿🇦Nyand… &quot;Mapleton…             940 AFRICA   28.2  -26.3 
+##  8     8 th_nd_r      &quot;Thunder… &quot;Sand Spr…             857 USA     -96.1   36.1 
+##  9     9 IamBig_Mitc… &quot;lepants… &quot;Pretoria…             804 AFRICA   28.2  -25.7 
+## 10    10 BuhleMogale  &quot;Buhle S… &quot;South Af…             786 AFRICA   22.9  -30.6 
+## # … with 490 more rows</code></pre>
+</div>
+<div id="visualize-followers-by-country" class="section level3">
+<h3>Visualize followers by country</h3>
+<p>We will first identify the top follower countries and summarize in a GT table.</p>
+<pre class="r"><code>   followers_agg &lt;- followers_geo %&gt;%
+      count (country, lat, lon) %&gt;%
+      arrange (-n)
+   
+   ggplot (followers_agg, aes (x = reorder(country, n), y = n)) +
+      geom_col () +
+      geom_label (aes(label = n)) +
+      coord_flip () +
+      theme_minimal() +
+      labs (x=&quot;&quot;, y = &quot;Followers&quot;)</code></pre>
+<p><img src="/post/twitter_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="visualize-followers-on-a-map" class="section level3">
+<h3>Visualize followers on a map</h3>
+<p>Next we will convert to a map to enable viewing the location of all users along with countries with most users.</p>
+<pre class="r"><code>   library (maps)
+
+   world &lt;- map_data (&quot;world&quot;)
+
+   ggplot () +
+      geom_map (data = world, map = world, aes (long, lat, map_id = region), fill = &quot;lightgray&quot;, color = &quot;black&quot;, size =0.05) +
+      geom_point (data = followers_agg, aes (x = lon, y = lat, size = n), color = &quot;blue&quot;) + 
+      theme_grey ()</code></pre>
+<p><img src="/post/twitter_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
+<div id="potential-future-analyses" class="section level2">
+<h2>4. Potential future analyses</h2>
+<p>We are only scratching the surface of available Twitter data, subsequent data enrichment from complementary packages and subsequent analytics. Second generation followers (followers of followers) could easily be sourced and subtotaled to identify possile impact from a tweet. Or witter users that the account follows could also be extracted. Another idea is to convert the R code to Shiny to enable interactivity to efficiently change Twitter handles.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>5. Conclusion</h2>
+<p>R offers many powerful tools to source, analyze and visualize Twitter information. The Twitter API (accessed via the rtweet package) enables free sourcing of follower and tweet attributes that can be easily imported into R. The raw data can then be enriched by sourcing geographic attributes from Google’s API via the ggpmap package. Tidyverse package such as dplyr, ggplot and GT can then be leveraged to transform and visualize for insight.</p>
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/09/26/penguins-cluster/">Kmeans Clustering of Penguins</a></h4>
+    <h5>September 26, 2020 - 11 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/clustering">
+        <kbd class="item-tag"> clustering </kbd>
+    </a>
+    
+    <a href="/tags/kmeans">
+        <kbd class="item-tag"> kmeans </kbd>
+    </a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/07/07/cocktails-upset/">UpSet Charts Comparison</a></h4>
+    <h5>July 7, 2020 - 7 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/ggupset">
+        <kbd class="item-tag"> ggupset </kbd>
+    </a>
+    
+    <a href="/tags/upsetr">
+        <kbd class="item-tag"> UpSetR </kbd>
+    </a>
+    
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+      
+    
+
+    <h4><a href="/2020/05/02/spotify-song-analytics/">Spotify Song Analytics</a></h4>
+    <h5>May 2, 2020 - 10 minutes</h5>
+    <h5></h5>
+
+    
+    
+    <a href="/tags/tidyverse">
+        <kbd class="item-tag"> tidyverse </kbd>
+    </a>
+    
+    <a href="/tags/r">
+        <kbd class="item-tag"> r </kbd>
+    </a>
+    
+    <a href="/tags/rstats">
+        <kbd class="item-tag"> rstats </kbd>
+    </a>
+    
+    <a href="/tags/spotifyr">
+        <kbd class="item-tag"> spotifyr </kbd>
+    </a>
+    
+    <a href="/tags/purrr">
+        <kbd class="item-tag"> purrr </kbd>
+    </a>
+    
+
+</div>
+ 
+
+    
+
+    
+
+    
+
+    
+
+</main>
+
+        <footer id = "bigfooter">
+            <div style = "padding:15px;">
+                <p>Powered by <a href="https://gohugo.io">Hugo</a>. Themed by <a href="https://github.com/nathancday/min_night">min_night</a>.
+                </p>
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"
+                title="Creative Commons Attribution 4.0 International license">
+                <i class="fab fa-creative-commons" aria-hidden="true"></i> Attribution 4.0 International license
+                </a>
+            </div>
+        </footer>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+          gtag('config', '');
+        </script>
+       
+    </body>
+
+</html>
+
